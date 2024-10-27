@@ -1,94 +1,140 @@
 const fs = require("fs");
 const path = require("path");
-const csv = require("csv-parser");
-const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const axios = require("axios");
 const cheerio = require("cheerio");
+const fastCsv = require("fast-csv");
 
-// Paths
-const inputCsvPath = path.join(__dirname, "./input.csv");
-const outputDir = path.join(__dirname, "./output");
-
-// Function to scrape data for jobs
-async function scrapeData(url, startPage = 1, endPage) {
-  const results = [];
-
-  // Logic to handle pagination
-  for (let page = startPage; endPage === undefined || page <= endPage; page++) {
-    const pageUrl = `${url}&pg=${page}`;
-    console.log(`Fetching data from: ${pageUrl}`);
-
-    const { data } = await axios.get(pageUrl);
-    const $ = cheerio.load(data);
-
-    // Extract job information
-    $(".job-listing").each((index, element) => {
-      const jobId = $(element).find(".job-id").text().trim(); // Update this selector based on the actual website
-      const title = $(element).find(".job-title").text().trim(); // Update this selector based on the actual website
-      const location = $(element).find(".job-location").text().trim(); // Update this selector based on the actual website
-      const description = $(element).find(".job-description").text().trim(); // Update this selector based on the actual website
-      const postedOn = $(element).find(".posted-on").text().trim(); // Update this selector based on the actual website
-      const jobFunction = $(element).find(".job-function").text().trim(); // Update this selector based on the actual website
-      const company = "Accenture"; // Company name from input CSV
-
-      results.push({
-        sNo: results.length + 1,
-        jobId: jobId || "",
-        function: jobFunction || "",
-        location: location || "",
-        title: title || "",
-        description: description || "",
-        postedOn: postedOn || "",
-        company: company || "",
-      });
-    });
-  }
-
-  return results;
-}
-
-// Function to process the input CSV and trigger scraping
-async function processInput() {
-  fs.createReadStream(inputCsvPath)
-    .pipe(csv())
-    .on("data", async (row) => {
-      const {
-        "Company Name": companyName,
-        URL: url,
-        "Start Page": startPage,
-        "End Page": endPage,
-      } = row;
-      const start = startPage ? parseInt(startPage, 10) : 1;
-      const end = endPage ? parseInt(endPage, 10) : undefined;
-
-      // Scrape data and write to CSV
-      const data = await scrapeData(url, start, end);
-      const csvWriter = createCsvWriter({
-        path: path.join(outputDir, `${companyName}_Jobs.csv`),
-        header: [
-          { id: "sNo", title: "S.No." },
-          { id: "jobId", title: "Job ID" },
-          { id: "function", title: "Function" },
-          { id: "location", title: "Location" },
-          { id: "title", title: "Title" },
-          { id: "description", title: "Description" },
-          { id: "postedOn", title: "Posted On" },
-          { id: "company", title: "Company" },
-        ],
-      });
-
-      await csvWriter.writeRecords(data);
-      console.log(`Data for ${companyName} saved to ${companyName}_Jobs.csv`);
-    })
-    .on("end", () => {
-      console.log("CSV file successfully processed.");
-    });
-}
+// Define the path for input and output
+const inputFilePath = path.join(__dirname, "./input.csv");
+const outputDirectory = path.join(__dirname, "./output");
 
 // Create output directory if it doesn't exist
-if (!fs.existsSync(outputDir)) {
-  fs.mkdirSync(outputDir);
+if (!fs.existsSync(outputDirectory)) {
+  fs.mkdirSync(outputDirectory);
 }
 
-// Start processing the input CSV
-processInput();
+// Function to read input CSV
+const readInputCsv = () => {
+  return new Promise((resolve, reject) => {
+    const results = [];
+    fs.createReadStream(inputFilePath)
+      .pipe(fastCsv.parse({ headers: true }))
+      .on("data", (row) => results.push(row))
+      .on("end", () => resolve(results))
+      .on("error", (error) => reject(error));
+  });
+};
+
+// Function to fetch job data from Accenture's job portal
+const fetchJobDataAccenture = async (startPage = 1, maxPages = 100) => {
+  const jobListings = [];
+  let currentPage = startPage;
+
+  try {
+    while (currentPage <= maxPages) {
+      const url = `https://www.accenture.com/in-en/careers/jobsearch?jk=&sb=1&vw=0&is_rj=0&pg=${currentPage}`;
+      console.log(`Fetching data from: ${url}`);
+
+      const response = await axios.get(url);
+      if (response.status !== 200) {
+        console.error(`Failed to fetch data: ${response.status}`);
+        break; // Stop if fetch fails
+      }
+
+      const $ = cheerio.load(response.data);
+
+      const jobCountOnPage = $(".cmp-teaser__title").length;
+      if (jobCountOnPage === 0) {
+        console.log("No jobs found on this page. Exiting...");
+        break; // Exit loop if no jobs found
+      }
+
+      $(".cmp-teaser__title").each((_, element) => {
+        const title = $(element).text().trim(); // Job title
+        const location = $(element)
+          .siblings(".cmp-teaser__pretitle")
+          .text()
+          .trim(); // Job location
+
+        const descriptionElement = $(element).parent(); // Parent of title for description
+        const description = descriptionElement
+          .find("span")
+          .last()
+          .text()
+          .trim(); // Job description
+
+        const postedOn =
+          descriptionElement
+            .find(".cmp-teaser__job-listing-posted-date")
+            .text()
+            .trim() || ""; // Posted date
+
+        const skills = descriptionElement
+          .text()
+          .match(/Must have skills : (.+?)Good to have skills :/);
+        const mustHaveSkills = skills ? skills[1].trim() : ""; // Must-have skills extraction
+
+        const jobId = `${currentPage}-${title
+          .replace(/\s+/g, "-")
+          .toLowerCase()}`; // Simple job ID generation
+
+        // Push job details into the jobListings array
+        jobListings.push({
+          S_No: jobListings.length + 1, // S.No. starts from 1
+          Company: "Accenture",
+          Job_ID: jobId,
+          Function: mustHaveSkills, // Assuming function refers to must-have skills
+          Location: location,
+          Title: title,
+          Description: description,
+          Posted_On: postedOn,
+        });
+      });
+
+      console.log(`Found ${jobCountOnPage} jobs on page ${currentPage}.`);
+
+      currentPage++;
+    }
+  } catch (error) {
+    console.error(`Error fetching data for Accenture: ${error.message}`);
+  }
+
+  console.log("Fetched job data:", jobListings); // Log job data before returning
+  return jobListings;
+};
+
+// Function to save output to CSV
+const saveOutputCsv = (company, data) => {
+  const outputFilePath = path.join(outputDirectory, `${company}.csv`);
+  const ws = fs.createWriteStream(outputFilePath);
+
+  // Check if data is available before writing
+  if (data.length === 0) {
+    console.error("No data available to save.");
+    return;
+  }
+
+  fastCsv
+    .write(data, { headers: true })
+    .pipe(ws)
+    .on("finish", () => console.log(`Data saved to ${outputFilePath}`))
+    .on("error", (error) =>
+      console.error(`Error writing to CSV: ${error.message}`)
+    );
+};
+
+// Main function to execute the scraping
+const main = async () => {
+  const startPage = 1; // Start from page 1
+  const maxPages = 300; // Specify the maximum number of pages to scrape
+
+  const jobData = await fetchJobDataAccenture(startPage, maxPages);
+
+  // Log job data before saving to CSV
+  console.log("Job Data to be saved:", jobData);
+
+  saveOutputCsv("Accenture", jobData);
+};
+
+// Execute the main function
+main().catch((error) => console.error(error));
