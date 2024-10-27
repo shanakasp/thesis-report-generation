@@ -22,6 +22,50 @@ async function readInputCSV() {
   });
 }
 
+// Function to construct the correct URL based on page number
+function constructUrl(baseUrl, pageNum) {
+  const url = new URL(baseUrl);
+  url.searchParams.set("pg", pageNum.toString());
+  return url.toString();
+}
+
+// New function to detect the last available page
+async function detectLastPage(page, baseUrl) {
+  let currentPage = 1;
+  let hasNextPage = true;
+
+  while (hasNextPage) {
+    console.log(`Checking page ${currentPage}...`);
+    const pageUrl = constructUrl(baseUrl, currentPage);
+
+    await page.goto(pageUrl, {
+      waitUntil: "networkidle0",
+      timeout: 60000,
+    });
+
+    // Wait for job listings or "no results" indicator
+    await Promise.race([
+      page.waitForSelector(".cmp-teaser__content", { timeout: 30000 }),
+      page.waitForSelector(".no-results", { timeout: 30000 }),
+    ]);
+
+    // Check if there are any job listings on the page
+    const hasJobs = await page.evaluate(() => {
+      const jobs = document.querySelectorAll(".cmp-teaser__content");
+      const noResults = document.querySelector(".no-results");
+      return jobs.length > 0 && !noResults;
+    });
+
+    if (!hasJobs) {
+      console.log(`No more jobs found after page ${currentPage - 1}`);
+      return currentPage - 1;
+    }
+
+    currentPage++;
+    await delay(2000); // Prevent rate limiting
+  }
+}
+
 async function scrapeAccentureJobs(baseUrl, startPage, endPage) {
   // Create output directory if it doesn't exist
   const outputDir = path.join(__dirname, "output");
@@ -55,56 +99,64 @@ async function scrapeAccentureJobs(baseUrl, startPage, endPage) {
     let allJobs = [];
     let globalCounter = 0;
 
+    // If endPage is blank or invalid, detect the last available page
+    if (!endPage || endPage <= 0) {
+      console.log("No end page specified. Detecting last available page...");
+      endPage = await detectLastPage(page, baseUrl);
+      console.log(`Last available page detected: ${endPage}`);
+    }
+
+    // If startPage is blank or invalid, set it to 1
+    if (!startPage || startPage <= 0) {
+      console.log("No start page specified. Starting from page 1");
+      startPage = 1;
+    }
+
     // Loop through all pages
     for (let currentPage = startPage; currentPage <= endPage; currentPage++) {
-      console.log(`Scraping page ${currentPage}...`);
+      console.log(`Scraping page ${currentPage} of ${endPage}...`);
 
-      // Construct URL with page number
-      const pageUrl = baseUrl.replace(/pg=\d+/, `pg=${currentPage}`);
+      const pageUrl = constructUrl(baseUrl, currentPage);
+      console.log(`Accessing URL: ${pageUrl}`);
 
-      // Navigate to the page
       await page.goto(pageUrl, {
         waitUntil: "networkidle0",
         timeout: 60000,
       });
 
-      // Wait for job listings to load
-      await page.waitForSelector(".cmp-teaser__content", { timeout: 60000 });
+      // Check if page has jobs
+      const hasJobs = await page.evaluate(() => {
+        const jobs = document.querySelectorAll(".cmp-teaser__content");
+        return jobs.length > 0;
+      });
 
-      // Add a small delay to ensure content is fully loaded
+      if (!hasJobs) {
+        console.log(`No jobs found on page ${currentPage}. Stopping scraping.`);
+        break;
+      }
+
+      await page.waitForSelector(".cmp-teaser__content", { timeout: 60000 });
       await delay(2000);
 
-      // Extract job data
       const pageJobs = await page.evaluate(
         (globalCounter, currentPage) => {
           const jobElements = document.querySelectorAll(".cmp-teaser__content");
           return Array.from(jobElements).map((job, index) => {
-            // Get location details
             const city =
               job.querySelector(".cmp-teaser-city")?.textContent.trim() || "";
             const region =
               job.querySelector(".cmp-teaser-region")?.textContent.trim() || "";
             const location = `${region} - ${city}`.trim();
-
-            // Get job ID from save-job-card data attribute
             const saveJobCard = job.querySelector(".cmp-teaser__save-job-card");
             const jobId = saveJobCard?.getAttribute("data-job-id") || "";
-
-            // Get function/business area
             const businessArea =
               job.querySelector(".business-area")?.textContent.trim() || "";
-
-            // Get job title
             const title =
               job.querySelector(".cmp-teaser__title")?.textContent.trim() || "";
-
-            // Get description
             const description =
               job
                 .querySelector(".cmp-teaser__job-listing .description")
                 ?.textContent.trim() || "";
-
-            // Get posted date
             const postedOn =
               job
                 .querySelector(".cmp-teaser__job-listing-posted-date")
@@ -130,16 +182,12 @@ async function scrapeAccentureJobs(baseUrl, startPage, endPage) {
       allJobs = allJobs.concat(pageJobs);
       globalCounter += pageJobs.length;
 
-      // Add delay between pages to avoid rate limiting
       await delay(3000);
-
-      // Log progress
       console.log(
         `Completed page ${currentPage}. Found ${pageJobs.length} jobs on this page.`
       );
     }
 
-    // Write all jobs to CSV
     await csvWriter.writeRecords(allJobs);
     console.log(
       `CSV file has been created successfully with ${allJobs.length} jobs`
@@ -155,7 +203,6 @@ async function scrapeAccentureJobs(baseUrl, startPage, endPage) {
 
 async function main() {
   try {
-    // Read input CSV
     const inputData = await readInputCSV();
 
     if (!inputData || inputData.length === 0) {
@@ -164,16 +211,17 @@ async function main() {
 
     let totalJobs = 0;
 
-    // Process each row in input CSV
     for (const row of inputData) {
-      console.log(
-        `Processing URL: ${row.base_url} from page ${row.start_page} to ${row.end_page}`
-      );
+      const startPage = row.start_page ? parseInt(row.start_page) : null;
+      const endPage = row.end_page ? parseInt(row.end_page) : null;
+
+      console.log(`Processing URL: ${row.base_url}`);
+      console.log(`Page range: ${startPage || "auto"} to ${endPage || "auto"}`);
 
       const jobsCount = await scrapeAccentureJobs(
         row.base_url,
-        parseInt(row.start_page),
-        parseInt(row.end_page)
+        startPage,
+        endPage
       );
 
       totalJobs += jobsCount;
