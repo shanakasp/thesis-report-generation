@@ -4,6 +4,7 @@ const cognizantRoute = require("./routes/cognizantRoute");
 const deloitteRoute = require("./routes/deloitteRoute");
 const accentureRoute = require("./routes/accentureRoute");
 const ibmRoute = require("./routes/ibmRoute");
+const marriottRoute = require("./routes/marriottRoute");
 const app = express();
 const port = 3000;
 
@@ -127,6 +128,8 @@ app.use("/scrape/Accenture", accentureRoute);
 app.use("/scrape/Deloitte", deloitteRoute);
 
 app.use("/scrape/IBM", ibmRoute);
+
+app.use("/scrape/marriott", marriottRoute);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
