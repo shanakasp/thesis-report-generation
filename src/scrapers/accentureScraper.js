@@ -27,9 +27,15 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   let globalCounter = 0;
   let currentPage = startPage;
 
+  // List of titles to exclude
+  const excludeTitles = [
+    "Join Our Team",
+    "Keep Up to Date",
+    "Job Alert Emails",
+  ];
+
   try {
     while (true) {
-      // Stop if endPage is defined and reached
       if (endPage && currentPage > endPage) {
         console.log(`Reached defined end page: ${endPage}. Stopping.`);
         break;
@@ -38,44 +44,69 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       const pageUrl = `${baseUrl}&pg=${currentPage}`;
       await page.goto(pageUrl, { waitUntil: "networkidle0" });
 
-      // Pass `currentPage` into `page.evaluate` explicitly
-      const jobs = await page.evaluate((pageNum) => {
-        const jobElements = document.querySelectorAll(".cmp-teaser__content");
-        return Array.from(jobElements).map((job) => ({
-          sno: null, // to be set later
-          company: "Accenture",
-          jobId:
-            job
-              .querySelector(".cmp-teaser__save-job-card")
-              ?.getAttribute("data-job-id") || "",
-          function:
-            job.querySelector(".business-area")?.textContent.trim() || "",
-          location: `${
-            job.querySelector(".cmp-teaser-region")?.textContent.trim() || ""
-          } - ${
-            job.querySelector(".cmp-teaser-city")?.textContent.trim() || ""
-          }`,
-          title:
-            job.querySelector(".cmp-teaser__title")?.textContent.trim() || "",
-          description:
-            job
-              .querySelector(".cmp-teaser__job-listing .description")
-              ?.textContent.trim() || "",
-          postedOn:
-            job
-              .querySelector(".cmp-teaser__job-listing-posted-date")
-              ?.textContent.trim() || "",
-          page: pageNum, // Use the passed `pageNum` argument
-        }));
-      }, currentPage); // Pass `currentPage` here
+      const jobs = await page.evaluate(
+        (data) => {
+          const { excludeTitles, currentPage } = data;
+          const jobElements = document.querySelectorAll(".cmp-teaser.card");
+          return Array.from(jobElements)
+            .map((job) => {
+              // Get the job title first to check if it should be excluded
+              const title =
+                job.querySelector(".cmp-teaser__title")?.textContent.trim() ||
+                "";
 
-      // If no jobs are found, break the loop (end of available pages)
+              // Skip if title is in exclude list
+              if (excludeTitles.includes(title)) {
+                return null;
+              }
+
+              // Get location components
+              const city =
+                job.querySelector(".cmp-teaser-city")?.textContent.trim() || "";
+
+              // Get the skill (function) from the specific element
+              const skillElement = job.querySelector(
+                ".cmp-teaser__job-listing-semibold.skill"
+              );
+              const function_ = skillElement
+                ? skillElement.textContent.trim()
+                : "";
+
+              // Get description, removing any extra whitespace and newlines
+              const description =
+                job
+                  .querySelector(".cmp-teaser__job-listing .description")
+                  ?.textContent.trim()
+                  .replace(/\s+/g, " ") || "";
+
+              return {
+                sno: null, // to be set later
+                company: "Accenture",
+                jobId:
+                  job
+                    .querySelector(".cmp-teaser__save-job-card")
+                    ?.getAttribute("data-job-id") || "",
+                function: function_,
+                location: city, // Only showing city name without "India -"
+                title: title,
+                description: description,
+                postedOn:
+                  job
+                    .querySelector(".cmp-teaser__job-listing-posted-date")
+                    ?.textContent.trim() || "",
+                page: currentPage,
+              };
+            })
+            .filter((job) => job !== null); // Remove null entries (excluded jobs)
+        },
+        { excludeTitles, currentPage }
+      ); // Pass both values as an object
+
       if (jobs.length === 0) {
         console.log(`No jobs found on page ${currentPage}. Stopping.`);
         break;
       }
 
-      // Write data to CSV and update globalCounter
       await csvWriter.writeRecords(
         jobs.map((job, idx) => ({
           ...job,
@@ -84,11 +115,14 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       );
 
       globalCounter += jobs.length;
+      console.log(`Scraped Jobs from Accenture Page ${currentPage}`);
       currentPage += 1;
 
       // Add delay to avoid rate limiting
       await new Promise((resolve) => setTimeout(resolve, 3000));
     }
+  } catch (error) {
+    console.error("Error during scraping:", error);
   } finally {
     await browser.close();
   }

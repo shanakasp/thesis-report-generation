@@ -36,49 +36,70 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
     while (hasMoreJobs && (!endPage || currentPage <= endPage)) {
       console.log(`Scraping page ${currentPage}...`);
 
-      // Construct the page URL for IBM
       const pageUrl = `${baseUrl}&page=${currentPage}`;
 
-      // Navigate to the page and wait for the job listings to load
+      // Navigate to page and wait for content
       await page.goto(pageUrl, { waitUntil: "networkidle0" });
 
-      // Wait for the job cards to load
+      // Wait for job cards to load
       await page
         .waitForSelector(".bx--card__content", { timeout: 10000 })
         .catch(() => null);
 
-      // Extract job details - pass currentPage as a parameter
-      const jobs = await page.evaluate((pageNum) => {
-        const jobCards = document.querySelectorAll(".bx--card__content");
-        return Array.from(jobCards).map((card) => {
-          // Extract job details based on the exact structure
-          const functionElement = card.querySelector(".bx--card__eyebrow");
-          const titleElement = card.querySelector(".bx--card__heading");
-          const innerDetails = card.querySelector(".ibm--card__copy__inner");
+      // Extract job details
+      const jobs = await page.evaluate(async (pageNum) => {
+        const jobCards = document.querySelectorAll(
+          ".bx--card-group__cards__col"
+        );
+        const jobDetails = [];
 
-          // Split the inner details to separate Professional/Entry Level from location
+        for (const card of Array.from(jobCards)) {
+          const link = card.querySelector("a");
+          if (!link) continue;
+
+          // Get the job URL
+          const jobUrl = link.href;
+
+          // Extract the Req ID from the URL (assuming it's in the format /job/21205795/)
+          const reqIdMatch = jobUrl.match(/\/job\/(\d+)\//);
+          const jobId = reqIdMatch ? reqIdMatch[1] : "";
+
+          const content = card.querySelector(".bx--card__content");
+          if (!content) continue;
+
+          const functionElement = content.querySelector(".bx--card__eyebrow");
+          const titleElement = content.querySelector(".bx--card__heading");
+          const innerDetails = content.querySelector(".ibm--card__copy__inner");
+
           let professionalLevel = "";
           let location = "";
+
           if (innerDetails) {
-            const text = innerDetails.innerHTML;
-            const parts = text.split("<br>");
-            professionalLevel = parts[0]?.trim() || "";
-            location = parts[1]?.trim() || "";
+            const text = innerDetails.innerHTML; // Use innerHTML to retain the <br> tag
+            const parts = text.split("<br>").map((part) => part.trim()); // Split by <br> and trim spaces
+            professionalLevel = parts[0] || ""; // First part is the professional level
+            location = parts[1]
+              ? parts[1]
+                  .replace("Multiple Cities", "")
+                  .replace(/,\s*IN/g, "")
+                  .trim()
+              : ""; // Remove "Multiple Cities" and ", IN"
           }
 
-          return {
+          jobDetails.push({
             company: "IBM",
-            jobId: card.closest(".bx--card")?.getAttribute("data-job-id") || "",
-            function: functionElement ? functionElement.textContent.trim() : "",
+            jobId: `REQ${jobId}`, // Format as REQ followed by the number
+            function: titleElement ? titleElement.textContent.trim() : "",
             location: location,
-            title: titleElement ? titleElement.textContent.trim() : "",
-            description: titleElement ? titleElement.textContent.trim() : "", // Using title as description
-            postedOn: new Date().toISOString().split("T")[0], // Current date as posting date
+            title: functionElement ? functionElement.textContent.trim() : "",
+            description: professionalLevel, // Set description to professional level
+            postedOn: new Date().toISOString().split("T")[0],
             page: pageNum,
-            professionalLevel: professionalLevel,
-          };
-        });
-      }, currentPage); // Pass currentPage as an argument to evaluate
+          });
+        }
+
+        return jobDetails;
+      }, currentPage);
 
       // If no jobs are found, stop the loop
       if (jobs.length === 0) {
@@ -96,12 +117,11 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       );
 
       globalCounter += jobs.length;
-      console.log(`Scraped ${jobs.length} jobs from page ${currentPage}`);
+      console.log(`Scraped jobs from IBM page ${currentPage}`);
 
       // Add delay to avoid rate limiting
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
-      // Increment currentPage
       currentPage++;
     }
   } catch (error) {

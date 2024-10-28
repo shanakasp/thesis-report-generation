@@ -37,10 +37,11 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         const jobElements = document.querySelectorAll(
           ".table-tr.filter-box.tag-active.joblink"
         );
+
         return Array.from(jobElements).map((job) => ({
           sno: null, // to be set later
           company: "Capgemini",
-          jobId: job.getAttribute("href").split("/")[2] || "", // Extract job ID from URL
+          jobId: job.getAttribute("href").split("/")[2].replace("+sap_btp", ""),
           function:
             job
               .querySelector("div.table-td:nth-child(1) > div")

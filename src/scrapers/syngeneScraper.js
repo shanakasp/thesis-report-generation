@@ -58,20 +58,27 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
           const titleElement = row.querySelector(".jobTitle-link");
           const jobCodeElement = row.querySelector(".jobFacility");
 
-          // Extract location and function (if needed)
-          const locationText = getTextContent(".jobLocation");
+          // Extract function (from jobDepartment, if available)
           const functionText = getTextContent(".jobDepartment");
+
+          // Extract location and remove "India"
+          const locationText = getTextContent(".jobLocation")
+            .replace(", India", "")
+            .trim();
 
           // Extract posted date
           const postedDateText = getTextContent(".jobDate");
 
+          // Clean job ID (remove any whitespace)
+          const jobId = jobCodeElement ? jobCodeElement.textContent.trim() : "";
+
           return {
             company: "Syngene",
-            jobId: jobCodeElement ? jobCodeElement.textContent.trim() : "",
-            function: functionText,
-            location: locationText,
+            jobId: jobId,
+            function: functionText, // Use the department as function
+            location: locationText, // Set to cleaned location
             title: titleElement ? titleElement.textContent.trim() : "",
-            description: functionText, // Using function as description since detailed description needs another page load
+            description: "", // Set to empty or modify to fetch from job details if available
             postedOn: postedDateText,
             page: pageNum,
           };
@@ -94,7 +101,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       );
 
       globalCounter += jobs.length;
-      console.log(`Scraped ${jobs.length} jobs from page ${currentPage}`);
+      console.log(`Scraped Jobs from Syngene Page ${currentPage}`);
 
       // Add delay to avoid rate limiting
       await new Promise((resolve) => setTimeout(resolve, 3000));
