@@ -25,18 +25,13 @@ app.get("/scrape/:company", async (req, res) => {
       });
     }
 
-    // Parse start and end pages, with better fallback handling
-    const startPage =
-      companyData.start_page && parseInt(companyData.start_page, 10);
-    const endPage = companyData.end_page && parseInt(companyData.end_page, 10);
-
-    if (!startPage) {
-      return res.status(400).json({
-        success: false,
-        message:
-          "Start page is missing or invalid in the CSV for this company.",
-      });
-    }
+    // Parse start and end pages with fallback handling
+    const startPage = companyData.start_page
+      ? parseInt(companyData.start_page, 10)
+      : 1; // Fallback to page 1 if start_page is missing
+    const endPage = companyData.end_page
+      ? parseInt(companyData.end_page, 10)
+      : undefined; // Optional, can be undefined
 
     console.log(
       `Processing ${companyData.company} from page ${startPage} to ${

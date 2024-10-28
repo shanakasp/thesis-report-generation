@@ -1,6 +1,7 @@
 const fs = require("fs").promises;
 const csv = require("csv-parser");
 const path = require("path");
+const puppeteer = require("puppeteer");
 
 async function readInputCSV() {
   const inputPath = path.join(__dirname, "../input.csv");
