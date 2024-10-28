@@ -6,6 +6,8 @@ const accentureRoute = require("./routes/accentureRoute");
 const ibmRoute = require("./routes/ibmRoute");
 const marriottRoute = require("./routes/marriottRoute");
 const exlRoute = require("./routes/exlRouter");
+const syngeneRoute = require("./routes/syngeneRouter");
+const Schneider_ElectricRoute = require("./routes/schneiderElectricRoute");
 const app = express();
 const port = 3000;
 
@@ -133,6 +135,10 @@ app.use("/scrape/IBM", ibmRoute);
 app.use("/scrape/marriott", marriottRoute);
 
 app.use("/scrape/exl", exlRoute);
+
+app.use("/scrape/Schneider_Electric", Schneider_ElectricRoute);
+
+app.use("/scrape/syngene", syngeneRoute);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
