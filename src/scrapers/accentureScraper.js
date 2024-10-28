@@ -28,15 +28,21 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   let currentPage = startPage;
 
   try {
-    while (currentPage <= endPage) {
+    while (true) {
+      // Stop if endPage is defined and reached
+      if (endPage && currentPage > endPage) {
+        console.log(`Reached defined end page: ${endPage}. Stopping.`);
+        break;
+      }
+
       const pageUrl = `${baseUrl}&pg=${currentPage}`;
       await page.goto(pageUrl, { waitUntil: "networkidle0" });
 
       // Pass `currentPage` into `page.evaluate` explicitly
       const jobs = await page.evaluate((pageNum) => {
         const jobElements = document.querySelectorAll(".cmp-teaser__content");
-        return Array.from(jobElements).map((job, index) => ({
-          sno: index + 1,
+        return Array.from(jobElements).map((job) => ({
+          sno: null, // to be set later
           company: "Accenture",
           jobId:
             job
@@ -63,6 +69,12 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         }));
       }, currentPage); // Pass `currentPage` here
 
+      // If no jobs are found, break the loop (end of available pages)
+      if (jobs.length === 0) {
+        console.log(`No jobs found on page ${currentPage}. Stopping.`);
+        break;
+      }
+
       // Write data to CSV and update globalCounter
       await csvWriter.writeRecords(
         jobs.map((job, idx) => ({
@@ -76,8 +88,6 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
 
       // Add delay to avoid rate limiting
       await new Promise((resolve) => setTimeout(resolve, 3000));
-
-      if (jobs.length === 0) break; // Stop if no more jobs are found
     }
   } finally {
     await browser.close();

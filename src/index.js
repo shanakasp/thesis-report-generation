@@ -4,6 +4,20 @@ const { readInputCSV, runScraperForCompany } = require("./utils/scraperUtils");
 const app = express();
 const port = 3000;
 
+// Function to update base_url based on end_page (for Accenture only)
+function updateBaseUrlForAccenture(companyData) {
+  if (companyData.company.toLowerCase() === "accenture") {
+    return {
+      ...companyData,
+      base_url: companyData.base_url.replace(
+        /pg=\d+/,
+        `pg=${companyData.end_page || 1}`
+      ),
+    };
+  }
+  return companyData; // Return original data for other companies
+}
+
 // GET endpoint for scraping a specific company
 app.get("/scrape/:company", async (req, res) => {
   try {
@@ -25,22 +39,30 @@ app.get("/scrape/:company", async (req, res) => {
       });
     }
 
+    // Update the base_url only for Accenture
+    const updatedCompanyData = updateBaseUrlForAccenture(companyData);
+
     // Parse start and end pages with fallback handling
-    const startPage = companyData.start_page
-      ? parseInt(companyData.start_page, 10)
+    const startPage = updatedCompanyData.start_page
+      ? parseInt(updatedCompanyData.start_page, 10)
       : 1; // Fallback to page 1 if start_page is missing
-    const endPage = companyData.end_page
-      ? parseInt(companyData.end_page, 10)
+    const endPage = updatedCompanyData.end_page
+      ? parseInt(updatedCompanyData.end_page, 10)
       : undefined; // Optional, can be undefined
 
     console.log(
-      `Processing ${companyData.company} from page ${startPage} to ${
+      `Processing ${updatedCompanyData.company} from page ${startPage} to ${
         endPage || "auto"
       }`
     );
 
     // Run the scraper asynchronously
-    runScraperForCompany(company, companyData.base_url, startPage, endPage)
+    runScraperForCompany(
+      company,
+      updatedCompanyData.base_url,
+      startPage,
+      endPage
+    )
       .then(() => {
         console.log(`Scraping completed for ${company}`);
       })
@@ -53,7 +75,7 @@ app.get("/scrape/:company", async (req, res) => {
       success: true,
       message: `Scraping started for ${company}`,
       details: {
-        company: companyData.company,
+        company: updatedCompanyData.company,
         startPage,
         endPage: endPage || "auto",
         outputFile: `output/${company}.csv`,
@@ -71,12 +93,15 @@ app.get("/scrape/:company", async (req, res) => {
 app.get("/companies", async (req, res) => {
   try {
     const inputData = await readInputCSV();
-    const companies = inputData.map((data) => ({
-      name: data.company,
-      baseUrl: data.base_url,
-      startPage: data.start_page || 1,
-      endPage: data.end_page || "auto",
-    }));
+    const companies = inputData.map((data) => {
+      const updatedData = updateBaseUrlForAccenture(data); // Use the same function
+      return {
+        name: updatedData.company,
+        baseUrl: updatedData.base_url,
+        startPage: updatedData.start_page || 1,
+        endPage: updatedData.end_page || "auto",
+      };
+    });
 
     res.json({
       success: true,
