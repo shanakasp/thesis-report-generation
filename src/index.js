@@ -1,6 +1,8 @@
 const express = require("express");
 const { readInputCSV, runScraperForCompany } = require("./utils/scraperUtils");
 const cognizantRoute = require("./routes/cognizantRoute");
+const deloitteRoute = require("./routes/deloitteRoute");
+const accentureRoute = require("./routes/accentureRoute");
 const app = express();
 const port = 3000;
 
@@ -19,75 +21,75 @@ function updateBaseUrlForAccenture(companyData) {
 }
 
 // GET endpoint for scraping a specific company
-app.get("/scrape/:company", async (req, res) => {
-  try {
-    const company = req.params.company;
+// app.get("/scrape/:company", async (req, res) => {
+//   try {
+//     const company = req.params.company;
 
-    // Read and log input CSV data to verify structure
-    const inputData = await readInputCSV();
-    console.log("Input Data:", inputData);
+//     // Read and log input CSV data to verify structure
+//     const inputData = await readInputCSV();
+//     console.log("Input Data:", inputData);
 
-    // Find the relevant company data
-    const companyData = inputData.find(
-      (data) => data.company.toLowerCase() === company.toLowerCase()
-    );
+//     // Find the relevant company data
+//     const companyData = inputData.find(
+//       (data) => data.company.toLowerCase() === company.toLowerCase()
+//     );
 
-    if (!companyData) {
-      return res.status(404).json({
-        success: false,
-        message: `Company ${company} not found in input CSV.`,
-      });
-    }
+//     if (!companyData) {
+//       return res.status(404).json({
+//         success: false,
+//         message: `Company ${company} not found in input CSV.`,
+//       });
+//     }
 
-    // Update the base_url only for Accenture
-    const updatedCompanyData = updateBaseUrlForAccenture(companyData);
+//     // Update the base_url only for Accenture
+//     const updatedCompanyData = updateBaseUrlForAccenture(companyData);
 
-    // Parse start and end pages with fallback handling
-    const startPage = updatedCompanyData.start_page
-      ? parseInt(updatedCompanyData.start_page, 10)
-      : 1; // Fallback to page 1 if start_page is missing
-    const endPage = updatedCompanyData.end_page
-      ? parseInt(updatedCompanyData.end_page, 10)
-      : undefined; // Optional, can be undefined
+//     // Parse start and end pages with fallback handling
+//     const startPage = updatedCompanyData.start_page
+//       ? parseInt(updatedCompanyData.start_page, 10)
+//       : 1; // Fallback to page 1 if start_page is missing
+//     const endPage = updatedCompanyData.end_page
+//       ? parseInt(updatedCompanyData.end_page, 10)
+//       : undefined; // Optional, can be undefined
 
-    console.log(
-      `Processing ${updatedCompanyData.company} from page ${startPage} to ${
-        endPage || "auto"
-      }`
-    );
+//     console.log(
+//       `Processing ${updatedCompanyData.company} from page ${startPage} to ${
+//         endPage || "auto"
+//       }`
+//     );
 
-    // Run the scraper asynchronously
-    runScraperForCompany(
-      company,
-      updatedCompanyData.base_url,
-      startPage,
-      endPage
-    )
-      .then(() => {
-        console.log(`Scraping completed for ${company}`);
-      })
-      .catch((error) => {
-        console.error(`Error scraping ${company}:`, error);
-      });
+//     // Run the scraper asynchronously
+//     runScraperForCompany(
+//       company,
+//       updatedCompanyData.base_url,
+//       startPage,
+//       endPage
+//     )
+//       .then(() => {
+//         console.log(`Scraping completed for ${company}`);
+//       })
+//       .catch((error) => {
+//         console.error(`Error scraping ${company}:`, error);
+//       });
 
-    // Immediately return response to client
-    res.json({
-      success: true,
-      message: `Scraping started for ${company}`,
-      details: {
-        company: updatedCompanyData.company,
-        startPage,
-        endPage: endPage || "auto",
-        outputFile: `output/${company}.csv`,
-      },
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      error: error.message,
-    });
-  }
-});
+//     // Immediately return response to client
+//     res.json({
+//       success: true,
+//       message: `Scraping started for ${company}`,
+//       details: {
+//         company: updatedCompanyData.company,
+//         startPage,
+//         endPage: endPage || "auto",
+//         outputFile: `output/${company}.csv`,
+//       },
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       success: false,
+//       error: error.message,
+//     });
+//   }
+// });
 
 // GET endpoint to list all available companies
 app.get("/companies", async (req, res) => {
@@ -117,6 +119,11 @@ app.get("/companies", async (req, res) => {
 
 // Use the Cognizant scrape route
 app.use("/scrape/Cognizant", cognizantRoute);
+
+// Use the Accenture scrape route
+app.use("/scrape/Accenture", accentureRoute);
+
+app.use("/scrape/Deloitte", deloitteRoute);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

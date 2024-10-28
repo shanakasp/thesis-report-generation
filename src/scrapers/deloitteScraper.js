@@ -8,7 +8,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   await fs.mkdir(outputDir, { recursive: true });
 
   const csvWriter = createCsvWriter({
-    path: path.join(outputDir, "Cognizant.csv"),
+    path: path.join(outputDir, "Deloitte.csv"), // Change as per the company
     header: [
       { id: "sno", title: "S.No." },
       { id: "company", title: "Company" },
@@ -25,43 +25,40 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   let globalCounter = 0;
-  let currentPage = startPage;
 
   try {
-    while (true) {
-      // Stop if endPage is defined and reached
-      if (endPage && currentPage > endPage) {
-        console.log(`Reached defined end page: ${endPage}. Stopping.`);
-        break;
-      }
-
-      const pageUrl = `${baseUrl}&pg=${currentPage}`;
+    for (let currentPage = startPage; currentPage <= endPage; currentPage++) {
+      const startRow = (currentPage - 1) * 25; // Calculate startrow for Deloitte
+      const pageUrl = `${baseUrl}&startrow=${startRow}`; // Construct the page URL with startrow
       await page.goto(pageUrl, { waitUntil: "networkidle0" });
 
       // Extract job details
       const jobs = await page.evaluate((pageNum) => {
-        const jobElements = document.querySelectorAll(".card-job");
-        return Array.from(jobElements).map((job) => ({
-          sno: null, // to be set later
-          company: "Accenture",
-          jobId: job.dataset.id || "",
-          function:
-            job.querySelector(".job-meta").children[1]?.textContent.trim() ||
-            "",
-          location: `${
-            job.querySelector(".job-meta").children[0]?.textContent.trim() || ""
-          }`,
-          title: job.querySelector(".card-title a")?.textContent.trim() || "",
-          description:
-            job
-              .querySelector(".cmp-teaser__job-listing .description")
-              ?.textContent.trim() || "",
-          postedOn:
-            job
-              .querySelector(".cmp-teaser__job-listing-posted-date")
-              ?.textContent.trim() || "",
-          page: pageNum, // Use the passed `pageNum` argument
-        }));
+        const jobElements = document.querySelectorAll("tr.data-row");
+        return Array.from(jobElements).map((job) => {
+          const titleElement = job.querySelector(".jobTitle-link");
+          const locationElement = job.querySelector(".jobLocation");
+          const postedDateElement = job.querySelector(".jobDate");
+          const descriptionElement = job.querySelector(".description-selector");
+
+          return {
+            sno: null, // to be set later
+            company: "Deloitte", // Update as needed
+            jobId: titleElement
+              ? titleElement.href.split("/").pop().split("/")[0]
+              : "",
+            function: "", // Adjust if you have a way to extract function
+            location: locationElement ? locationElement.textContent.trim() : "",
+            title: titleElement ? titleElement.textContent.trim() : "",
+            description: descriptionElement
+              ? descriptionElement.textContent.trim()
+              : "",
+            postedOn: postedDateElement
+              ? postedDateElement.textContent.trim()
+              : "",
+            page: pageNum,
+          };
+        });
       }, currentPage);
 
       // If no jobs are found, break the loop (end of available pages)
@@ -79,7 +76,6 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       );
 
       globalCounter += jobs.length;
-      currentPage += 1;
 
       // Add delay to avoid rate limiting
       await new Promise((resolve) => setTimeout(resolve, 3000));
@@ -88,7 +84,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
     await browser.close();
   }
 
-  console.log(`Cognizant scraping complete with ${globalCounter} jobs.`);
+  console.log(`Scraping complete with ${globalCounter} jobs.`);
 }
 
 module.exports = { scrapeJobs };
