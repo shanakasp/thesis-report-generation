@@ -1,8 +1,8 @@
+// routes/cognizantRoute.js
 const express = require("express");
-const { readInputCSV, runScraperForCompany } = require("./utils/scraperUtils");
-const cognizantRoute = require("./routes/cognizantRoute");
-const app = express();
-const port = 3000;
+const { readInputCSV, runScraperForCompany } = require("../utils/scraperUtils");
+
+const router = express.Router();
 
 // Function to update base_url based on end_page (for Accenture only)
 function updateBaseUrlForAccenture(companyData) {
@@ -18,16 +18,16 @@ function updateBaseUrlForAccenture(companyData) {
   return companyData; // Return original data for other companies
 }
 
-// GET endpoint for scraping a specific company
-app.get("/scrape/:company", async (req, res) => {
+// GET endpoint for scraping Cognizant
+router.get("/", async (req, res) => {
   try {
-    const company = req.params.company;
+    const company = "Cognizant";
 
     // Read and log input CSV data to verify structure
     const inputData = await readInputCSV();
     console.log("Input Data:", inputData);
 
-    // Find the relevant company data
+    // Find the relevant company data for Cognizant
     const companyData = inputData.find(
       (data) => data.company.toLowerCase() === company.toLowerCase()
     );
@@ -56,19 +56,15 @@ app.get("/scrape/:company", async (req, res) => {
       }`
     );
 
-    // Run the scraper asynchronously
-    runScraperForCompany(
+    // Run the scraper asynchronously and wait for it to complete
+    await runScraperForCompany(
       company,
       updatedCompanyData.base_url,
       startPage,
       endPage
-    )
-      .then(() => {
-        console.log(`Scraping completed for ${company}`);
-      })
-      .catch((error) => {
-        console.error(`Error scraping ${company}:`, error);
-      });
+    );
+
+    console.log(`Scraping completed for ${company}`);
 
     // Immediately return response to client
     res.json({
@@ -82,6 +78,7 @@ app.get("/scrape/:company", async (req, res) => {
       },
     });
   } catch (error) {
+    console.error(`Error: ${error.message}`);
     res.status(500).json({
       success: false,
       error: error.message,
@@ -89,35 +86,5 @@ app.get("/scrape/:company", async (req, res) => {
   }
 });
 
-// GET endpoint to list all available companies
-app.get("/companies", async (req, res) => {
-  try {
-    const inputData = await readInputCSV();
-    const companies = inputData.map((data) => {
-      const updatedData = updateBaseUrlForAccenture(data); // Use the same function
-      return {
-        name: updatedData.company,
-        baseUrl: updatedData.base_url,
-        startPage: updatedData.start_page || 1,
-        endPage: updatedData.end_page || "auto",
-      };
-    });
-
-    res.json({
-      success: true,
-      companies,
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      error: error.message,
-    });
-  }
-});
-
-// Use the Cognizant scrape route
-app.use("/scrape/Cognizant", cognizantRoute);
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+// Export the router
+module.exports = router;
