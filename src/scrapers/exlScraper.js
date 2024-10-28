@@ -19,8 +19,6 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       { id: "description", title: "Description" },
       { id: "postedOn", title: "Posted On" },
       { id: "page", title: "Page Number" },
-      //   { id: "experience", title: "Required Experience" },
-      //   { id: "skills", title: "Required Skills" },
     ],
   });
 
@@ -41,59 +39,89 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       const pageUrl = `${baseUrl}?page=${currentPage}`;
       await page.goto(pageUrl, { waitUntil: "networkidle0" });
 
-      // Wait for job cards to load
       await page
         .waitForSelector(".card-block", { timeout: 10000 })
         .catch(() => null);
 
-      // Extract job details
       const jobs = await page.evaluate((pageNum) => {
         const jobCards = document.querySelectorAll(".card-block");
-        return Array.from(jobCards).map((card) => {
-          // Helper function to safely extract text content
-          const getTextContent = (selector, parent = card) => {
-            const element = parent.querySelector(selector);
-            return element ? element.textContent.trim() : "";
-          };
+        return Array.from(jobCards)
+          .map((card) => {
+            // Helper function to safely extract text content
+            const getTextContent = (selector, parent = card) => {
+              const element = parent.querySelector(selector);
+              return element ? element.textContent.trim() : "";
+            };
 
-          // Extract title and job ID
-          const titleElement = card.querySelector(".title_block .link");
-          const jobCodeElement = card.querySelector(".job-code");
+            // Extract title and job ID
+            const titleElement = card.querySelector(".title_block .link");
+            const jobCodeElement = card.querySelector(".job-code");
 
-          // Extract location and function
-          const listItems = card.querySelectorAll(".listing-inline li");
-          const functionText = listItems[0]
-            ? listItems[0].textContent.trim()
-            : "";
-          const locationText = listItems[1]
-            ? listItems[1].textContent.trim()
-            : "";
+            // Extract and simplify function path
+            const functionElement = card.querySelector(
+              ".listing-inline li:first-child"
+            );
+            const functionText = functionElement
+              ? functionElement.textContent.trim()
+              : "";
+            const functionParts = functionText.split(">");
+            const simplifiedFunction =
+              functionParts[functionParts.length - 1].trim();
 
-          // Extract posted date
-          const postedDateText = getTextContent(".last-child .link2");
+            // Extract and simplify location
+            const locationElement = card.querySelector(
+              ".listing-inline li:nth-child(2)"
+            );
+            const locationText = locationElement
+              ? locationElement.textContent.trim()
+              : "";
+            const locationParts = locationText.split(">");
+            // Filter out "India" and empty strings, then join remaining parts
+            const simplifiedLocation = locationParts
+              .filter((part) => part.trim() !== "India" && part.trim() !== "")
+              .join(", ");
 
-          // Extract experience
-          const experienceText = getTextContent(".text-cell.font-bold");
+            // Extract experience
+            const experienceText = getTextContent(".text-cell.font-bold");
 
-          // Extract skills
-          const skillTags = card.querySelectorAll(".tag-job");
-          const skills = Array.from(skillTags)
-            .map((tag) => tag.textContent.trim())
-            .join(", ");
+            // Extract skills
+            const skillTags = card.querySelectorAll(".tag-job");
+            const skills = Array.from(skillTags)
+              .map((tag) => tag.textContent.trim())
+              .filter(Boolean)
+              .join(", ");
 
-          return {
-            company: "EXL",
-            jobId: jobCodeElement ? jobCodeElement.textContent.trim() : "",
-            function: functionText,
-            location: locationText,
-            title: titleElement ? titleElement.textContent.trim() : "",
-            description: functionText, // Using function as description since detailed description needs another page load
-            postedOn: postedDateText,
-            page: pageNum,
-            // experience: experienceText,
-            // skills: skills,
-          };
-        });
+            // Combine function with experience and skills
+            const enhancedFunction = `${simplifiedFunction} | Experience: ${experienceText} | Skills: ${skills}`;
+
+            // Create a detailed description
+            const description = [
+              `Department: ${functionText}`,
+              `Required Experience: ${experienceText}`,
+              `Required Skills: ${skills}`,
+            ]
+              .filter(Boolean)
+              .join("\n");
+
+            // Extract posted date
+            const postedDateText = getTextContent(".last-child .link2");
+
+            // Only return jobs that have at least a title
+            if (titleElement) {
+              return {
+                company: "EXL",
+                jobId: jobCodeElement ? jobCodeElement.textContent.trim() : "", // Keep full job ID format
+                function: description,
+                location: simplifiedLocation,
+                title: titleElement.textContent.trim(),
+                description: enhancedFunction,
+                postedOn: postedDateText,
+                page: pageNum,
+              };
+            }
+            return null;
+          })
+          .filter((job) => job !== null); // Remove any null entries
       }, currentPage);
 
       // If no jobs are found, stop the loop
@@ -112,7 +140,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       );
 
       globalCounter += jobs.length;
-      console.log(`Scraped ${jobs.length} jobs from page ${currentPage}`);
+      console.log(`Scraped Jobs From EXL Page ${currentPage}`);
 
       // Add delay to avoid rate limiting
       await new Promise((resolve) => setTimeout(resolve, 3000));
