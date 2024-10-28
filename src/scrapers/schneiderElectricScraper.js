@@ -8,7 +8,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   await fs.mkdir(outputDir, { recursive: true });
 
   const csvWriter = createCsvWriter({
-    path: path.join(outputDir, "Schneider_Electric.csv"),
+    path: path.join(outputDir, "SchneiderElectric.csv"),
     header: [
       { id: "sno", title: "S.No." },
       { id: "company", title: "Company" },
@@ -23,83 +23,79 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   });
 
   const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-http2"],
+    headless: "new",
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   const page = await browser.newPage();
   let globalCounter = 0;
 
   try {
     let currentPage = startPage;
+    let hasMoreJobs = true;
 
-    while (true) {
+    while (hasMoreJobs && (!endPage || currentPage <= endPage)) {
       console.log(`Scraping page ${currentPage}...`);
-      const pageUrl = `${baseUrl}&page=${currentPage}`;
 
-      try {
-        await gotoWithRetry(page, pageUrl, {
-          waitUntil: "networkidle0",
-          timeout: 60000,
-        });
-      } catch (error) {
-        console.error(`Failed to scrape ${pageUrl}: ${error.message}`);
-        break; // Stop scraping on failure
-      }
+      const pageUrl = `${baseUrl}?page=${currentPage}`; // Fix the URL construction
+      await page.goto(pageUrl, { waitUntil: "networkidle0" });
 
+      // Wait for job panels to load
+      await page
+        .waitForSelector("mat-expansion-panel-header", { timeout: 10000 })
+        .catch(() => null);
+
+      // Extract job details
       const jobs = await page.evaluate((pageNum) => {
-        const jobListings = document.querySelectorAll(
+        const jobPanels = document.querySelectorAll(
           "mat-expansion-panel-header"
         );
-        return Array.from(jobListings).map((listing) => {
-          const titleElement = listing.querySelector(".job-title-link span");
-          const jobIdElement = listing.querySelector(".req-id span");
-          const locationElement = listing.querySelector(
-            ".job-result-label[itemprop='location'] + .label-value"
+        return Array.from(jobPanels).map((panel) => {
+          // Helper function to safely extract text content
+          const getTextContent = (selector, parent = panel) => {
+            const element = parent.querySelector(selector);
+            return element ? element.textContent.trim() : "";
+          };
+
+          // Extract job title
+          const titleElement = panel.querySelector(".job-title-link span");
+          // Extract job ID
+          const jobIdElement = panel.querySelector(".req-id span");
+          // Extract location
+          const locationElement = panel.querySelector(".location.label-value");
+          // Extract function/category
+          const categoryElement = panel.querySelector(
+            ".categories.label-value"
           );
-          const companyName = "Schneider Electric"; // Fixed company name
+          // Extract posted date
+          const postedDateElement = panel.querySelector(
+            ".posted_date.label-value"
+          );
 
           return {
-            company: companyName,
+            company: "Schneider Electric",
             jobId: jobIdElement ? jobIdElement.textContent.trim() : "",
-            function: "", // Placeholder for future implementation
+            function: categoryElement ? categoryElement.textContent.trim() : "",
             location: locationElement ? locationElement.textContent.trim() : "",
             title: titleElement ? titleElement.textContent.trim() : "",
-            description: "", // Will be populated later
-            postedOn: new Date().toISOString().split("T")[0],
+            description: categoryElement
+              ? categoryElement.textContent.trim()
+              : "", // Using category as description
+            postedOn: postedDateElement
+              ? postedDateElement.textContent.trim()
+              : "",
             page: pageNum,
           };
         });
       }, currentPage);
 
+      // If no jobs are found, stop the loop
       if (jobs.length === 0) {
         console.log(`No jobs found on page ${currentPage}. Stopping.`);
+        hasMoreJobs = false;
         break;
       }
 
-      // Fetch descriptions
-      for (let i = 0; i < jobs.length; i++) {
-        try {
-          const jobDetailUrl = await page.evaluate((index) => {
-            const link = document.querySelectorAll(".job-title-link")[index];
-            return link ? link.href : null;
-          }, i);
-
-          if (jobDetailUrl) {
-            const newPage = await browser.newPage();
-            await gotoWithRetry(newPage, jobDetailUrl, {
-              waitUntil: "networkidle0",
-            });
-            jobs[i].description = await newPage
-              .$eval(".description-container", (el) => el.textContent.trim())
-              .catch(() => "Description not available");
-            await newPage.close();
-          }
-        } catch (error) {
-          console.error(`Error getting job description: ${error.message}`);
-          jobs[i].description = "Error fetching description";
-        }
-      }
-
+      // Write data to CSV and update globalCounter
       await csvWriter.writeRecords(
         jobs.map((job, idx) => ({
           ...job,
@@ -109,14 +105,15 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
 
       globalCounter += jobs.length;
       console.log(`Scraped ${jobs.length} jobs from page ${currentPage}`);
-      await new Promise((resolve) =>
-        setTimeout(resolve, Math.random() * 2000 + 1000)
-      ); // Randomized delay
+
+      // Add delay to avoid rate limiting
+      await new Promise((resolve) => setTimeout(resolve, 3000));
 
       currentPage++;
     }
   } catch (error) {
     console.error(`Error scraping jobs: ${error.message}`);
+    throw error;
   } finally {
     await browser.close();
   }
