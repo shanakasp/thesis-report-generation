@@ -36,32 +36,67 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       await page.goto(pageUrl, { waitUntil: "networkidle0" });
 
       // Extract job details
-      const jobs = await page.evaluate((pageNum) => {
+      const jobs = await page.evaluate(async (pageNum) => {
         const jobElements = document.querySelectorAll("tr.data-row");
-        return Array.from(jobElements).map((job) => {
+        const jobDetails = [];
+
+        for (const job of jobElements) {
           const titleElement = job.querySelector(".jobTitle-link");
           const locationElement = job.querySelector(".jobLocation");
           const postedDateElement = job.querySelector(".jobDate");
-          const descriptionElement = job.querySelector(".description-selector");
 
-          return {
-            sno: null, // to be set later
-            company: "Deloitte", // Update as needed
-            jobId: titleElement
-              ? titleElement.href.split("/").pop().split("/")[0]
-              : "",
-            function: "", // Adjust if you have a way to extract function
-            location: locationElement ? locationElement.textContent.trim() : "",
-            title: titleElement ? titleElement.textContent.trim() : "",
-            description: descriptionElement
-              ? descriptionElement.textContent.trim()
-              : "",
-            postedOn: postedDateElement
+          if (titleElement) {
+            const jobLink = titleElement.href;
+            const postedOn = postedDateElement
               ? postedDateElement.textContent.trim()
-              : "",
-            page: pageNum,
-          };
-        });
+              : "";
+
+            // Navigate to job detail page to extract additional details
+            const jobDetailPage = await fetch(jobLink);
+            const jobDetailHtml = await jobDetailPage.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(jobDetailHtml, "text/html");
+
+            // Extracting Job ID
+            const jobIdElement = doc.querySelector(
+              ".joblayouttoken .rtltextaligneligible[data-careersite-propertyid='adcode']"
+            );
+            const jobId = jobIdElement ? jobIdElement.textContent.trim() : "";
+
+            // Extracting Job Title and Description
+            const jobTitleElement = doc.querySelector(
+              "div.col-xs-12.fontalign-left h1 span[data-careersite-propertyid='title']"
+            );
+            const fullJobTitle = jobTitleElement
+              ? jobTitleElement.textContent.trim()
+              : "";
+
+            // Split the job title into title and description
+            const [title, ...descriptionParts] = fullJobTitle.split(" - "); // Splitting by ' - ' to get parts
+            const description = descriptionParts.join(" - ").trim(); // Join remaining parts for the description
+
+            // Extracting Job Location and cleaning up unwanted parts
+            let jobLocation = locationElement
+              ? locationElement.textContent.trim()
+              : "";
+            jobLocation = jobLocation
+              .replace(/ - I-Think|-LCP|, IN/g, "")
+              .trim(); // Remove unwanted parts
+
+            jobDetails.push({
+              sno: null, // to be set later
+              company: "Deloitte", // Update as needed
+              jobId: jobId,
+              function: "", // Adjust if you have a way to extract function
+              location: jobLocation,
+              title: title, // First part as title
+              description: description, // Remaining parts as description
+              postedOn: postedOn,
+              page: pageNum,
+            });
+          }
+        }
+        return jobDetails;
       }, currentPage);
 
       // If no jobs are found, stop the loop (end of available pages)
@@ -80,7 +115,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       );
 
       globalCounter += jobs.length;
-
+      console.log(`Scraped Jobs From Deloitte Page ${currentPage}`);
       // Add delay to avoid rate limiting
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
