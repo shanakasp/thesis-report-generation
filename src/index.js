@@ -1,188 +1,100 @@
-const puppeteer = require("puppeteer");
-const createCsvWriter = require("csv-writer").createObjectCsvWriter;
-const csv = require("csv-parser");
-const fs = require("fs").promises;
-const fsSync = require("fs");
-const path = require("path");
+const express = require("express");
+const { readInputCSV, runScraperForCompany } = require("./utils/scraperUtils");
 
-// Helper function for delay
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const app = express();
+const port = 3000;
 
-// Function to read input CSV file with correct path
-async function readInputCSV() {
-  const inputPath = path.join(__dirname, "input.csv");
-  return new Promise((resolve, reject) => {
-    const results = [];
-    fsSync
-      .createReadStream(inputPath)
-      .pipe(csv())
-      .on("data", (data) => results.push(data))
-      .on("end", () => resolve(results))
-      .on("error", (error) => reject(error));
-  });
-}
-
-// Function to construct the correct URL based on page number
-function constructUrl(baseUrl, pageNum) {
-  const url = new URL(baseUrl);
-  url.searchParams.set("pg", pageNum.toString());
-  return url.toString();
-}
-
-// Detects if the current page has jobs, returning false if no jobs are found
-async function pageHasJobs(page) {
-  return await page.evaluate(() => {
-    const jobs = document.querySelectorAll(".cmp-teaser__content");
-    return jobs.length > 0;
-  });
-}
-
-// Scrapes job data from a given page and saves it immediately to the CSV
-async function scrapeAndSavePage(
-  page,
-  baseUrl,
-  currentPage,
-  globalCounter,
-  csvWriter
-) {
-  console.log(`Checking page ${currentPage}...`);
-
-  const pageUrl = constructUrl(baseUrl, currentPage);
-  await page.goto(pageUrl, { waitUntil: "networkidle0", timeout: 60000 });
-
-  const hasJobs = await pageHasJobs(page);
-  if (!hasJobs) {
-    console.log(`No jobs found on page ${currentPage}. Ending scraping.`);
-    return { jobCount: 0, hasMorePages: false };
-  }
-
-  const pageJobs = await page.evaluate(
-    (globalCounter, currentPage) => {
-      const jobElements = document.querySelectorAll(".cmp-teaser__content");
-      return Array.from(jobElements).map((job, index) => {
-        const city =
-          job.querySelector(".cmp-teaser-city")?.textContent.trim() || "";
-        const region =
-          job.querySelector(".cmp-teaser-region")?.textContent.trim() || "";
-        const location = `${region} - ${city}`.trim();
-        const saveJobCard = job.querySelector(".cmp-teaser__save-job-card");
-        const jobId = saveJobCard?.getAttribute("data-job-id") || "";
-        const businessArea =
-          job.querySelector(".business-area")?.textContent.trim() || "";
-        const title =
-          job.querySelector(".cmp-teaser__title")?.textContent.trim() || "";
-        const description =
-          job
-            .querySelector(".cmp-teaser__job-listing .description")
-            ?.textContent.trim() || "";
-        const postedOn =
-          job
-            .querySelector(".cmp-teaser__job-listing-posted-date")
-            ?.textContent.trim() || "";
-
-        return {
-          sno: globalCounter + index + 1,
-          company: "Accenture",
-          jobId: jobId,
-          function: businessArea,
-          location: location,
-          title: title,
-          description: description,
-          postedOn: postedOn,
-          page: currentPage,
-        };
-      });
-    },
-    globalCounter,
-    currentPage
-  );
-
-  await csvWriter.writeRecords(pageJobs);
-  console.log(`Saved ${pageJobs.length} jobs from page ${currentPage} to CSV.`);
-
-  return { jobCount: pageJobs.length, hasMorePages: true };
-}
-
-async function scrapeAccentureJobs(baseUrl, startPage, endPage) {
-  const outputDir = path.join(__dirname, "output");
+// GET endpoint for scraping a specific company
+app.get("/scrape/:company", async (req, res) => {
   try {
-    await fs.mkdir(outputDir, { recursive: true });
-  } catch (err) {
-    if (err.code !== "EEXIST") throw err;
-  }
+    const company = req.params.company;
 
-  const csvWriter = createCsvWriter({
-    path: path.join(outputDir, "Accenture.csv"),
-    header: [
-      { id: "sno", title: "S.No." },
-      { id: "company", title: "Company" },
-      { id: "jobId", title: "Job ID" },
-      { id: "function", title: "Function" },
-      { id: "location", title: "Location" },
-      { id: "title", title: "Title" },
-      { id: "description", title: "Description" },
-      { id: "postedOn", title: "Posted On" },
-      { id: "page", title: "Page Number" },
-    ],
-  });
+    // Read and log input CSV data to verify structure
+    const inputData = await readInputCSV();
+    console.log("Input Data:", inputData);
 
-  const browser = await puppeteer.launch({
-    headless: "new",
-    defaultViewport: { width: 1920, height: 1080 },
-  });
-  const page = await browser.newPage();
-  let globalCounter = 0;
-  let currentPage = startPage;
-  let hasMorePages = true;
-
-  while (hasMorePages && currentPage <= endPage) {
-    const { jobCount, hasMorePages: morePages } = await scrapeAndSavePage(
-      page,
-      baseUrl,
-      currentPage,
-      globalCounter,
-      csvWriter
+    // Find the relevant company data
+    const companyData = inputData.find(
+      (data) => data.company.toLowerCase() === company.toLowerCase()
     );
 
-    globalCounter += jobCount;
-    hasMorePages = morePages;
-    currentPage += 1;
-    await delay(3000); // Rate limit protection
-  }
+    if (!companyData) {
+      return res.status(404).json({
+        success: false,
+        message: `Company ${company} not found in input CSV.`,
+      });
+    }
 
-  console.log(`CSV file created successfully with ${globalCounter} jobs.`);
-  await browser.close();
-  return globalCounter;
-}
+    // Parse start and end pages, with better fallback handling
+    const startPage =
+      companyData.start_page && parseInt(companyData.start_page, 10);
+    const endPage = companyData.end_page && parseInt(companyData.end_page, 10);
 
-async function main() {
-  const inputData = await readInputCSV();
+    if (!startPage) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Start page is missing or invalid in the CSV for this company.",
+      });
+    }
 
-  if (!inputData || inputData.length === 0) {
-    throw new Error("No data found in input.csv file");
-  }
-
-  let totalJobs = 0;
-
-  for (const row of inputData) {
-    const startPage = row.start_page ? parseInt(row.start_page) : 1;
-    const endPage = row.end_page ? parseInt(row.end_page) : Infinity; // Default to no end if not specified
-
-    console.log(`Processing URL: ${row.base_url}`);
     console.log(
-      `Page range: ${startPage} to ${isFinite(endPage) ? endPage : "auto"}`
+      `Processing ${companyData.company} from page ${startPage} to ${
+        endPage || "auto"
+      }`
     );
 
-    const jobsCount = await scrapeAccentureJobs(
-      row.base_url,
-      startPage,
-      endPage
-    );
-    totalJobs += jobsCount;
+    // Run the scraper asynchronously
+    runScraperForCompany(company, companyData.base_url, startPage, endPage)
+      .then(() => {
+        console.log(`Scraping completed for ${company}`);
+      })
+      .catch((error) => {
+        console.error(`Error scraping ${company}:`, error);
+      });
+
+    // Immediately return response to client
+    res.json({
+      success: true,
+      message: `Scraping started for ${company}`,
+      details: {
+        company: companyData.company,
+        startPage,
+        endPage: endPage || "auto",
+        outputFile: `output/${company}.csv`,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    });
   }
+});
 
-  console.log(`Scraping completed. Total jobs scraped: ${totalJobs}`);
-}
+// GET endpoint to list all available companies
+app.get("/companies", async (req, res) => {
+  try {
+    const inputData = await readInputCSV();
+    const companies = inputData.map((data) => ({
+      name: data.company,
+      baseUrl: data.base_url,
+      startPage: data.start_page || 1,
+      endPage: data.end_page || "auto",
+    }));
 
-// Run the scraper
-main();
+    res.json({
+      success: true,
+      companies,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
