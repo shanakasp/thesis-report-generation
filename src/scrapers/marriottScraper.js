@@ -44,7 +44,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         .waitForSelector(".results-list__item", { timeout: 10000 })
         .catch(() => null);
 
-      // Extract job details
+      // Extract basic job details from listing page
       const jobs = await page.evaluate((pageNum) => {
         const jobListings = document.querySelectorAll(".results-list__item");
         return Array.from(jobListings).map((listing) => {
@@ -52,14 +52,11 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
             ".results-list__item-title span:first-child"
           );
           const jobIdElement = listing.querySelector(".reference");
-          const locationElement = listing.querySelector(
-            ".results-list__item-street--label"
-          );
           const companyElement = listing.querySelector(
             ".results-list__item-ownership--label"
           );
-          const hotelElement = listing.querySelector(
-            ".results-list__item-location--label"
+          const linkElement = listing.querySelector(
+            ".results-list__item-title"
           );
 
           return {
@@ -67,15 +64,13 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
               ? companyElement.textContent.trim()
               : "Marriott",
             jobId: jobIdElement ? jobIdElement.textContent.trim() : "",
-            function: "", // Function field is not available in the listing
-            location:
-              locationElement && hotelElement
-                ? `${locationElement.textContent.trim()} - ${hotelElement.textContent.trim()}`
-                : "",
+            function: "", // Will be populated from detail page
+            location: "", // Will be populated from detail page
             title: titleElement ? titleElement.textContent.trim() : "",
-            description: "", // Will be populated later
-            postedOn: new Date().toISOString().split("T")[0], // Current date as posting date
+            description: "", // Will be populated from detail page
+            postedOn: new Date().toISOString().split("T")[0],
             page: pageNum,
+            detailUrl: linkElement ? linkElement.href : null,
           };
         });
       }, currentPage);
@@ -87,30 +82,64 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         break;
       }
 
-      // Get detailed description for each job
+      // Get detailed information for each job
       for (let i = 0; i < jobs.length; i++) {
         try {
-          const jobDetailUrl = await page.evaluate((index) => {
-            const link = document.querySelectorAll(".results-list__item-title")[
-              index
-            ];
-            return link ? link.href : null;
-          }, i);
-
-          if (jobDetailUrl) {
+          if (jobs[i].detailUrl) {
             const newPage = await browser.newPage();
-            await newPage.goto(jobDetailUrl, { waitUntil: "networkidle0" });
+            await newPage.goto(jobs[i].detailUrl, {
+              waitUntil: "networkidle0",
+            });
 
-            const description = await newPage
-              .$eval(".job-description", (el) => el.textContent.trim())
-              .catch(() => "Description not available");
+            // Extract additional details from the job detail page
+            const details = await newPage.evaluate(() => {
+              const description =
+                document
+                  .querySelector(".job-description")
+                  ?.textContent.trim() || "";
 
-            jobs[i].description = description;
+              // Find the career area (function)
+              const functionElement = Array.from(
+                document.querySelectorAll(".summary-list-item")
+              ).find(
+                (item) =>
+                  item.querySelector(".summary-label")?.textContent.trim() ===
+                  "Career area"
+              );
+              const function_ =
+                functionElement
+                  ?.querySelector(".summary-value")
+                  ?.textContent.trim() || "";
+
+              // Find the location
+              const locationElement = Array.from(
+                document.querySelectorAll(".summary-list-item")
+              ).find(
+                (item) =>
+                  item.querySelector(".summary-label")?.textContent.trim() ===
+                  "Location(s)"
+              );
+              const location =
+                locationElement
+                  ?.querySelector(".summary-value a")
+                  ?.textContent.trim() || "";
+
+              return {
+                description,
+                function: function_,
+                location,
+              };
+            });
+
+            jobs[i].description = details.description;
+            jobs[i].function = details.function;
+            jobs[i].location = details.location;
+
             await newPage.close();
           }
         } catch (error) {
-          console.error(`Error getting job description: ${error.message}`);
-          jobs[i].description = "Error fetching description";
+          console.error(`Error getting job details: ${error.message}`);
+          jobs[i].description = "Error fetching details";
         }
       }
 
