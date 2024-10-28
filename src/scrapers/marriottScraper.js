@@ -152,7 +152,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       );
 
       globalCounter += jobs.length;
-      console.log(`Scraped ${jobs.length} jobs from page ${currentPage}`);
+      console.log(`Scraped Jobs from Marriott Page ${currentPage}`);
 
       // Add delay to avoid rate limiting
       await new Promise((resolve) => setTimeout(resolve, 3000));
