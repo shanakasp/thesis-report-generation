@@ -20,7 +20,7 @@ function updateBaseUrlForAccenture(companyData) {
 // GET endpoint for scraping Deloitte
 router.get("/", async (req, res) => {
   try {
-    const company = "Deloitte";
+    const company = "IBM";
 
     // Read and log input CSV data to verify structure
     const inputData = await readInputCSV();

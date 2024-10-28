@@ -3,6 +3,7 @@ const { readInputCSV, runScraperForCompany } = require("./utils/scraperUtils");
 const cognizantRoute = require("./routes/cognizantRoute");
 const deloitteRoute = require("./routes/deloitteRoute");
 const accentureRoute = require("./routes/accentureRoute");
+const ibmRoute = require("./routes/ibmRoute");
 const app = express();
 const port = 3000;
 
@@ -124,6 +125,8 @@ app.use("/scrape/Cognizant", cognizantRoute);
 app.use("/scrape/Accenture", accentureRoute);
 
 app.use("/scrape/Deloitte", deloitteRoute);
+
+app.use("/scrape/IBM", ibmRoute);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

@@ -27,7 +27,10 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   let globalCounter = 0;
 
   try {
-    for (let currentPage = startPage; currentPage <= endPage; currentPage++) {
+    let currentPage = startPage;
+    let hasMoreJobs = true;
+
+    while (hasMoreJobs) {
       const startRow = (currentPage - 1) * 25; // Calculate startrow for Deloitte
       const pageUrl = `${baseUrl}&startrow=${startRow}`; // Construct the page URL with startrow
       await page.goto(pageUrl, { waitUntil: "networkidle0" });
@@ -61,9 +64,10 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         });
       }, currentPage);
 
-      // If no jobs are found, break the loop (end of available pages)
+      // If no jobs are found, stop the loop (end of available pages)
       if (jobs.length === 0) {
         console.log(`No jobs found on page ${currentPage}. Stopping.`);
+        hasMoreJobs = false;
         break;
       }
 
@@ -79,6 +83,9 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
 
       // Add delay to avoid rate limiting
       await new Promise((resolve) => setTimeout(resolve, 3000));
+
+      // Increment currentPage to continue to the next page
+      currentPage++;
     }
   } finally {
     await browser.close();
