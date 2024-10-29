@@ -3,27 +3,27 @@ const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const path = require("path");
 const fs = require("fs").promises;
 
-async function scrapeSbiJobs(baseUrl, startPage, endPage) {
+async function scrapeJobs(baseUrl, startPage, endPage) {
   const outputDir = path.join(__dirname, "../output");
   await fs.mkdir(outputDir, { recursive: true });
 
   const csvWriter = createCsvWriter({
-    path: path.join(outputDir, "Sbi.csv"),
+    path: path.join(outputDir, "SBI.csv"),
     header: [
       { id: "sno", title: "S.No." },
       { id: "company", title: "Company" },
       { id: "jobId", title: "Job ID" },
+      { id: "title", title: "Title" },
       { id: "function", title: "Function" },
       { id: "location", title: "Location" },
-      { id: "title", title: "Title" },
-      { id: "description", title: "Description" },
       { id: "postedOn", title: "Posted On" },
+      { id: "description", title: "Description" },
       { id: "page", title: "Page Number" },
     ],
   });
 
   const browser = await puppeteer.launch({
-    headless: true,
+    headless: "new",
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   const page = await browser.newPage();
@@ -36,38 +36,66 @@ async function scrapeSbiJobs(baseUrl, startPage, endPage) {
     while (hasMoreJobs && (!endPage || currentPage <= endPage)) {
       console.log(`Scraping page ${currentPage}...`);
 
-      const pageUrl = `${baseUrl}?page=${currentPage}`; // Adjust URL as necessary
+      const pageUrl = `${baseUrl}?page=${currentPage}`;
       await page.goto(pageUrl, { waitUntil: "networkidle0" });
 
-      // Wait for job cards to load
       await page
-        .waitForSelector(".job-listing", { timeout: 10000 })
+        .waitForSelector(".job-list-item", { timeout: 10000 })
         .catch(() => null);
 
-      // Extract job details
       const jobs = await page.evaluate((pageNum) => {
-        const jobRows = document.querySelectorAll(".job-listing");
-        return Array.from(jobRows).map((row) => {
-          const titleElement = row.querySelector(".job-title");
-          const jobCodeElement = row.querySelector(".job-id");
-          const locationText =
-            row.querySelector(".job-location")?.textContent.trim() || "";
-          const functionText =
-            row.querySelector(".job-function")?.textContent.trim() || "";
-          const postedDateText =
-            row.querySelector(".posted-date")?.textContent.trim() || "";
+        const jobCards = document.querySelectorAll(".job-list-item");
+        return Array.from(jobCards)
+          .map((card) => {
+            const titleElement = card.querySelector(".job-tile__title");
+            const jobIdElement = card.querySelector(".job-list-item__link");
+            const functionElement = card.querySelector(
+              ".job-list-item__description"
+            );
+            const locationElement = card.querySelector(
+              ".job-list-item__job-info-value"
+            );
+            const postedDateElement = card.querySelector(
+              ".job-list-item__job-info-value-container"
+            );
 
-          return {
-            company: "SBI",
-            jobId: jobCodeElement ? jobCodeElement.textContent.trim() : "",
-            function: functionText,
-            location: locationText,
-            title: titleElement ? titleElement.textContent.trim() : "",
-            description: functionText, // Adjust based on your needs
-            postedOn: postedDateText,
-            page: pageNum,
-          };
-        });
+            const jobTitle = titleElement
+              ? titleElement.textContent.trim()
+              : "";
+            const jobId = jobIdElement
+              ? jobIdElement.getAttribute("aria-labelledby")
+              : "";
+            const jobFunction = functionElement
+              ? functionElement.textContent.trim()
+              : "";
+            const jobLocation = locationElement
+              ? locationElement.textContent.trim().replace(", India", "")
+              : "";
+            const postedDateValue = postedDateElement
+              ? postedDateElement
+                  .querySelector(".job-list-item__job-info-value")
+                  .textContent.trim()
+                  .split(" ")[0]
+              : "";
+
+            // Split job title and function
+            const titleParts = jobTitle.split(" - ");
+            const title = titleParts[0].trim();
+            const function_text =
+              titleParts.length > 1 ? titleParts[1].trim() : "";
+
+            return {
+              company: "SBI",
+              jobId: jobId,
+              title: title,
+              function: function_text,
+              location: jobLocation,
+              postedOn: postedDateValue,
+              description: jobFunction,
+              page: pageNum,
+            };
+          })
+          .filter((job) => job.title !== ""); // Remove any jobs without a title
       }, currentPage);
 
       // If no jobs are found, stop the loop
@@ -86,7 +114,7 @@ async function scrapeSbiJobs(baseUrl, startPage, endPage) {
       );
 
       globalCounter += jobs.length;
-      console.log(`Scraped ${jobs.length} jobs from page ${currentPage}`);
+      console.log(`Scraped Jobs From SBI Page ${currentPage}`);
 
       // Add delay to avoid rate limiting
       await new Promise((resolve) => setTimeout(resolve, 3000));
@@ -103,4 +131,4 @@ async function scrapeSbiJobs(baseUrl, startPage, endPage) {
   console.log(`Scraping complete. Total jobs scraped: ${globalCounter}`);
 }
 
-module.exports = { scrapeSbiJobs };
+module.exports = { scrapeJobs };
