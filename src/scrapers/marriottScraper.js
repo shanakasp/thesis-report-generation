@@ -36,7 +36,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
     while (hasMoreJobs && (!endPage || currentPage <= endPage)) {
       console.log(`Scraping page ${currentPage}...`);
 
-      const pageUrl = `${baseUrl}&page=${currentPage}`;
+      const pageUrl = `${baseUrl}&page_number=${currentPage}`;
       await page.goto(pageUrl, { waitUntil: "networkidle0" });
 
       // Wait for job listings to load
