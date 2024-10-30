@@ -11,151 +11,79 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
     path: path.join(outputDir, "SchneiderElectric.csv"),
     header: [
       { id: "sno", title: "S.No." },
-      { id: "company", title: "Company" },
-      { id: "jobId", title: "Job ID" },
-      { id: "function", title: "Function" },
-      { id: "location", title: "Location" },
       { id: "title", title: "Title" },
-      { id: "description", title: "Description" },
-      { id: "postedOn", title: "Posted On" },
-      { id: "page", title: "Page Number" },
+      { id: "jobId", title: "Job ID" },
+      { id: "location", title: "Location" },
+      { id: "category", title: "Category" },
+      { id: "jobLink", title: "Job Link" },
     ],
   });
 
   const browser = await puppeteer.launch({
-    headless: "new",
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--disable-web-security",
-      "--disable-features=IsolateOrigins,site-per-process",
-    ],
+    headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-http2"],
   });
-
   const page = await browser.newPage();
-  await page.setViewport({ width: 1920, height: 1080 });
-  let globalCounter = 0;
+  let globalCounter = 1;
 
   try {
-    let currentPage = startPage;
-    let hasMoreJobs = true;
+    for (let currentPage = startPage; currentPage <= endPage; currentPage++) {
+      const pageUrl = `${baseUrl}&page=${currentPage}`;
+      console.log(`Processing ${pageUrl}`);
 
-    while (hasMoreJobs && (!endPage || currentPage <= endPage)) {
-      console.log(`Scraping page ${currentPage}...`);
-
-      // Construct the page URL
-      const pageUrl = baseUrl.replace(/page=\d+/, `page=${currentPage}`);
-      console.log(`Accessing URL: ${pageUrl}`);
-
-      // Navigate to the page with extended timeout
-      await page.goto(pageUrl, {
-        waitUntil: "networkidle0",
-        timeout: 60000,
-      });
-
-      // Wait for the job listings to load
-      await page
-        .waitForSelector(".jobs-list-item", {
-          timeout: 30000,
-        })
-        .catch(() => {
-          console.log("Timeout waiting for job listings");
-          return null;
+      try {
+        await page.goto(pageUrl, {
+          waitUntil: "networkidle2",
+          timeout: 120000, // Increase the timeout to 120 seconds
         });
 
-      // Give extra time for dynamic content to load
-      await page.waitForTimeout(2000);
+        // Wait for job listings to load
+        await page.waitForSelector(".mat-expansion-panel", { timeout: 10000 }); // 10 seconds timeout for element load
 
-      // Extract job details
-      const jobs = await page.evaluate((pageNum) => {
-        const jobListings = document.querySelectorAll(".jobs-list-item");
-        const jobDetails = [];
+        // Scrape job details
+        const jobs = await page.evaluate(() => {
+          return Array.from(
+            document.querySelectorAll(".mat-expansion-panel")
+          ).map((jobPanel) => {
+            const titleElement = jobPanel.querySelector(
+              ".job-title .job-title-link"
+            );
+            const title = titleElement?.innerText.trim() || "N/A";
+            const jobIdElement = jobPanel.querySelector(".req-id span");
+            const jobId = jobIdElement?.innerText.trim() || "N/A";
+            const locationElement = jobPanel.querySelector(
+              ".job-result__location .location.label-value"
+            );
+            const location = locationElement?.innerText.trim() || "N/A";
+            const categoryElement = jobPanel.querySelector(
+              ".job-result__categories .categories.label-value"
+            );
+            const category = categoryElement?.innerText.trim() || "N/A";
+            const jobLink = titleElement?.href || "N/A";
 
-        jobListings.forEach((job) => {
-          try {
-            // Helper function to safely get text content
-            const getText = (selector, parent = job) => {
-              const element = parent.querySelector(selector);
-              return element ? element.textContent.trim() : "";
-            };
-
-            // Extract job details using correct selectors
-            const title = getText(".job-title");
-            const location = getText(".job-location");
-            const functionText = getText(".job-function");
-            const jobId =
-              getText(".job-id") ||
-              `SE-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-            const postedDate = getText(".job-posted-date");
-            const description = getText(".job-description") || functionText;
-
-            jobDetails.push({
-              sno: null, // Will be set later
-              company: "Schneider Electric",
-              jobId: jobId,
-              function: functionText,
-              location: location,
-              title: title,
-              description: description,
-              postedOn: postedDate,
-              page: pageNum,
-            });
-          } catch (error) {
-            console.error("Error processing job element:", error);
-          }
+            return { title, jobId, location, category, jobLink };
+          });
         });
 
-        return jobDetails;
-      }, currentPage);
+        // Map jobs with serial number
+        const jobsWithIndex = jobs.map((job) => ({
+          sno: globalCounter++,
+          ...job,
+        }));
 
-      console.log(`Found ${jobs.length} jobs on page ${currentPage}`);
-
-      // If no jobs are found, stop the loop
-      if (jobs.length === 0) {
-        // Try to check if there's a "No results found" message
-        const noResults = await page.evaluate(() => {
-          const noResultsElement = document.querySelector(
-            ".no-results-message"
-          );
-          return noResultsElement ? true : false;
-        });
-
-        if (noResults || currentPage > 1) {
-          console.log(`No more jobs found on page ${currentPage}. Stopping.`);
-          hasMoreJobs = false;
-          break;
-        }
+        // Write to CSV
+        await csvWriter.writeRecords(jobsWithIndex);
+        console.log(`Page ${currentPage} scraped successfully`);
+      } catch (error) {
+        console.error(`Error on page ${currentPage}:`, error);
       }
-
-      // Write data to CSV and update globalCounter
-      if (jobs.length > 0) {
-        await csvWriter.writeRecords(
-          jobs.map((job, idx) => ({
-            ...job,
-            sno: globalCounter + idx + 1,
-          }))
-        );
-
-        globalCounter += jobs.length;
-        console.log(
-          `Successfully scraped ${jobs.length} jobs from page ${currentPage}`
-        );
-      }
-
-      // Add delay between pages
-      await new Promise((resolve) => setTimeout(resolve, 5000));
-
-      currentPage++;
     }
   } catch (error) {
-    console.error(`Error scraping jobs: ${error.message}`);
-    throw error;
+    console.error("Error during scraping:", error);
   } finally {
     await browser.close();
+    console.log("Scraping completed.");
   }
-
-  console.log(`Scraping complete. Total jobs scraped: ${globalCounter}`);
 }
 
 module.exports = { scrapeJobs };

@@ -80,7 +80,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
             professionalLevel = parts[0] || ""; // First part is the professional level
             location = parts[1]
               ? parts[1]
-                  .replace("Multiple Cities", "")
+                  .replace()
                   .replace(/,\s*IN/g, "")
                   .trim()
               : ""; // Remove "Multiple Cities" and ", IN"
