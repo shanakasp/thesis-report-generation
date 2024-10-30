@@ -36,7 +36,11 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
     while (hasMoreJobs && (!endPage || currentPage <= endPage)) {
       console.log(`Scraping page ${currentPage}...`);
 
-      const pageUrl = `${baseUrl}?page=${currentPage}`; // Adjust URL as necessary
+      // Calculate startrow based on page number (25 items per page)
+      const startrow = (currentPage - 1) * 25;
+
+      const pageUrl = `${baseUrl}&startrow=${startrow}`;
+
       await page.goto(pageUrl, { waitUntil: "networkidle0" });
 
       // Wait for job cards to load
@@ -75,10 +79,10 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
           return {
             company: "Syngene",
             jobId: jobId,
-            function: functionText, // Use the department as function
-            location: locationText, // Set to cleaned location
+            function: functionText,
+            location: locationText,
             title: titleElement ? titleElement.textContent.trim() : "",
-            description: "", // Set to empty or modify to fetch from job details if available
+            description: "",
             postedOn: postedDateText,
             page: pageNum,
           };

@@ -35,7 +35,6 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   try {
     // Navigate to the initial page
     await page.goto(baseUrl, { waitUntil: "networkidle0" });
-    let currentPage = 1;
 
     // Function to get total number of pages
     const getTotalPages = async () => {
@@ -62,37 +61,52 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         return true;
       }
 
-      // Determine if we need to click next or specific page number
+      // For initial navigation to startPage, we might need multiple clicks
       const pageNumbers = await page.$$eval(
         ".pagination li:not(.page-item):not(.perview):not(.nextview) a",
         (els) => els.map((el) => parseInt(el.textContent.trim()))
       );
 
       let clickSuccess = false;
+      let attempts = 0;
+      const maxAttempts = 10; // Prevent infinite loops
 
-      if (pageNumbers.includes(targetPage)) {
-        // Click the specific page number if visible
-        try {
-          await page.evaluate((targetPage) => {
-            const pageLinks = Array.from(
-              document.querySelectorAll(".pagination li a")
+      while (!clickSuccess && attempts < maxAttempts) {
+        if (pageNumbers.includes(targetPage)) {
+          // Click the specific page number if visible
+          try {
+            await page.evaluate((targetPage) => {
+              const pageLinks = Array.from(
+                document.querySelectorAll(".pagination li a")
+              );
+              const targetLink = pageLinks.find(
+                (link) => parseInt(link.textContent.trim()) === targetPage
+              );
+              if (targetLink) targetLink.click();
+            }, targetPage);
+            clickSuccess = true;
+          } catch (error) {
+            console.log(`Could not click page ${targetPage} directly`);
+          }
+        } else {
+          // Click next until the desired page number becomes visible
+          const nextButton = await page.$(".pagination li.nextview a");
+          if (nextButton) {
+            await nextButton.click();
+            await delay(2000);
+            // Update visible page numbers
+            const newPageNumbers = await page.$$eval(
+              ".pagination li:not(.page-item):not(.perview):not(.nextview) a",
+              (els) => els.map((el) => parseInt(el.textContent.trim()))
             );
-            const targetLink = pageLinks.find(
-              (link) => parseInt(link.textContent.trim()) === targetPage
-            );
-            if (targetLink) targetLink.click();
-          }, targetPage);
-          clickSuccess = true;
-        } catch (error) {
-          console.log(`Could not click page ${targetPage} directly`);
+            if (newPageNumbers.includes(targetPage)) {
+              continue; // Try clicking the specific page number in the next iteration
+            }
+          } else {
+            break; // No more next button available
+          }
         }
-      } else {
-        // Click next/previous until we reach the desired page
-        const nextButton = await page.$(".pagination li.nextview a");
-        if (nextButton) {
-          await nextButton.click();
-          clickSuccess = true;
-        }
+        attempts++;
       }
 
       if (clickSuccess) {
@@ -110,15 +124,18 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       ? Math.min(endPage, totalPages)
       : totalPages;
 
+    // Start from the specified start page
+    let currentPage = startPage;
+
+    // Initial navigation to start page
+    const initialNavigation = await goToPage(startPage);
+    if (!initialNavigation) {
+      console.log(`Failed to navigate to start page ${startPage}. Stopping.`);
+      return;
+    }
+
     while (currentPage <= effectiveEndPage) {
       console.log(`Scraping page ${currentPage}...`);
-
-      // Navigate to the desired page
-      const navigationSuccess = await goToPage(currentPage);
-      if (!navigationSuccess) {
-        console.log(`Failed to navigate to page ${currentPage}. Stopping.`);
-        break;
-      }
 
       // Wait for job cards to load
       await page.waitForSelector(".card-block", { timeout: 10000 });
@@ -207,6 +224,17 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
 
       globalCounter += jobs.length;
       console.log(`Scraped Jobs From EXL Page ${currentPage}`);
+
+      if (currentPage < effectiveEndPage) {
+        // Navigate to next page
+        const navigationSuccess = await goToPage(currentPage + 1);
+        if (!navigationSuccess) {
+          console.log(
+            `Failed to navigate to page ${currentPage + 1}. Stopping.`
+          );
+          break;
+        }
+      }
 
       // Add delay between pages
       await delay(3000);

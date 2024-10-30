@@ -3,6 +3,9 @@ const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const path = require("path");
 const fs = require("fs").promises;
 
+// Helper function for delays
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 async function scrapeJobs(baseUrl, startPage, endPage) {
   const outputDir = path.join(__dirname, "../output");
   await fs.mkdir(outputDir, { recursive: true });
@@ -23,7 +26,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   });
 
   const browser = await puppeteer.launch({
-    headless: true,
+    headless: "new",
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
     defaultViewport: { width: 1920, height: 1080 },
   });
@@ -32,38 +35,122 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   let globalCounter = 0;
 
   try {
-    let currentPage = startPage;
+    // Navigate to the initial page
+    await page.goto(baseUrl, { waitUntil: "networkidle0" });
+    let currentPage = 1;
 
-    while (currentPage <= endPage) {
-      const offset = (currentPage - 1) * 20;
-      const pageUrl = `${baseUrl}&start=${offset}`;
-      console.log(`Accessing page ${currentPage}, URL: ${pageUrl}`);
-
-      await page.goto(pageUrl, {
-        waitUntil: "networkidle0",
-        timeout: 60000,
-      });
-
-      await page
-        .waitForSelector('li div[role="button"]', { timeout: 30000 })
-        .catch(() => {
-          console.log(
-            `Timeout waiting for job listings on page ${currentPage}`
+    // Function to get total number of pages
+    const getTotalPages = async () => {
+      try {
+        const lastPageButton = await page.$(
+          "button[data-test-id]:last-of-type"
+        );
+        if (lastPageButton) {
+          const lastPage = await page.evaluate(
+            (button) => parseInt(button.getAttribute("data-test-id")),
+            lastPageButton
           );
-          return null;
+          return lastPage;
+        }
+        return 1;
+      } catch (error) {
+        console.error("Error getting total pages:", error);
+        return 1;
+      }
+    };
+
+    // Function to navigate to specific page
+    const goToPage = async (targetPage) => {
+      try {
+        // Wait for pagination to be present
+        await page.waitForSelector('nav[aria-label="Page selection"]', {
+          timeout: 10000,
         });
 
+        // Get current active page
+        const currentActivePage = await page.$eval(
+          'button[aria-current="page"]',
+          (el) => parseInt(el.getAttribute("data-test-id"))
+        );
+
+        if (targetPage === currentActivePage) {
+          return true;
+        }
+
+        // Get all available page numbers
+        const pageNumbers = await page.$$eval(
+          'button[data-test-id]:not([data-test-id="previous-page"]):not([data-test-id="next-page"])',
+          (buttons) =>
+            buttons
+              .map((button) => {
+                const id = button.getAttribute("data-test-id");
+                return !isNaN(parseInt(id)) ? parseInt(id) : null;
+              })
+              .filter((id) => id !== null)
+        );
+
+        let clickSuccess = false;
+
+        if (pageNumbers.includes(targetPage)) {
+          // Click the specific page number if visible
+          try {
+            await page.click(`button[data-test-id="${targetPage}"]`);
+            clickSuccess = true;
+          } catch (error) {
+            console.log(`Could not click page ${targetPage} directly`);
+          }
+        } else {
+          // Click next if target page is higher than current
+          if (targetPage > currentActivePage) {
+            const nextButton = await page.$('[data-test-id="next-page"]');
+            if (nextButton) {
+              await nextButton.click();
+              clickSuccess = true;
+            }
+          }
+        }
+
+        if (clickSuccess) {
+          // Wait for content to load
+          await delay(2000);
+          await page.waitForSelector('li div[role="button"]', {
+            timeout: 10000,
+          });
+          return true;
+        }
+
+        return false;
+      } catch (error) {
+        console.error(`Error navigating to page ${targetPage}:`, error);
+        return false;
+      }
+    };
+
+    const totalPages = await getTotalPages();
+    const effectiveEndPage = endPage
+      ? Math.min(endPage, totalPages)
+      : totalPages;
+
+    while (currentPage <= effectiveEndPage) {
+      console.log(`Scraping page ${currentPage}...`);
+
+      // Navigate to the desired page
+      const navigationSuccess = await goToPage(currentPage);
+      if (!navigationSuccess) {
+        console.log(`Failed to navigate to page ${currentPage}. Stopping.`);
+        break;
+      }
+
+      // Wait for job listings to load
+      await page.waitForSelector('li div[role="button"]', { timeout: 10000 });
+
+      // Scrape jobs from the current page
       const jobs = await page.evaluate((pageNum) => {
         // Helper function to clean location string
         const cleanLocation = (location) => {
           if (!location) return "";
-
-          // Split location by comma and get first part (city)
           const parts = location.split(",");
-          if (parts.length === 0) return location.trim();
-
-          // Return just the city name
-          return parts[0].trim();
+          return parts.length === 0 ? location.trim() : parts[0].trim();
         };
 
         const jobElements = document.querySelectorAll('li div[role="button"]');
@@ -71,15 +158,12 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
 
         jobElements.forEach((jobElement) => {
           try {
-            // Get the job link element
             const titleElement = jobElement.querySelector("h3 a");
             if (!titleElement) return;
 
-            // Extract job ID from href
             const jobUrl = titleElement.href;
             const jobId = jobUrl.split("/jobs/")[1];
 
-            // Get location and clean it
             const locationElement = jobElement.querySelector(
               ".metadatum-module_text__ncKFr"
             );
@@ -88,7 +172,6 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
               : "";
             const cleanedLocation = cleanLocation(fullLocation);
 
-            // Get date - looking for the second metadatum element
             const dateElements = Array.from(
               jobElement.querySelectorAll(".metadatum-module_text__ncKFr")
             );
@@ -97,7 +180,6 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
                 ? dateElements[1].textContent.replace("Updated:", "").trim()
                 : "";
 
-            // Get description
             const descriptionElement = jobElement.querySelector(
               ".job-card-module_content__8sS0J"
             );
@@ -105,10 +187,9 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
               ? descriptionElement.textContent.trim()
               : "";
 
-            // Add job only if we have valid data
             if (jobId && titleElement.textContent) {
               jobDetails.push({
-                sno: null, // Will be set later
+                sno: null,
                 company: "Amazon",
                 jobId: jobId,
                 function: description.includes("FireTV")
@@ -132,39 +213,26 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         return jobDetails;
       }, currentPage);
 
-      if (jobs && jobs.length > 0) {
-        console.log(`Found ${jobs.length} jobs on page ${currentPage}`);
-
-        await csvWriter.writeRecords(
-          jobs.map((job, idx) => ({
-            ...job,
-            sno: globalCounter + idx + 1,
-          }))
-        );
-
-        globalCounter += jobs.length;
-        console.log(
-          `Successfully scraped ${jobs.length} jobs from page ${currentPage}`
-        );
-      } else {
-        console.log(
-          `No jobs found on page ${currentPage}. Checking if this is the last page...`
-        );
-
-        const hasNextPage = await page.evaluate(() => {
-          const nextButton = document.querySelector(
-            '[data-test-id="next-page"]'
-          );
-          return nextButton && !nextButton.getAttribute("aria-disabled");
-        });
-
-        if (!hasNextPage) {
-          console.log("Reached the last page. Stopping scraper.");
-          break;
-        }
+      if (jobs.length === 0) {
+        console.log(`No jobs found on page ${currentPage}. Stopping.`);
+        break;
       }
 
-      await new Promise((resolve) => setTimeout(resolve, 5000));
+      await csvWriter.writeRecords(
+        jobs.map((job, idx) => ({
+          ...job,
+          sno: globalCounter + idx + 1,
+        }))
+      );
+
+      globalCounter += jobs.length;
+      console.log(
+        `Scraped ${jobs.length} jobs from Amazon page ${currentPage}`
+      );
+
+      // Add delay between pages
+      await delay(3000);
+
       currentPage++;
     }
   } catch (error) {
