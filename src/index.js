@@ -9,6 +9,7 @@ const capgeminiRoute = require("./routes/capgeminiRoute");
 const exlRoute = require("./routes/exlRouter");
 const syngeneRoute = require("./routes/syngeneRouter");
 const sbiRoute = require("./routes/sbiRouter");
+const amazonRoute = require("./routes/amazonRoutes");
 const Schneider_ElectricRoute = require("./routes/schneiderElectricRoute");
 const app = express();
 const port = 3000;
@@ -72,6 +73,8 @@ app.use("/scrape/Schneider_Electric", Schneider_ElectricRoute);
 app.use("/scrape/syngene", syngeneRoute);
 
 app.use("/scrape/sbiCard", sbiRoute);
+
+app.use("/scrape/amazon", amazonRoute);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

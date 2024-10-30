@@ -24,9 +24,17 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
 
   const browser = await puppeteer.launch({
     headless: "new",
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-web-security",
+      "--disable-features=IsolateOrigins,site-per-process",
+    ],
   });
+
   const page = await browser.newPage();
+  await page.setViewport({ width: 1920, height: 1080 });
   let globalCounter = 0;
 
   try {
@@ -36,78 +44,107 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
     while (hasMoreJobs && (!endPage || currentPage <= endPage)) {
       console.log(`Scraping page ${currentPage}...`);
 
-      const pageUrl = `${baseUrl}?page=${currentPage}`; // Fix the URL construction
-      await page.goto(pageUrl, { waitUntil: "networkidle0" });
+      // Construct the page URL
+      const pageUrl = baseUrl.replace(/page=\d+/, `page=${currentPage}`);
+      console.log(`Accessing URL: ${pageUrl}`);
 
-      // Wait for job panels to load
+      // Navigate to the page with extended timeout
+      await page.goto(pageUrl, {
+        waitUntil: "networkidle0",
+        timeout: 60000,
+      });
+
+      // Wait for the job listings to load
       await page
-        .waitForSelector("mat-expansion-panel-header", { timeout: 10000 })
-        .catch(() => null);
+        .waitForSelector(".jobs-list-item", {
+          timeout: 30000,
+        })
+        .catch(() => {
+          console.log("Timeout waiting for job listings");
+          return null;
+        });
+
+      // Give extra time for dynamic content to load
+      await page.waitForTimeout(2000);
 
       // Extract job details
       const jobs = await page.evaluate((pageNum) => {
-        const jobPanels = document.querySelectorAll(
-          "mat-expansion-panel-header"
-        );
-        return Array.from(jobPanels).map((panel) => {
-          // Helper function to safely extract text content
-          const getTextContent = (selector, parent = panel) => {
-            const element = parent.querySelector(selector);
-            return element ? element.textContent.trim() : "";
-          };
+        const jobListings = document.querySelectorAll(".jobs-list-item");
+        const jobDetails = [];
 
-          // Extract job title
-          const titleElement = panel.querySelector(".job-title-link span");
-          // Extract job ID
-          const jobIdElement = panel.querySelector(".req-id span");
-          // Extract location
-          const locationElement = panel.querySelector(".location.label-value");
-          // Extract function/category
-          const categoryElement = panel.querySelector(
-            ".categories.label-value"
-          );
-          // Extract posted date
-          const postedDateElement = panel.querySelector(
-            ".posted_date.label-value"
-          );
+        jobListings.forEach((job) => {
+          try {
+            // Helper function to safely get text content
+            const getText = (selector, parent = job) => {
+              const element = parent.querySelector(selector);
+              return element ? element.textContent.trim() : "";
+            };
 
-          return {
-            company: "Schneider Electric",
-            jobId: jobIdElement ? jobIdElement.textContent.trim() : "",
-            function: categoryElement ? categoryElement.textContent.trim() : "",
-            location: locationElement ? locationElement.textContent.trim() : "",
-            title: titleElement ? titleElement.textContent.trim() : "",
-            description: categoryElement
-              ? categoryElement.textContent.trim()
-              : "", // Using category as description
-            postedOn: postedDateElement
-              ? postedDateElement.textContent.trim()
-              : "",
-            page: pageNum,
-          };
+            // Extract job details using correct selectors
+            const title = getText(".job-title");
+            const location = getText(".job-location");
+            const functionText = getText(".job-function");
+            const jobId =
+              getText(".job-id") ||
+              `SE-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+            const postedDate = getText(".job-posted-date");
+            const description = getText(".job-description") || functionText;
+
+            jobDetails.push({
+              sno: null, // Will be set later
+              company: "Schneider Electric",
+              jobId: jobId,
+              function: functionText,
+              location: location,
+              title: title,
+              description: description,
+              postedOn: postedDate,
+              page: pageNum,
+            });
+          } catch (error) {
+            console.error("Error processing job element:", error);
+          }
         });
+
+        return jobDetails;
       }, currentPage);
+
+      console.log(`Found ${jobs.length} jobs on page ${currentPage}`);
 
       // If no jobs are found, stop the loop
       if (jobs.length === 0) {
-        console.log(`No jobs found on page ${currentPage}. Stopping.`);
-        hasMoreJobs = false;
-        break;
+        // Try to check if there's a "No results found" message
+        const noResults = await page.evaluate(() => {
+          const noResultsElement = document.querySelector(
+            ".no-results-message"
+          );
+          return noResultsElement ? true : false;
+        });
+
+        if (noResults || currentPage > 1) {
+          console.log(`No more jobs found on page ${currentPage}. Stopping.`);
+          hasMoreJobs = false;
+          break;
+        }
       }
 
       // Write data to CSV and update globalCounter
-      await csvWriter.writeRecords(
-        jobs.map((job, idx) => ({
-          ...job,
-          sno: globalCounter + idx + 1,
-        }))
-      );
+      if (jobs.length > 0) {
+        await csvWriter.writeRecords(
+          jobs.map((job, idx) => ({
+            ...job,
+            sno: globalCounter + idx + 1,
+          }))
+        );
 
-      globalCounter += jobs.length;
-      console.log(`Scraped ${jobs.length} jobs from page ${currentPage}`);
+        globalCounter += jobs.length;
+        console.log(
+          `Successfully scraped ${jobs.length} jobs from page ${currentPage}`
+        );
+      }
 
-      // Add delay to avoid rate limiting
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+      // Add delay between pages
+      await new Promise((resolve) => setTimeout(resolve, 5000));
 
       currentPage++;
     }
