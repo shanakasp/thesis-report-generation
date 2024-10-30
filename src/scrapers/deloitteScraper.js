@@ -26,12 +26,21 @@ const cleanLocation = (location) => {
 
 const cleanDescription = (description) => {
   const unwantedPatterns = [
-    /Â·Â Â Â Â Â Â Â/g, // Remove occurrences of "Â·Â"
-    /Â·Â Â Â Â Â Â Â/g, // Remove occurrences of "Â·Â"
-    /â€¢ /g, // Remove "â€¢ "
-    /Â /g, // Remove isolated "Â "
-    /oÂ/g, // Remove "oÂ"
+    /Â·Â Â Â Â Â Â Â/g,
+    /â€¢ /g,
+    /Â /g,
+    /oÂ/g,
     /Â·Â Â Â Â Â Â Â /g,
+    /Explore Deloitte University, The Leadership Centre\./g, // Remove "Explore Deloitte University, The Leadership Centre."
+    /Learn more about Deloitte's impact on the world/g, // Remove "Learn more about Deloitte's impact on the world."
+    /Your role as a leader[\s\S]*?development;/g, // Remove "Your role as a leader" section
+    /Recruiter tips[\s\S]*?from Deloitte professionals\./g, // Remove "Recruiter tips" section
+    /Your role as a leader[\s\S]*?Deloitte's impact on the world\./g,
+    /Your role as a leader[\s\S]*?required/g, // Hide 'Your role as a leader' section
+    /How you’ll grow[\s\S]*?career\./g, // Hide 'How you’ll grow' section
+    /Benefits[\s\S]*?for you\./g, // Hide 'Benefits' section
+    /Our purpose[\s\S]*?positive change\./g, // Hide 'Our purpose' section
+    /What impact will you make\?[\s\S]*?potential\./g, // Hide 'What impact will you make?' section
   ];
 
   let cleanedDescription = description;

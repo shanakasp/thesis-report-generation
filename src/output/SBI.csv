@@ -1,30 +1,24 @@
-S.No.,Company,Job ID,Title,Function,Location,Posted On,Description,Page Number
-1,SBI,17028,Vice President,Data Privacy Officer,Gurugram,"Gurugram,","Responsible for ensuring that organization processes the personal data of its staff, customers, providers or any other individuals (also referred to as data subjects) in compliance with the applicable data protection rules. The role is also responsible for acting as the main point of contact between the company, data subjects and the relevant data protection authorities.",1
-2,SBI,17822,Assistant Manager,"Area Sales, POS & CBSF",Secunderabad,"Secunderabad,",Asst manager area sales,1
-3,SBI,17829,Senior Manager,"Finance, FP&A",Gurugram,"Gurugram,","This role is responsible for Budgetary Controls, Opex Planning Analytics by tracking various cost metrics across organization, performing analysis of cost KPIs with the aim of ensuring cost controls",1
-4,SBI,17831,Assistant Manager,Merchant Reversal,Gurugram,"Gurugram,","To comprehensively and diligently review/monitor high severity fraud alerts along with liasoning with stakeholders for higher throughput, increased fraud mitigation and merchant reversals.",1
-5,SBI,17833,Assistant Manager,SWAT Support,Gurugram,"Gurugram,","Job Summary:
-We are seeking an experienced AM to lead our efforts in enhancing customer satisfactions score at the enterprise level. The candidate will be responsible for implementing strategies to improve customer satisfaction scores, analyzing qualitative /quantitative feedback and driving the actions plan to enhance customer experience.",1
-6,SBI,17835,Senior Executive,Hunter (FAT),Gurugram,"Gurugram,",Identify and prevent application fraud for processing of SBI Card applications within the process SLA and TAT requirements in line with company policy.,1
-7,SBI,17836,Deputy Manager,Testing & Monitoring,Gurugram,"Gurugram,",Testing and Monitoring of Credit Risk & Collection policies for system implementation.,1
-8,SBI,17837,Assistant Vice President,Zonal Corporate Sales (South),Secunderabad,"Secunderabad,","This is a Sales position and is responsible for leading a team of high caliber professionals responsible for Acquiring new clients and Business Development focusing on existing clients, through Corporate Card Solutioning. The role entails management of team and clients relationships in North & East zone focusing on T&E segment. This role requires both operational and strategic leadership skills.",1
-9,SBI,17842,Assistant Manager,"Agency Management, Recoveries West",Mumbai,"Mumbai,","Drive Portfolio of Credit Card Recovery on field .  According to targets allocated to multiple agencies for their respective location.
+S.No.,Company,Job ID,Title,Function,Location,Posted On,Description
+1,SBI,17092,Deputy Manager,"Area Sales, POS & CBSF",Kolkata,"Kolkata,","Seeking a dynamic and result oriented Area Sales Manager - Guwahati Location to lead for Open market Credit Card Sales Team. The ideal candidate will be responsible for driving sales, developing and implementing business initiative, and managing a team 0f 50-60 representative within the assign market"
+2,SBI,17838,Deputy Manager,"Area Sales, Telecalling",Mumbai,"Mumbai,","Opening for Dy Manager - Area Sales (D2C Telecalling) Mumbai
+
+Opening for Dy Manager-Area Sales in Telecalling channel for Credit Card business in Mumbai. 5-7 years’ experience in retail sales with the background of handling the team size of 90-100 people in dialer and Telecalling environment is required."
+3,SBI,17028,Vice President,Data Privacy Officer,Gurugram,"Gurugram,","Responsible for ensuring that organization processes the personal data of its staff, customers, providers or any other individuals (also referred to as data subjects) in compliance with the applicable data protection rules. The role is also responsible for acting as the main point of contact between the company, data subjects and the relevant data protection authorities."
+4,SBI,17829,Senior Manager,"Finance, FP&A",Gurugram,"Gurugram,","This role is responsible for Budgetary Controls, Opex Planning Analytics by tracking various cost metrics across organization, performing analysis of cost KPIs with the aim of ensuring cost controls"
+5,SBI,17831,Assistant Manager,Merchant Reversal,Gurugram,"Gurugram,","To comprehensively and diligently review/monitor high severity fraud alerts along with liasoning with stakeholders for higher throughput, increased fraud mitigation and merchant reversals."
+6,SBI,17835,Senior Executive,Hunter (FAT),Gurugram,"Gurugram,",Identify and prevent application fraud for processing of SBI Card applications within the process SLA and TAT requirements in line with company policy.
+7,SBI,17842,Assistant Manager,"Agency Management, Recoveries West",Mumbai,"Mumbai,","Drive Portfolio of Credit Card Recovery on field .  According to targets allocated to multiple agencies for their respective location.
  
 Compliance: Ensure proper documentation of customer interaction& raise alarms appropriately as per compliance procedures.
 Ensure data security.
-Conduct SVCL - Ensuring timely audit of vendor processes & documents for multiple agencies in respective location.",1
-10,SBI,17844,Executive,Screening (EDD),Gurugram,"Gurugram,",Executive - Screening,1
-11,SBI,16278,Assistant Vice President,Infrastructure Security SME,Gurugram,"Gurugram,","The IT Infrastructure Security Operations SME, under the guidance of IT Security Operation leader serves a critical SME role for the Execution, Implementation and Operations of the IT Infrastructure Security. He is responsible for managing the IT Security posture of Security Devices like WAF, WIPS, TACACS/RADIUS, NAC, NIPS, HIPS etc. Managing the overall IT Infrastructure Security and management of all Security Solution platforms.",1
-12,SBI,16920,Deputy Manager,Area Sales,Kolkata,"Kolkata,","Preferably a MBA with 6-8 years of sales & Marketing field with team handling experience. Candidate from similar industry / product is preferable.
-
-Drive sales of credit cards through State Bank group branches.
-Drive Productivity, manage costs and ensure compliant sourcing processes.
-Build and nurture relationships with the branch managers, key employees and the RM / DGMs.
-Single point of contact for all issues that the branches face for their day to day operations.
-Update the branches on all approvals, declines, incentives earned etc.
-Training and motivating internal employee and SBI officials.",1
-13,SBI,17076,Manager,AEGIS Management Manager,Gurugram,"Gurugram,",The role is responsible for managing overall activities involving upkeeping of AEGIS workflow in close liaison with the SBIC IT team and to act as one stop solution for all AEGIS related queries whether raised by other verticals/auditors or by auditee units,1
-14,SBI,17201,Manager,"Area Sales, POS & CBSF",India,India,"Handle a large NFTE’s team size between 60-100 at different hirarchy
+Conduct SVCL - Ensuring timely audit of vendor processes & documents for multiple agencies in respective location."
+8,SBI,17844,Executive,Screening (EDD),Gurugram,"Gurugram,",Executive - Screening
+9,SBI,17822,Assistant Manager,"Area Sales, POS & CBSF",Secunderabad,"Secunderabad,",Asst manager area sales
+10,SBI,17833,Assistant Manager,SWAT Support,Gurugram,"Gurugram,","Job Summary:
+We are seeking an experienced AM to lead our efforts in enhancing customer satisfactions score at the enterprise level. The candidate will be responsible for implementing strategies to improve customer satisfaction scores, analyzing qualitative /quantitative feedback and driving the actions plan to enhance customer experience."
+11,SBI,17836,Deputy Manager,Testing & Monitoring,Gurugram,"Gurugram,",Testing and Monitoring of Credit Risk & Collection policies for system implementation.
+12,SBI,17837,Assistant Vice President,Zonal Corporate Sales (South),Secunderabad,"Secunderabad,","This is a Sales position and is responsible for leading a team of high caliber professionals responsible for Acquiring new clients and Business Development focusing on existing clients, through Corporate Card Solutioning. The role entails management of team and clients relationships in North & East zone focusing on T&E segment. This role requires both operational and strategic leadership skills."
+13,SBI,17201,Manager,"Area Sales, POS & CBSF",India,India,"Handle a large NFTE’s team size between 60-100 at different hirarchy
 
 Delivering on volumes (Accounts) against MOU within defined COA
 
@@ -40,69 +34,56 @@ Keeping a tap on all policy changes, Keeping communication flow of changes to te
 
 Location sourcing mix to be treated as per organizational requirement time to time
 
-Ensuring quality and compliance go hand in hand in sink with existing policies.",1
-15,SBI,17250,Assistant Manager,Outsourced Site & Infrastructure Management,Gurugram,"Gurugram,","Coordination with our Business partners - PSAs and Sales team to ensure smooth functioning at the sites as per our business requirements
+Ensuring quality and compliance go hand in hand in sink with existing policies."
+14,SBI,17250,Assistant Manager,Outsourced Site & Infrastructure Management,Gurugram,"Gurugram,","Coordination with our Business partners - PSAs and Sales team to ensure smooth functioning at the sites as per our business requirements
 Site should be compliant, and all regulatory requirements should be fulfilled
 Safety arrangement in the site 
 Asset Management - Physical verification
-Optimization of Cost",1
-16,SBI,17349,Executive,"Customer Services, Non-T1 Service",Chennai,"Chennai,","""
+Optimization of Cost"
+15,SBI,17349,Executive,"Customer Services, Non-T1 Service",Chennai,"Chennai,","""
 Would be part of the customer services team handling Inbound calls / outbound from Credit Card holders. Needs to ensure all Customer Services Complaints & Queries are resolved as per the TAT defined. Responsible for achieving the call center targets on a daily basis like AHT, Productivity, Cross sell, retention, First call resolution along with ensuring high quality of service with zero unscheduled leaves/ absenteeism. Would be required to contribute to cross sell targets through inbound as well as outbound channels. Job requires Compliant to Business Policy, processes and procedures. Need to take additional responsibilities & identify process gaps on process improvement and better customer experience
 
-Must have Qualification- Previous experience  of minimum 1.5 + years in a customer handling process (voice process), Graduation from recognized University & Proficiency in Spoken Malayalam""",1
-17,SBI,17418,Deputy Vice President,Marketing Analytics,Gurugram,"Gurugram,","Deputy Vice President, Marketing Analytics",1
-18,SBI,17558,Senior Manager,Fraud Prevention Strategy,Gurugram,"Gurugram,",Senior Manager : Fraud Prevention Strategy,1
-19,SBI,17624,Assistant Manager,"Agency Management, Recoveries West",Mumbai,"Mumbai,","Job Description
+Must have Qualification- Previous experience  of minimum 1.5 + years in a customer handling process (voice process), Graduation from recognized University & Proficiency in Spoken Malayalam"""
+16,SBI,17749,Assistant Manager,"Agency Management, Collection Field North",Chandigarh,"Chandigarh,","Deliver on Resolution, Normalization & Roll Back, Recovery numbers as per assigned target - Timely and 100% allocation of accounts to field vendor - Secure transmission of data to vendors; 100% SVCL Coverage - Timely training and DRA certification of field executives as per regulatory guidelines
+Description for Internal Candidates"
+17,SBI,17810,Manager,"Area Sales, POS & CBSF",Bangalore,"Bangalore,","To generate credit card business through Point of Sale/FOS Channel in open market.
+Achieve New Account Volume for the location – Overall, surrogate wise
+NFTE Management - Hiring, Training & Grooming of NFTE’s.
+Identify & execute on strategies to achieve planned targets
+Identify business opportunities’ in Open Market Retail & Point of Sale and build consensus within sales team to execute on them."
+18,SBI,17813,Deputy Manager,"Agency management, Collection Field South",Secunderabad,"Secunderabad,","The incumbent will be responsible for managing and undertaking collections process for allocated portfolio in the assigned area basis targets set for resolution, normalization and absolute recovery."
+19,SBI,17812,Executive,Logistics (Card Personalization & Agency Management),Gurugram,"Gurugram,",Handling of overall embossing process with end to end tracking & closure
+20,SBI,17816,Senior Manager,Buyer Support,Gurugram,"Gurugram,",Senior Manager - Buyer Support
+21,SBI,17825,Manager,"Agency management, Collection Field South",Bangalore,"Bangalore,",Performance Drive Portfolio Efficiency by resolution/Norm/Roll Back/Recovery on field portfolio according to targets allocated to multiple agencies for their respective location. Timely identification and reporting of Skips/Fraud/RTP/Non-Starters for portfolio segmentation. Ensure ongoing review rhythm with stakeholders to identify opportunity areas. Timely review of vendors performance in respective location.
+22,SBI,17826,Assistant Manager,"Agency Management, Collection Field South",Bangalore,"Bangalore,",Candidate should handle multi due stage collection with Vendor support.
+23,SBI,17827,Deputy Manager,"Agency management, Collection Field South",Bangalore,"Bangalore,",Candidate should handle multi due stage collection with Vendor support.
+24,SBI,17624,Assistant Manager,"Agency Management, Recoveries West",Mumbai,"Mumbai,","Job Description
 Drive Portfolio of Credit Card Recovery on field .  According to targets allocated to multiple agencies for their respective location.
  
 Compliance: Ensure proper documentation of customer interaction& raise alarms appropriately as per compliance procedures.
 Ensure data security.
-Conduct SVCL - Ensuring timely audit of vendor processes & documents for multiple agencies in respective location.",1
-20,SBI,17749,Assistant Manager,"Agency Management, Collection Field North",Chandigarh,"Chandigarh,","Deliver on Resolution, Normalization & Roll Back, Recovery numbers as per assigned target - Timely and 100% allocation of accounts to field vendor - Secure transmission of data to vendors; 100% SVCL Coverage - Timely training and DRA certification of field executives as per regulatory guidelines
-Description for Internal Candidates",1
-21,SBI,17772,Senior Executive,CCRP Validation,Gurugram,"Gurugram,",Ensuring accurate revalidation of all complaints and escalations pertaining to call center reported and part of overall inflow. 2. Timely execution & closure of assigned complaints ensuring daily achievement of productivity numbers. 3. Identified issue to be raised to departments/units & ensuring re-validation closure by providing amicable resolution as per the process/policy 4. Follow up on identified issues with call center and ensure correct and timely complaint calibration. 5. Identify and report any process gaps/process improvement ideas for better customer experience.,1
-22,SBI,17805,Deputy Manager,"Agency management, Collection Field North",New Delhi,New,"Performance
-Drive Portfolio Efficiency by resolution/Norm/Roll Back/Recovery on field portfolio according to targets allocated to multiple agencies for their respective location.
-Timely identification and reporting of Skips/Fraud/RTP/Non-Starters for portfolio segmentation.
-Ensure ongoing review rhythm with stakeholders to identify opportunity areas.
-Timely review of vendors performance in respective location.
-Compliance
-Ensure proper documentation of customer interactions and raise alarms appropriately as per compliance procedures.
-Ensure data security.
-Conduct SVCL-Ensuring timely audit of vendor processes and documentation for agencies operating in respective location.",1
-23,SBI,17810,Manager,"Area Sales, POS & CBSF",Bangalore,"Bangalore,","To generate credit card business through Point of Sale/FOS Channel in open market.
-Achieve New Account Volume for the location – Overall, surrogate wise
-NFTE Management - Hiring, Training & Grooming of NFTE’s.
-Identify & execute on strategies to achieve planned targets
-Identify business opportunities’ in Open Market Retail & Point of Sale and build consensus within sales team to execute on them.",1
-24,SBI,17813,Deputy Manager,"Agency management, Collection Field South",Secunderabad,"Secunderabad,","The incumbent will be responsible for managing and undertaking collections process for allocated portfolio in the assigned area basis targets set for resolution, normalization and absolute recovery.",1
-25,SBI,17812,Executive,Logistics (Card Personalization & Agency Management),Gurugram,"Gurugram,",Handling of overall embossing process with end to end tracking & closure,1
-26,SBI,17028,Vice President,Data Privacy Officer,Gurugram,"Gurugram,","Responsible for ensuring that organization processes the personal data of its staff, customers, providers or any other individuals (also referred to as data subjects) in compliance with the applicable data protection rules. The role is also responsible for acting as the main point of contact between the company, data subjects and the relevant data protection authorities.",2
-27,SBI,17822,Assistant Manager,"Area Sales, POS & CBSF",Secunderabad,"Secunderabad,",Asst manager area sales,2
-28,SBI,17829,Senior Manager,"Finance, FP&A",Gurugram,"Gurugram,","This role is responsible for Budgetary Controls, Opex Planning Analytics by tracking various cost metrics across organization, performing analysis of cost KPIs with the aim of ensuring cost controls",2
-29,SBI,17831,Assistant Manager,Merchant Reversal,Gurugram,"Gurugram,","To comprehensively and diligently review/monitor high severity fraud alerts along with liasoning with stakeholders for higher throughput, increased fraud mitigation and merchant reversals.",2
-30,SBI,17833,Assistant Manager,SWAT Support,Gurugram,"Gurugram,","Job Summary:
-We are seeking an experienced AM to lead our efforts in enhancing customer satisfactions score at the enterprise level. The candidate will be responsible for implementing strategies to improve customer satisfaction scores, analyzing qualitative /quantitative feedback and driving the actions plan to enhance customer experience.",2
-31,SBI,17835,Senior Executive,Hunter (FAT),Gurugram,"Gurugram,",Identify and prevent application fraud for processing of SBI Card applications within the process SLA and TAT requirements in line with company policy.,2
-32,SBI,17836,Deputy Manager,Testing & Monitoring,Gurugram,"Gurugram,",Testing and Monitoring of Credit Risk & Collection policies for system implementation.,2
-33,SBI,17837,Assistant Vice President,Zonal Corporate Sales (South),Secunderabad,"Secunderabad,","This is a Sales position and is responsible for leading a team of high caliber professionals responsible for Acquiring new clients and Business Development focusing on existing clients, through Corporate Card Solutioning. The role entails management of team and clients relationships in North & East zone focusing on T&E segment. This role requires both operational and strategic leadership skills.",2
-34,SBI,17842,Assistant Manager,"Agency Management, Recoveries West",Mumbai,"Mumbai,","Drive Portfolio of Credit Card Recovery on field .  According to targets allocated to multiple agencies for their respective location.
+Conduct SVCL - Ensuring timely audit of vendor processes & documents for multiple agencies in respective location."
+25,SBI,17819,Senior Manager,Insurance & Cross Sell,Kolkata,"Kolkata,","Responsible for delivering planned sales & income from new insurance sales/acquisition through all ""On-field"" distribution channels for Insurance business for the organization which currently includes Life Insurance, General Insurance, Health Insurance & Card Protection Plan (CPP)."
+26,SBI,17092,Deputy Manager,"Area Sales, POS & CBSF",Kolkata,"Kolkata,","Seeking a dynamic and result oriented Area Sales Manager - Guwahati Location to lead for Open market Credit Card Sales Team. The ideal candidate will be responsible for driving sales, developing and implementing business initiative, and managing a team 0f 50-60 representative within the assign market"
+27,SBI,17838,Deputy Manager,"Area Sales, Telecalling",Mumbai,"Mumbai,","Opening for Dy Manager - Area Sales (D2C Telecalling) Mumbai
+
+Opening for Dy Manager-Area Sales in Telecalling channel for Credit Card business in Mumbai. 5-7 years’ experience in retail sales with the background of handling the team size of 90-100 people in dialer and Telecalling environment is required."
+28,SBI,17028,Vice President,Data Privacy Officer,Gurugram,"Gurugram,","Responsible for ensuring that organization processes the personal data of its staff, customers, providers or any other individuals (also referred to as data subjects) in compliance with the applicable data protection rules. The role is also responsible for acting as the main point of contact between the company, data subjects and the relevant data protection authorities."
+29,SBI,17829,Senior Manager,"Finance, FP&A",Gurugram,"Gurugram,","This role is responsible for Budgetary Controls, Opex Planning Analytics by tracking various cost metrics across organization, performing analysis of cost KPIs with the aim of ensuring cost controls"
+30,SBI,17831,Assistant Manager,Merchant Reversal,Gurugram,"Gurugram,","To comprehensively and diligently review/monitor high severity fraud alerts along with liasoning with stakeholders for higher throughput, increased fraud mitigation and merchant reversals."
+31,SBI,17835,Senior Executive,Hunter (FAT),Gurugram,"Gurugram,",Identify and prevent application fraud for processing of SBI Card applications within the process SLA and TAT requirements in line with company policy.
+32,SBI,17842,Assistant Manager,"Agency Management, Recoveries West",Mumbai,"Mumbai,","Drive Portfolio of Credit Card Recovery on field .  According to targets allocated to multiple agencies for their respective location.
  
 Compliance: Ensure proper documentation of customer interaction& raise alarms appropriately as per compliance procedures.
 Ensure data security.
-Conduct SVCL - Ensuring timely audit of vendor processes & documents for multiple agencies in respective location.",2
-35,SBI,17844,Executive,Screening (EDD),Gurugram,"Gurugram,",Executive - Screening,2
-36,SBI,16278,Assistant Vice President,Infrastructure Security SME,Gurugram,"Gurugram,","The IT Infrastructure Security Operations SME, under the guidance of IT Security Operation leader serves a critical SME role for the Execution, Implementation and Operations of the IT Infrastructure Security. He is responsible for managing the IT Security posture of Security Devices like WAF, WIPS, TACACS/RADIUS, NAC, NIPS, HIPS etc. Managing the overall IT Infrastructure Security and management of all Security Solution platforms.",2
-37,SBI,16920,Deputy Manager,Area Sales,Kolkata,"Kolkata,","Preferably a MBA with 6-8 years of sales & Marketing field with team handling experience. Candidate from similar industry / product is preferable.
-
-Drive sales of credit cards through State Bank group branches.
-Drive Productivity, manage costs and ensure compliant sourcing processes.
-Build and nurture relationships with the branch managers, key employees and the RM / DGMs.
-Single point of contact for all issues that the branches face for their day to day operations.
-Update the branches on all approvals, declines, incentives earned etc.
-Training and motivating internal employee and SBI officials.",2
-38,SBI,17076,Manager,AEGIS Management Manager,Gurugram,"Gurugram,",The role is responsible for managing overall activities involving upkeeping of AEGIS workflow in close liaison with the SBIC IT team and to act as one stop solution for all AEGIS related queries whether raised by other verticals/auditors or by auditee units,2
-39,SBI,17201,Manager,"Area Sales, POS & CBSF",India,India,"Handle a large NFTE’s team size between 60-100 at different hirarchy
+Conduct SVCL - Ensuring timely audit of vendor processes & documents for multiple agencies in respective location."
+33,SBI,17844,Executive,Screening (EDD),Gurugram,"Gurugram,",Executive - Screening
+34,SBI,17822,Assistant Manager,"Area Sales, POS & CBSF",Secunderabad,"Secunderabad,",Asst manager area sales
+35,SBI,17833,Assistant Manager,SWAT Support,Gurugram,"Gurugram,","Job Summary:
+We are seeking an experienced AM to lead our efforts in enhancing customer satisfactions score at the enterprise level. The candidate will be responsible for implementing strategies to improve customer satisfaction scores, analyzing qualitative /quantitative feedback and driving the actions plan to enhance customer experience."
+36,SBI,17836,Deputy Manager,Testing & Monitoring,Gurugram,"Gurugram,",Testing and Monitoring of Credit Risk & Collection policies for system implementation.
+37,SBI,17837,Assistant Vice President,Zonal Corporate Sales (South),Secunderabad,"Secunderabad,","This is a Sales position and is responsible for leading a team of high caliber professionals responsible for Acquiring new clients and Business Development focusing on existing clients, through Corporate Card Solutioning. The role entails management of team and clients relationships in North & East zone focusing on T&E segment. This role requires both operational and strategic leadership skills."
+38,SBI,17201,Manager,"Area Sales, POS & CBSF",India,India,"Handle a large NFTE’s team size between 60-100 at different hirarchy
 
 Delivering on volumes (Accounts) against MOU within defined COA
 
@@ -118,118 +99,33 @@ Keeping a tap on all policy changes, Keeping communication flow of changes to te
 
 Location sourcing mix to be treated as per organizational requirement time to time
 
-Ensuring quality and compliance go hand in hand in sink with existing policies.",2
-40,SBI,17250,Assistant Manager,Outsourced Site & Infrastructure Management,Gurugram,"Gurugram,","Coordination with our Business partners - PSAs and Sales team to ensure smooth functioning at the sites as per our business requirements
+Ensuring quality and compliance go hand in hand in sink with existing policies."
+39,SBI,17250,Assistant Manager,Outsourced Site & Infrastructure Management,Gurugram,"Gurugram,","Coordination with our Business partners - PSAs and Sales team to ensure smooth functioning at the sites as per our business requirements
 Site should be compliant, and all regulatory requirements should be fulfilled
 Safety arrangement in the site 
 Asset Management - Physical verification
-Optimization of Cost",2
-41,SBI,17349,Executive,"Customer Services, Non-T1 Service",Chennai,"Chennai,","""
+Optimization of Cost"
+40,SBI,17349,Executive,"Customer Services, Non-T1 Service",Chennai,"Chennai,","""
 Would be part of the customer services team handling Inbound calls / outbound from Credit Card holders. Needs to ensure all Customer Services Complaints & Queries are resolved as per the TAT defined. Responsible for achieving the call center targets on a daily basis like AHT, Productivity, Cross sell, retention, First call resolution along with ensuring high quality of service with zero unscheduled leaves/ absenteeism. Would be required to contribute to cross sell targets through inbound as well as outbound channels. Job requires Compliant to Business Policy, processes and procedures. Need to take additional responsibilities & identify process gaps on process improvement and better customer experience
 
-Must have Qualification- Previous experience  of minimum 1.5 + years in a customer handling process (voice process), Graduation from recognized University & Proficiency in Spoken Malayalam""",2
-42,SBI,17418,Deputy Vice President,Marketing Analytics,Gurugram,"Gurugram,","Deputy Vice President, Marketing Analytics",2
-43,SBI,17558,Senior Manager,Fraud Prevention Strategy,Gurugram,"Gurugram,",Senior Manager : Fraud Prevention Strategy,2
-44,SBI,17624,Assistant Manager,"Agency Management, Recoveries West",Mumbai,"Mumbai,","Job Description
+Must have Qualification- Previous experience  of minimum 1.5 + years in a customer handling process (voice process), Graduation from recognized University & Proficiency in Spoken Malayalam"""
+41,SBI,17749,Assistant Manager,"Agency Management, Collection Field North",Chandigarh,"Chandigarh,","Deliver on Resolution, Normalization & Roll Back, Recovery numbers as per assigned target - Timely and 100% allocation of accounts to field vendor - Secure transmission of data to vendors; 100% SVCL Coverage - Timely training and DRA certification of field executives as per regulatory guidelines
+Description for Internal Candidates"
+42,SBI,17810,Manager,"Area Sales, POS & CBSF",Bangalore,"Bangalore,","To generate credit card business through Point of Sale/FOS Channel in open market.
+Achieve New Account Volume for the location – Overall, surrogate wise
+NFTE Management - Hiring, Training & Grooming of NFTE’s.
+Identify & execute on strategies to achieve planned targets
+Identify business opportunities’ in Open Market Retail & Point of Sale and build consensus within sales team to execute on them."
+43,SBI,17813,Deputy Manager,"Agency management, Collection Field South",Secunderabad,"Secunderabad,","The incumbent will be responsible for managing and undertaking collections process for allocated portfolio in the assigned area basis targets set for resolution, normalization and absolute recovery."
+44,SBI,17812,Executive,Logistics (Card Personalization & Agency Management),Gurugram,"Gurugram,",Handling of overall embossing process with end to end tracking & closure
+45,SBI,17816,Senior Manager,Buyer Support,Gurugram,"Gurugram,",Senior Manager - Buyer Support
+46,SBI,17825,Manager,"Agency management, Collection Field South",Bangalore,"Bangalore,",Performance Drive Portfolio Efficiency by resolution/Norm/Roll Back/Recovery on field portfolio according to targets allocated to multiple agencies for their respective location. Timely identification and reporting of Skips/Fraud/RTP/Non-Starters for portfolio segmentation. Ensure ongoing review rhythm with stakeholders to identify opportunity areas. Timely review of vendors performance in respective location.
+47,SBI,17826,Assistant Manager,"Agency Management, Collection Field South",Bangalore,"Bangalore,",Candidate should handle multi due stage collection with Vendor support.
+48,SBI,17827,Deputy Manager,"Agency management, Collection Field South",Bangalore,"Bangalore,",Candidate should handle multi due stage collection with Vendor support.
+49,SBI,17624,Assistant Manager,"Agency Management, Recoveries West",Mumbai,"Mumbai,","Job Description
 Drive Portfolio of Credit Card Recovery on field .  According to targets allocated to multiple agencies for their respective location.
  
 Compliance: Ensure proper documentation of customer interaction& raise alarms appropriately as per compliance procedures.
 Ensure data security.
-Conduct SVCL - Ensuring timely audit of vendor processes & documents for multiple agencies in respective location.",2
-45,SBI,17749,Assistant Manager,"Agency Management, Collection Field North",Chandigarh,"Chandigarh,","Deliver on Resolution, Normalization & Roll Back, Recovery numbers as per assigned target - Timely and 100% allocation of accounts to field vendor - Secure transmission of data to vendors; 100% SVCL Coverage - Timely training and DRA certification of field executives as per regulatory guidelines
-Description for Internal Candidates",2
-46,SBI,17772,Senior Executive,CCRP Validation,Gurugram,"Gurugram,",Ensuring accurate revalidation of all complaints and escalations pertaining to call center reported and part of overall inflow. 2. Timely execution & closure of assigned complaints ensuring daily achievement of productivity numbers. 3. Identified issue to be raised to departments/units & ensuring re-validation closure by providing amicable resolution as per the process/policy 4. Follow up on identified issues with call center and ensure correct and timely complaint calibration. 5. Identify and report any process gaps/process improvement ideas for better customer experience.,2
-47,SBI,17805,Deputy Manager,"Agency management, Collection Field North",New Delhi,New,"Performance
-Drive Portfolio Efficiency by resolution/Norm/Roll Back/Recovery on field portfolio according to targets allocated to multiple agencies for their respective location.
-Timely identification and reporting of Skips/Fraud/RTP/Non-Starters for portfolio segmentation.
-Ensure ongoing review rhythm with stakeholders to identify opportunity areas.
-Timely review of vendors performance in respective location.
-Compliance
-Ensure proper documentation of customer interactions and raise alarms appropriately as per compliance procedures.
-Ensure data security.
-Conduct SVCL-Ensuring timely audit of vendor processes and documentation for agencies operating in respective location.",2
-48,SBI,17810,Manager,"Area Sales, POS & CBSF",Bangalore,"Bangalore,","To generate credit card business through Point of Sale/FOS Channel in open market.
-Achieve New Account Volume for the location – Overall, surrogate wise
-NFTE Management - Hiring, Training & Grooming of NFTE’s.
-Identify & execute on strategies to achieve planned targets
-Identify business opportunities’ in Open Market Retail & Point of Sale and build consensus within sales team to execute on them.",2
-49,SBI,17813,Deputy Manager,"Agency management, Collection Field South",Secunderabad,"Secunderabad,","The incumbent will be responsible for managing and undertaking collections process for allocated portfolio in the assigned area basis targets set for resolution, normalization and absolute recovery.",2
-50,SBI,17812,Executive,Logistics (Card Personalization & Agency Management),Gurugram,"Gurugram,",Handling of overall embossing process with end to end tracking & closure,2
-51,SBI,17028,Vice President,Data Privacy Officer,Gurugram,"Gurugram,","Responsible for ensuring that organization processes the personal data of its staff, customers, providers or any other individuals (also referred to as data subjects) in compliance with the applicable data protection rules. The role is also responsible for acting as the main point of contact between the company, data subjects and the relevant data protection authorities.",3
-52,SBI,17822,Assistant Manager,"Area Sales, POS & CBSF",Secunderabad,"Secunderabad,",Asst manager area sales,3
-53,SBI,17829,Senior Manager,"Finance, FP&A",Gurugram,"Gurugram,","This role is responsible for Budgetary Controls, Opex Planning Analytics by tracking various cost metrics across organization, performing analysis of cost KPIs with the aim of ensuring cost controls",3
-54,SBI,17831,Assistant Manager,Merchant Reversal,Gurugram,"Gurugram,","To comprehensively and diligently review/monitor high severity fraud alerts along with liasoning with stakeholders for higher throughput, increased fraud mitigation and merchant reversals.",3
-55,SBI,17833,Assistant Manager,SWAT Support,Gurugram,"Gurugram,","Job Summary:
-We are seeking an experienced AM to lead our efforts in enhancing customer satisfactions score at the enterprise level. The candidate will be responsible for implementing strategies to improve customer satisfaction scores, analyzing qualitative /quantitative feedback and driving the actions plan to enhance customer experience.",3
-56,SBI,17835,Senior Executive,Hunter (FAT),Gurugram,"Gurugram,",Identify and prevent application fraud for processing of SBI Card applications within the process SLA and TAT requirements in line with company policy.,3
-57,SBI,17836,Deputy Manager,Testing & Monitoring,Gurugram,"Gurugram,",Testing and Monitoring of Credit Risk & Collection policies for system implementation.,3
-58,SBI,17837,Assistant Vice President,Zonal Corporate Sales (South),Secunderabad,"Secunderabad,","This is a Sales position and is responsible for leading a team of high caliber professionals responsible for Acquiring new clients and Business Development focusing on existing clients, through Corporate Card Solutioning. The role entails management of team and clients relationships in North & East zone focusing on T&E segment. This role requires both operational and strategic leadership skills.",3
-59,SBI,17842,Assistant Manager,"Agency Management, Recoveries West",Mumbai,"Mumbai,","Drive Portfolio of Credit Card Recovery on field .  According to targets allocated to multiple agencies for their respective location.
- 
-Compliance: Ensure proper documentation of customer interaction& raise alarms appropriately as per compliance procedures.
-Ensure data security.
-Conduct SVCL - Ensuring timely audit of vendor processes & documents for multiple agencies in respective location.",3
-60,SBI,17844,Executive,Screening (EDD),Gurugram,"Gurugram,",Executive - Screening,3
-61,SBI,16278,Assistant Vice President,Infrastructure Security SME,Gurugram,"Gurugram,","The IT Infrastructure Security Operations SME, under the guidance of IT Security Operation leader serves a critical SME role for the Execution, Implementation and Operations of the IT Infrastructure Security. He is responsible for managing the IT Security posture of Security Devices like WAF, WIPS, TACACS/RADIUS, NAC, NIPS, HIPS etc. Managing the overall IT Infrastructure Security and management of all Security Solution platforms.",3
-62,SBI,16920,Deputy Manager,Area Sales,Kolkata,"Kolkata,","Preferably a MBA with 6-8 years of sales & Marketing field with team handling experience. Candidate from similar industry / product is preferable.
-
-Drive sales of credit cards through State Bank group branches.
-Drive Productivity, manage costs and ensure compliant sourcing processes.
-Build and nurture relationships with the branch managers, key employees and the RM / DGMs.
-Single point of contact for all issues that the branches face for their day to day operations.
-Update the branches on all approvals, declines, incentives earned etc.
-Training and motivating internal employee and SBI officials.",3
-63,SBI,17076,Manager,AEGIS Management Manager,Gurugram,"Gurugram,",The role is responsible for managing overall activities involving upkeeping of AEGIS workflow in close liaison with the SBIC IT team and to act as one stop solution for all AEGIS related queries whether raised by other verticals/auditors or by auditee units,3
-64,SBI,17201,Manager,"Area Sales, POS & CBSF",India,India,"Handle a large NFTE’s team size between 60-100 at different hirarchy
-
-Delivering on volumes (Accounts) against MOU within defined COA
-
-Premium Accounts for increasing high fees income and  profitable customer base
-
- Establish excellent business relationships and partnerships with key Co-Brand partners and other vital corporate partners
-
-Monitoring performance as per MOU and ensure achievement of Op plan
-
-Tracking Application journey from sourcing to dispatch till decisioning
-
-Keeping a tap on all policy changes, Keeping communication flow of changes to team deep down for smoother implementation
-
-Location sourcing mix to be treated as per organizational requirement time to time
-
-Ensuring quality and compliance go hand in hand in sink with existing policies.",3
-65,SBI,17250,Assistant Manager,Outsourced Site & Infrastructure Management,Gurugram,"Gurugram,","Coordination with our Business partners - PSAs and Sales team to ensure smooth functioning at the sites as per our business requirements
-Site should be compliant, and all regulatory requirements should be fulfilled
-Safety arrangement in the site 
-Asset Management - Physical verification
-Optimization of Cost",3
-66,SBI,17349,Executive,"Customer Services, Non-T1 Service",Chennai,"Chennai,","""
-Would be part of the customer services team handling Inbound calls / outbound from Credit Card holders. Needs to ensure all Customer Services Complaints & Queries are resolved as per the TAT defined. Responsible for achieving the call center targets on a daily basis like AHT, Productivity, Cross sell, retention, First call resolution along with ensuring high quality of service with zero unscheduled leaves/ absenteeism. Would be required to contribute to cross sell targets through inbound as well as outbound channels. Job requires Compliant to Business Policy, processes and procedures. Need to take additional responsibilities & identify process gaps on process improvement and better customer experience
-
-Must have Qualification- Previous experience  of minimum 1.5 + years in a customer handling process (voice process), Graduation from recognized University & Proficiency in Spoken Malayalam""",3
-67,SBI,17418,Deputy Vice President,Marketing Analytics,Gurugram,"Gurugram,","Deputy Vice President, Marketing Analytics",3
-68,SBI,17558,Senior Manager,Fraud Prevention Strategy,Gurugram,"Gurugram,",Senior Manager : Fraud Prevention Strategy,3
-69,SBI,17624,Assistant Manager,"Agency Management, Recoveries West",Mumbai,"Mumbai,","Job Description
-Drive Portfolio of Credit Card Recovery on field .  According to targets allocated to multiple agencies for their respective location.
- 
-Compliance: Ensure proper documentation of customer interaction& raise alarms appropriately as per compliance procedures.
-Ensure data security.
-Conduct SVCL - Ensuring timely audit of vendor processes & documents for multiple agencies in respective location.",3
-70,SBI,17749,Assistant Manager,"Agency Management, Collection Field North",Chandigarh,"Chandigarh,","Deliver on Resolution, Normalization & Roll Back, Recovery numbers as per assigned target - Timely and 100% allocation of accounts to field vendor - Secure transmission of data to vendors; 100% SVCL Coverage - Timely training and DRA certification of field executives as per regulatory guidelines
-Description for Internal Candidates",3
-71,SBI,17772,Senior Executive,CCRP Validation,Gurugram,"Gurugram,",Ensuring accurate revalidation of all complaints and escalations pertaining to call center reported and part of overall inflow. 2. Timely execution & closure of assigned complaints ensuring daily achievement of productivity numbers. 3. Identified issue to be raised to departments/units & ensuring re-validation closure by providing amicable resolution as per the process/policy 4. Follow up on identified issues with call center and ensure correct and timely complaint calibration. 5. Identify and report any process gaps/process improvement ideas for better customer experience.,3
-72,SBI,17805,Deputy Manager,"Agency management, Collection Field North",New Delhi,New,"Performance
-Drive Portfolio Efficiency by resolution/Norm/Roll Back/Recovery on field portfolio according to targets allocated to multiple agencies for their respective location.
-Timely identification and reporting of Skips/Fraud/RTP/Non-Starters for portfolio segmentation.
-Ensure ongoing review rhythm with stakeholders to identify opportunity areas.
-Timely review of vendors performance in respective location.
-Compliance
-Ensure proper documentation of customer interactions and raise alarms appropriately as per compliance procedures.
-Ensure data security.
-Conduct SVCL-Ensuring timely audit of vendor processes and documentation for agencies operating in respective location.",3
-73,SBI,17810,Manager,"Area Sales, POS & CBSF",Bangalore,"Bangalore,","To generate credit card business through Point of Sale/FOS Channel in open market.
-Achieve New Account Volume for the location – Overall, surrogate wise
-NFTE Management - Hiring, Training & Grooming of NFTE’s.
-Identify & execute on strategies to achieve planned targets
-Identify business opportunities’ in Open Market Retail & Point of Sale and build consensus within sales team to execute on them.",3
-74,SBI,17813,Deputy Manager,"Agency management, Collection Field South",Secunderabad,"Secunderabad,","The incumbent will be responsible for managing and undertaking collections process for allocated portfolio in the assigned area basis targets set for resolution, normalization and absolute recovery.",3
-75,SBI,17812,Executive,Logistics (Card Personalization & Agency Management),Gurugram,"Gurugram,",Handling of overall embossing process with end to end tracking & closure,3
+Conduct SVCL - Ensuring timely audit of vendor processes & documents for multiple agencies in respective location."
+50,SBI,17819,Senior Manager,Insurance & Cross Sell,Kolkata,"Kolkata,","Responsible for delivering planned sales & income from new insurance sales/acquisition through all ""On-field"" distribution channels for Insurance business for the organization which currently includes Life Insurance, General Insurance, Health Insurance & Card Protection Plan (CPP)."
