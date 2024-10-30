@@ -1,31 +1,151 @@
 S.No.,Company,Job ID,Function,Location,Title,Description,Posted On,Page Number
-1,Capgemini,89833-en_GB,PYTHON AUTOMATION TESTING ENGINEER | 2 to 4 YEARS | BENGALURU,Bangalore,PYTHON AUTOMATION TESTING ENGINEER | 2 to 4 YEARS | BENGALURU,Experienced Professionals,,1
-2,Capgemini,62842-en_US,AP Invoice Processing Process Expert - A,Chennai (ex Madras),AP Invoice Processing Process Expert - A,Executives,,1
-3,Capgemini,97300-en_GB,C# WPF,Bangalore,C# WPF,Experienced Professionals,,1
-4,Capgemini,62872-en_US,AP Invoice Processing Process Expert - A,Chennai (ex Madras),AP Invoice Processing Process Expert - A,Executives,,1
-5,Capgemini,62569-en_US,Geo Reporting and LFD Scope Controller - C,Kolkata (ex Calcutta),Geo Reporting and LFD Scope Controller - C,Experienced Professionals,,1
-6,Capgemini,63717-en_US,Ivalua Consultant | 4 to 6 years | Pan India,Mumbai (ex Bombay),Ivalua Consultant | 4 to 6 years | Pan India,Experienced Professionals,,1
-7,Capgemini,87054-en_GB,Business Analysis (Temenos) | 6 to 8 years | Chennai,Chennai (ex Madras),Business Analysis (Temenos) | 6 to 8 years | Chennai,Experienced Professionals,,1
-8,Capgemini,85724-en_GB,Java MS,Bangalore,Java MS,Experienced Professionals,,1
-9,Capgemini,93892-en_GB,Order To Cash- Chennai,Bangalore,Order To Cash- Chennai,Experienced Professionals,,1
-10,Capgemini,59826-en_US,Business Advisor - B,Noida,Business Advisor - B,Experienced Professionals,,1
-11,Capgemini,25870-en_US,Supply Planning,Chennai (ex Madras),Supply Planning,Experienced Professionals,,1
-12,Capgemini,87056-en_GB,Business Analysis (Capital Markets) | 6 to 8 years | Chennai,Chennai (ex Madras),Business Analysis (Capital Markets) | 6 to 8 years | Chennai,Experienced Professionals,,1
-13,Capgemini,17842-en_US,OTC- Chennai,Chennai (ex Madras),OTC- Chennai,Experienced Professionals,,1
-14,Capgemini,90535-en_GB,SAP BASIS & HANA ADMINISTRATOR | 6 to 12 years | PAN INDIA,Hyderabad,SAP BASIS & HANA ADMINISTRATOR | 6 to 12 years | PAN INDIA,Experienced Professionals,,1
-15,Capgemini,64071-en_US,C2C Cash Applications Process Expert - A,Kolkata (ex Calcutta),C2C Cash Applications Process Expert - A,Experienced Professionals,,1
-16,Capgemini,51322-en_US,"System Engineer (Active Directory Admin) | 6 to 9 Years | Mumbai, Pune & Bengaluru",Bangalore,"System Engineer (Active Directory Admin) | 6 to 9 Years | Mumbai, Pune & Bengaluru",Experienced Professionals,,1
-17,Capgemini,39665-en_US,Products & Systems Engineer - B,Bangalore,Products & Systems Engineer - B,Experienced Professionals,,1
-18,Capgemini,59809-en_US,Business Advisor - B,Noida,Business Advisor - B,Experienced Professionals,,1
-19,Capgemini,92523-en_GB,Senior Software Engineer - C,Bangalore,Senior Software Engineer - C,Experienced Professionals,,1
-20,Capgemini,38756-en_US,Salesforce Developer | 5 To 7 Years | Mumbai,Mumbai (ex Bombay),Salesforce Developer | 5 To 7 Years | Mumbai,Experienced Professionals,,1
-21,Capgemini,38745-en_US,Salesforce Developer | 3 To 5  Years | Mumbai,Mumbai (ex Bombay),Salesforce Developer | 3 To 5  Years | Mumbai,Experienced Professionals,,1
-22,Capgemini,38168-en_GB,Salesforce Developer | 1 To 3 Years | Mumbai,Mumbai (ex Bombay),Salesforce Developer | 1 To 3 Years | Mumbai,Experienced Professionals,,1
-23,Capgemini,79195-en_GB,Delivery Executive - D,Mumbai (ex Bombay),Delivery Executive - D,Experienced Professionals,,1
-24,Capgemini,22657-en_US,AP Invoice Processing Process Expert - A,Noida,AP Invoice Processing Process Expert - A,Experienced Professionals,,1
-25,Capgemini,10992-en_US,.Net Developer,"Bangalore, Noida",.Net Developer,Experienced Professionals,,1
-26,Capgemini,42938-en_US,Mainframe,Pune,Mainframe,Experienced Professionals,,1
-27,Capgemini,27297-en_US,Salesforce Developer | 7 To 9 Years | Mumbai,Noida,Salesforce Developer | 7 To 9 Years | Mumbai,Experienced Professionals,,1
-28,Capgemini,43287-en_US,Mainframe,Pune,Mainframe,Experienced Professionals,,1
-29,Capgemini,62882-en_US,AP Invoice Processing Process Expert - A,Chennai (ex Madras),AP Invoice Processing Process Expert - A,Executives,,1
-30,Capgemini,42194-en_US,Devops,Pune,Devops,Experienced Professionals,,1
+1,Capgemini,77171-en_GB,,Noida,Record to Analyze Process Expert - A,Experienced Professionals,,1
+2,Capgemini,15272-en_US,,Bangalore,Java AWS Architect,Experienced Professionals,,1
+3,Capgemini,17244-en_US,,Noida,Business Advisor - B,Experienced Professionals,,1
+4,Capgemini,57244-en_US,,Kolkata,Solution/Delivery Architect - C,Executives,,1
+5,Capgemini,46889-en_US,,Chennai (ex Madras),ServiceNow ITSM Developer | 6 to 9 years | Pan india,Experienced Professionals,,1
+6,Capgemini,26789-en_US,,Chennai (ex Madras),Snowflake Developer,Experienced Professionals,,1
+7,Capgemini,48838-en_US,,Pune,Data Analyst - B,Experienced Professionals,,1
+8,Capgemini,49067-en_US,,Bangalore,Test Automation Engineer - D,Experienced Professionals,,1
+9,Capgemini,14496-en_US,,Pune,Senior Software Engineer - C,Experienced Professionals,,1
+10,Capgemini,73497-en_GB,,Bangalore,Senior Software Engineer - C,Experienced Professionals,,1
+11,Capgemini,9770-en_US,,"Gurgaon, Pune",UX Researcher | 9 to 12 years | Pune & Gurgaon,Experienced Professionals,,1
+12,Capgemini,46553-en_US,,Pune,Mechanical & Physical Engineer  - B,Experienced Professionals,,1
+13,Capgemini,38951-en_US,,Noida,Business Advisor - B,Experienced Professionals,,1
+14,Capgemini,84233-en_GB,,Navi Mumbai,Senior Software Engineer - C,Experienced Professionals,,1
+15,Capgemini,56722-en_US,,Mumbai (ex Bombay),Senior Software Engineer | 6-9 Years | Mumbai,Executives,,1
+16,Capgemini,55929-en_US,,Navi Mumbai,Software Engineer - B,Experienced Professionals,,1
+17,Capgemini,38294-en_US,,Chennai (ex Madras),Sourcing Junior Specialist - A,Experienced Professionals,,1
+18,Capgemini,21319-en_US,,Pune,Cloud Platform Engineer - C,Experienced Professionals,,1
+19,Capgemini,60999-en_US,,Navi Mumbai,Software Engineer - B,Experienced Professionals,,1
+20,Capgemini,62858-en_US,,Chennai (ex Madras),OTC- Chennai,Executives,,1
+21,Capgemini,74280-en_GB,,Pune,IT4B SAT Support Specialist,Experienced Professionals,,1
+22,Capgemini,27392-en_US,,Chennai (ex Madras),Record to Analyze Process Expert - A,Experienced Professionals,,1
+23,Capgemini,42615-en_US,,Navi Mumbai,System Engineer (Network Security Juniper) | 6 to 12 years | Bengaluru & Mumbai,Experienced Professionals,,1
+24,Capgemini,85650-en_GB,,Pune,Learning & Development | 9 to 12 years | Pune,Experienced Professionals,,1
+25,Capgemini,59446-en_US,,Pune,Administer to Work | 5 To 7 Years | Bangalore,Experienced Professionals,,1
+26,Capgemini,97300-en_GB,,Bangalore,C# WPF,Experienced Professionals,,1
+27,Capgemini,62569-en_US,,Kolkata (ex Calcutta),Geo Reporting and LFD Scope Controller - C,Experienced Professionals,,1
+28,Capgemini,62842-en_US,,Chennai (ex Madras),AP Invoice Processing Process Expert - A,Executives,,1
+29,Capgemini,62872-en_US,,Chennai (ex Madras),AP Invoice Processing Process Expert - A,Executives,,1
+30,Capgemini,89833-en_GB,,Bangalore,PYTHON AUTOMATION TESTING ENGINEER | 2 to 4 YEARS | BENGALURU,Experienced Professionals,,1
+31,Capgemini,63717-en_US,,Mumbai (ex Bombay),Ivalua Consultant | 4 to 6 years | Pan India,Experienced Professionals,,1
+32,Capgemini,92523-en_GB,,Bangalore,Senior Software Engineer - C,Experienced Professionals,,1
+33,Capgemini,17842-en_US,,Chennai (ex Madras),OTC- Chennai,Experienced Professionals,,1
+34,Capgemini,39665-en_US,,Bangalore,Products & Systems Engineer - B,Experienced Professionals,,1
+35,Capgemini,64071-en_US,,Kolkata (ex Calcutta),C2C Cash Applications Process Expert - A,Experienced Professionals,,1
+36,Capgemini,87054-en_GB,,Chennai (ex Madras),Business Analysis (Temenos) | 6 to 8 years | Chennai,Experienced Professionals,,1
+37,Capgemini,85724-en_GB,,Bangalore,Java MS,Experienced Professionals,,1
+38,Capgemini,59826-en_US,,Noida,Business Advisor - B,Experienced Professionals,,1
+39,Capgemini,25870-en_US,,Chennai (ex Madras),Supply Planning,Experienced Professionals,,1
+40,Capgemini,87056-en_GB,,Chennai (ex Madras),Business Analysis (Capital Markets) | 6 to 8 years | Chennai,Experienced Professionals,,1
+41,Capgemini,90535-en_GB,,Hyderabad,SAP BASIS & HANA ADMINISTRATOR | 6 to 12 years | PAN INDIA,Experienced Professionals,,1
+42,Capgemini,51322-en_US,,Bangalore,"System Engineer (Active Directory Admin) | 6 to 9 Years | Mumbai, Pune & Bengaluru",Experienced Professionals,,1
+43,Capgemini,59809-en_US,,Noida,Business Advisor - B,Experienced Professionals,,1
+44,Capgemini,79195-en_GB,,Mumbai (ex Bombay),Delivery Executive - D,Experienced Professionals,,1
+45,Capgemini,42194-en_US,,Pune,Devops,Experienced Professionals,,1
+46,Capgemini,10992-en_US,,"Bangalore, Noida",.Net Developer,Experienced Professionals,,1
+47,Capgemini,38756-en_US,,Mumbai (ex Bombay),Salesforce Developer | 5 To 7 Years | Mumbai,Experienced Professionals,,1
+48,Capgemini,38745-en_US,,Mumbai (ex Bombay),Salesforce Developer | 3 To 5  Years | Mumbai,Experienced Professionals,,1
+49,Capgemini,38168-en_GB,,Mumbai (ex Bombay),Salesforce Developer | 1 To 3 Years | Mumbai,Experienced Professionals,,1
+50,Capgemini,22657-en_US,,Noida,AP Invoice Processing Process Expert - A,Experienced Professionals,,1
+51,Capgemini,42938-en_US,,Pune,Mainframe,Experienced Professionals,,1
+52,Capgemini,27297-en_US,,Noida,Salesforce Developer | 7 To 9 Years | Mumbai,Experienced Professionals,,1
+53,Capgemini,43287-en_US,,Pune,Mainframe,Experienced Professionals,,1
+54,Capgemini,38755-en_US,,Mumbai (ex Bombay),Knowledge Management | 5 To 7 Years | Mumbai,Experienced Professionals,,1
+55,Capgemini,26438-en_US,,Bangalore,Android Developer | 4 to 6 years | Bengaluru,Experienced Professionals,,1
+56,Capgemini,96622-en_GB,,Bangalore,Autosar Developer | 4 - 6 years | Bengaluru,Experienced Professionals,,1
+57,Capgemini,62836-en_US,,Chennai (ex Madras),Order To Cash- Chennai,Executives,,1
+58,Capgemini,81419-en_GB,,Bangalore,Engagement Manager,Experienced Professionals,,1
+59,Capgemini,14747-en_US,,Pune,Software Engineer,Experienced Professionals,,1
+60,Capgemini,70835-en_GB,,Hyderabad,Sales,Experienced Professionals,,1
+61,Capgemini,72513-en_GB,,Pune,GPP Testing | 8+ Years | Pune,Experienced Professionals,,1
+62,Capgemini,81321-en_GB,,Hyderabad,Mainframe,Experienced Professionals,,1
+63,Capgemini,25838-en_US,,Hyderabad,Data Analyst - B,Experienced Professionals,,1
+64,Capgemini,83553-en_GB,,Bangalore,BA Credit Risk | 4 to 6 years | Bengaluru,Experienced Professionals,,1
+65,Capgemini,26267-en_US,,Mumbai (ex Bombay),Design Analyst | 14  Years | Noida,Experienced Professionals,,1
+66,Capgemini,22818-en_US,,Noida,Creative & Design Project Manager - Mumbai,Experienced Professionals,,1
+67,Capgemini,77183-en_GB,,Noida,Record To Report- Noida,Experienced Professionals,,1
+68,Capgemini,23154-en_US,,Chennai (ex Madras),AP Invoice Processing Process Expert - A,Experienced Professionals,,1
+69,Capgemini,27506-en_US,,Chennai (ex Madras),C2C Cash Applications Process Expert - A,Experienced Professionals,,1
+70,Capgemini,22380-en_US,,Pune,Business Analyst,Experienced Professionals,,1
+71,Capgemini,77184-en_GB,,Noida,PTP | Associate | Noida,Experienced Professionals,,1
+72,Capgemini,62481-en_US,,Bangalore,Accounts Payable Expert - B,Executives,,1
+73,Capgemini,38281-en_US,,Chennai (ex Madras),C2C Cash Applications Process Expert - A,Experienced Professionals,,1
+74,Capgemini,17751-en_US,,Mumbai (ex Bombay),Business Advisor - A,Experienced Professionals,,1
+75,Capgemini,12504-en_US,,Mumbai (ex Bombay),Python Automation Testing,Executives,,1
+76,Capgemini,10252-en_US,,Pune,Business Analytics,Experienced Professionals,,1
+77,Capgemini,59433-en_US,,Pune,L2P Learning | 1 To 3 Years | Pune,Experienced Professionals,,1
+78,Capgemini,62671-en_US,,Bangalore,Associate | Fresher | A2,Experienced Professionals,,1
+79,Capgemini,17774-en_US,,Kolkata,C2C Cash Applications Process Expert - A,Experienced Professionals,,1
+80,Capgemini,64131-en_US,,Kolkata (ex Calcutta),Invoice Management - A,Experienced Professionals,,1
+81,Capgemini,62476-en_US,,Bangalore,Accounts Payable Expert - B,Executives,,1
+82,Capgemini,59760-en_US,,Noida,Business Advisor - A,Experienced Professionals,,1
+83,Capgemini,74499-en_GB,,Bangalore,Industrial Operations Engineer - B,Experienced Professionals,,1
+84,Capgemini,22662-en_US,,Noida,AP Invoice Processing Process Expert - A,Experienced Professionals,,1
+85,Capgemini,38851-en_US,,Kolkata (ex Calcutta),ORDER TO CASH | 3 TO 5 YEARS | KOLKATA,Experienced Professionals,,1
+86,Capgemini,22801-en_US,,Pune,Application Consultant - C,Experienced Professionals,,1
+87,Capgemini,26289-en_US,,Bangalore,Business Advisor - A,Experienced Professionals,,1
+88,Capgemini,17746-en_US,,Mumbai (ex Bombay),Business Advisor - A,Experienced Professionals,,1
+89,Capgemini,62692-en_US,,Noida,Record to Analyze Process Expert - A,Experienced Professionals,,1
+90,Capgemini,27359-en_US,,Tiruchirapalli,C2C Cash Applications Process Expert - A,Experienced Professionals,,1
+91,Capgemini,76981-en_GB,,Kolkata (ex Calcutta),AP Invoice Processing Process Expert - A,Experienced Professionals,,1
+92,Capgemini,62581-en_US,,Kolkata (ex Calcutta),Accounts Receivable | 7 to 9 years | Kolkata,Experienced Professionals,,1
+93,Capgemini,12885-en_US,,Noida,ServiceNow Developer | 6 to 9 years | Pan India,Experienced Professionals,,1
+94,Capgemini,60903-en_US,,Pune,Java Angular | 4 to 8 years | Pune & Hyderabad,Experienced Professionals,,1
+95,Capgemini,72855-en_GB,,Mumbai (ex Bombay),SAP ECSC | 4 to 6 years | Pan India,Experienced Professionals,,1
+96,Capgemini,24446-en_US,,Chennai (ex Madras),Business Advisor - B,Experienced Professionals,,1
+97,Capgemini,59756-en_US,,Noida,Business Advisor - A,Experienced Professionals,,1
+98,Capgemini,13973-en_US,,Bangalore,Systems Engineer - C,Experienced Professionals,,1
+99,Capgemini,62828-en_US,,Chennai (ex Madras),AP Invoice Processing Process Expert - A,Executives,,1
+100,Capgemini,60895-en_US,,Pune,Angular | 4 to 8 years | Pune & Hyderabad,Experienced Professionals,,1
+101,Capgemini,74022-en_GB,,Gurgaon,Senior Software Engineer - C,Experienced Professionals,,1
+102,Capgemini,90534-en_GB,,Mumbai (ex Bombay),Infrastructure Operations,Experienced Professionals,,1
+103,Capgemini,59825-en_US,,Noida,Business Advisor - C,Experienced Professionals,,1
+104,Capgemini,59823-en_US,,Noida,Business Advisor - C,Experienced Professionals,,1
+105,Capgemini,26285-en_US,,Bangalore,Business Advisor - A,Experienced Professionals,,1
+106,Capgemini,39024-en_US,,Chennai (ex Madras),Order To Cash- Chennai,Executives,,1
+107,Capgemini,80595-en_GB,,Mumbai (ex Bombay),Infrastructure Operations,Experienced Professionals,,1
+108,Capgemini,74119-en_GB,,Mumbai (ex Bombay),Systems Engineer - C,Experienced Professionals,,1
+109,Capgemini,23498-en_US,,Mumbai (ex Bombay),"System Engineer (Linux Administrator) | 6 to 9 years | Bengaluru, Mumbai & Pune",Experienced Professionals,,1
+110,Capgemini,83516-en_GB,,Bangalore,Interface VIP Autosar | 6 to 9 years | Bengaluru,Experienced Professionals,,1
+111,Capgemini,19301-en_US,,Pune,Data Scientist,Experienced Professionals,,1
+112,Capgemini,64598-en_US,,Pune,Senior Software Engineer - C,Experienced Professionals,,1
+113,Capgemini,26149-en_US,,Noida,Sourcing Junior Specialist - A,Experienced Professionals,,1
+114,Capgemini,62718-en_US,,Noida,Record to Analyze Process Expert - A,Experienced Professionals,,1
+115,Capgemini,83531-en_GB,,Pune,Android Middleware | 6 to 9 years | Pune,Experienced Professionals,,1
+116,Capgemini,63030-en_US,,Kolkata (ex Calcutta),Process Lead | 5 to 7 Years | B1,Experienced Professionals,,1
+117,Capgemini,62830-en_US,,Chennai (ex Madras),AP Invoice Processing Process Expert - A,Executives,,1
+118,Capgemini,73220-en_GB,,Hyderabad,Mainframe,Experienced Professionals,,1
+119,Capgemini,24381-en_US,,Chennai (ex Madras),Record to Analyze Process Expert - B,Experienced Professionals,,1
+120,Capgemini,74295-en_GB,,Hyderabad,Guidewire Developer | 6 to 12 years | PAN India,Experienced Professionals,,1
+121,Capgemini,94543-en_GB,,Pune,Data Engineer - C,Experienced Professionals,,1
+122,Capgemini,56897-en_US,,Bangalore,Support | 4 to 9 Yrs | Bangalore,Experienced Professionals,,1
+123,Capgemini,54914-en_US,,Bangalore,Performance Test Engineer - B,Experienced Professionals,,1
+124,Capgemini,63025-en_US,,Kolkata (ex Calcutta),Geo Reporting and LFD Scope Controller - C,Experienced Professionals,,1
+125,Capgemini,73195-en_GB,,Hyderabad,Mainframe,Experienced Professionals,,1
+126,Capgemini,81365-en_GB,,"Bangalore, Chennai (ex Madras)",Mainframe,Experienced Professionals,,1
+127,Capgemini,12817-en_US,,Bangalore,Industrial Operations Engineer  || 4 to 6 Years || Bangalore,Experienced Professionals,,1
+128,Capgemini,23451-en_US,,Bangalore,Market Research | 6 to 12 Years | Bengaluru,Experienced Professionals,,1
+129,Capgemini,12715-en_US,,Pune,ServiceNow ITSM Developer | 6 to 12  Years | Pan India,Experienced Professionals,,1
+130,Capgemini,86438-en_GB,,Bangalore,Test Automation Engineer - B,Experienced Professionals,,1
+131,Capgemini,62778-en_US,,Noida,C2C Cash Applications Process Expert - A,Experienced Professionals,,1
+132,Capgemini,88934-en_GB,,Pune,Industrial Operations Engineer - C,Experienced Professionals,,1
+133,Capgemini,35813-en_US,,Bangalore,Linux Admin | 3-6 Years | Bangalore,Experienced Professionals,,1
+134,Capgemini,54930-en_US,,Pune,Selenium +Java +API 6years Bangalore,Experienced Professionals,,1
+135,Capgemini,35820-en_US,,Bangalore,Windows Server Admin | 5 To 8 | Bengaluru,Experienced Professionals,,1
+136,Capgemini,81354-en_GB,,Bangalore,Mainframe,Experienced Professionals,,1
+137,Capgemini,35814-en_US,,Bangalore,Linux Admin | 3-6 Years | Bangalore,Experienced Professionals,,1
+138,Capgemini,86925-en_GB,,Bangalore,BSP,Experienced Professionals,,1
+139,Capgemini,26059-en_US,,Noida,Strategy & Transformation Consultant - B,Experienced Professionals,,1
+140,Capgemini,81496-en_GB,,Hyderabad,Software Engineer,Experienced Professionals,,1
+141,Capgemini,79752-en_GB,,Bangalore,BUSINESS VALUE LEADERS | 8 to 12 YEARS | PAN INDIA,Experienced Professionals,,1
+142,Capgemini,85818-en_GB,,Pune,.Net Developer,Experienced Professionals,,1
+143,Capgemini,73535-en_GB,,Mumbai (ex Bombay),Software Engineer,Experienced Professionals,,1
+144,Capgemini,57300-en_US,,Noida,Connectivity & Network Engineer - C,Experienced Professionals,,1
+145,Capgemini,62864-en_US,,Chennai (ex Madras),Order To Cash- Chennai,Executives,,1
+146,Capgemini,76448-en_GB,,Bangalore,HR Operational Excellence Analyst -A,Experienced Professionals,,1
+147,Capgemini,38945-en_US,,Noida,Business Advisor - B,Experienced Professionals,,1
+148,Capgemini,59551-en_US,,Mumbai (ex Bombay),Business Advisor - A,Experienced Professionals,,1
+149,Capgemini,50357-en_US,,Bangalore,Products & Systems Engineer - C,Experienced Professionals,,1
+150,Capgemini,10983-en_US,,Bangalore,.Net Developer,Experienced Professionals,,1

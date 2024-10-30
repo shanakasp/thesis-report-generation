@@ -42,10 +42,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
           sno: null, // to be set later
           company: "Capgemini",
           jobId: job.getAttribute("href").split("/")[2].replace("+sap_btp", ""),
-          function:
-            job
-              .querySelector("div.table-td:nth-child(1) > div")
-              ?.textContent.trim() || "",
+          function: "",
           location:
             job
               .querySelector("div.table-td:nth-child(3) > div")
@@ -64,7 +61,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       }, currentPage);
 
       if (jobs.length === 0) {
-        console.log(`No jobs found on page ${currentPage}. Stopping.`);
+        console.log(`Ending scrapping. Stopped.`);
         break;
       }
 
