@@ -183,13 +183,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
 
             const enhancedFunction = `${simplifiedFunction} | Experience: ${experienceText} | Skills: ${skills}`;
 
-            const description = [
-              `Department: ${functionText}`,
-              `Required Experience: ${experienceText}`,
-              `Required Skills: ${skills}`,
-            ]
-              .filter(Boolean)
-              .join("\n");
+            const description = [` ${functionText}`].filter(Boolean).join("\n");
 
             const postedDateText = getTextContent(".last-child .link2");
 
