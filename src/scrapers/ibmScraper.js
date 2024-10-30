@@ -3,6 +3,54 @@ const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const path = require("path");
 const fs = require("fs").promises;
 
+async function scrapeJobDescription(page, jobUrl) {
+  try {
+    await page.goto(jobUrl, { waitUntil: "networkidle0" });
+
+    // Wait for the description element to load
+    await page.waitForSelector(".jd-description", { timeout: 10000 });
+
+    // Extract the full description
+    const description = await page.evaluate(() => {
+      const descElement = document.querySelector(".jd-description");
+      if (!descElement) return "";
+
+      // Get all text content, preserving basic formatting
+      const processNode = (node) => {
+        let result = "";
+
+        // Handle different node types
+        if (node.nodeType === Node.TEXT_NODE) {
+          result += node.textContent.trim() + " ";
+        } else if (node.nodeName === "BR") {
+          result += "\n";
+        } else if (node.nodeName === "LI") {
+          result += "\n• " + node.textContent.trim();
+        } else if (node.nodeName === "P") {
+          result += "\n" + node.textContent.trim() + "\n";
+        } else {
+          // Recursively process child nodes
+          for (const child of node.childNodes) {
+            result += processNode(child);
+          }
+        }
+
+        return result;
+      };
+
+      return processNode(descElement)
+        .replace(/\s+/g, " ")
+        .replace(/\n\s+/g, "\n")
+        .trim();
+    });
+
+    return description;
+  } catch (error) {
+    console.error(`Error scraping job description: ${error.message}`);
+    return "Failed to load description";
+  }
+}
+
 async function scrapeJobs(baseUrl, startPage, endPage) {
   const outputDir = path.join(__dirname, "../output");
   await fs.mkdir(outputDir, { recursive: true });
@@ -46,8 +94,8 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         .waitForSelector(".bx--card__content", { timeout: 10000 })
         .catch(() => null);
 
-      // Extract job details
-      const jobs = await page.evaluate(async (pageNum) => {
+      // Extract job details - now passing currentPage as a parameter
+      const jobs = await page.evaluate((pageNum) => {
         const jobCards = document.querySelectorAll(
           ".bx--card-group__cards__col"
         );
@@ -57,10 +105,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
           const link = card.querySelector("a");
           if (!link) continue;
 
-          // Get the job URL
           const jobUrl = link.href;
-
-          // Extract the Req ID from the URL (assuming it's in the format /job/21205795/)
           const reqIdMatch = jobUrl.match(/\/job\/(\d+)\//);
           const jobId = reqIdMatch ? reqIdMatch[1] : "";
 
@@ -75,37 +120,44 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
           let location = "";
 
           if (innerDetails) {
-            const text = innerDetails.innerHTML; // Use innerHTML to retain the <br> tag
-            const parts = text.split("<br>").map((part) => part.trim()); // Split by <br> and trim spaces
-            professionalLevel = parts[0] || ""; // First part is the professional level
-            location = parts[1]
-              ? parts[1]
-                  .replace()
-                  .replace(/,\s*IN/g, "")
-                  .trim()
-              : ""; // Remove "Multiple Cities" and ", IN"
+            const text = innerDetails.innerHTML;
+            const parts = text.split("<br>").map((part) => part.trim());
+            professionalLevel = parts[0] || "";
+            location = parts[1] ? parts[1].replace(/,\s*IN/g, "").trim() : "";
           }
 
           jobDetails.push({
             company: "IBM",
-            jobId: `REQ${jobId}`, // Format as REQ followed by the number
+            jobId: `REQ${jobId}`,
             function: titleElement ? titleElement.textContent.trim() : "",
             location: location,
             title: functionElement ? functionElement.textContent.trim() : "",
-            description: professionalLevel, // Set description to professional level
+            description: "",
             postedOn: new Date().toISOString().split("T")[0],
             page: pageNum,
+            url: jobUrl,
           });
         }
 
         return jobDetails;
-      }, currentPage);
+      }, currentPage); // Pass currentPage as an argument to evaluate
 
       // If no jobs are found, stop the loop
       if (jobs.length === 0) {
         console.log(`No jobs found on page ${currentPage}. Stopping.`);
         hasMoreJobs = false;
         break;
+      }
+
+      // Fetch detailed description for each job
+      for (const job of jobs) {
+        console.log(`Fetching description for job ${job.jobId}...`);
+        const description = await scrapeJobDescription(page, job.url);
+        job.description = description;
+        delete job.url; // Remove URL before saving to CSV
+
+        // Add delay between job description requests
+        await new Promise((resolve) => setTimeout(resolve, 1000));
       }
 
       // Write data to CSV and update globalCounter
