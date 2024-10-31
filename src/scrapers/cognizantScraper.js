@@ -26,7 +26,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
     headless: "new",
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
-  const page = await browser.newPage();
+
   let globalCounter = 0;
 
   try {
@@ -36,34 +36,53 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
     while (hasMoreJobs && (!endPage || currentPage <= endPage)) {
       console.log(`Scraping page ${currentPage}...`);
 
+      // Create new page for listings
+      const listingsPage = await browser.newPage();
+      await listingsPage.setDefaultNavigationTimeout(60000);
+      await listingsPage.setDefaultTimeout(30000);
+
       const pageUrl = `${baseUrl}/?page=${currentPage}&location=India&radius=100&cname=India&ccode=IN&pagesize=10#results`;
-      await page.goto(pageUrl, { waitUntil: "networkidle0" });
+
+      // Navigate to the listings page
+      await listingsPage.goto(pageUrl, {
+        waitUntil: "networkidle0",
+        timeout: 60000,
+      });
 
       // Wait for job cards to load
-      await page
-        .waitForSelector(".card-job", { timeout: 10000 })
-        .catch(() => null);
+      await listingsPage
+        .waitForSelector(".card.card-job", { timeout: 30000 })
+        .catch(() => {
+          console.log("No job cards found on page");
+          return null;
+        });
 
       // Extract basic job details from listing page
-      const jobListings = await page.evaluate((pageNum) => {
-        const cards = document.querySelectorAll(".card-job");
+      const jobListings = await listingsPage.evaluate((pageNum) => {
+        const cards = document.querySelectorAll(".card.card-job");
         return Array.from(cards).map((card) => {
           const link = card.querySelector(".card-title a");
-          const meta = card.querySelector(".job-meta");
+          const metaItems = card.querySelectorAll(
+            ".job-meta .list-inline-item"
+          );
+          const jobIdElement = card.querySelector(".card-job-actions");
+
           return {
             company: "Cognizant",
-            title: link?.textContent.trim() || "",
+            title: link?.textContent?.trim() || "",
             detailUrl: link?.href || "",
-            location: meta?.children[0]?.textContent.trim() || "",
-            function: meta?.children[1]?.textContent.trim() || "",
-            jobId: card.querySelector(".card-job-actions")?.dataset?.id || "",
+            location: metaItems[0]?.textContent?.trim() || "",
+            function: metaItems[1]?.textContent?.trim() || "",
+            jobId: jobIdElement?.dataset?.id || "",
             page: pageNum,
           };
         });
       }, currentPage);
 
+      await listingsPage.close();
+
       // If no jobs are found, stop the loop
-      if (jobListings.length === 0) {
+      if (!jobListings.length) {
         console.log(`No jobs found on page ${currentPage}. Stopping.`);
         hasMoreJobs = false;
         break;
@@ -74,23 +93,38 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         try {
           if (jobListings[i].detailUrl) {
             const detailPage = await browser.newPage();
+            await detailPage.setDefaultNavigationTimeout(60000);
+            await detailPage.setDefaultTimeout(30000);
+
             await detailPage.goto(jobListings[i].detailUrl, {
               waitUntil: "networkidle0",
+              timeout: 60000,
+            });
+
+            // Wait for content to load
+            await detailPage.waitForSelector(".cms-content", {
+              timeout: 30000,
             });
 
             // Extract additional details from the job detail page
             const details = await detailPage.evaluate(() => {
-              const description =
-                document
-                  .querySelector(".job-description p")
-                  ?.textContent.replace(/<o:p><\/o:p>|<o:p> <\/o:p>/g, "")
-                  .trim() || "";
+              // Get description
+              const descriptionContent = document.querySelector(".cms-content");
+              const description = descriptionContent
+                ? descriptionContent.innerText
+                    .replace(/\s+/g, " ")
+                    .replace(/\n+/g, "\n")
+                    .trim()
+                : "";
 
-              const jobMeta = document.querySelector(".job-meta");
-              const postedDate =
-                Array.from(jobMeta?.querySelectorAll("dt"))
-                  .find((dt) => dt.textContent.trim() === "Date published:")
-                  ?.nextElementSibling?.textContent.trim() || "";
+              // Get posted date
+              const dateElements = document.querySelectorAll("dt");
+              const dateLabel = Array.from(dateElements).find((el) =>
+                el.textContent.trim().toLowerCase().includes("date")
+              );
+              const postedDate = dateLabel
+                ? dateLabel.nextElementSibling?.textContent?.trim()
+                : "";
 
               return {
                 description,
@@ -98,33 +132,41 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
               };
             });
 
-            jobListings[i].description = details.description;
-            jobListings[i].postedOn = details.postedOn;
+            jobListings[i].description =
+              details.description || "No description available";
+            jobListings[i].postedOn = details.postedOn || "";
 
             await detailPage.close();
+
+            console.log(
+              `Successfully scraped details for: ${jobListings[i].title}`
+            );
           }
         } catch (error) {
-          console.error(`Error getting job details: ${error.message}`);
+          console.error(
+            `Error getting job details for ${jobListings[i].title}: ${error.message}`
+          );
           jobListings[i].description = "Error fetching details";
           jobListings[i].postedOn = "";
         }
 
         // Add delay between detail page requests
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 2000));
       }
 
       // Write data to CSV and update globalCounter
       await csvWriter.writeRecords(
-        jobListings.map((job, idx) => ({
+        jobListings.map((job) => ({
           ...job,
-          sno: globalCounter + idx + 1,
+          sno: ++globalCounter,
         }))
       );
 
-      globalCounter += jobListings.length;
-      console.log(`Scraped Jobs from Cognizant Page ${currentPage}`);
+      console.log(
+        `Scraped ${jobListings.length} jobs from Cognizant Page ${currentPage}`
+      );
 
-      // Add delay between pages to avoid rate limiting
+      // Add delay between pages
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
       currentPage++;
@@ -137,6 +179,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   }
 
   console.log(`Scraping complete. Total jobs scraped: ${globalCounter}`);
+  return globalCounter;
 }
 
 module.exports = { scrapeJobs };
