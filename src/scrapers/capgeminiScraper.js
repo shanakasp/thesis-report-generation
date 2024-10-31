@@ -17,30 +17,11 @@ async function scrapeJobDetails(page, jobId) {
     await page.waitForSelector(".article-text", { timeout: 5000 });
 
     const jobDetails = await page.evaluate(() => {
-      // Get job description
-      const descriptions = Array.from(
-        document.querySelectorAll(
-          '.article-text div[style="padding:10.0px 0.0px;border:1.0px solid transparent"]'
-        )
-      )
-        .filter((div) => {
-          const header = div.querySelector("h2");
-          return (
-            header &&
-            (header.textContent.includes("Job Description") ||
-              header.textContent.includes("Grade Specific"))
-          );
-        })
-        .map((div) => {
-          const content = div.querySelector(
-            'div:not([style*="font-size:16.0px"])'
-          );
-          return content ? content.textContent.trim() : "";
-        })
-        .filter((text) => text)
-        .join("\n\n");
+      // Get the entire content of article-text
+      const articleText = document.querySelector(".article-text");
+      const description = articleText ? articleText.textContent.trim() : "";
 
-      // Get posted date - specifically looking for the "Posted on" label
+      // Get posted date
       const postedDateElement = Array.from(
         document.querySelectorAll(".job-meta-box-detail")
       ).find(
@@ -52,7 +33,7 @@ async function scrapeJobDetails(page, jobId) {
         : "";
 
       return {
-        description: descriptions,
+        description: description,
         postedDate: postedDate,
       };
     });
@@ -129,11 +110,10 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       });
 
       if (jobs.length === 0) {
-        console.log(`No more jobs found on Withing Range. Stopping.`);
+        console.log(`No more jobs found within Range. Stopping.`);
         break;
       }
 
-      // Fetch detailed information for each job
       const jobsWithDetails = [];
       for (const job of jobs) {
         try {
@@ -152,7 +132,6 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
             page: currentPage,
           });
 
-          // Add a small delay between requests
           await new Promise((resolve) => setTimeout(resolve, 2000));
         } catch (error) {
           console.error(`Error processing job ${job.jobId}:`, error);
