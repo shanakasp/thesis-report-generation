@@ -1,210 +1,215 @@
-const puppeteer = require("puppeteer");
+const { Builder, By, Key, until } = require("selenium-webdriver");
+const chrome = require("selenium-webdriver/chrome");
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const path = require("path");
+
 const fs = require("fs").promises;
 
+// Helper function for delays
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 async function scrapeJobs(baseUrl, startPage, endPage) {
+  // Setup output directory
   const outputDir = path.join(__dirname, "../output");
   await fs.mkdir(outputDir, { recursive: true });
 
-  const csvWriter = createCsvWriter({
-    path: path.join(outputDir, "Cognizant.csv"),
-    header: [
-      { id: "sno", title: "S.No." },
-      { id: "company", title: "Company" },
-      { id: "jobId", title: "Job ID" },
-      { id: "function", title: "Function" },
-      { id: "location", title: "Location" },
-      { id: "title", title: "Title" },
-      { id: "description", title: "Description" },
-      { id: "postedOn", title: "Posted On" },
-      { id: "page", title: "Page Number" },
-    ],
-  });
+  // Configure Chrome options
+  const options = new chrome.Options();
+  options.addArguments("--no-sandbox");
+  options.addArguments("--disable-dev-shm-usage");
+  options.addArguments("--disable-gpu");
+  options.addArguments("--window-size=1920,1080");
+  options.addArguments("--disable-blink-features=AutomationControlled");
+  options.addArguments(
+    "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+  );
 
-  const browser = await puppeteer.launch({
-    headless: "new",
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+  // Create WebDriver
+  const driver = await new Builder()
+    .forBrowser("chrome")
+    .setChromeOptions(options)
+    .build();
 
-  let globalCounter = 0;
-  const seenJobIds = new Set();
+  // Consolidated job list for single CSV
+  const allJobs = [];
 
   try {
-    let currentPage = startPage;
-    let hasMoreJobs = true;
-    let consecutiveEmptyPages = 0;
+    // Function to navigate to a specific page
+    async function navigateToPage(pageNumber) {
+      const pageUrl = `${baseUrl}/?page=${pageNumber}&location=India&radius=100&cname=India&ccode=IN&pagesize=10#results`;
+      await driver.get(pageUrl);
+      await driver.wait(until.elementLocated(By.css(".card.card-job")), 10000);
+      await delay(2000); // Additional wait for page to stabilize
+    }
 
-    while (hasMoreJobs && (!endPage || currentPage <= endPage)) {
+    // Function to get total number of pages
+    async function getTotalPages() {
+      try {
+        const pageLinks = await driver.findElements(
+          By.css("li.page-item:not(.next):not(.prev):not(.elipsis) a.page-link")
+        );
+
+        if (pageLinks.length > 0) {
+          const lastPageLink = pageLinks[pageLinks.length - 1];
+          const lastPageNumber = await lastPageLink.getText();
+          return parseInt(lastPageNumber);
+        }
+        return 1;
+      } catch (error) {
+        console.error("Error getting total pages:", error);
+        return 1;
+      }
+    }
+
+    // Initial navigation
+    await navigateToPage(startPage);
+
+    // Determine total pages and effective end page
+    const totalPages = await getTotalPages();
+    const effectiveEndPage = endPage
+      ? Math.min(endPage, totalPages)
+      : totalPages;
+
+    console.log(`Total pages available: ${totalPages}`);
+    console.log(`Scraping from page ${startPage} to ${effectiveEndPage}`);
+
+    // Scrape pages
+    for (
+      let currentPage = startPage;
+      currentPage <= effectiveEndPage;
+      currentPage++
+    ) {
       console.log(`Scraping page ${currentPage}...`);
 
-      const listingsPage = await browser.newPage();
-      await listingsPage.setDefaultNavigationTimeout(60000);
-      await listingsPage.setDefaultTimeout(30000);
+      // Wait for job listings
+      await driver.wait(until.elementLocated(By.css(".card.card-job")), 10000);
 
-      const pageUrl = `${baseUrl}/?page=${currentPage}&location=India&radius=100&cname=India&ccode=IN&pagesize=10#results`;
+      // Scrape jobs on current page
+      const jobElements = await driver.findElements(By.css(".card.card-job"));
 
-      await listingsPage.goto(pageUrl, {
-        waitUntil: "networkidle0",
-        timeout: 60000,
-      });
-
-      // Delay instead of `waitForTimeout`
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      const currentUrl = await listingsPage.url();
-      console.log(`Current URL: ${currentUrl}`);
-
-      const jobCardsPresent = await listingsPage
-        .waitForSelector(".card.card-job", {
-          timeout: 30000,
-        })
-        .catch(() => false);
-
-      if (!jobCardsPresent) {
-        console.log(`No job cards found on page ${currentPage}`);
-        consecutiveEmptyPages++;
-        if (consecutiveEmptyPages >= 3) {
-          console.log("Three consecutive empty pages found. Stopping scraper.");
-          hasMoreJobs = false;
-          break;
-        }
-        currentPage++;
-        await listingsPage.close();
-        continue;
-      }
-
-      consecutiveEmptyPages = 0;
-
-      const jobListings = await listingsPage.evaluate((pageNum) => {
-        const cards = document.querySelectorAll(".card.card-job");
-        return Array.from(cards).map((card) => {
-          const link = card.querySelector(".card-title a");
-          const metaItems = card.querySelectorAll(
-            ".job-meta .list-inline-item"
-          );
-          const jobIdElement = card.querySelector(".card-job-actions");
-
-          return {
-            company: "Cognizant",
-            title: link?.textContent?.trim() || "",
-            detailUrl: link?.href || "",
-            location: metaItems[0]?.textContent?.trim() || "",
-            function: metaItems[1]?.textContent?.trim() || "",
-            jobId: jobIdElement?.dataset?.id || "",
-            page: pageNum,
-          };
-        });
-      }, currentPage);
-
-      await listingsPage.close();
-
-      const newJobListings = jobListings.filter((job) => {
-        if (!job.jobId || seenJobIds.has(job.jobId)) {
-          return false;
-        }
-        seenJobIds.add(job.jobId);
-        return true;
-      });
-
-      if (newJobListings.length === 0) {
-        console.log(`No new unique jobs found on page ${currentPage}`);
-        consecutiveEmptyPages++;
-        if (consecutiveEmptyPages >= 3) {
-          console.log(
-            "Three consecutive pages with no new jobs. Stopping scraper."
-          );
-          hasMoreJobs = false;
-          break;
-        }
-        currentPage++;
-        continue;
-      }
-
-      console.log(
-        `Found ${newJobListings.length} new unique jobs on page ${currentPage}`
-      );
-
-      for (const job of newJobListings) {
+      for (const [index, jobElement] of jobElements.entries()) {
         try {
-          if (job.detailUrl) {
-            const detailPage = await browser.newPage();
-            await detailPage.setDefaultNavigationTimeout(60000);
-            await detailPage.setDefaultTimeout(30000);
+          // Clean location helper
+          const cleanLocation = (location) => {
+            if (!location) return "";
+            const parts = location.split(",");
+            return parts.length > 0 ? parts[0].trim() : location.trim();
+          };
 
-            await detailPage.goto(job.detailUrl, {
-              waitUntil: "networkidle0",
-              timeout: 60000,
-            });
-
-            await detailPage.waitForSelector(".cms-content", {
-              timeout: 30000,
-            });
-
-            const details = await detailPage.evaluate(() => {
-              const descriptionContent = document.querySelector(".cms-content");
-              const description = descriptionContent
-                ? descriptionContent.innerText
-                    .replace(/\s+/g, " ")
-                    .replace(/\n+/g, "\n")
-                    .trim()
-                : "";
-
-              const dateElements = document.querySelectorAll("dt");
-              const dateLabel = Array.from(dateElements).find((el) =>
-                el.textContent.trim().toLowerCase().includes("date")
-              );
-              const postedDate = dateLabel
-                ? dateLabel.nextElementSibling?.textContent?.trim()
-                : "";
-
-              return {
-                description,
-                postedOn: postedDate,
-              };
-            });
-
-            job.description = details.description || "No description available";
-            job.postedOn = details.postedOn || "";
-
-            await detailPage.close();
-            console.log(`Successfully scraped details for: ${job.title}`);
-          }
-        } catch (error) {
-          console.error(
-            `Error getting job details for ${job.title}: ${error.message}`
+          // Extract job details
+          const titleElement = await jobElement.findElement(
+            By.css("h2.card-title a")
           );
-          job.description = "Error fetching details";
-          job.postedOn = "";
-        }
+          const jobUrl = await titleElement.getAttribute("href");
+          const jobId = jobUrl.split("/jobs/")[1].split("/")[0];
+          const jobTitle = await titleElement.getText();
 
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+          // Location and Function
+          const metaElements = await jobElement.findElements(
+            By.css("ul.job-meta li.list-inline-item")
+          );
+
+          let location = "";
+          let jobFunction = "";
+
+          if (metaElements.length > 0) {
+            location = await metaElements[0].getText();
+            location = cleanLocation(location);
+
+            if (metaElements.length > 1) {
+              jobFunction = await metaElements[1].getText();
+            }
+          }
+
+          // Push job details to consolidated list
+          allJobs.push({
+            sno: allJobs.length + 1,
+            company: "Cognizant",
+            jobId: jobId,
+            function: jobFunction,
+            location: location,
+            title: jobTitle,
+            description: "", // Description extraction not implemented in this version
+            postedOn: "", // Posted date extraction not implemented in this version
+            page: currentPage,
+          });
+        } catch (jobError) {
+          console.error(
+            `Error processing job element on page ${currentPage}:`,
+            jobError
+          );
+        }
       }
 
-      await csvWriter.writeRecords(
-        newJobListings.map((job) => ({
-          ...job,
-          sno: ++globalCounter,
-        }))
-      );
+      // Move to next page if not on last page
+      if (currentPage < effectiveEndPage) {
+        try {
+          // Use JavaScript to scroll to and click next button
+          const nextButton = await driver.findElement(
+            By.css("li.page-item.next a.page-link")
+          );
 
-      console.log(
-        `Scraped ${newJobListings.length} new jobs from page ${currentPage}`
-      );
-      console.log(`Total unique jobs scraped so far: ${globalCounter}`);
+          // Scroll to the next button first
+          await driver.executeScript(
+            "arguments[0].scrollIntoView(true);",
+            nextButton
+          );
+          await delay(500); // Short delay after scrolling
 
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-      currentPage++;
+          // Use JavaScript click to avoid potential interception
+          await driver.executeScript("arguments[0].click();", nextButton);
+
+          // Wait for next page to load
+          await driver.wait(
+            until.elementLocated(By.css(".card.card-job")),
+            10000
+          );
+          await delay(2000); // Additional stabilization delay
+        } catch (navError) {
+          console.error("Error navigating to next page:", navError);
+
+          // Fallback: Try direct page navigation
+          try {
+            await navigateToPage(currentPage + 1);
+          } catch (fallbackError) {
+            console.error("Fallback navigation failed:", fallbackError);
+            break;
+          }
+        }
+      }
     }
+
+    // Configure CSV Writer for single file
+    const csvWriter = createCsvWriter({
+      path: path.join(outputDir, "Cognizant.csv"),
+      header: [
+        { id: "sno", title: "S.No." },
+        { id: "company", title: "Company" },
+        { id: "jobId", title: "Job ID" },
+        { id: "function", title: "Function" },
+        { id: "location", title: "Location" },
+        { id: "title", title: "Title" },
+        { id: "description", title: "Description" },
+        { id: "postedOn", title: "Posted On" },
+        { id: "page", title: "Page Number" },
+      ],
+    });
+
+    // Write all jobs to single CSV
+    if (allJobs.length > 0) {
+      await csvWriter.writeRecords(allJobs);
+      console.log(`Saved ${allJobs.length} jobs to Cognizant.csv`);
+    } else {
+      console.log("No jobs found during scraping.");
+    }
+
+    console.log("Scraping completed successfully.");
   } catch (error) {
-    console.error(`Error scraping jobs: ${error.message}`);
+    console.error(`Critical error during scraping: ${error.message}`);
     throw error;
   } finally {
-    await browser.close();
+    await driver.quit();
   }
-
-  console.log(`Scraping complete. Total unique jobs scraped: ${globalCounter}`);
-  return globalCounter;
 }
 
 module.exports = { scrapeJobs };

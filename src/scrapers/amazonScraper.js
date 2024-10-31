@@ -1,207 +1,245 @@
-const puppeteer = require("puppeteer");
+const { Builder, By, Key, until } = require("selenium-webdriver");
+const chrome = require("selenium-webdriver/chrome");
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const path = require("path");
+
 const fs = require("fs").promises;
 
 // Helper function for delays
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function scrapeJobs(baseUrl, startPage, endPage) {
+  // Setup output directory
   const outputDir = path.join(__dirname, "../output");
   await fs.mkdir(outputDir, { recursive: true });
 
-  const csvWriter = createCsvWriter({
-    path: path.join(outputDir, "Amazon.csv"),
-    header: [
-      { id: "sno", title: "S.No." },
-      { id: "company", title: "Company" },
-      { id: "jobId", title: "Job ID" },
-      { id: "function", title: "Function" },
-      { id: "location", title: "Location" },
-      { id: "title", title: "Title" },
-      { id: "description", title: "Description" },
-      { id: "postedOn", title: "Posted On" },
-      { id: "page", title: "Page Number" },
-    ],
-  });
+  // Configure Chrome options
+  const options = new chrome.Options();
+  options.addArguments("--no-sandbox");
+  options.addArguments("--disable-dev-shm-usage");
+  options.addArguments("--disable-gpu");
+  options.addArguments("--window-size=1920,1080");
 
-  const browser = await puppeteer.launch({
-    headless: "new",
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    defaultViewport: { width: 1920, height: 1080 },
-  });
+  // Create WebDriver
+  const driver = await new Builder()
+    .forBrowser("chrome")
+    .setChromeOptions(options)
+    .build();
 
-  const page = await browser.newPage();
-  let globalCounter = 0;
+  // Consolidated job list for single CSV
+  const allJobs = [];
 
   try {
-    // Navigate to the initial page
-    await page.goto(baseUrl, { waitUntil: "networkidle0" });
-    let currentPage = startPage || 1;
+    // Navigate to initial page
+    await driver.get(baseUrl);
+
+    // Wait for initial page load
+    await driver.wait(
+      until.elementLocated(By.css('li div[role="button"]')),
+      10000
+    );
 
     // Function to get total number of pages
-    const getTotalPages = async () => {
+    async function getTotalPages() {
       try {
-        await page.waitForSelector('nav[aria-label="Page selection"]', {
-          timeout: 10000,
-        });
-        const lastPageButton = await page.$(
-          'button[data-test-id]:not([data-test-id="next-page"]):last-of-type'
+        const pageButtons = await driver.findElements(
+          By.css('nav[aria-label="Page selection"] button[data-test-id]')
         );
-        if (lastPageButton) {
-          const lastPage = await page.evaluate(
-            (button) => parseInt(button.getAttribute("data-test-id")),
-            lastPageButton
-          );
-          return lastPage;
+
+        if (pageButtons.length > 0) {
+          const lastButton = pageButtons[pageButtons.length - 2];
+          const lastPageNumber = await lastButton.getAttribute("data-test-id");
+          return parseInt(lastPageNumber);
         }
         return 1;
       } catch (error) {
         console.error("Error getting total pages:", error);
         return 1;
       }
-    };
+    }
 
-    // Improved function to navigate to the next page
-    const goToNextPage = async () => {
-      try {
-        // Wait for the next page button
-        const nextButton = await page.$('button[data-test-id="next-page"]');
-        const isDisabled = await nextButton.evaluate((btn) =>
-          btn.hasAttribute("disabled")
-        );
-
-        if (isDisabled) return false;
-
-        await Promise.all([
-          nextButton.click(),
-          page.waitForNavigation({ waitUntil: "networkidle0" }),
-        ]);
-        await delay(2000);
-        return true;
-      } catch (error) {
-        console.error("Error navigating to next page:", error);
-        return false;
-      }
-    };
-
+    // Determine total pages and effective end page
     const totalPages = await getTotalPages();
     const effectiveEndPage = endPage
       ? Math.min(endPage, totalPages)
       : totalPages;
 
-    console.log(`Total pages to scrape: ${effectiveEndPage}`);
+    console.log(`Total pages available: ${totalPages}`);
+    console.log(`Scraping from page ${startPage} to ${effectiveEndPage}`);
 
-    while (currentPage <= effectiveEndPage) {
+    // Navigate to start page if not first page
+    if (startPage > 1) {
+      for (let pageNum = 1; pageNum < startPage; pageNum++) {
+        const nextButton = await driver.findElement(
+          By.css('button[data-test-id="next-page"]')
+        );
+        await nextButton.click();
+        await driver.wait(
+          until.elementLocated(By.css('li div[role="button"]')),
+          10000
+        );
+        await delay(2000);
+      }
+    }
+
+    // Scrape pages
+    for (
+      let currentPage = startPage;
+      currentPage <= effectiveEndPage;
+      currentPage++
+    ) {
       console.log(`Scraping page ${currentPage}...`);
 
-      // Wait for job listings to load
-      await page.waitForSelector('li div[role="button"]', { timeout: 10000 });
+      // Wait for job listings
+      await driver.wait(
+        until.elementLocated(By.css('li div[role="button"]')),
+        10000
+      );
 
-      // Scrape jobs from the current page
-      const jobs = await page.evaluate((pageNum) => {
-        const cleanLocation = (location) => {
-          if (!location) return "";
-          const parts = location.split(",");
-          return parts.length === 0 ? location.trim() : parts[0].trim();
-        };
+      // Scrape jobs on current page
+      const jobElements = await driver.findElements(
+        By.css('li div[role="button"]')
+      );
 
-        const jobElements = document.querySelectorAll('li div[role="button"]');
-        const jobDetails = [];
+      for (const [index, jobElement] of jobElements.entries()) {
+        try {
+          // Clean location helper
+          const cleanLocation = (location) => {
+            if (!location) return "";
+            const parts = location.split(",");
+            return parts.length === 0 ? location.trim() : parts[0].trim();
+          };
 
-        jobElements.forEach((jobElement) => {
+          // Extract job details
+          const titleElement = await jobElement.findElement(By.css("h3 a"));
+          const jobUrl = await titleElement.getAttribute("href");
+          const jobId = jobUrl.split("/jobs/")[1];
+          const jobTitle = await titleElement.getText();
+
+          // Location
+          let fullLocation = "";
+          let cleanedLocation = "";
           try {
-            const titleElement = jobElement.querySelector("h3 a");
-            if (!titleElement) return;
-
-            const jobUrl = titleElement.href;
-            const jobId = jobUrl.split("/jobs/")[1];
-
-            const locationElement = jobElement.querySelector(
-              ".metadatum-module_text__ncKFr"
+            const locationElements = await jobElement.findElements(
+              By.css(".metadatum-module_text__ncKFr")
             );
-            const fullLocation = locationElement
-              ? locationElement.textContent.trim()
-              : "";
-            const cleanedLocation = cleanLocation(fullLocation);
-
-            const dateElements = Array.from(
-              jobElement.querySelectorAll(".metadatum-module_text__ncKFr")
-            );
-            const dateText =
-              dateElements.length > 1
-                ? dateElements[1].textContent.replace("Updated:", "").trim()
-                : "";
-
-            const descriptionElement = jobElement.querySelector(
-              ".job-card-module_content__8sS0J"
-            );
-            const description = descriptionElement
-              ? descriptionElement.textContent.trim()
-              : "";
-
-            if (jobId && titleElement.textContent) {
-              jobDetails.push({
-                sno: null,
-                company: "Amazon",
-                jobId: jobId,
-                function: description.includes("FireTV")
-                  ? "FireTV"
-                  : "Program Management",
-                location: cleanedLocation,
-                title: titleElement.textContent.trim(),
-                description: description,
-                postedOn: dateText,
-                page: pageNum,
-              });
+            if (locationElements.length > 0) {
+              fullLocation = await locationElements[0].getText();
+              cleanedLocation = cleanLocation(fullLocation);
             }
-          } catch (error) {
-            console.error(
-              `Error processing job element on page ${pageNum}:`,
-              error
-            );
+          } catch (locationError) {
+            console.warn("Could not extract location:", locationError);
           }
-        });
 
-        return jobDetails;
-      }, currentPage);
+          // Date
+          let dateText = "";
+          try {
+            const dateElements = await jobElement.findElements(
+              By.css(".metadatum-module_text__ncKFr")
+            );
+            if (dateElements.length > 1) {
+              dateText = await dateElements[1].getText();
+              dateText = dateText.replace("Updated:", "").trim();
+            }
+          } catch (dateError) {
+            console.warn("Could not extract date:", dateError);
+          }
 
-      if (jobs.length === 0) {
-        console.log(`No jobs found on page ${currentPage}. Stopping.`);
-        break;
-      }
+          // Description
+          let description = "";
+          try {
+            const descriptionElements = await jobElement.findElements(
+              By.css(".job-card-module_content__8sS0J")
+            );
+            if (descriptionElements.length > 0) {
+              description = await descriptionElements[0].getText();
+            }
+          } catch (descErr) {
+            console.warn("Could not extract description:", descErr);
+          }
 
-      await csvWriter.writeRecords(
-        jobs.map((job, idx) => ({
-          ...job,
-          sno: globalCounter + idx + 1,
-        }))
-      );
-
-      globalCounter += jobs.length;
-      console.log(
-        `Scraped ${jobs.length} jobs from Amazon page ${currentPage}`
-      );
-
-      // Move to next page if not on last page
-      if (currentPage < effectiveEndPage) {
-        const nextPageSuccess = await goToNextPage();
-        if (!nextPageSuccess) {
-          console.log("Could not navigate to next page. Stopping.");
-          break;
+          // Push job details to consolidated list
+          allJobs.push({
+            sno: allJobs.length + 1,
+            company: "Amazon",
+            jobId: jobId,
+            function: description.includes("FireTV")
+              ? "FireTV"
+              : "Program Management",
+            location: cleanedLocation,
+            title: jobTitle,
+            description: description,
+            postedOn: dateText,
+            page: currentPage,
+          });
+        } catch (jobError) {
+          console.error(
+            `Error processing job element on page ${currentPage}:`,
+            jobError
+          );
         }
       }
 
-      currentPage++;
+      // Move to next page if not on last page
+      if (currentPage < effectiveEndPage) {
+        try {
+          const nextButton = await driver.findElement(
+            By.css('button[data-test-id="next-page"]')
+          );
+
+          // Check if next button is disabled
+          const isDisabled =
+            (await nextButton.getAttribute("disabled")) !== null;
+
+          if (!isDisabled) {
+            await nextButton.click();
+            await driver.wait(
+              until.elementLocated(By.css('li div[role="button"]')),
+              10000
+            );
+            await delay(2000);
+          } else {
+            console.log("Next page button is disabled. Stopping scraping.");
+            break;
+          }
+        } catch (navError) {
+          console.error("Error navigating to next page:", navError);
+          break;
+        }
+      }
     }
+
+    // Configure CSV Writer for single file
+    const csvWriter = createCsvWriter({
+      path: path.join(outputDir, "Amazon.csv"),
+      header: [
+        { id: "sno", title: "S.No." },
+        { id: "company", title: "Company" },
+        { id: "jobId", title: "Job ID" },
+        { id: "function", title: "Function" },
+        { id: "location", title: "Location" },
+        { id: "title", title: "Title" },
+        { id: "description", title: "Description" },
+        { id: "postedOn", title: "Posted On" },
+        { id: "page", title: "Page Number" },
+      ],
+    });
+
+    // Write all jobs to single CSV
+    if (allJobs.length > 0) {
+      await csvWriter.writeRecords(allJobs);
+      console.log(`Saved ${allJobs.length} jobs to Amazon_Jobs.csv`);
+    } else {
+      console.log("No jobs found during scraping.");
+    }
+
+    console.log("Scraping completed successfully.");
   } catch (error) {
-    console.error(`Error during scraping: ${error.message}`);
+    console.error(`Critical error during scraping: ${error.message}`);
     throw error;
   } finally {
-    await browser.close();
+    await driver.quit();
   }
-
-  console.log(`Scraping complete. Total jobs scraped: ${globalCounter}`);
 }
 
 module.exports = { scrapeJobs };
