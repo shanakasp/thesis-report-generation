@@ -37,13 +37,16 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   try {
     // Navigate to the initial page
     await page.goto(baseUrl, { waitUntil: "networkidle0" });
-    let currentPage = 1;
+    let currentPage = startPage || 1;
 
     // Function to get total number of pages
     const getTotalPages = async () => {
       try {
+        await page.waitForSelector('nav[aria-label="Page selection"]', {
+          timeout: 10000,
+        });
         const lastPageButton = await page.$(
-          "button[data-test-id]:last-of-type"
+          'button[data-test-id]:not([data-test-id="next-page"]):last-of-type'
         );
         if (lastPageButton) {
           const lastPage = await page.evaluate(
@@ -59,69 +62,25 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       }
     };
 
-    // Function to navigate to specific page
-    const goToPage = async (targetPage) => {
+    // Improved function to navigate to the next page
+    const goToNextPage = async () => {
       try {
-        // Wait for pagination to be present
-        await page.waitForSelector('nav[aria-label="Page selection"]', {
-          timeout: 10000,
-        });
-
-        // Get current active page
-        const currentActivePage = await page.$eval(
-          'button[aria-current="page"]',
-          (el) => parseInt(el.getAttribute("data-test-id"))
+        // Wait for the next page button
+        const nextButton = await page.$('button[data-test-id="next-page"]');
+        const isDisabled = await nextButton.evaluate((btn) =>
+          btn.hasAttribute("disabled")
         );
 
-        if (targetPage === currentActivePage) {
-          return true;
-        }
+        if (isDisabled) return false;
 
-        // Get all available page numbers
-        const pageNumbers = await page.$$eval(
-          'button[data-test-id]:not([data-test-id="previous-page"]):not([data-test-id="next-page"])',
-          (buttons) =>
-            buttons
-              .map((button) => {
-                const id = button.getAttribute("data-test-id");
-                return !isNaN(parseInt(id)) ? parseInt(id) : null;
-              })
-              .filter((id) => id !== null)
-        );
-
-        let clickSuccess = false;
-
-        if (pageNumbers.includes(targetPage)) {
-          // Click the specific page number if visible
-          try {
-            await page.click(`button[data-test-id="${targetPage}"]`);
-            clickSuccess = true;
-          } catch (error) {
-            console.log(`Could not click page ${targetPage} directly`);
-          }
-        } else {
-          // Click next if target page is higher than current
-          if (targetPage > currentActivePage) {
-            const nextButton = await page.$('[data-test-id="next-page"]');
-            if (nextButton) {
-              await nextButton.click();
-              clickSuccess = true;
-            }
-          }
-        }
-
-        if (clickSuccess) {
-          // Wait for content to load
-          await delay(2000);
-          await page.waitForSelector('li div[role="button"]', {
-            timeout: 10000,
-          });
-          return true;
-        }
-
-        return false;
+        await Promise.all([
+          nextButton.click(),
+          page.waitForNavigation({ waitUntil: "networkidle0" }),
+        ]);
+        await delay(2000);
+        return true;
       } catch (error) {
-        console.error(`Error navigating to page ${targetPage}:`, error);
+        console.error("Error navigating to next page:", error);
         return false;
       }
     };
@@ -131,22 +90,16 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       ? Math.min(endPage, totalPages)
       : totalPages;
 
+    console.log(`Total pages to scrape: ${effectiveEndPage}`);
+
     while (currentPage <= effectiveEndPage) {
       console.log(`Scraping page ${currentPage}...`);
-
-      // Navigate to the desired page
-      const navigationSuccess = await goToPage(currentPage);
-      if (!navigationSuccess) {
-        console.log(`Failed to navigate to page ${currentPage}. Stopping.`);
-        break;
-      }
 
       // Wait for job listings to load
       await page.waitForSelector('li div[role="button"]', { timeout: 10000 });
 
       // Scrape jobs from the current page
       const jobs = await page.evaluate((pageNum) => {
-        // Helper function to clean location string
         const cleanLocation = (location) => {
           if (!location) return "";
           const parts = location.split(",");
@@ -230,8 +183,14 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         `Scraped ${jobs.length} jobs from Amazon page ${currentPage}`
       );
 
-      // Add delay between pages
-      await delay(3000);
+      // Move to next page if not on last page
+      if (currentPage < effectiveEndPage) {
+        const nextPageSuccess = await goToNextPage();
+        if (!nextPageSuccess) {
+          console.log("Could not navigate to next page. Stopping.");
+          break;
+        }
+      }
 
       currentPage++;
     }
