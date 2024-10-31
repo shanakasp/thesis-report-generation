@@ -28,36 +28,54 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   });
 
   let globalCounter = 0;
+  const seenJobIds = new Set();
 
   try {
     let currentPage = startPage;
     let hasMoreJobs = true;
+    let consecutiveEmptyPages = 0;
 
     while (hasMoreJobs && (!endPage || currentPage <= endPage)) {
       console.log(`Scraping page ${currentPage}...`);
 
-      // Create new page for listings
       const listingsPage = await browser.newPage();
       await listingsPage.setDefaultNavigationTimeout(60000);
       await listingsPage.setDefaultTimeout(30000);
 
       const pageUrl = `${baseUrl}/?page=${currentPage}&location=India&radius=100&cname=India&ccode=IN&pagesize=10#results`;
 
-      // Navigate to the listings page
       await listingsPage.goto(pageUrl, {
         waitUntil: "networkidle0",
         timeout: 60000,
       });
 
-      // Wait for job cards to load
-      await listingsPage
-        .waitForSelector(".card.card-job", { timeout: 30000 })
-        .catch(() => {
-          console.log("No job cards found on page");
-          return null;
-        });
+      // Delay instead of `waitForTimeout`
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      // Extract basic job details from listing page
+      const currentUrl = await listingsPage.url();
+      console.log(`Current URL: ${currentUrl}`);
+
+      const jobCardsPresent = await listingsPage
+        .waitForSelector(".card.card-job", {
+          timeout: 30000,
+        })
+        .catch(() => false);
+
+      if (!jobCardsPresent) {
+        console.log(`No job cards found on page ${currentPage}`);
+        consecutiveEmptyPages++;
+        if (consecutiveEmptyPages >= 3) {
+          console.log("Three consecutive empty pages found. Stopping scraper.");
+          hasMoreJobs = false;
+          break;
+        }
+        currentPage++;
+        await listingsPage.close();
+        continue;
+      }
+
+      consecutiveEmptyPages = 0;
+
       const jobListings = await listingsPage.evaluate((pageNum) => {
         const cards = document.querySelectorAll(".card.card-job");
         return Array.from(cards).map((card) => {
@@ -81,34 +99,49 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
 
       await listingsPage.close();
 
-      // If no jobs are found, stop the loop
-      if (!jobListings.length) {
-        console.log(`No jobs found on page ${currentPage}. Stopping.`);
-        hasMoreJobs = false;
-        break;
+      const newJobListings = jobListings.filter((job) => {
+        if (!job.jobId || seenJobIds.has(job.jobId)) {
+          return false;
+        }
+        seenJobIds.add(job.jobId);
+        return true;
+      });
+
+      if (newJobListings.length === 0) {
+        console.log(`No new unique jobs found on page ${currentPage}`);
+        consecutiveEmptyPages++;
+        if (consecutiveEmptyPages >= 3) {
+          console.log(
+            "Three consecutive pages with no new jobs. Stopping scraper."
+          );
+          hasMoreJobs = false;
+          break;
+        }
+        currentPage++;
+        continue;
       }
 
-      // Get detailed information for each job
-      for (let i = 0; i < jobListings.length; i++) {
+      console.log(
+        `Found ${newJobListings.length} new unique jobs on page ${currentPage}`
+      );
+
+      for (const job of newJobListings) {
         try {
-          if (jobListings[i].detailUrl) {
+          if (job.detailUrl) {
             const detailPage = await browser.newPage();
             await detailPage.setDefaultNavigationTimeout(60000);
             await detailPage.setDefaultTimeout(30000);
 
-            await detailPage.goto(jobListings[i].detailUrl, {
+            await detailPage.goto(job.detailUrl, {
               waitUntil: "networkidle0",
               timeout: 60000,
             });
 
-            // Wait for content to load
             await detailPage.waitForSelector(".cms-content", {
               timeout: 30000,
             });
 
-            // Extract additional details from the job detail page
             const details = await detailPage.evaluate(() => {
-              // Get description
               const descriptionContent = document.querySelector(".cms-content");
               const description = descriptionContent
                 ? descriptionContent.innerText
@@ -117,7 +150,6 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
                     .trim()
                 : "";
 
-              // Get posted date
               const dateElements = document.querySelectorAll("dt");
               const dateLabel = Array.from(dateElements).find((el) =>
                 el.textContent.trim().toLowerCase().includes("date")
@@ -132,43 +164,36 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
               };
             });
 
-            jobListings[i].description =
-              details.description || "No description available";
-            jobListings[i].postedOn = details.postedOn || "";
+            job.description = details.description || "No description available";
+            job.postedOn = details.postedOn || "";
 
             await detailPage.close();
-
-            console.log(
-              `Successfully scraped details for: ${jobListings[i].title}`
-            );
+            console.log(`Successfully scraped details for: ${job.title}`);
           }
         } catch (error) {
           console.error(
-            `Error getting job details for ${jobListings[i].title}: ${error.message}`
+            `Error getting job details for ${job.title}: ${error.message}`
           );
-          jobListings[i].description = "Error fetching details";
-          jobListings[i].postedOn = "";
+          job.description = "Error fetching details";
+          job.postedOn = "";
         }
 
-        // Add delay between detail page requests
         await new Promise((resolve) => setTimeout(resolve, 2000));
       }
 
-      // Write data to CSV and update globalCounter
       await csvWriter.writeRecords(
-        jobListings.map((job) => ({
+        newJobListings.map((job) => ({
           ...job,
           sno: ++globalCounter,
         }))
       );
 
       console.log(
-        `Scraped ${jobListings.length} jobs from Cognizant Page ${currentPage}`
+        `Scraped ${newJobListings.length} new jobs from page ${currentPage}`
       );
+      console.log(`Total unique jobs scraped so far: ${globalCounter}`);
 
-      // Add delay between pages
       await new Promise((resolve) => setTimeout(resolve, 3000));
-
       currentPage++;
     }
   } catch (error) {
@@ -178,7 +203,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
     await browser.close();
   }
 
-  console.log(`Scraping complete. Total jobs scraped: ${globalCounter}`);
+  console.log(`Scraping complete. Total unique jobs scraped: ${globalCounter}`);
   return globalCounter;
 }
 
