@@ -2,7 +2,6 @@ const { Builder, By, Key, until } = require("selenium-webdriver");
 const chrome = require("selenium-webdriver/chrome");
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const path = require("path");
-
 const fs = require("fs").promises;
 
 // Helper function for delays
@@ -12,6 +11,22 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   // Setup output directory
   const outputDir = path.join(__dirname, "../output");
   await fs.mkdir(outputDir, { recursive: true });
+
+  // Configure CSV writer for all pages
+  const csvWriter = createCsvWriter({
+    path: path.join(outputDir, `Cognizant.csv`),
+    header: [
+      { id: "sno", title: "S.No." },
+      { id: "company", title: "Company" },
+      { id: "jobId", title: "Job ID" },
+      { id: "function", title: "Function" },
+      { id: "location", title: "Location" },
+      { id: "title", title: "Title" },
+      { id: "description", title: "Description" },
+      { id: "postedOn", title: "Posted On" },
+      { id: "page", title: "Page Number" },
+    ],
+  });
 
   // Configure Chrome options
   const options = new chrome.Options();
@@ -30,16 +45,16 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
     .setChromeOptions(options)
     .build();
 
-  // Consolidated job list for single CSV
-  const allJobs = [];
-
   try {
+    // Map to store unique jobs with their details
+    const uniqueJobs = new Map();
+
     // Function to navigate to a specific page
     async function navigateToPage(pageNumber) {
       const pageUrl = `${baseUrl}/?page=${pageNumber}&location=India&radius=100&cname=India&ccode=IN&pagesize=10#results`;
       await driver.get(pageUrl);
       await driver.wait(until.elementLocated(By.css(".card.card-job")), 10000);
-      await delay(2000); // Additional wait for page to stabilize
+      await delay(2000);
     }
 
     // Function to get total number of pages
@@ -48,7 +63,6 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         const pageLinks = await driver.findElements(
           By.css("li.page-item:not(.next):not(.prev):not(.elipsis) a.page-link")
         );
-
         if (pageLinks.length > 0) {
           const lastPageLink = pageLinks[pageLinks.length - 1];
           const lastPageNumber = await lastPageLink.getText();
@@ -58,6 +72,102 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       } catch (error) {
         console.error("Error getting total pages:", error);
         return 1;
+      }
+    }
+
+    // Function to extract job details from detail page
+    async function extractJobDetails(jobUrl) {
+      try {
+        await driver.get(jobUrl);
+        await driver.wait(until.elementLocated(By.css(".key-info")), 10000);
+
+        let title = "";
+        try {
+          const titleElement = await driver.findElement(
+            By.css(".hero-heading")
+          );
+          title = await titleElement.getText();
+        } catch (titleError) {
+          console.error("Error extracting title:", titleError);
+        }
+
+        let jobId = "";
+        let location = "";
+        let jobFunction = "";
+        let postedOn = "";
+
+        try {
+          const jobIdElement = await driver.findElement(
+            By.xpath("//dt[text()='Job number:']/following-sibling::dd/span")
+          );
+          jobId = await jobIdElement.getText();
+
+          const functionElement = await driver.findElement(
+            By.xpath("//dt[text()='Job category:']/following-sibling::dd/span")
+          );
+          jobFunction = await functionElement.getText();
+
+          const locationElement = await driver.findElement(
+            By.xpath("//dt[text()='Location:']/following-sibling::dd/span")
+          );
+          location = await locationElement.getText().split("/")[0].trim();
+
+          const dateElement = await driver.findElement(
+            By.xpath(
+              "//dt[text()='Date published:']/following-sibling::dd/span"
+            )
+          );
+          postedOn = await dateElement.getText();
+        } catch (detailsError) {
+          console.error("Error extracting job details:", detailsError);
+        }
+
+        // Enhanced description extraction
+        let description = "";
+        try {
+          // Get all content from the article including paragraphs and lists
+          const article = await driver.findElement(
+            By.css("article.cms-content")
+          );
+          const contentElements = await article.findElements(
+            By.css("p, ul, li, strong")
+          );
+
+          description = await Promise.all(
+            contentElements.map(async (el) => {
+              const tagName = await el.getTagName();
+              const text = await el.getText();
+
+              // Format based on tag type
+              if (tagName === "li") {
+                return `• ${text}`;
+              } else if (tagName === "strong") {
+                return `\n${text}\n`;
+              } else {
+                return text;
+              }
+            })
+          );
+
+          description = description
+            .join("\n")
+            .replace(/\n{3,}/g, "\n\n")
+            .trim();
+        } catch (descError) {
+          console.error("Error extracting description:", descError);
+        }
+
+        return {
+          jobId,
+          title,
+          function: jobFunction,
+          location,
+          description,
+          postedOn,
+        };
+      } catch (error) {
+        console.error(`Error extracting details for ${jobUrl}:`, error);
+        return null;
       }
     }
 
@@ -81,129 +191,76 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
     ) {
       console.log(`Scraping page ${currentPage}...`);
 
-      // Wait for job listings
-      await driver.wait(until.elementLocated(By.css(".card.card-job")), 10000);
-
-      // Scrape jobs on current page
+      // Get all job URLs on the current page
       const jobElements = await driver.findElements(By.css(".card.card-job"));
+      const jobUrls = [];
 
-      for (const [index, jobElement] of jobElements.entries()) {
+      for (const jobElement of jobElements) {
         try {
-          // Clean location helper
-          const cleanLocation = (location) => {
-            if (!location) return "";
-            const parts = location.split(",");
-            return parts.length > 0 ? parts[0].trim() : location.trim();
-          };
-
-          // Extract job details
           const titleElement = await jobElement.findElement(
             By.css("h2.card-title a")
           );
           const jobUrl = await titleElement.getAttribute("href");
-          const jobId = jobUrl.split("/jobs/")[1].split("/")[0];
-          const jobTitle = await titleElement.getText();
+          jobUrls.push(jobUrl);
+        } catch (error) {
+          console.error("Error getting job URL:", error);
+        }
+      }
 
-          // Location and Function
-          const metaElements = await jobElement.findElements(
-            By.css("ul.job-meta li.list-inline-item")
+      console.log(`Found ${jobUrls.length} jobs on page ${currentPage}`);
+
+      // Process each job URL
+      for (const [index, jobUrl] of jobUrls.entries()) {
+        try {
+          console.log(
+            `Processing job ${index + 1}/${
+              jobUrls.length
+            } on page ${currentPage}`
           );
 
-          let location = "";
-          let jobFunction = "";
+          const jobDetails = await extractJobDetails(jobUrl);
 
-          if (metaElements.length > 0) {
-            location = await metaElements[0].getText();
-            location = cleanLocation(location);
-
-            if (metaElements.length > 1) {
-              jobFunction = await metaElements[1].getText();
-            }
+          if (
+            jobDetails &&
+            jobDetails.jobId &&
+            !uniqueJobs.has(jobDetails.jobId)
+          ) {
+            uniqueJobs.set(jobDetails.jobId, {
+              ...jobDetails,
+              page: currentPage,
+            });
           }
-
-          // Push job details to consolidated list
-          allJobs.push({
-            sno: allJobs.length + 1,
-            company: "Cognizant",
-            jobId: jobId,
-            function: jobFunction,
-            location: location,
-            title: jobTitle,
-            description: "", // Description extraction not implemented in this version
-            postedOn: "", // Posted date extraction not implemented in this version
-            page: currentPage,
-          });
-        } catch (jobError) {
+        } catch (error) {
           console.error(
-            `Error processing job element on page ${currentPage}:`,
-            jobError
+            `Error processing job ${index + 1} on page ${currentPage}:`,
+            error
           );
         }
       }
 
-      // Move to next page if not on last page
+      // Navigate to next page if not on last page
       if (currentPage < effectiveEndPage) {
         try {
-          // Use JavaScript to scroll to and click next button
-          const nextButton = await driver.findElement(
-            By.css("li.page-item.next a.page-link")
-          );
-
-          // Scroll to the next button first
-          await driver.executeScript(
-            "arguments[0].scrollIntoView(true);",
-            nextButton
-          );
-          await delay(500); // Short delay after scrolling
-
-          // Use JavaScript click to avoid potential interception
-          await driver.executeScript("arguments[0].click();", nextButton);
-
-          // Wait for next page to load
-          await driver.wait(
-            until.elementLocated(By.css(".card.card-job")),
-            10000
-          );
-          await delay(2000); // Additional stabilization delay
-        } catch (navError) {
-          console.error("Error navigating to next page:", navError);
-
-          // Fallback: Try direct page navigation
-          try {
-            await navigateToPage(currentPage + 1);
-          } catch (fallbackError) {
-            console.error("Fallback navigation failed:", fallbackError);
-            break;
-          }
+          await navigateToPage(currentPage + 1);
+        } catch (error) {
+          console.error("Error navigating to next page:", error);
+          break;
         }
       }
     }
 
-    // Configure CSV Writer for single file
-    const csvWriter = createCsvWriter({
-      path: path.join(outputDir, "Cognizant.csv"),
-      header: [
-        { id: "sno", title: "S.No." },
-        { id: "company", title: "Company" },
-        { id: "jobId", title: "Job ID" },
-        { id: "function", title: "Function" },
-        { id: "location", title: "Location" },
-        { id: "title", title: "Title" },
-        { id: "description", title: "Description" },
-        { id: "postedOn", title: "Posted On" },
-        { id: "page", title: "Page Number" },
-      ],
-    });
+    // Convert unique jobs to array and add sequential numbers
+    const allJobs = Array.from(uniqueJobs.values()).map((job, index) => ({
+      sno: index + 1,
+      company: "Cognizant",
+      ...job,
+    }));
 
-    // Write all jobs to single CSV
-    if (allJobs.length > 0) {
-      await csvWriter.writeRecords(allJobs);
-      console.log(`Saved ${allJobs.length} jobs to Cognizant.csv`);
-    } else {
-      console.log("No jobs found during scraping.");
-    }
+    // Write all unique jobs to CSV at once
+    await csvWriter.writeRecords(allJobs);
 
     console.log("Scraping completed successfully.");
+    console.log(`Total unique jobs scraped: ${allJobs.length}`);
   } catch (error) {
     console.error(`Critical error during scraping: ${error.message}`);
     throw error;
