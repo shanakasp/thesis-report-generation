@@ -20,6 +20,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       { id: "location", title: "Location" },
       { id: "title", title: "Title" },
       { id: "description", title: "Description" },
+      { id: "detailedDescription", title: "Detailed Description" },
       { id: "postedOn", title: "Posted On" },
       { id: "page", title: "Page Number" },
     ],
@@ -42,26 +43,50 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         el.textContent.trim()
       );
       const totalJobs = parseInt(totalText.replace(/[^0-9]/g, ""));
-      const jobsPerPage = 45; // Default page size
+      const jobsPerPage = 45;
       return Math.ceil(totalJobs / jobsPerPage);
     };
 
-    // Function to navigate to specific page
-    const goToPage = async (targetPage) => {
-      // Wait for pagination to be present
-      await page.waitForSelector(".pagination", { timeout: 10000 });
+    // Function to get detailed job description
+    const getJobDetails = async (jobUrl) => {
+      const newPage = await browser.newPage();
+      try {
+        await newPage.goto(jobUrl, { waitUntil: "networkidle0" });
+        await newPage.waitForSelector(".panel-body", { timeout: 10000 });
 
-      // Get current active page
+        const detailedDescription = await newPage.evaluate(() => {
+          const descriptionElement = document.querySelector(".panel-body");
+          if (!descriptionElement) return "";
+
+          // Get all paragraphs and clean up the text
+          const paragraphs = Array.from(
+            descriptionElement.querySelectorAll("p")
+          );
+          return paragraphs
+            .map((p) => p.textContent.trim())
+            .filter((text) => text !== "")
+            .join("\n");
+        });
+
+        return detailedDescription;
+      } catch (error) {
+        console.error(`Error fetching job details: ${error.message}`);
+        return "Failed to fetch detailed description";
+      } finally {
+        await newPage.close();
+      }
+    };
+
+    // Function to navigate to specific page (same as your original code)
+    const goToPage = async (targetPage) => {
+      await page.waitForSelector(".pagination", { timeout: 10000 });
       const currentActivePage = await page.$eval(
         ".pagination li.active a",
         (el) => parseInt(el.textContent.trim())
       );
 
-      if (targetPage === currentActivePage) {
-        return true;
-      }
+      if (targetPage === currentActivePage) return true;
 
-      // For initial navigation to startPage, we might need multiple clicks
       const pageNumbers = await page.$$eval(
         ".pagination li:not(.page-item):not(.perview):not(.nextview) a",
         (els) => els.map((el) => parseInt(el.textContent.trim()))
@@ -69,11 +94,10 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
 
       let clickSuccess = false;
       let attempts = 0;
-      const maxAttempts = 10; // Prevent infinite loops
+      const maxAttempts = 10;
 
       while (!clickSuccess && attempts < maxAttempts) {
         if (pageNumbers.includes(targetPage)) {
-          // Click the specific page number if visible
           try {
             await page.evaluate((targetPage) => {
               const pageLinks = Array.from(
@@ -89,28 +113,25 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
             console.log(`Could not click page ${targetPage} directly`);
           }
         } else {
-          // Click next until the desired page number becomes visible
           const nextButton = await page.$(".pagination li.nextview a");
           if (nextButton) {
             await nextButton.click();
             await delay(2000);
-            // Update visible page numbers
             const newPageNumbers = await page.$$eval(
               ".pagination li:not(.page-item):not(.perview):not(.nextview) a",
               (els) => els.map((el) => parseInt(el.textContent.trim()))
             );
             if (newPageNumbers.includes(targetPage)) {
-              continue; // Try clicking the specific page number in the next iteration
+              continue;
             }
           } else {
-            break; // No more next button available
+            break;
           }
         }
         attempts++;
       }
 
       if (clickSuccess) {
-        // Wait for content to load
         await delay(2000);
         await page.waitForSelector(".card-block", { timeout: 10000 });
         return true;
@@ -123,11 +144,8 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
     const effectiveEndPage = endPage
       ? Math.min(endPage, totalPages)
       : totalPages;
-
-    // Start from the specified start page
     let currentPage = startPage;
 
-    // Initial navigation to start page
     const initialNavigation = await goToPage(startPage);
     if (!initialNavigation) {
       console.log(`Failed to navigate to start page ${startPage}. Stopping.`);
@@ -137,7 +155,6 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
     while (currentPage <= effectiveEndPage) {
       console.log(`Scraping page ${currentPage}...`);
 
-      // Wait for job cards to load
       await page.waitForSelector(".card-block", { timeout: 10000 });
 
       const jobs = await page.evaluate((pageNum) => {
@@ -151,6 +168,9 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
 
             const titleElement = card.querySelector(".title_block .link");
             const jobCodeElement = card.querySelector(".job-code");
+            const jobLink = titleElement
+              ? titleElement.getAttribute("href")
+              : null;
 
             const functionElement = card.querySelector(
               ".listing-inline li:first-child"
@@ -195,6 +215,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
                 location: simplifiedLocation,
                 title: titleElement.textContent.trim(),
                 description: enhancedFunction,
+                jobLink: jobLink,
                 postedOn: postedDateText,
                 page: pageNum,
               };
@@ -203,6 +224,18 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
           })
           .filter((job) => job !== null);
       }, currentPage);
+
+      // Fetch detailed descriptions for each job
+      for (const job of jobs) {
+        if (job.jobLink) {
+          const fullJobUrl = new URL(job.jobLink, baseUrl).href;
+          console.log(`Fetching details for job: ${job.jobId}`);
+          job.detailedDescription = await getJobDetails(fullJobUrl);
+          // Add delay between job detail requests to avoid overwhelming the server
+          await delay(1000);
+        }
+        delete job.jobLink; // Remove the jobLink before writing to CSV
+      }
 
       if (jobs.length === 0) {
         console.log(`No jobs found on page ${currentPage}. Stopping.`);
@@ -220,7 +253,6 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       console.log(`Scraped Jobs From EXL Page ${currentPage}`);
 
       if (currentPage < effectiveEndPage) {
-        // Navigate to next page
         const navigationSuccess = await goToPage(currentPage + 1);
         if (!navigationSuccess) {
           console.log(
@@ -230,9 +262,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         }
       }
 
-      // Add delay between pages
       await delay(3000);
-
       currentPage++;
     }
   } catch (error) {

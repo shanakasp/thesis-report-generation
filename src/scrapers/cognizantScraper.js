@@ -75,18 +75,32 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       }
     }
 
+    // Safe text extraction helper function
+    async function safeGetText(element) {
+      try {
+        if (element) {
+          const text = await element.getText();
+          return text || "";
+        }
+      } catch (error) {
+        return "";
+      }
+      return "";
+    }
+
     // Function to extract job details from detail page
     async function extractJobDetails(jobUrl) {
       try {
         await driver.get(jobUrl);
         await driver.wait(until.elementLocated(By.css(".key-info")), 10000);
 
+        // Extract title
         let title = "";
         try {
           const titleElement = await driver.findElement(
             By.css(".hero-heading")
           );
-          title = await titleElement.getText();
+          title = await safeGetText(titleElement);
         } catch (titleError) {
           console.error("Error extracting title:", titleError);
         }
@@ -97,27 +111,37 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         let postedOn = "";
 
         try {
+          // Extract Job ID
           const jobIdElement = await driver.findElement(
             By.xpath("//dt[text()='Job number:']/following-sibling::dd/span")
           );
-          jobId = await jobIdElement.getText();
+          jobId = await safeGetText(jobIdElement);
 
+          // Extract Function
           const functionElement = await driver.findElement(
             By.xpath("//dt[text()='Job category:']/following-sibling::dd/span")
           );
-          jobFunction = await functionElement.getText();
+          jobFunction = await safeGetText(functionElement);
 
-          const locationElement = await driver.findElement(
-            By.xpath("//dt[text()='Location:']/following-sibling::dd/span")
-          );
-          location = await locationElement.getText().split("/")[0].trim();
+          // Extract Location with proper error handling
+          try {
+            const locationElement = await driver.findElement(
+              By.xpath("//dt[text()='Location:']/following-sibling::dd/span")
+            );
+            const locationText = await safeGetText(locationElement);
+            location = locationText ? locationText.split("/")[0].trim() : "";
+          } catch (locationError) {
+            console.error("Error extracting location:", locationError);
+            location = "";
+          }
 
+          // Extract Posted Date
           const dateElement = await driver.findElement(
             By.xpath(
               "//dt[text()='Date published:']/following-sibling::dd/span"
             )
           );
-          postedOn = await dateElement.getText();
+          postedOn = await safeGetText(dateElement);
         } catch (detailsError) {
           console.error("Error extracting job details:", detailsError);
         }
@@ -125,20 +149,20 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         // Enhanced description extraction
         let description = "";
         try {
-          // Get all content from the article including paragraphs and lists
-          const article = await driver.findElement(
-            By.css("article.cms-content")
-          );
-          const contentElements = await article.findElements(
-            By.css("p, ul, li, strong")
+          // Get all content elements
+          const contentElements = await driver.findElements(
+            By.css(
+              "article.cms-content p, article.cms-content ul li, article.cms-content strong"
+            )
           );
 
-          description = await Promise.all(
+          const contentTexts = await Promise.all(
             contentElements.map(async (el) => {
               const tagName = await el.getTagName();
-              const text = await el.getText();
+              const text = await safeGetText(el);
 
-              // Format based on tag type
+              if (!text) return "";
+
               if (tagName === "li") {
                 return `• ${text}`;
               } else if (tagName === "strong") {
@@ -149,7 +173,8 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
             })
           );
 
-          description = description
+          description = contentTexts
+            .filter((text) => text) // Remove empty strings
             .join("\n")
             .replace(/\n{3,}/g, "\n\n")
             .trim();
