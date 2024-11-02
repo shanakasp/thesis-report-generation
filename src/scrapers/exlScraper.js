@@ -19,6 +19,43 @@ async function retryOperation(operation, maxAttempts = 3, delayMs = 1000) {
   }
 }
 
+// New helper function to get function and location
+async function getFunctionAndLocation(driver) {
+  return await retryOperation(async () => {
+    try {
+      const ul = await driver.findElement(
+        By.css(".card-designation .list-reset.clearfix.listing-inline")
+      );
+      const lis = await ul.findElements(By.css("li"));
+
+      let functionText = "";
+      let locationText = "";
+
+      for (const li of lis) {
+        const className = await li.getAttribute("class");
+        const text = await li.getText();
+
+        if (className.includes("last-child")) {
+          locationText = text.trim();
+        } else if (text.trim()) {
+          functionText = text.trim();
+        }
+      }
+
+      return {
+        function: functionText,
+        location: locationText,
+      };
+    } catch (error) {
+      console.error("Error extracting function/location:", error);
+      return {
+        function: "",
+        location: "",
+      };
+    }
+  });
+}
+
 async function scrapeJobs(baseUrl, startPage = 1, endPage = null) {
   const outputDir = path.join(__dirname, "../output");
   await fs.mkdir(outputDir, { recursive: true });
@@ -37,7 +74,7 @@ async function scrapeJobs(baseUrl, startPage = 1, endPage = null) {
     .setChromeOptions(options)
     .build();
 
-  // Configure CSV Writer with added page number header
+  // Configure CSV Writer
   const csvWriter = createCsvWriter({
     path: path.join(outputDir, "EXL.csv"),
     header: [
@@ -114,7 +151,6 @@ async function scrapeJobs(baseUrl, startPage = 1, endPage = null) {
         );
         await delay(2000);
       }
-      // Store the URL of the start page
       currentPageUrl = await driver.getCurrentUrl();
     }
 
@@ -126,7 +162,6 @@ async function scrapeJobs(baseUrl, startPage = 1, endPage = null) {
     ) {
       console.log(`Processing page ${currentPage}`);
 
-      // Ensure we're on the correct page
       if ((await driver.getCurrentUrl()) !== currentPageUrl) {
         await driver.get(currentPageUrl);
         await driver.wait(
@@ -137,7 +172,6 @@ async function scrapeJobs(baseUrl, startPage = 1, endPage = null) {
 
       await delay(2000);
 
-      // Get job cards with retry
       const jobCards = await retryOperation(async () => {
         const cards = await driver.findElements(
           By.css(".card-row.card-top-job")
@@ -151,7 +185,6 @@ async function scrapeJobs(baseUrl, startPage = 1, endPage = null) {
         try {
           console.log(`Processing job ${i + 1} on page ${currentPage}`);
 
-          // Re-fetch job cards
           const freshJobCards = await retryOperation(async () => {
             const cards = await driver.findElements(
               By.css(".card-row.card-top-job")
@@ -166,7 +199,6 @@ async function scrapeJobs(baseUrl, startPage = 1, endPage = null) {
             continue;
           }
 
-          // Scroll card into view
           await retryOperation(async () => {
             await driver.executeScript(
               "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});",
@@ -175,7 +207,6 @@ async function scrapeJobs(baseUrl, startPage = 1, endPage = null) {
             await delay(1000);
           });
 
-          // Extract job details from card
           const jobLink = await retryOperation(async () => {
             const link = await currentCard.findElement(By.css(".link"));
             if (!link) throw new Error("Job link not found");
@@ -190,16 +221,13 @@ async function scrapeJobs(baseUrl, startPage = 1, endPage = null) {
             .replace("EXL*", "EXL/")
             .replace(/_/g, "/");
 
-          // Open job in new tab
           const originalWindow = await driver.getWindowHandle();
           await jobLink.sendKeys(Key.CONTROL, Key.RETURN);
 
-          // Switch to new tab
           const windows = await driver.getAllWindowHandles();
           const newWindow = windows.find((handle) => handle !== originalWindow);
           await driver.switchTo().window(newWindow);
 
-          // Wait for job details page
           await driver.wait(
             until.elementLocated(By.css(".job-details-card")),
             15000,
@@ -207,19 +235,16 @@ async function scrapeJobs(baseUrl, startPage = 1, endPage = null) {
           );
           await delay(2000);
 
-          // Extract job details
+          // Get function and location using the new method
+          const { function: jobFunction, location: jobLocation } =
+            await getFunctionAndLocation(driver);
+
           const jobDetails = {
             sno: ++jobCounter,
             company: "EXL",
             jobId: jobId,
-            function: await getTextContent(
-              driver,
-              "ul.list-reset.clearfix.listing-inline li.text-nowrap-bk"
-            ),
-            location: await getTextContent(
-              driver,
-              "ul.list-reset.clearfix.listing-inline li.last-child"
-            ),
+            function: jobFunction,
+            location: jobLocation,
             title: jobTitle,
             description: await getCompleteDescription(driver),
             postedOn: await getTextContent(
@@ -230,16 +255,11 @@ async function scrapeJobs(baseUrl, startPage = 1, endPage = null) {
             pageNumber: currentPage,
           };
 
-          // Save job to CSV
           await csvWriter.writeRecords([jobDetails]);
           console.log(`Saved job ${jobCounter}: ${jobTitle}`);
 
-          // Close the job details tab
           await driver.close();
-
-          // Switch back to original window
           await driver.switchTo().window(originalWindow);
-
           await delay(1500);
         } catch (error) {
           console.error(
@@ -247,7 +267,6 @@ async function scrapeJobs(baseUrl, startPage = 1, endPage = null) {
             error
           );
 
-          // Recovery logic
           try {
             console.log("Attempting to recover from error...");
             await driver.get(currentPageUrl);
@@ -259,7 +278,6 @@ async function scrapeJobs(baseUrl, startPage = 1, endPage = null) {
         }
       }
 
-      // Move to next page if not on last page
       if (currentPage < effectiveEndPage) {
         const nextButton = await driver.findElement(By.css(".nextview a"));
         await scrollAndClick(nextButton);
@@ -267,7 +285,6 @@ async function scrapeJobs(baseUrl, startPage = 1, endPage = null) {
           until.elementLocated(By.css(".card-row.card-top-job")),
           10000
         );
-        // Store the URL of the next page
         currentPageUrl = await driver.getCurrentUrl();
         await delay(2000);
       }
@@ -322,7 +339,7 @@ async function getCompleteDescription(driver) {
   }
 }
 
-// Helper function to get text content safely
+// Helper function to get text content safely (for other fields)
 async function getTextContent(driver, selector, labelText = null) {
   return await retryOperation(async () => {
     try {

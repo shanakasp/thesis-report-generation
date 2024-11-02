@@ -1,46 +1,3585 @@
-S.No.,Company,Job ID,Function,Location,Title,Description,Detailed Description,Posted On,Page Number
-1,EXL,EXL/AM/553009, Analytics>Analytics Common>Data Management>Consulting>Sales & Marketing,"Gurgaon, EXL - Gurgaon Center 38",Assistant Manager,"Sales & Marketing | Experience: 3-6 years | Skills: Cold Calling, Channel Sales, Lead Generation, Lead Management",,31 Oct 2024,1
-2,EXL,EXL/M/1191548, Analytics>Banking & Financial Services>Services>Banking & Financial Services>Analytics,"Gurgaon, Gurgaon-SEZ BPO Solutions",Manager,"Analytics | Experience: 3-10 years | Skills: SQL, Tableau, Machine Learning, Python, pyspark",,31 Oct 2024,1
-3,EXL,EXL/M/1191591, Analytics>Banking & Financial Services>Services>Banking & Financial Services>Analytics,"Gurgaon, Gurgaon-SEZ BPO Solutions",Manager,"Analytics | Experience: 3-10 years | Skills: Tableau, Python, Machine Learning, pyspark, SQL",,31 Oct 2024,1
-4,EXL,EXL/SE/1189452, Operations Management>Emerging Business Unit>FAO>Back Office>Operations,"Bangalore, FA - Bengaluru",Senior Executive,"Operations | Experience: 1-3 years | Skills: Oral Communication, Accounts Receivable, Communication, Accounting, MS Office",,31 Oct 2024,1
-5,EXL,EXL/LAM/1191282, Enabling>Finance>Finance>Finance>Finance & Accounts,"Noida, Noida - Centre 59",Lead Assistant Manager,Finance & Accounts | Experience: 7-10 years | Skills: Reinsurance and Accounting,,31 Oct 2024,1
-6,EXL,EXL/SE/1191324, Enabling>Finance>Finance>Finance>Finance & Accounts,"Noida, Noida - Centre 59",Senior Executive,"Finance & Accounts | Experience: 3-5 years | Skills: Reinsurance, Reinsurance and Accounting",,31 Oct 2024,1
-7,EXL,EXL/LAM/1191593, Operations Management>Emerging Business Unit>FAO>Back Office>Operations,"Bangalore, FA - Bengaluru",Lead Assistant Manager,"Operations | Experience: 7-8 years | Skills: Servicenow, SAP, Accounts Receivable, Client Management, Excellent written and verbal communication, Email, Team Handling, Excel, Communication, Accounting",,31 Oct 2024,1
-8,EXL,EXL/AM/1186671, Insurance>Insurance>Insurance Finance & Accounting>Back Office>Operations,"Noida, Noida - Centre 59",Assistant Manager,Operations | Experience: 6-8 years | Skills: Business Processes,,31 Oct 2024,1
-9,EXL,EXL/LAM/1191773, Insurance>Insurance>Insurance Property & Casualties>Back Office>Operations,"Pune, IN Pune C4",Lead Assistant Manager,"Operations | Experience: 3-5 years | Skills: Peopele Management, Decision Making, Straight Through Processing, Conflict Managemen, Analytical Thinking, London Market Insurance, Innovation, Problem Solving, Feedback Management",,31 Oct 2024,1
-10,EXL,EXL/SE/1191775, Insurance>Insurance>Insurance Property & Casualties>Back Office>Operations,"Pune, IN Pune C4",Senior Executive,"Operations | Experience: 2-4 years | Skills: Communication, MS Office, Subject Matter Expert, Reading Comprehension",,31 Oct 2024,1
-11,EXL,EXL/AM/1191771, Insurance>Insurance>Insurance Property & Casualties>Back Office>Operations,"Pune, IN Pune C4",Assistant Manager,"Operations | Experience: 2-3 years | Skills: People Management, Service Level Management, Email Management, London Market Insurance, Works independently towards providing support, Communication, Conflict Managemen, Coaching & Mentoring, MS Office",,31 Oct 2024,1
-12,EXL,EXL/LAM/1191051, Analytics>Analytics - UK & Europe>Services>Analytics - UK & Europe>Analytics,"Gurgaon, EXL - Gurgaon Center 38",Lead Assistant Manager,"Analytics | Experience: 1-4 years | Skills: Python, SAS",,30 Oct 2024,1
-13,EXL,EXL/E/1191290, Operations Management>Emerging Business Unit>FAO>Back Office>Operations,"Noida, Noida-SEZ BPO Solutions",Executives,Operations | Experience: 0-1 years | Skills: Accounts Receivable,,30 Oct 2024,1
-14,EXL,EXL/SE/1191414, Healthcare>Healthcare>Payment Services>Payment Services>Payment Integrity - Operations,"Chennai, IN Chennai C51",Senior Executive,"Payment Integrity - Operations | Experience: 2-5 years | Skills: Analysis & Problem Solving, Healthcare - Payor, Healthcare - Services, Analysis, Billing Systems, Healthcare Analytics",,30 Oct 2024,1
-15,EXL,EXL/E/1180863, Insurance>Insurance>Insurance Life & Annuities>Back Office>Operations,"Noida, Noida-SEZ BPO Solutions",Executives,"Operations | Experience: 0-1 years | Skills: Insurance Claims, Computer Competency, Communication and Interpersonal skills",,30 Oct 2024,1
-16,EXL,EXL/E/1191468, Insurance>Insurance>Insurance Property & Casualties>Back Office>Operations,"Pune, IN Pune SEZ C25",Executives,Operations | Experience: 1-5 years | Skills: Fixers,,30 Oct 2024,1
-17,EXL,EXL/E/1191287, Operations Management>Emerging Business Unit>FAO>Back Office>Operations,"Noida, Noida-SEZ BPO Solutions",Executives,"Operations | Experience: 0-1 years | Skills: Accounts Payable, Invoice processing",,30 Oct 2024,1
-18,EXL,EXL/E/1191296, Operations Management>Emerging Business Unit>FAO>Back Office>Operations,"Noida, Noida-SEZ BPO Solutions",Executives,"Operations | Experience: 0-1 years | Skills: Reconciliation, Balance Sheet, Cash Flow, Monthly Close Process, P&L",,30 Oct 2024,1
-19,EXL,EXL/SE/1191556, Analytics>Healthcare>Services>Healthcare Analytics>Analytics,"Noida, Noida-SEZ BPO Solutions",Senior Executive,"Analytics | Experience: 2-5 years | Skills: asp .net, Communication skills, java script",,30 Oct 2024,1
-20,EXL,EXL/SE/1175559, Insurance>Insurance>Insurance Life & Annuities>Back Office>Operations,"Noida, Noida-SEZ BPO Solutions",Senior Executive,"Operations | Experience: 1-2 years | Skills: Disability Claims Management, Claims Handling",,30 Oct 2024,1
-21,EXL,EXL/SE/1191313, Operations Management>Emerging Business Unit>FAO>Back Office>Operations,"Noida, Noida-SEZ BPO Solutions",Senior Executive,"Operations | Experience: 2-4 years | Skills: P&L, Journal Entries, Cash Flow, Monthly Close Process, Balance Sheet, Reconciliation",,30 Oct 2024,1
-22,EXL,EXL/SE/1182033, Insurance>Insurance>Insurance Finance & Accounting>Back Office>Operations,"Noida, Noida-SEZ BPO Solutions",Senior Executive,"Operations | Experience: 1-2 years | Skills: MS Excel, Reconciliation, Accounting, Commuincation",,29 Oct 2024,1
-23,EXL,EXL/LAM/1189087, Insurance>Insurance>Insurance Finance & Accounting>Back Office>Operations,"Noida, Noida - Centre 59",Lead Assistant Manager,"Operations | Experience: 6-10 years | Skills: Accounting, Excel, Reconciliation, Oracle",,29 Oct 2024,1
-24,EXL,EXL/AM/1189098, Insurance>Insurance>Insurance Finance & Accounting>Back Office>Operations,"Noida, Noida - Centre 59",Assistant Manager,"Operations | Experience: 5-8 years | Skills: Oracle, Reconciliation, Excel, Accounting",,29 Oct 2024,1
-25,EXL,EXL/LAM/1183585, Analytics>Insurance>Services>Consulting>Analytics,"Gurgaon, EXL - Gurgaon Center 38",Lead Assistant Manager,"Analytics | Experience: 3-6 years | Skills: Snowflake, ETL, Python, Power BI, Apache, DevOps, SQL, Data Factory",,29 Oct 2024,1
-26,EXL,EXL/M/1183756, Analytics>Insurance>Services>Consulting>Analytics,"Gurgaon, EXL - Gurgaon Center 38",Manager,"Analytics | Experience: 3-8 years | Skills: Power BI, SQL, SAS",,29 Oct 2024,1
-27,EXL,EXL/SE/1190208, Insurance>Insurance>Insurance Finance & Accounting>Back Office>Operations,"Noida, Noida - Centre 59",Senior Executive,"Operations | Experience: 3-5 years | Skills: Tableau, SQL, VBA, Advance Excel, Macro",,29 Oct 2024,1
-28,EXL,EXL/M/1178465, Enabling>Growth Office>Growth Office>Marketing>Marketing Digital & Operations,"Noida, Noida - Centre 59",Manager,"Marketing Digital & Operations | Experience: 5-8 years | Skills: Stakeholder Management, Digital Marketing, Reporting & Analysis, Performance Marketing, Stakeholder communication, salesforce",,29 Oct 2024,1
-29,EXL,EXL/SM/1189905, Healthcare>Healthcare>Clinical & Pharmacy Services>Clinical & Pharmacy Services>CareRadius,"Noida, Noida - Centre 59",Senior Manager,"CareRadius | Experience: 12-16 years | Skills: Spring Security, Java, Team lead, Angular, Spring, SQL, Oracle, Web Services, Spring Batch, Web Services API, Java Developer, SPA Single Page Application Framework",,29 Oct 2024,1
-30,EXL,EXL/AVP/1156969, Healthcare>Healthcare>Payment Services>Payment Services>Payment Integrity - Analytics,"Chennai, IN Chennai C51",Assistant Vice President,"Payment Integrity - Analytics | Experience: 12-18 years | Skills: Management, Medical Coding, Healthcare",,29 Oct 2024,1
-31,EXL,EXL/AVP/1184129, Healthcare>Healthcare>Payment Services>Payment Services>Payment Integrity - Operations,"Chennai, IN Chennai C51",Assistant Vice President,"Payment Integrity - Operations | Experience: 15-16 years | Skills: Managerial, CPT, HCPCS",,29 Oct 2024,1
-32,EXL,EXL/SE/1187583, Healthcare>Healthcare>Payment Services>Payment Services>Payment Integrity - Operations,"Chennai, IN Chennai C51",Senior Executive,"Payment Integrity - Operations | Experience: 3-8 years | Skills: Voice & Accent Training, Communication, Call Center, Calling",,29 Oct 2024,1
-33,EXL,EXL/SM/1189688, Enabling>Quality Excellence>Quality Excellence>Quality Excellence>Quality Excellence,"Noida, Noida - Centre 59",Senior Manager,"Quality Excellence | Experience: 10-16 years | Skills: Six Sigma Green Belt, Data Analytics, Client Management, Lean Deployment, Team Management skills, Communication and Interpersonal skills",,29 Oct 2024,1
-34,EXL,EXL/SM/1189789, Healthcare>Healthcare>Payment Services>Payment Services>Payment Integrity - Operations,"Chennai, IN Chennai C51",Senior Manager,"Payment Integrity - Operations | Experience: 12-18 years | Skills: Healthcare, Analysis & Problem Solving, Communication Ethics, Team Handling",,29 Oct 2024,1
-35,EXL,EXL/LAM/1189866, Enabling>Quality Excellence>Quality Excellence>Quality Excellence>Quality Excellence,"Noida, Noida - Centre 59",Lead Assistant Manager,"Quality Excellence | Experience: 6-12 years | Skills: Presentation, Data Visualization, Excel Tools, MS Powerpoint, Analytical and problem solving skills, Data Analysis Tools, Excel Analytics, Data Analytics, MIS",,29 Oct 2024,1
-36,EXL,EXL/E/1184146, Insurance>Insurance>Insurance Property & Casualties>Back Office>Operations,"Noida, Noida - Centre 59",Executives,"Operations | Experience: 0-1 years | Skills: Workers Compensation, Payments, Communication, Claims Handling, Insurance, Property  &  Casualty Insurance",,29 Oct 2024,1
-37,EXL,EXL/SE/1184150, Insurance>Insurance>Insurance Property & Casualties>Back Office>Operations,"Noida, Noida - Centre 59",Senior Executive,"Operations | Experience: 1-3 years | Skills: Insurance, Communication, Claims Handling, Property  &  Casualty Insurance, Payments, Workers Compensation",,29 Oct 2024,1
-38,EXL,EXL/SE/1160043, Operations Management>Emerging Business Unit>Utilities>MIS & Reporting>Business Support Services,"Pune, IN Pune C11",Senior Executive,"Business Support Services | Experience: 2-4 years | Skills: Analytical Thinking, Reporting & Analysis, Excel Analytics, Business Processes, Power Bi",,28 Oct 2024,1
-39,EXL,EXL/M/1178968, Analytics>Insurance>Services>Insurance>Analytics,"Gurgaon, EXL - Gurgaon Center 38",Manager,"Analytics | Experience: 4-6 years | Skills: Ability to solve the problem in full - HLD and LLD, Business Development, Stakeholder communication, RFP & Proposal Writing, Insurance, Solution Development, Solution Design",,28 Oct 2024,1
-40,EXL,EXL/SE/1187489, Operations Management>Emerging Business Unit>FAO>Back Office>Operations,"Noida, Noida-SEZ BPO Solutions",Senior Executive,"Operations | Experience: 1-2 years | Skills: Accounts Payable, Vendor Management, Indexing",,28 Oct 2024,1
-41,EXL,EXL/SE/1189122, Operations Management>Emerging Business Unit>Utilities>MIS & Reporting>Business Support Services,"Pune, IN Pune C4",Senior Executive,"Business Support Services | Experience: 3-4 years | Skills: Excel Analytics, Excel Proficiency, Excel VBA integration., Business Processes, Excellent communication, Analytical Thinking, Data Analytics",,28 Oct 2024,1
-42,EXL,EXL/SM/1189383, Insurance>Insurance>Insurance Consulting>FRAC Consulting>FRAC Consulting,"Noida, Noida - Centre 59",Senior Manager,"FRAC Consulting | Experience: 10-15 years | Skills: Communication, Risk Management, Risk & Compliance, Presentation Skills",,28 Oct 2024,1
-43,EXL,EXL/M/1189384, Insurance>Insurance>Insurance Consulting>FRAC Consulting>FRAC Consulting,"Noida, Noida - Centre 59",Manager,"FRAC Consulting | Experience: 8-10 years | Skills: Commuincation, Risk & Compliance, Presentation Skills, Procurement",,28 Oct 2024,1
-44,EXL,EXL/AM/1189387, Insurance>Insurance>Insurance Consulting>FRAC Consulting>FRAC Consulting,"Noida, Noida - Centre 59",Assistant Manager,"FRAC Consulting | Experience: 4-6 years | Skills: Communication, Excel, Procurement, Analytical, SAP Ariba",,28 Oct 2024,1
-45,EXL,EXL/E/1189339, Operations Management>Emerging Business Unit>Utilities>Back Office>Operations,"Noida, IN Noida SEZ C60",Executives,"Operations | Experience: 1-3 years | Skills: Reading Comprehension, Communication",,28 Oct 2024,1
+S.No.,Company,Job ID,Function,Location,Title,Description,Posted On,Page Number
+1,EXL,EXL/SE/1192064,Insurance Finance & Accounting,Noida,Senior Executive,"Basic Section:
+Number Of Positions
+1
+Band
+A2
+Band Name
+Senior Executive
+Cost Code
+5650851
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+Backfill
+Max CTC
+300000.0000 - 400000.0000
+Complexity Level
+Back Office (Complexity Level 4)
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Finance & Accounting
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+FINANCE & ACCOUNTING
+RECONCILIATION
+Minimum Qualification
+B.COM
+Certification
+No data available
+
+Job Description:
+Prepare Accruals for month and quarter end closing and booking it in General Ledger
+Prepare Sub-ledger to General Ledger reconciliations and analysis of variances
+Manually record transactions into various sub-systems
+Rigorous analysis of accrual and reporting trends or any other relevant data
+Preparation of Statutory Reporting and uploading to Wings
+Assist project team in the deployment/testing of any new admin system for Accounting Center of Excellence
+Collaborate on any adhoc projects related to testing, new deployment, etc.
+",01 Nov 2024,1
+2,EXL,EXL/AM/553009,Data Management,Gurgaon,Assistant Manager,"Basic Section:
+Number Of Positions
+4
+Band
+B1
+Band Name
+Assistant Manager
+Cost Code
+S030105
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+800000.0000 - 1200000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Analytics
+Sub Group
+Analytics Common
+Organization
+Data Management
+LOB
+Consulting
+SBU
+Sales & Marketing
+Country
+India
+City
+Gurgaon
+Center
+EXL - Gurgaon Center 38
+
+Skills:
+Skill
+COLD CALLING
+CHANNEL SALES
+LEAD GENERATION
+LEAD MANAGEMENT
+Minimum Qualification
+GRADUATE
+Certification
+No data available
+
+Job Description:
+Lead Generation /Qualification
+ Experience: 3+ years’ experience in lead generation using Google Ads, Emails, Online forms, Surveys, Calling etc
+ Job Description for Lead Generation Expert 
+We are looking for an experienced Lead Generation Expert who can plan & execute digital marketing campaigns, including web, SEO/SEM, email, social media, and display advertising.
+Responsibilities 
+Establish the end-to-end lead generation capabilities and strategy that align with the needs and goals of the company
+Execute all web, SEO/SEM, PPC, marketing database, email, social media, and display advertising campaigns
+Measure and report performance of all digital marketing campaigns, and assess against goals (ROI and KPIs)
+Identify trends and insights, and optimize spend and performance based on the insights
+Develop and lead the implementation of the longer-term data and analytics capability, in consultation with the relevant marketing and business leaders
+Collaborate with internal teams to create landing pages and optimize the user experience
+Utilize the strong analytical ability to evaluate end-to-end customer experience across multiple channels and customer touchpoints
+
+Experience Requirement: 
+Excellent understanding of digital marketing concepts and industry best practices
+Proven working experience in digital marketing
+Experience with Google Ads, Email Campaigns, and SEO/ SEM & Social Media Ads
+Knowledge of web analytics tools
+Experience in the implementation of data and analytics strategies
+Adept at writing skills, to effectively communicate the company’s brand message
+",31 Oct 2024,1
+3,EXL,EXL/M/1191548,Services,Gurgaon,Manager,"Basic Section:
+Number Of Positions
+1
+Band
+C1
+Band Name
+Manager
+Cost Code
+D003152
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+1500000.0000 - 2400000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Analytics
+Sub Group
+Banking & Financial Services
+Organization
+Services
+LOB
+Banking & Financial Services
+SBU
+Analytics
+Country
+India
+City
+Gurgaon
+Center
+Gurgaon-SEZ BPO Solutions
+
+Skills:
+Skill
+PYTHON
+SQL
+TABLEAU
+MACHINE LEARNING
+PYSPARK
+Minimum Qualification
+BACHELOR
+Certification
+No data available
+
+Job Description:
+Job Description
+Role and Responsibilities:
+• Emphasis is on end-to-end delivery of analysis
+• Extremely comfortable working with data, including managing large number of data sources, analyzing data quality, and pro-actively working with client’s data/ IT teams to resolve issues
+Hands on experience on Machine Learning algorithms such as Logistic Regression, Random Forest, XG Boost
+• Use variety of analytical tools (Python, SQL, PySpark etc.) to carry out analysis and drive conclusions
+• Reformulate highly technical information into concise, understandable terms for presentations
+Candidate Profile:
+• Required skills: Python, SQL, Hive,PySpark, Hadoop, Tableau
+• 4- 6 years of consulting, analytics delivery experience
+• Experience in Banking and Financial Services domain is preferred.
+• Master’s or Bachelor's degree in math, statistics, economics, computer engineering or related analytics field
+• Very strong analytical skills with the demonstrated ability to research and make decisions based on the day-to-day and complex customer problems required
+• Experience of working in financial services and risk analytics domain, a plus
+• Strong record of achievement, solid analytical ability, and an entrepreneurial hands-on approach to work
+• Outstanding written and verbal communication skills
+Job Location
+
+• 2 days work from Office, 3 days work from home
+",31 Oct 2024,1
+4,EXL,EXL/M/1191591,Services,Gurgaon,Manager,"Basic Section:
+Number Of Positions
+1
+Band
+C1
+Band Name
+Manager
+Cost Code
+D003152
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+1500000.0000 - 2400000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Analytics
+Sub Group
+Banking & Financial Services
+Organization
+Services
+LOB
+Banking & Financial Services
+SBU
+Analytics
+Country
+India
+City
+Gurgaon
+Center
+Gurgaon-SEZ BPO Solutions
+
+Skills:
+Skill
+PYTHON
+SQL
+TABLEAU
+MACHINE LEARNING
+PYSPARK
+Minimum Qualification
+BACHELOR
+Certification
+No data available
+
+Job Description:
+Job Description
+Role and Responsibilities:
+• Emphasis is on end-to-end delivery of analysis
+• Extremely comfortable working with data, including managing large number of data sources, analyzing data quality, and pro-actively working with client’s data/ IT teams to resolve issues
+Hands on experience on Machine Learning algorithms such as Logistic Regression, Random Forest, XG Boost
+• Use variety of analytical tools (Python, SQL, PySpark etc.) to carry out analysis and drive conclusions
+• Reformulate highly technical information into concise, understandable terms for presentations
+Candidate Profile:
+• Required skills: Python, SQL, Hive,PySpark, Hadoop, Tableau
+• 4- 6 years of consulting, analytics delivery experience
+• Experience in Banking and Financial Services domain is preferred.
+• Master’s or Bachelor's degree in math, statistics, economics, computer engineering or related analytics field
+• Very strong analytical skills with the demonstrated ability to research and make decisions based on the day-to-day and complex customer problems required
+• Experience of working in financial services and risk analytics domain, a plus
+• Strong record of achievement, solid analytical ability, and an entrepreneurial hands-on approach to work
+• Outstanding written and verbal communication skills
+Job Location
+
+• 2 days work from Office, 3 days work from home
+",31 Oct 2024,1
+5,EXL,EXL/SE/1189452,FAO,Bangalore,Senior Executive,"Basic Section:
+Number Of Positions
+1
+Band
+A2
+Band Name
+Senior Executive
+Cost Code
+D000846
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+Backfill
+Max CTC
+350000.0000 - 450000.0000
+Complexity Level
+F&A 3 (Complexity Level 3) Bangalore Location Only
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Operations Management
+Sub Group
+Emerging Business Unit
+Organization
+FAO
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Bangalore
+Center
+FA - Bengaluru
+
+Skills:
+Skill
+ACCOUNTS RECEIVABLE
+ORAL COMMUNICATION
+COMMUNICATION
+MS OFFICE
+ACCOUNTING
+Minimum Qualification
+B COM
+Certification
+No data available
+
+Job Description:
+Job Description
+  Position Title/Responsibility Level
+Senior Associate, Accounts Receivable 
+  Function
+Finance Operations
+  Permanent/ Temporary
+Permanent
+  Basic Function
+  The position is responsible to perform variety of functions related to Cash Application
+The job also includes also General Ledger activities to be completed in an accurate and timely manner 
+Follow-up with Client for timely receipt of exception resolutions.
+Maintain data and records in accordance with Cash Application client policies & principles
+Exposure to following areas will be preferred in O2C Process:
+Downloading bank statements 
+Indexing Documents 
+Creating Receipts  
+Applying Receipts to Invoices 
+  Essential Functions
+  To ensure adherence to published procedures, timescales and guidelines for Level 1 & 2.
+Resolve Cash Coding exceptions.
+To ensure accurate data entry to provide business owners with quality analysis of Cash Application.
+Analyze and research all discrepancies/ open items and resolve any queries relating to Cash Application.
+Any other essential function that may occur from time to time as directed by the Supervisor to help to identify inefficiencies to the process and assist to drive process improvements activities
+Ensure that the assigned targets are met in accordance with SLA and Internal standards
+  Performance parameters
+  Timeliness & Accuracy
+Team objectives
+Process improvement 
+  Primary Internal Interactions
+  AM for the purpose of reporting performance, escalation handling, clarifying concerns, seeking support and monthly evaluation of performance
+Manager for the purpose of settling issues left unresolved by the AM
+Subject Matter Expert for the purpose of handling process related issues, queries and escalated transactions
+QCA for the purpose of associate performance feedback and audit in order to update the training curriculum
+  Primary External Interactions
+  Client Employees
+Escalations at the client end for the purpose of seeking clarifications & answering queries
+  Skills
+Technical Skills
+Good computer navigation skills
+Strong PC skills, with knowledge of Microsoft Office, particularly strong in MS Excel & Word are a critical requirement
+Exposure to Cash Application Module 
+Process Specific Skills
+Strong  knowledge of O2C Process 
+Accounting principles and Accounts Receivables concepts
+Excellent Communication Skills ( Both Written and Oral)
+Soft skills (Desired)
+Self disciplined and result oriented
+Team work/ Managing Self / Adaptability 
+Ability to multi task
+Data gathering ability/ Eye for detail
+Coaching and Feedback
+Soft Skills (Minimum)
+Good Communication Skills (Both Written and Oral)
+Business awareness 
+Customer Service Focus
+Active listening skills
+Presentation and Facilitation Skills
+Education Requirements
+Graduate in Accounting / Commerce with at least 15 years of education
+Work Experience Requirements
+Total work experience should be 1 - 3 years in the field of Finance/Accounts preferably in O2C Process
+ Other Requirements
+  Annexure: 
+    Acknowledgement
+ (acknowledge that the information contained in this document is factual and complete)
+    ___________________________________           ___________________________________________           _____________________
+ Candidate                                                                                Supervisor/Manager                                           Date
+  
+",31 Oct 2024,1
+6,EXL,EXL/LAM/1191282,Finance,Noida,Lead Assistant Manager,"Basic Section:
+Number Of Positions
+2
+Band
+B2
+Band Name
+Lead Assistant Manager
+Cost Code
+D005307
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+Backfill
+Max CTC
+750000.0000 - 1100000.0000
+Complexity Level
+Not Applicable
+Work Type
+Work From Home – Predominantly Working From Home But May Be Required To Work For A Certain No Of Days A Month From Office
+
+Organisational:
+Group
+Enabling
+Sub Group
+Finance
+Organization
+Finance
+LOB
+Finance
+SBU
+Finance & Accounts
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+REINSURANCE AND ACCOUNTING
+Minimum Qualification
+B.COM
+Certification
+No data available
+
+Job Description:
+Lead Assistant Manager:- 
+ 4-5 years of experience in the field of Reinsurance operations or accounting
+Overall experience of 7-10 Years    
+Hands on experience in working with large data
+Analytical abilities
+Strong MS Excel and communication skills
+
+ Primary Responsibility: 
+Handling reinsurance contracts set-up in reinsurance system
+Review ceded premium and loss results from the reinsurance system
+Manage review of reinsurance payments to the brokers/reinsurers
+Review claims billings
+Perform accounting transactions, manual journals
+Perform GL Reconciliation
+Prepare financial and management reporting
+Perform Regulatory reporting
+Technical Skills: 
+Good knowledge of Assumed reinsurance 
+Sound analytical skill
+MS Excel and other office tools
+
+Knowledge of Genius / URS preferred + Good accounting skills
+
+Primary Internal Interactions
+LAM / Manager for the purpose of reporting performance, escalation handling, clarifying concerns, seeking support and monthly evaluation of performance
+AVP for the purpose of settling issues left unresolved by the LAM /Manager
+Subject Matter Expert for the purpose of handling process related issues, queries and escalated transactions 
+QCA for the purpose of associate performance feedback and audit in order to update the training curriculum
+ Primary External Interactions
+Onshore teams for routine day to day tasks
+Auditors for the purpose of getting Audit Requirements & supplying adequate documents
+Trainers, SMEs and Operations for the purpose of developing and updating training curriculum, provide feedback on training and discussing specific action plans
+Escalations team at client end for the purpose of seeking clarifications & answering queries
+",31 Oct 2024,1
+7,EXL,EXL/SE/1191324,Finance,Noida,Senior Executive,"Basic Section:
+Number Of Positions
+1
+Band
+A2
+Band Name
+Senior Executive
+Cost Code
+D005307
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+Backfill
+Max CTC
+300000.0000 - 550000.0000
+Complexity Level
+Not Applicable
+Work Type
+Work From Home – Predominantly Working From Home But May Be Required To Work For A Certain No Of Days A Month From Office
+
+Organisational:
+Group
+Enabling
+Sub Group
+Finance
+Organization
+Finance
+LOB
+Finance
+SBU
+Finance & Accounts
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+REINSURANCE AND ACCOUNTING
+REINSURANCE
+Minimum Qualification
+B.COM
+Certification
+No data available
+
+Job Description:
+•    Primary Responsibility: 
+Handling reinsurance contracts set-up in reinsurance system
+Review ceded/assumed premium and loss results from the reinsurance system
+Manage review of reinsurance payments to the brokers/reinsurers
+Review claims billings
+Perform accounting transactions, manual journals
+Perform GL Reconciliation
+Prepare financial and management reporting
+Perform Regulatory reporting
+Technical Skills: 
+Good knowledge of reinsurance 
+Sound analytical skill
+MS Excel and other office tools
+Knowledge of Genius / URS preferred
+Education
+B.COM
+Insurance/Reinsurance certifications preferred
+Good accounting skill will be preferred 
+  Primary Internal Interactions
+LAM / Manager for the purpose of reporting performance, escalation handling, clarifying concerns, seeking support and monthly evaluation of performance
+AVP for the purpose of settling issues left unresolved by the LAM /Manager
+Subject Matter Expert for the purpose of handling process related issues, queries and escalated transactions 
+QCA for the purpose of associate performance feedback and audit in order to update the training curriculum
+ Primary External Interactions
+Onshore teams for routine day to day tasks
+Auditors for the purpose of getting Audit Requirements & supplying adequate documents
+Trainers, SMEs and Operations for the purpose of developing and updating training curriculum, provide feedback on training and discussing specific action plans
+Escalations team at client end for the purpose of seeking clarifications & answering queries
+ 2-5 years of experience in the field of Reinsurance operations or accounting
+Overall experience of 5-7 Years 
+Hands on experience in handling reinsurance processes
+Good MS Excel and communication skills
+",31 Oct 2024,1
+8,EXL,EXL/LAM/1191593,FAO,Bangalore,Lead Assistant Manager,"Basic Section:
+Number Of Positions
+1
+Band
+B2
+Band Name
+Lead Assistant Manager
+Cost Code
+D012214
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+875000.0000 - 1000000.0000
+Complexity Level
+F&A 4 (Complexity Level 4) Bangalore Location Only
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Operations Management
+Sub Group
+Emerging Business Unit
+Organization
+FAO
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Bangalore
+Center
+FA - Bengaluru
+
+Skills:
+Skill
+ACCOUNTING
+ACCOUNTS RECEIVABLE
+COMMUNICATION
+EMAIL
+EXCELLENT WRITTEN AND VERBAL COMMUNICATION
+EXCEL
+SERVICENOW
+SAP
+TEAM HANDLING
+CLIENT MANAGEMENT
+Minimum Qualification
+B.COM
+MBA
+Certification
+No data available
+
+Job Description:
+Pricing Decision Template
+  Position Title/Name:
+LAM
+Level / Band:
+B2
+     
+
+Complexity:
+ Back office – F&A 3
+Location/ Country:
+Bangalore / India
+       CEF Score:         _________B1-5____________________________  No. of Expected 
+                                                                                                                          FTEs:              _______                  __________________
+Vertical /
+Domain:            ____F&A – O2C____________________________   Education 
+                                                                                                                          / Certification :  B.Com/ M.Com_________________ 
+ Shift Hours /
+Working Days: ______4:00 PM to 1:00 AM / 5 Days a week__    Passport / Visa 
+                                                                                                                           Requirement: Passport __________________
+  Job Information: (To be filled by Migrations/Solutions Team Representative)
+   FULL-TIME                                        PART-TIME
+ 40 hrs. 
+HOURS PER WEEK (Wherever required)
+ Language Preference (If Any): English 
+ For US Employees Only
+ EXEMPT                              NONEXEMPT
+  Skill Set / Job Spec
+Key Responsibility Areas including preferred Skills and Experience
+Prior experience in all Accounts Receivable functions including Billing, Cash Application, Collections, Dispute Management, Exception handling, Reporting and Month-end deliverables.
+Have good understanding of O2C module on ERPs
+Interact with customers, requestors, and other stakeholders.
+Good understating of accounting concepts
+Day to day team & process management experience
+Strive to exceed SLA parameters
+Acumen for quality and improving timelines
+Manage the client disputes, sending billing statements 
+Identify training needs, arrange trainings and evaluate post training performance 
+Have flair for process improvements and automation opportunities
+Good MS Office knowledge
+Undertake additional responsibilities and display leadership qualities 
+ Competencies: 
+Knowledge of the process and systems 
+High level of computer proficiency and excellent MIS skills 
+Ability to coach and give feedback on an ongoing basis 
+Clear written and verbal communication 
+High level of Customer Service and Quality Orientation 
+Strong Communication and Motivational Skills 
+Ability to lead in a continually challenging environment
+Effectively plan, prioritize and execute everyday floor operations 
+Eligibility Criteria: 
+Good communication skills both written and verbal
+Should have 4-6 Years of experience 
+Should have experience of managing a team of 15 to 20 members
+Must carry experience with SAP for Order to Cash processes. 
+Should have good experience and understanding of billing process
+  
+",31 Oct 2024,1
+9,EXL,EXL/AM/1186671,Insurance Finance & Accounting,Noida,Assistant Manager,"Basic Section:
+Number Of Positions
+1
+Band
+B1
+Band Name
+Assistant Manager
+Cost Code
+D004923
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+600000.0000 - 800000.0000
+Complexity Level
+Back Office (Complexity Level 4)
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Finance & Accounting
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+BUSINESS PROCESSES
+Minimum Qualification
+B.COM
+Certification
+No data available
+
+Job Description:
+Job Description
+  Position Title 
+Assistant Manager
+Lead Assistant Manager
+ (Reinsurance)
+                               Function, Responsibility Level 
+Reinsurance Operations, Assistant Manager
+Reinsurance Operations, Lead Assistant Manager
+Reports to
+Manager – Reinsurance Operations
+Sr. Manager – Reinsurance Operations
+Location 
+Noida, India
+  Span of Control 
+0
+Position Type 
+Permanent
+   •    Primary Responsibility: 
+Prepare financial and management reporting
+Perform Regulatory reporting such Schedule P, Schedule F etc
+Review ceded premium and loss results from the reinsurance system
+Manage review of reinsurance payments to the brokers/reinsurers
+Review claims billings
+Perform accounting transactions, manual journals
+Perform GL Reconciliation
+ Technical Skills: 
+Good knowledge of ceded reinsurance 
+Sound analytical skill
+MS Excel and other office tools
+Have an understanding of US GAAP
+ Education
+Bachelor’s degree or Post Graduate in Accounting, MBA (Finance)
+Insurance/Reinsurance certifications preferred
+   Primary Internal Interactions
+LAM / Manager for the purpose of reporting performance, escalation handling, clarifying concerns, seeking support and monthly evaluation of performance
+AVP for the purpose of settling issues left unresolved by the LAM /Manager
+Subject Matter Expert for the purpose of handling process related issues, queries and escalated transactions 
+QCA for the purpose of associate performance feedback and audit in order to update the training curriculum
+ Primary External Interactions
+Onshore teams for routine day to day tasks
+Auditors for the purpose of getting Audit Requirements & supplying adequate documents
+Trainers, SMEs and Operations for the purpose of developing and updating training curriculum, provide feedback on training and discussing specific action plans
+Will interact extensively with onshore for US GAAP and regulatory reporting
+Escalations team at client end for the purpose of seeking clarifications & answering queries
+ Education Requirements
+ Bachelor’s degree or Post Graduate in Accounting, MBA (Finance), CA
+Insurance/Reinsurance certifications preferred
+",31 Oct 2024,1
+10,EXL,EXL/LAM/1191773,Insurance Property & Casualties,Pune,Lead Assistant Manager,"Basic Section:
+Number Of Positions
+1
+Band
+B2
+Band Name
+Lead Assistant Manager
+Cost Code
+D010601
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+1000000.0000 - 1300000.0000
+Complexity Level
+Back Office (Complexity Level 4)
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Property & Casualties
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Pune
+Center
+IN Pune C4
+
+Skills:
+Skill
+ANALYTICAL THINKING
+CONFLICT MANAGEMEN
+FEEDBACK MANAGEMENT
+LONDON MARKET INSURANCE
+INNOVATION
+DECISION MAKING
+PROBLEM SOLVING
+PEOPELE MANAGEMENT
+STRAIGHT THROUGH PROCESSING
+Minimum Qualification
+GRADUATE
+Certification
+No data available
+
+Job Description:
+Manage team and ensure quality and productivity targets are met
+Preferred knowledge of the UK insurance industry
+Monitor transactions on an ongoing basis and take corrective steps where necessary or make incremental improvements
+Provide coaching and feedback to team members to enable them to improve their performance. 
+Assist new hires such that they are productive on the floor in the shortest possible time frame
+Provide inputs on process and system to the team members.
+Client Interaction, where required at the level of Supervisors
+Ensure compliance with internal policies and procedures, external regulations and information security standards.
+Collect and provide data required for various audits like ISO/COPC etc.
+Ensure that all agents in their process know their goals and how they are linked to the Organization’s quality policy
+Effectively manage queue and balancing of work load
+Focus on Innovation
+Handle escalations
+",31 Oct 2024,1
+11,EXL,EXL/SE/1191775,Insurance Property & Casualties,Pune,Senior Executive,"Basic Section:
+Number Of Positions
+2
+Band
+A2
+Band Name
+Senior Executive
+Cost Code
+D011281
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+400000.0000 - 500000.0000
+Complexity Level
+Back Office (Complexity Level 2)
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Property & Casualties
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Pune
+Center
+IN Pune C4
+
+Skills:
+Skill
+COMMUNICATION
+SUBJECT MATTER EXPERT
+MS OFFICE
+READING COMPREHENSION
+Minimum Qualification
+GRADUATE
+Certification
+No data available
+
+Job Description:
+Preferred knowledge of the UK London market insurance industry
+Gathering and updating the data into the client systems
+Evaluate incoming applications, interpret necessary information for completing assigned tasks
+Indexing and filing of documents electronically on Provided Systems
+Contact relevant parties to obtain missing information (as necessary)
+",31 Oct 2024,1
+12,EXL,EXL/AM/1191771,Insurance Property & Casualties,Pune,Assistant Manager,"Basic Section:
+Number Of Positions
+1
+Band
+B1
+Band Name
+Assistant Manager
+Cost Code
+D010601
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+800000.0000 - 1000000.0000
+Complexity Level
+Back Office (Complexity Level 3)
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Property & Casualties
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Pune
+Center
+IN Pune C4
+
+Skills:
+Skill
+PEOPLE MANAGEMENT
+COMMUNICATION
+MS OFFICE
+COACHING & MENTORING
+SERVICE LEVEL MANAGEMENT
+CONFLICT MANAGEMEN
+WORKS INDEPENDENTLY TOWARDS PROVIDING SUPPORT
+LONDON MARKET INSURANCE
+EMAIL MANAGEMENT
+Minimum Qualification
+GRADUATE
+Certification
+No data available
+
+Job Description:
+Manage team and ensure quality and productivity targets are met
+Preferred knowledge of the UK insurance industry
+Monitor transactions on an ongoing basis and take corrective steps where necessary or make incremental improvements
+Provide coaching and feedback to team members to enable them to improve their performance. 
+Assist new hires such that they are productive on the floor in the shortest possible time frame
+Provide inputs on process and system to the team members.
+Client Interaction, where required at the level of Supervisors
+Ensure compliance with internal policies and procedures, external regulations and information security standards.
+Collect and provide data required for various audits like ISO/COPC etc.
+Ensure that all agents in their process know their goals and how they are linked to the Organization’s quality policy
+Effectively manage queue and balancing of work load
+Handle escalations
+",31 Oct 2024,1
+13,EXL,EXL/LAM/1191051,Services,Gurgaon,Lead Assistant Manager,"Basic Section:
+Number Of Positions
+2
+Band
+B2
+Band Name
+Lead Assistant Manager
+Cost Code
+D008825
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+1000000.0000 - 2200000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Analytics
+Sub Group
+Analytics - UK & Europe
+Organization
+Services
+LOB
+Analytics - UK & Europe
+SBU
+Analytics
+Country
+India
+City
+Gurgaon
+Center
+EXL - Gurgaon Center 38
+
+Skills:
+Skill
+SAS
+PYTHON
+Minimum Qualification
+B.COM
+Certification
+No data available
+
+Job Description:
+Statistical modeler required with 1-3 years of experience in banking domain. SAS and Python are must haves. Good understanding of different supervised and unsupervised machine learning techniques. Knowledge of banking domain - fraud analytics will be good to have. Good communicat0ion and analytics skills 
+",30 Oct 2024,1
+14,EXL,EXL/E/1191290,FAO,Noida,Executives,"Basic Section:
+Number Of Positions
+1
+Band
+A1
+Band Name
+Executives
+Cost Code
+D009955
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+300000.0000 - 400000.0000
+Complexity Level
+Back Office (Complexity Level 2)
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Operations Management
+Sub Group
+Emerging Business Unit
+Organization
+FAO
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Noida
+Center
+Noida-SEZ BPO Solutions
+
+Skills:
+Skill
+ACCOUNTS RECEIVABLE
+Minimum Qualification
+B.COM
+Certification
+No data available
+
+Job Description:
+Customer Support: Address and resolve billing inquiries and issues via email or chat.
+Billing Management: Process and manage customer billing information, including invoices, payments, and account adjustments.
+Issue Resolution: Investigate and resolve discrepancies in billing and payments.
+Documentation: Maintain accurate records of customer interactions and transactions.
+Communication: Liaise with other departments to ensure seamless resolution of customer issues.
+Compliance: Ensure all billing activities comply with company policies and regulations.
+Reporting: Generate and analyze billing reports to identify trends and areas for improvement.
+To work under minimum supervision and to comply with established procedures or as directed by Manager
+Adaptable to learn new document type, process, concept and skills
+Good Interpersonal Skills and Email Communication to communicate with Sales & other internal teams
+Ensure adherence to process guidelines as per agreed quality standard on all SOPs
+",30 Oct 2024,1
+15,EXL,EXL/E/1180863,Insurance Life & Annuities,Noida,Executives,"Basic Section:
+Number Of Positions
+10
+Band
+A1
+Band Name
+Executives
+Cost Code
+D005809
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+250000.0000 - 270000.0000
+Complexity Level
+Back Office (Complexity Level 3)
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Life & Annuities
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Noida
+Center
+Noida-SEZ BPO Solutions
+
+Skills:
+Skill
+INSURANCE CLAIMS
+COMPUTER COMPETENCY
+COMMUNICATION AND INTERPERSONAL SKILLS
+Minimum Qualification
+GRADUATE
+Certification
+No data available
+
+Job Description:
+Process per SOP provided by the client
+Operate and maintain customer related information systems to the required standards, to maintain accurate records and access information to enable work to be progressed.
+Executives must comply with the Data Protection Act and Client Security Policy and Procedures
+Make sure the performance targets are met
+",30 Oct 2024,1
+16,EXL,EXL/E/1191468,Insurance Property & Casualties,Pune,Executives,"Basic Section:
+Number Of Positions
+2
+Band
+A1
+Band Name
+Executives
+Cost Code
+5610726
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+Backfill
+Max CTC
+200000.0000 - 250000.0000
+Complexity Level
+Back Office (Complexity Level 2)
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Property & Casualties
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Pune
+Center
+IN Pune SEZ C25
+
+Skills:
+Skill
+FIXERS
+Minimum Qualification
+B.COM
+Certification
+No data available
+
+Job Description:
+Assessment of scanned documents and emails
+
+•Conduct a detailed assessment of the document type, match it accurately to the claim, and update correct document category
+
+•Collate and Report daily indexing activities to the Business Indexing Team Leader
+
+•Understand and adhere to DPA & Industry guidelines
+
+•Executive will need to work as efficiently and effectively as possible to minimize the turnaround time in processing claims whilst maintaining control of the quality of indexing being done.
+
+•Executives are required to achieve Key Performance Indicators as set out by the business.
+
+•At all times, executives will be aware of the commitment to service and the application of the Company’s core values and beliefs. 
+
+•Operate and maintain customer related information systems to the required standards, to maintain accurate records and access information to enable work to be progressed.
+
+•Executives must comply with the Data Protection Act and Client Security Policy and Procedures.
+
+•Good Computer navigation skills, keyboarding skills
+
+•Should be familiar with MS Office 
+",30 Oct 2024,1
+17,EXL,EXL/E/1191287,FAO,Noida,Executives,"Basic Section:
+Number Of Positions
+4
+Band
+A1
+Band Name
+Executives
+Cost Code
+D009955
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+300000.0000 - 400000.0000
+Complexity Level
+Back Office (Complexity Level 2)
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Operations Management
+Sub Group
+Emerging Business Unit
+Organization
+FAO
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Noida
+Center
+Noida-SEZ BPO Solutions
+
+Skills:
+Skill
+ACCOUNTS PAYABLE
+INVOICE PROCESSING
+Minimum Qualification
+B.COM
+Certification
+No data available
+
+Job Description:
+Fair Understating of Procure to Pay Cycle (P2P) and Accounts Payable 
+Good Understanding of PO and Non-PO Invoices
+Knowledge of Invoice Processing both PO and Non-PO
+Good Understating in payment transactions and Bank Portals 
+Basic Understanding of Vendor Set ups and Reconciliations 
+Insight on Intercompany transactions 
+Adaptable to learn new document type, process, concept and skills
+Ensure adherence to process guidelines as per agreed quality standard on all SOPs
+",30 Oct 2024,1
+18,EXL,EXL/E/1191296,FAO,Noida,Executives,"Basic Section:
+Number Of Positions
+2
+Band
+A1
+Band Name
+Executives
+Cost Code
+D009955
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+300000.0000 - 400000.0000
+Complexity Level
+Back Office (Complexity Level 2)
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Operations Management
+Sub Group
+Emerging Business Unit
+Organization
+FAO
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Noida
+Center
+Noida-SEZ BPO Solutions
+
+Skills:
+Skill
+BALANCE SHEET
+P&L
+CASH FLOW
+RECONCILIATION
+MONTHLY CLOSE PROCESS
+Minimum Qualification
+B.COM
+Certification
+No data available
+
+Job Description:
+Perform variety of accounting functions related to daily recording of accounting transactions, financial period close activities, Reconciliations and Reporting.
+Preparation of financials i.e., cash flow, balance sheet, P&L statement.
+Preparation of bank reconciliations and communicate to finance departments on variances and resolve.
+Preparation of Balance Sheet reconciliations.
+Preparation & calculation of Tax schedules
+Ensuring completeness and accuracy of intercompany transactions, resolving errors/exceptions.
+Daily reconciliation of high volume intercompany transactions and communication with required finance departments.
+Recording and maintenance of Fixed Assets & Intangible Asset. FA Sub ledger to General ledger reconciliations.
+Follow-up with lines of business and stakeholders for closure of accounting open items.
+Preparation of bank or regulatory reporting as per given timelines.
+Maintain data and records in accordance with accounting standards & principles and provide accounting records for review by internal and external audits.
+",30 Oct 2024,1
+19,EXL,EXL/SE/1191556,Services,Noida,Senior Executive,"Basic Section:
+Number Of Positions
+1
+Band
+A2
+Band Name
+Senior Executive
+Cost Code
+D006482
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+400000.0000 - 800000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Analytics
+Sub Group
+Healthcare
+Organization
+Services
+LOB
+Healthcare Analytics
+SBU
+Analytics
+Country
+India
+City
+Noida
+Center
+Noida-SEZ BPO Solutions
+
+Skills:
+Skill
+COMMUNICATION SKILLS
+ASP .NET
+JAVA SCRIPT
+Minimum Qualification
+ANY GRADUATE
+Certification
+No data available
+
+Job Description:
+Data Warehousing: A data warehouse is something that mainly allows stakeholders to make well-informed business decisions by supporting the process of drawing meaningful conclusions with the help of data analytics
+ Cloud computing tools: Azure, AWS, OpenShift, OpenStack.
+ Database Management: Oracle, Microsoft, SQL Server, MySQL
+ Python, Pyspark.
+ Statistics and machine learning is needed (Basics)
+ Data ingestion tools: Apache Flume, Apache Storm, Wavefront, Apache Kafla.
+ AWS Engineering Skills: Amazon Redshift, Amazon S3, Amazon DynamoDB, AWS lambda, and AWS Glue. 
+ Data modeling and schema design: Data modeling and schema design mainly involve defining the data types and constraints that will be used to ensure quality and data integrity.
+ Real-Time Processing: Real-time data processing frameworks are mainly used to process data streams and handle the data as it is generated. These frameworks also allow companies to analyze and respond to data in real time, which is very important for applications like monitoring systems, real-time recommendations, and fraud detection.
+",30 Oct 2024,1
+20,EXL,EXL/SE/1175559,Insurance Life & Annuities,Noida,Senior Executive,"Basic Section:
+Number Of Positions
+7
+Band
+A2
+Band Name
+Senior Executive
+Cost Code
+D012652
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+400000.0000 - 500000.0000
+Complexity Level
+Back Office (Complexity Level 4)
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Life & Annuities
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Noida
+Center
+Noida-SEZ BPO Solutions
+
+Skills:
+Skill
+CLAIMS HANDLING
+DISABILITY CLAIMS MANAGEMENT
+Minimum Qualification
+GRADUATION
+Certification
+No data available
+
+Job Description:
+Basic Function
+This position is responsible for reviewing, analyzing and interpreting medical Information to assess and determine appropriate next action steps which may lead to denial or payment of claims. 
+ Work is performed under general supervision according to established guidelines. This individual promotes capabilities from a customer perspective, aligning needs with the target offering by creating a customer self-service enabled platform for core customers.
+ Essential Functions
+Responsible for reviewing and analyzing discrepancies by cross-verifying from different data sources
+Familiar with US Healthcare domain knowledge and understanding of healthcare regulations (HIPAA)
+Deep understanding of medical coding, billing, and medical terminologies
+Attention for detail, and Strong analytical skills for processing medical documentation
+Critical thinking and high independent decision making capability
+Proficiency in healthcare information systems
+Ability to navigate through multiple applications
+Operates with urgency in a real time service environment
+Meets individual goals while assisting team to meet team goals
+Defines, communicates and manages workflow and data coordination to support various implementation related reports (i.e., reporting, inventory, capacity reporting, and ad-hoc reports as needed by management)
+May perform other duties as assigned
+ Performance parameters
+Productivity
+Quality
+Turn Around Time of work assigned
+Attendance & Schedule Adherence
+    Primary Internal Interactions:
+SME/AM/LAM/Manager for the purpose of reporting performance, escalation handling, clarifying concerns, and seeking support
+AM/LAM for the purpose of settling issues left unresolved by the SME and monthly evaluation of performance
+SME for the purpose of handling process related issues; queries and escalated transactions 
+QCA for the purpose of associate performance feedback and audit in order to update the training curriculum
+Mentors for the purpose of seeking clarifications and answering queries real time
+",30 Oct 2024,1
+21,EXL,EXL/SE/1191313,,,Senior Executive,"Basic Section:
+Number Of Positions
+3
+Band
+A2
+Band Name
+Senior Executive
+Cost Code
+D009955
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+475000.0000 - 575000.0000
+Complexity Level
+Back Office (Complexity Level 2)
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+
+
+Skills:
+Skill
+MONTHLY CLOSE PROCESS
+RECONCILIATION
+JOURNAL ENTRIES
+BALANCE SHEET
+P&L
+CASH FLOW
+Minimum Qualification
+B.COM
+Certification
+No data available
+
+Job Description:
+Perform variety of accounting functions related to daily recording of accounting transactions, financial period close activities, Reconciliations and Reporting.
+Preparation of financials i.e., cash flow, balance sheet, P&L statement.
+Preparation of bank reconciliations and communicate to finance departments on variances and resolve.
+Preparation of Balance Sheet reconciliations.
+Preparation & calculation of Tax schedules
+Ensuring completeness and accuracy of intercompany transactions, resolving errors/exceptions.
+Daily reconciliation of high volume intercompany transactions and communication with required finance departments.
+Recording and maintenance of Fixed Assets & Intangible Asset. FA Sub ledger to General ledger reconciliations.
+Follow-up with lines of business and stakeholders for closure of accounting open items.
+Preparation of bank or regulatory reporting as per given timelines.
+Maintain data and records in accordance with accounting standards & principles and provide accounting records for review by internal and external audits.
+",30 Oct 2024,1
+22,EXL,EXL/SE/1191414,Payment Services,Chennai,Senior Executive,"Basic Section:
+Number Of Positions
+10
+Band
+A2
+Band Name
+Senior Executive
+Cost Code
+D900125
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+300000.0000 - 800000.0000
+Complexity Level
+Not Applicable
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Healthcare
+Sub Group
+Healthcare
+Organization
+Payment Services
+LOB
+Payment Services
+SBU
+Payment Integrity - Operations
+Country
+India
+City
+Chennai
+Center
+IN Chennai C51
+
+Skills:
+Skill
+HEALTHCARE ANALYTICS
+HEALTHCARE - SERVICES
+BILLING SYSTEMS
+ANALYSIS
+ANALYSIS & PROBLEM SOLVING
+HEALTHCARE - PAYOR
+Minimum Qualification
+GRADUATE
+Certification
+No data available
+
+Job Description:
+Overview:
+Deliver Daily targets for payment posting transactions. (ERA & Manual EOB Posting) 
+Qualifications:
+Graduation in any stream (Preferred science and math background) 
+Experience:
+2-5 Years experience with key domain expertise in Payment posting and denial capturing
+US Healthcare BPO Payment posting experience preferred. 
+Communication Skill: 
+Strong written (documentation) and oral communication skills 
+Working Hours:
+40 hours per week as Full-time employee
+Shift time: Day/Mid Shift
+Weekends Off
+ Telecommuter/Internet requirements, if applicable:
+High Speed internet connection at home, must be broadband.
+Must understand and adhere with telecommuter policy.
+     Skills and abilities:
+Ensure Daily Productivity targets are met at the required quality level on the assigned inventory Perform accurate payment posting.
+Process all ERA & Manual EOB’s and reconcile daily/monthly reports for review.
+Process payments in Practice Management System (PMS) as per instructions provided by the client.
+Review and update the patient insurance information in the Practice Management System (PMS)
+Good understanding of downloading the files from the FTP / document management system.
+Strong in reviewing EOB'S and trained in posting both Manual and ERA (835 Remits)
+Should have knowledge to identify denial codes (RARC & CARC) with denial reason & Correspondence.
+Should have knowledge in patients’ payment posting, Offset and Refund, “Small Balance Write Off.”
+Should have knowledge in Recoupment and Over Payment/Under Payments, Sequestration and Interest payment/Penalty payments.
+Should have knowledge in Cross Over (Piggy Bag), Capitation Agreement Payments
+Knowledge about Patient’s Responsibility (Copay, Coinsurance & Deductible)
+Knowledge about the Participating and Non-Participating Provider.
+Good understanding on HSA and HRA payments, “Worker’s Comp” and “No Fault”
+User to be proactive in escalating to his supervisor on any new scenarios/ challenges identified in the process.
+Tracking and drafting clarifications clean and clear
+Have hands on experience with basic excels, strong analytical skills.
+Flexible as per project and client requirements and good team player
+Readiness for extending shift during month end processing.
+Resources should be from Chennai only (physical location should be Chennai).
+Willing to work from the office as and when required.
+Initial 1 month or 2 work from Chennai office mandatory.
+Require resources for Band A1 and A2.
+Experience criteria- 3-5 years, need productive resource for the next 3 years.
+Hands on experience in NextGen PMS, should be aware of end of end payment posting, managing, and tallying from deposit log.
+Should have hand-on understanding of posting $0 remits and denials in the NextGen PMS.
+Should have hands-on experience working correspondence and postings.
+Understands all the denials scenarios and interpretation of denial codes in the correspondence/$0 remits. 
+    Criteria and Clause: 
+Resource should be from Chennai only (physical location should be Chennai).
+Willing to work from office as and when required.
+Initial 1 month or 2 work from Chennai office mandatory.
+Experience criteria- 3-5 years, need productive resource for the next 3 years.
+Hands on experience in NextGen PMS, should be aware of end of end payment posting, managing and tallying from deposit log.
+Should have hand-on understanding of posting $0 remits and denials in the NextGen PMS.
+Should have hands-on experience working correspondence and postings.
+Understands all the denials scenarios and interpretation of denial codes in the correspondence/$0 remits.
+",30 Oct 2024,1
+23,EXL,EXL/M/1178465,Growth Office,Noida,Manager,"Basic Section:
+Number Of Positions
+1
+Band
+C1
+Band Name
+Manager
+Cost Code
+S040203
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+1556000.0000 - 2725000.0000
+Complexity Level
+Not Applicable
+Work Type
+Work From Home – Predominantly Working From Home But May Be Required To Work For A Certain No Of Days A Month From Office
+
+Organisational:
+Group
+Enabling
+Sub Group
+Growth Office
+Organization
+Growth Office
+LOB
+Marketing
+SBU
+Marketing Digital & Operations
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+DIGITAL MARKETING
+STAKEHOLDER COMMUNICATION
+STAKEHOLDER MANAGEMENT
+REPORTING & ANALYSIS
+PERFORMANCE MARKETING
+SALESFORCE
+Minimum Qualification
+MBA
+Certification
+No data available
+
+Job Description:
+The EXL Journey
+ We make sense of data and drive your business forward.
+At EXL, our collaboration is built on ongoing listening and learning to adapt our methodologies. We’re your business evolution partner—tailoring solutions that make the most of data to make better business decisions and drive more intelligence into your increasingly digital operations.  Our expertise in transformation, data science, and change management helps make businesses more efficient and effective, improve customer relationships and enhance revenue growth. 
+At EXL, it’s all about outcomes—your outcomes—and delivering success on your terms. Share your goals with us and together, we’ll optimize how you leverage data to drive your business forward.
+  Position Title
+Manager, Marketing
+  Function
+ Growth Office - Marketing
+Reports to
+Senior Marketing Manager
+Permanent/Temporary
+Permanent
+Span of Control
+No
+Location
+India
+ Role Overview
+
+ EXL is seeking a manager to oversee and deliver omni-channel marketing campaigns supporting EXL’s Demand Generation program for the Emerging business unit (BU).  This individual will be responsible for managing and executing GTM strategies, promoting solutions and product launches, and delivering priority account-based marketing (ABM) programs and campaigns with a focus on the Emerging BU including industries like retail, finance, etc.
+In this role, you will support demand generation strategies, evaluate the latest enterprise marketing strategies and growth technologies, experiment with and optimize different tactics, and strive to consistently meet or exceed pipeline and revenue goals.
+ You’re a curious problem solver who can bring big ideas to life. You’re agile and adaptable but work with precision to ensure we deliver top-notch marketing campaigns and customer experiences.  If you are a revenue-centric marketer that thrives on growth and scaling a modern B2B marketing enterprise, this is the role for you.
+ 
+ Key Responsibilities:
+Support the Industry Marketing team in developing campaigns, programs, and tactics that align with go-to-market (GTM) strategies.
+Collaborate with Portfolio and Industry Marketing teams in developing Campaign Briefs and gathering necessary materials for submission and approval.
+Own the budget, results, and forecasting for campaigns once the Campaign Brief is approved.
+Act as a cross-functional liaison to coordinate marketing assets, including landing pages, social media posts, target audience lists, SEM/SEO ad copy, microsites, emails, and sales support materials, to execute campaigns and programs effectively.
+Oversee the end-to-end promotions of omni-channel campaigns, including webinars, and virtual events.
+Manage and optimize “always-on” evergreen marketing campaigns, ensuring continuous alignment with Portfolio and Industry Marketing teams.
+Monitor and report on campaign results, providing actionable recommendations for optimization based on performance data.
+Independently manage one-time projects, ad hoc business unit requests, or Account-Based Marketing (ABM) support with minimal guidance.
+  Education Requirements
+Bachelor’s degree, in marketing, business, or similar
+Aa
+Experience
+5+ years of lead generation campaign management, leading end-to-end initiatives across diverse and complex organizations.
+Deep understanding of sales pipeline, key drivers, and the role that marketing plays at each stage of the buyer and customer journey.
+Solid understanding of campaign performance metrics, data management practices, and key success indicators along with strong analytical skills and data-driven mindset. 
+Exhibit strong project management, communication, and stakeholder management skills.
+Proficient in written, verbal, and interpersonal communication.
+Intermediate to advanced Excel skills - Comfortable with formulas and pivot tables.
+Experience with HubSpot, Salesforce, and management of tools such as Zngly is preferred. 
+A solid understanding of LinkedIn and Google Ads is also preferred.
+Ability to thrive in a collaborative, fast-paced, and constantly changing environment. 
+   
+",29 Oct 2024,1
+24,EXL,EXL/SM/1189905,Clinical & Pharmacy Services,Noida,Senior Manager,"Basic Section:
+Number Of Positions
+1
+Band
+C2
+Band Name
+Senior Manager
+Cost Code
+D900010
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+Backfill
+Max CTC
+2000000.0000 - 3000000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Healthcare
+Sub Group
+Healthcare
+Organization
+Clinical & Pharmacy Services
+LOB
+Clinical & Pharmacy Services
+SBU
+CareRadius
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+SQL
+ORACLE
+WEB SERVICES
+JAVA
+JAVA DEVELOPER
+SPRING
+SPRING SECURITY
+SPRING BATCH
+WEB SERVICES API
+SPA SINGLE PAGE APPLICATION FRAMEWORK
+ANGULAR
+TEAM LEAD
+Minimum Qualification
+B.TECH/B.E
+MCA
+Certification
+No data available
+
+Job Description:
+Basic Function
+Individual contributor/  Java Architect with knowledge of architectural styles and design patterns.
+Design, upgrading or defining new architecture systems to support future and current Java applications
+Proven skills in developing and implementation and providing solutions to the given problem in all the Java technologies
+Proficient in stitching together end to end application starting from front end web development, back end development, middleware integration and persisting data in database
+
+Working timings can be flexible in between 11am to 10pm IST.
+Work location : Noida
+Job Requirements :
+Must Have Skills : Java 8, Oracle PL/SQL
+Key Responsibilities :
+ •             JSE, JEE, ORM (iBatis / myBatis/Hibernate/JPA)
+•             Rest Api design patterns
+•             Spring 3 / 4 Framework
+•             Implementing Web Services SOAP
+•             Knowledge of Design Pattern, Java Messaging Services
+•             Strong PL/SQL knowledge, Oracle
+•             Core and Advance Java
+Good To Have Skills : 
+ Oracle Procedural Language Extensions to SQL 
+Understanding of .Net Technology / Frameworks
+ Technical Experience :
+Basic knowledge of Java, Spring
+Experience with Oracle PL/SQL, embedded SQL in PB and database procedures
+Professional Attributes :
+Good verbal and written communication skills in English
+The candidate should be flexible to work
+A creative thinker and experienced problem solver
+Be a Team player
+Educational Qualification :
+Minimum 15 years of full time education
+Bachelor Degree from Tier-1 College Preferable
+Role : Senior Software Developer/ Team Lead
+Industry : IT Services & Products
+Functional Area: Engineering - Software
+Role Category : Software Development
+Employment Type:  Permanent
+",29 Oct 2024,1
+25,EXL,EXL/AVP/1156969,Payment Services,Chennai,Assistant Vice President,"Basic Section:
+Number Of Positions
+1
+Band
+D1
+Band Name
+Assistant Vice President
+Cost Code
+D008122
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+Backfill
+Max CTC
+2000000.0000 - 3000000.0000
+Complexity Level
+Not Applicable
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Healthcare
+Sub Group
+Healthcare
+Organization
+Payment Services
+LOB
+Payment Services
+SBU
+Payment Integrity - Analytics
+Country
+India
+City
+Chennai
+Center
+IN Chennai C51
+
+Skills:
+Skill
+MEDICAL CODING
+MANAGEMENT
+HEALTHCARE
+Minimum Qualification
+GRADUATE
+Certification
+No data available
+
+Job Description:
+AVP- Risk Adjustment - Coding
+Graduate in Life science, Paramedical (BPT, BOT, B.SC Nursing) preferred
+Experience: 13 to 16 years of experience with HCC Risk Adjustment 
+Team Handling Experience: With team size of 200+ users
+Must have handled multiple HCC clients
+CRC / CPC / CCS / COC certification – Any one Mandatory
+Additional Skills: 
+HCC coding experience
+Strong Knowledge of ICD-10 CM and HCC coding guidelines
+Previously clinical background preferred but not mandate
+Strong personal and professional ethics 
+Excellent communication skills both written and verbal 
+Six Sigma Certification – Not mandate
+Key Functions and Responsibilities: 
+Manage the day-to-day operations to meet the monthly client deliverables with agreed SLA’s
+Monitor the resource utilization across the project and create action plans to improve.
+Leading mentoring and monitoring the performance of AM, LAM, Managers and, Sr. Mangers to ensure efficiency in process operations.
+Review the quality metrics and implementing the best practices to improve the SLA’s
+Mapping client requirements, identifying the improvement areas and implementing the measures to maximize customer satisfaction.
+Understanding the customer pain points and provide innovative solutions to improve customer service level.
+Motivates high performance among team members and organizing quality circle activities.
+Preparing and submit project performance report in the leadership review
+Conducting monthly review meeting with client and ensures the action plan implemented for all open items.
+Create a backup team for all process by effective cross training to build the additional capacity
+Identify the hiring requirement basis the volume forecast and coordinate with leadership and hiring team.
+Review progress of attrition action plan and check effectiveness
+Adhering to meet the revenue forecast across the projects.
+Implementation of automation opportunities identified by team by coordinating with respective stake holders.
+Standardizing the project level reports. 
+Ensuring Skip level meeting with Team and immediate Reportees
+Ensuring the compliance adherence across projects
+",29 Oct 2024,1
+26,EXL,EXL/AVP/1184129,Payment Services,Chennai,Assistant Vice President,"Basic Section:
+Number Of Positions
+1
+Band
+D1
+Band Name
+Assistant Vice President
+Cost Code
+D005328
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+2500000.0000 - 3500000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Healthcare
+Sub Group
+Healthcare
+Organization
+Payment Services
+LOB
+Payment Services
+SBU
+Payment Integrity - Operations
+Country
+India
+City
+Chennai
+Center
+IN Chennai C51
+
+Skills:
+Skill
+CPT
+HCPCS
+MANAGERIAL
+Minimum Qualification
+BACHELOR'S DEGREE
+Certification
+No data available
+
+Job Description:
+Overview: Assistant Vice President is responsible Prepare and present reports on coding audit findings, compliance status, and performance metrics to senior management.
+Ensuring accurate coding, compliance, and revenue optimization for surgical services within the organization and are responsible for leading a team of coding professionals and collaborating with other departments, such as Health Information Management, Finance, and Compliance, to ensure alignment of coding practices with organizational goals.
+Qualifications: Bachelor’s degree in clinical or healthcare information management or a related field. Relevant certifications (e.g. CCS, CPC, CPMA) are mandatory.
+Strong knowledge of healthcare compliance regulations and reimbursement methodologies.
+Extensive experience in medical coding, with a focus on surgery coding and strong knowledge of CPT, ICD-10-CM, HCPCS coding systems.
+Experience: Minimum of 15 to 19 years of progressive experience in medical coding, coding auditing, and leadership roles, preferably in a healthcare setting and minimum of 5 years’ experience in surgical coding or auditing.
+Working Hours: 40 HOURS PER WEEK, FULL TIME EMPLOYEE
+Skills and abilities: Surgery – Ortho, IVR, GI and multispecialty.
+Demonstrated leadership and management skills, including the ability to lead and motivate a coding audit team. Experience in specialties - Spinal procedures, Implant, GI, musculoskeletal, CABG and other cardiac procedures, IVR and Radiation oncology
+Strong analytical and problem-solving abilities to interpret coding audit data and make data-driven decisions.              
+Excellent communication skills to interact with coding staff, healthcare providers, and senior management, and to present audit findings effectively.
+Familiarity with health information systems and coding software tools. 
+ ADDITIONAL AND ESSENTIAL RESPONSIBILITIES:
+Regulatory Knowledge: Strong knowledge of ICD-10-CM/PCS, CPT, coding systems, as well as a deep understanding of Medicare and Medicaid reimbursement policies.
+Provide inputs and solutions to automatically recognize and extract data from medical documents for proper coding and to facilitate auditing.
+Stay updated on changes in coding guidelines, regulations, and reimbursement policies, ensuring the organization's adherence to these standards.
+Audit Oversight: Plan, coordinate, and oversee Surgical coding audits to evaluate the accuracy and completeness of coding practices, ensuring compliance with regulatory standards
+Data Analysis: Analyze coding audit results to identify trends, patterns, and areas for improvement, and make recommendations for corrective actions.
+Quality Improvement: Develop strategies to improve coding accuracy, documentation, and compliance within the organization.
+Technology Utilization: Stay current with coding software and technology tools to improve efficiency and accuracy in the coding process.
+Reporting: Generate reports on coding and billing performance, identifying trends, and presenting recommendations for improvement to senior management.
+Prompt response to all the emails and requirements.
+Manage the day-to-day operations to meet the monthly client deliverables with agreed SLA’s
+Monitor & suggest the effective utilization of resources across the project and review action plan developed to improve.
+Leading mentoring and monitoring the performance of Senior Manager to ensure efficiency in process operations.
+Review the quality metrics and checking the efficacy of quality improvement plans and sharing suggestions
+Creating and sustaining a dynamic environment that fosters development opportunities and motivates high performance amongst team members and organizing quality circle activities
+Understanding the customer pain points and provide innovative solutions to improve customer service level
+Define KRA’s and assess the team performance periodically
+Identify the hiring requirement basis the volume forecast and coordinate with senior leadership and hiring team.
+Review the managers progress on operational metrics and giving the real time feedback to them
+Making sure to review the team is meeting the revenue projections on monthly basis
+Implementation of automation opportunities identified by team by coordinating with respective stake holders.
+Reviewing the daily/monthly operational reports and addressing any issues
+Ensuring Skip level meeting with immediate Reportees
+Responsible for creating SOW for new RFP and review the SOP on steady state projects
+Driving the employee engagement program for team.
+Motivating the next level layers for enrolling them in leadership program to improve their leadership skills
+Sharing inputs with senior leadership team on cost optimization
+Excellent project management skills, multi-tasking, training skills.
+",29 Oct 2024,1
+27,EXL,EXL/SE/1187583,Payment Services,Chennai,Senior Executive,"Basic Section:
+Number Of Positions
+1
+Band
+A2
+Band Name
+Senior Executive
+Cost Code
+D002709
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+500000.0000 - 800000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Healthcare
+Sub Group
+Healthcare
+Organization
+Payment Services
+LOB
+Payment Services
+SBU
+Payment Integrity - Operations
+Country
+India
+City
+Chennai
+Center
+IN Chennai C51
+
+Skills:
+Skill
+CALLING
+CALL CENTER
+COMMUNICATION
+VOICE & ACCENT TRAINING
+Minimum Qualification
+HSC - 11TH / 12TH
+Certification
+No data available
+
+Job Description:
+Job Description - The candidate should have experience in US Healthcare Calling process like AR Caller in Provider Side Vertical or AR Caller in Payer Collections. 
+• Minimum 1-4 years of Experience in AR caller\collections or Patient calling. 
+   The candidate should be well versed in calling US Healthcare providers, insurance companies/other Third-Party Administrators. 
+   The role is completely target oriented on the number of calls made on a daily basis. 
+• Should have good communication with neutral accent preferred. Follow every aspect of SOP without fail 
+• Complete received Audits with Quality 
+• To achieve Quality and production target.
+• Follow project related protocols and instructions.
+• Update all the logs like productivity, Clarification log, and any other logs applicable on a daily basis. 
+• Check with Manager /TL in case of clarifications 
+• All emails from Manager should be answered promptly without fail 
+• Ensure compliance of entire team for HIPAA, OIG. 
+• Conduct all job functions and responsibilities in accordance with all company Compliance, Information Security and regulatory policies, procedures and programs.
+",29 Oct 2024,1
+28,EXL,EXL/SM/1189688,Quality Excellence,Noida,Senior Manager,"Basic Section:
+Number Of Positions
+1
+Band
+C2
+Band Name
+Senior Manager
+Cost Code
+5824551
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+1200000.0000 - 2000000.0000
+Complexity Level
+Not Applicable
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Enabling
+Sub Group
+Quality Excellence
+Organization
+Quality Excellence
+LOB
+Quality Excellence
+SBU
+Quality Excellence
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+SIX SIGMA GREEN BELT
+LEAN DEPLOYMENT
+DATA ANALYTICS
+TEAM MANAGEMENT SKILLS
+CLIENT MANAGEMENT
+COMMUNICATION AND INTERPERSONAL SKILLS
+Minimum Qualification
+GRADUATE
+Certification
+No data available
+
+Job Description:
+Build a strong quality control with process understanding and measurement to deliver high performance and client agreed KPIs with a positive customer experience. 
+Analyze business processes and assist in identifying problems and mitigating plans for quality improvement. 
+Responsible for quality assurance across all processes, identify and execution of projects; governance of processes & reporting, driving standardization across all clients.
+Be well informed on the developments in process improvement programs and contribute in implementing business strategy for positive customer experience.
+Business development and solution in select areas; support in RFP, RFI responses from quality perspective. You will be responsible for set up and functioning of quality compliance at client level to meet business, internal and ISO certification requirements. 
+Facilitate the sharing of best practices from within and outside the organization and implement them
+Planning and managing budget and resource allocation for the assigned vertical
+",29 Oct 2024,1
+29,EXL,EXL/SM/1189789,Payment Services,Chennai,Senior Manager,"Basic Section:
+Number Of Positions
+1
+Band
+C2
+Band Name
+Senior Manager
+Cost Code
+D002709
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+1600000.0000 - 2000000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Healthcare
+Sub Group
+Healthcare
+Organization
+Payment Services
+LOB
+Payment Services
+SBU
+Payment Integrity - Operations
+Country
+India
+City
+Chennai
+Center
+IN Chennai C51
+
+Skills:
+Skill
+ANALYSIS & PROBLEM SOLVING
+COMMUNICATION ETHICS
+TEAM HANDLING
+HEALTHCARE
+Minimum Qualification
+GRADUATE
+Certification
+No data available
+
+Job Description:
+Detailed Job Description - Sr. Manager – Claims
+   Job Title:
+Sr. Manager – Claims
+ Function: 
+Operations
+   Reporting to:
+AVP
+   Employment Type:
+Permanent
+ Working Hours:
+40 hours per week
+ Location/Site:
+EXL India
+     OverviewA
+As a Senior Manager overseeing a team of US healthcare Repricing and Extended support process, Candidate will be responsible for managing and guiding a team of employees to achieve target-driven goals while ensuring adherence to operational standards and compliance requirements. This role is pivotal in maintaining high levels of communication, quality, and productivity within the team.
+ Qualifications:
+Any graduation.
+ Experience:
+Minimum 12 year of exp in US healthcare
+Which includes Minimum 5 years of exp in managing the team
+ Communication Skill: 
+Possess a very good command over English language. Should be able to communicate with others effectively (verbal and written). 
+ Working Hours:
+40 hours per week as full-time employee
+ Job Title:
+Sr. Manager, operations - Claims
+       Skills and abilities:
+This role requires effective communication and leadership skills to manage a remote or on-site team in a dynamic and fast-paced environment. The role is completely team’s target oriented on the number of calls made daily. 
+ • Lead and manage a team of employees in a target-oriented process environment.
+ • Monitor and evaluate team performance, ensuring adherence to daily call targets and quality standards.
+ • Provide coaching and feedback to team members to enhance performance and communication skills. Strong interpersonal skills with the ability to coach, motivate, and manage a team effectively.
+• Should have excellent communication. 
+• Follow every aspect of SOP without fail
+• Complete calls and document with expected Quality 
+• To have the team achieve Quality and production target.
+• Follow project related protocols and instructions.
+• Maintain and manage all the logs like productivity, Clarification log, and any other logs applicable daily. 
+• All emails from management and client should be answered promptly without fail • Ensure compliance of entire team for HIPAA, OIG. 
+• Conduct all job functions and responsibilities in accordance with all company Compliance, Information Security and Regulatory policies, procedures and programs.
+ 
+",29 Oct 2024,1
+30,EXL,EXL/LAM/1189866,Quality Excellence,Noida,Lead Assistant Manager,"Basic Section:
+Number Of Positions
+1
+Band
+B2
+Band Name
+Lead Assistant Manager
+Cost Code
+5820202
+Campus/Non Campus
+CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+900000.0000 - 1500000.0000
+Complexity Level
+Not Applicable
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Enabling
+Sub Group
+Quality Excellence
+Organization
+Quality Excellence
+LOB
+Quality Excellence
+SBU
+Quality Excellence
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+MIS
+DATA ANALYTICS
+DATA ANALYSIS TOOLS
+ANALYTICAL AND PROBLEM SOLVING SKILLS
+EXCEL TOOLS
+EXCEL ANALYTICS
+DATA VISUALIZATION
+MS POWERPOINT
+PRESENTATION
+Minimum Qualification
+GRADUATE
+Certification
+No data available
+
+Job Description:
+MIS candidate will play a crucial role in optimizing data management and information flow within the organization, ensuring accuracy, efficiency, and timely reporting.
+We are seeking a highly organized and detail-oriented Management Information Systems (MIS) Executive to join our team. The ideal candidate will play a crucial role in optimizing data management and information flow within the organization, ensuring accuracy, efficiency, and timely reporting.
+Data Analysis and Reporting: 
+Analyze and interpret complex data sets to provide insightful reports for management.
+Generate regular and ad-hoc reports as per organizational requirements.
+Ensure data accuracy and integrity in all reports.
+ Database Management: 
+Maintain and update databases, ensuring data consistency and completeness.
+Regularly review and cleanse databases to eliminate errors and discrepancies. 
+ System Integration
+Collaborate with IT teams to integrate MIS with existing systems for seamless data flow.
+Troubleshoot and resolve any system-related issues affecting data accuracy.
+Process Improvement Identify opportunities for process improvement in data collection, analysis, and reporting.
+Implement changes to enhance efficiency and effectiveness of MIS operations.
+ Communication:
+Liaise with cross-functional teams to gather data requirements and ensure alignment with organizational goals.
+Communicate MIS findings and insights clearly to both technical and non-technical stakeholders.
+ Training and Support:
+Provide training and support to end-users on MIS tools and systems
+Address user queries and ensure a smooth user experience
+",29 Oct 2024,1
+31,EXL,EXL/E/1184146,Insurance Property & Casualties,Noida,Executives,"Basic Section:
+Number Of Positions
+5
+Band
+A1
+Band Name
+Executives
+Cost Code
+D003240
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+300000.0000 - 350000.0000
+Complexity Level
+Back Office (Complexity Level 2)
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Property & Casualties
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+INSURANCE
+PROPERTY & CASUALTY INSURANCE
+COMMUNICATION
+WORKERS COMPENSATION
+PAYMENTS
+CLAIMS HANDLING
+Minimum Qualification
+ANY GRADUATION
+Certification
+No data available
+
+Job Description:
+Basic Functions
+Review and identify different types of claim documents
+Verify and update claim information based on set requirements or procedures within the claim for various lines of business
+Ensure that transactions are processed as per desktop procedures
+Basic experience in reviewing documents and validating information 
+Achieve individual productivity and quality goals
+Participate in training initiatives to develop knowledge 
+Integrate procedural changes into daily routine
+Adhere to company policies and procedures
+  Essential Functions
+Build / maintain strong relationship with end customers
+Gathering and analysis of data
+Evaluate incoming documents,  interpret necessary information for completing assigned tasks including Indexing and filing of documents electronically on Client Provided Systems
+Contact external parties to obtain missing information (as necessary)
+Document uploading, categorizing that involve decision making skills
+  Primary Internal Interactions
+AM for the purpose of reporting performance, escalation handling, clarifying concerns, and seeking support
+Manager for the purpose of settling issues left unresolved by the AM and monthly evaluation of performance
+Subject Matter Expert for the purpose of handling process related issues; queries and escalated transactions 
+QCA for the purpose of associate performance feedback and audit in order to update the training curriculum
+    Primary External Interactions
+Supervisors at the client end for the purpose of seeking clarifications and answering queries
+Trainers at the client end for training purposes
+    Organizational Relationships
+ Reports To : Assistant Manager/ Lead Assistant Manager                                                                Supervises : None
+  Skills
+Technical Skills
+Ø  Good computer navigation skills
+Ø  Typing speed of 25 words per minute with 90% Accuracy 
+Ø  Knowledge of Microsoft Office, Outlook and Excel
+ Process Specific Skills
+Ø  Ability to navigate multiple systems and applications
+Ø  Ability to analyze  information to execute various tasks
+Ø  Ability to produce high quality outcomes
+Ø  Ability to make sound judgments based on available information
+Ø  Minimum B1 - 5 on CEF on written communication
+Ø  Comprehension and analytical skills
+Ø  Strong data entry skills and attention to detail
+ Soft skills (Desired)
+Ø  Knowledge of MS Word & Excel and good keyboarding speed
+Ø  Spirit of collaboration and team work
+Ø  Keen on enhancing learning
+Ø  Competent in documentation and conformance with policies/compliances, including audit requirements
+Soft Skills (Minimum)
+Ø  Good written and spoken English (Minimum B1 - 5 on CEF)
+Ø  Trainability
+Ø  Ability to work independently
+",29 Oct 2024,1
+32,EXL,EXL/SE/1184150,Insurance Property & Casualties,Noida,Senior Executive,"Basic Section:
+Number Of Positions
+18
+Band
+A2
+Band Name
+Senior Executive
+Cost Code
+D003240
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+350000.0000 - 450000.0000
+Complexity Level
+Back Office (Complexity Level 2)
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Property & Casualties
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+INSURANCE
+PROPERTY & CASUALTY INSURANCE
+WORKERS COMPENSATION
+COMMUNICATION
+PAYMENTS
+CLAIMS HANDLING
+Minimum Qualification
+ANY GRADUATE
+Certification
+No data available
+
+Job Description:
+Basic Functions
+The position is responsible to perform payment processing for the claims department
+This profile also includes maintaining data and records in accordance with accounting standards & principles
+Exposure to following areas will be preferred in Accounts Payable:
+Invoice processing
+Claims payment processing
+Supplier management
+  Essential Functions
+Build / maintain strong relationship with end customers
+Gathering and analysis of data
+Calculate injured worker’s mileage reimbursement according to each jurisdictions mileage reimbursement standards
+Evaluate incoming documents,  interpret necessary information for completing assigned tasks
+Contact external parties to obtain missing information (as necessary)
+Decision making based on received requests and discretion of payment processing
+  Primary Internal Interactions
+AM for the purpose of reporting performance, escalation handling, clarifying concerns, and seeking support
+Manager for the purpose of settling issues left unresolved by the AM and monthly evaluation of performance
+Subject Matter Expert for the purpose of handling process related issues; queries and escalated transactions 
+QCA for the purpose of associate performance feedback and audit in order to update the training curriculum
+  Primary External Interactions
+Supervisors at the client end for the purpose of seeking clarifications and answering queries
+Trainers at the client end for training purposes
+Once skilled, written communication with client’s claims professionals for clarification or revision of the payment requests  
+     Organizational Relationships
+ Reports To : Assistant Manager/ Lead Assistant Manager                                                                Supervises : None
+  Skills
+Technical Skills
+Ø  Good computer navigation skills
+Ø  Typing speed of 25 words per minute with 90% Accuracy 
+Ø  Knowledge of Microsoft Office and MS Outlook
+Ø  Understanding of P&C insurance
+Ø  Preferred knowledge of Web-based applications
+ Process Specific Skills
+Ø  Ability to navigate multiple systems and applications
+Ø  Ability to analyze  information to execute various tasks
+Ø  Ability to produce high quality outcomes in a highly productive environment
+Ø  Ability to make sound judgments based on available information
+Ø  Excellent verbal & written communication skills 
+Ø  Minimum B1 - 5 on CEF on written communication
+Ø  Excellent comprehension and analytical skills
+Ø  Strong data entry skills and attention to detail
+Ø  Knowledge of email and web-enabled applications would be an added advantage
+ Soft skills (Desired)
+ Ø  Knowledge of MS Word & Excel and good keyboarding speed
+Ø  Spirit of collaboration and team work
+Ø  Keen on enhancing learning
+Ø  Competent in documentation and conformance with policies/compliances, including audit requirements
+Soft Skills (Minimum)
+Ø  Good written and spoken English (Minimum B1 - 5 on CEF)
+Ø  Trainability
+Ø  Ability to work independently
+",29 Oct 2024,1
+33,EXL,EXL/SE/1182033,Insurance Finance & Accounting,Noida,Senior Executive,"Basic Section:
+Number Of Positions
+1
+Band
+A2
+Band Name
+Senior Executive
+Cost Code
+5650652
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+350000.0000 - 500000.0000
+Complexity Level
+Back Office (Complexity Level 2)
+Work Type
+Work From Home – Predominantly Working From Home But May Be Required To Work For A Certain No Of Days A Month From Office
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Finance & Accounting
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Noida
+Center
+Noida-SEZ BPO Solutions
+
+Skills:
+Skill
+ACCOUNTING
+MS EXCEL
+COMMUINCATION
+RECONCILIATION
+Minimum Qualification
+B.COM
+Certification
+No data available
+
+Job Description:
+1. Commerce Graduate with good accounting knowledge
+2.Resolve all customers queries and requests receive via emails/calls.
+3. Bank and Suspense Account reconciliations.
+4. Good in MS Excel.
+5. Process cash application and ensure timely receipting.
+6. Good verbal and written Communication skills.
+",29 Oct 2024,1
+34,EXL,EXL/LAM/1189087,Insurance Finance & Accounting,Noida,Lead Assistant Manager,"Basic Section:
+Number Of Positions
+4
+Band
+B2
+Band Name
+Lead Assistant Manager
+Cost Code
+D009917
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+800000.0000 - 1000000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Finance & Accounting
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+ACCOUNTING
+EXCEL
+RECONCILIATION
+ORACLE
+Minimum Qualification
+B.COM
+MBA
+MCOM
+Certification
+No data available
+
+Job Description:
+Semi qualified Accountant/Commerce Graduate with 4+
+years of General Accounting experience
+Experience in Finance Accounting and Management
+Experience in Period close , understanding Journal
+Good understanding in Cash and Balance sheet reconciliation
+Good in excel and power point
+Must have worked on GL module/ Oracle and other ERP
+Similar platform with experience in US accounting/ Reconciliation
+Self-disciplined and result oriented
+Ability to multi task
+Ability to work effectively as part of a team
+Commitment and drive for results
+Strong analytical skills
+Ability to understand and question established process
+",29 Oct 2024,1
+35,EXL,EXL/AM/1189098,Insurance Finance & Accounting,Noida,Assistant Manager,"Basic Section:
+Number Of Positions
+4
+Band
+B1
+Band Name
+Assistant Manager
+Cost Code
+D009917
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+500000.0000 - 800000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Finance & Accounting
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+ACCOUNTING
+EXCEL
+RECONCILIATION
+ORACLE
+Minimum Qualification
+B.COM
+MBA
+MCOM
+Certification
+No data available
+
+Job Description:
+Semi qualified Accountant/Commerce Graduate with 4+
+years of General Accounting experience
+Experience in Finance Accounting and Management
+Experience in Period close , understanding Journal
+Good understanding in Cash and Balance sheet reconciliation
+Good in excel and power point
+Must have worked on GL module/ Oracle and other ERP
+Similar platform with experience in US accounting/ Reconciliation
+Self-disciplined and result oriented
+Ability to multi task
+Ability to work effectively as part of a team
+Commitment and drive for results
+Strong analytical skills
+Ability to understand and question established process
+",29 Oct 2024,1
+36,EXL,EXL/LAM/1183585,Services,Gurgaon,Lead Assistant Manager,"Basic Section:
+Number Of Positions
+1
+Band
+B2
+Band Name
+Lead Assistant Manager
+Cost Code
+D003814
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+1400000.0000 - 1600000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Analytics
+Sub Group
+Insurance
+Organization
+Services
+LOB
+Consulting
+SBU
+Analytics
+Country
+India
+City
+Gurgaon
+Center
+EXL - Gurgaon Center 38
+
+Skills:
+Skill
+DATA FACTORY
+DEVOPS
+PYTHON
+APACHE
+SQL
+SNOWFLAKE
+ETL
+POWER BI
+Minimum Qualification
+BACHELOR'S DEGREE
+Certification
+No data available
+
+Job Description:
+Analytics  
+EXL (NASDAQ:EXLS) is a leading operations management and analytics company that helps businesses enhance growth and profitability in the face of relentless competition and continuous disruption. Using our proprietary, award-winning Business EXLerator Framework™, which integrates analytics, automation, benchmarking, BPO, consulting, industry best practices and technology platforms, we look deeper to help companies improve global operations, enhance data-driven insights, increase customer satisfaction, and manage risk and compliance. EXL serves the insurance, healthcare, banking and financial services, utilities, travel, transportation and logistics industries. Headquartered in New York, New York, EXL has more than 24,000 professionals in locations throughout the United States, Europe, Asia (primarily India and Philippines), Latin America, Australia and South Africa.
+EXL Analytics provides data-driven, action-oriented solutions to business problems through statistical data mining, cutting edge analytics techniques and a consultative approach. Leveraging proprietary methodology and best-of-breed technology, EXL Analytics takes an industry-specific approach to transform our clients’ decision making and embed analytics more deeply into their business processes. Our global footprint of nearly 2,000 data scientists and analysts assist client organizations with complex risk minimization methods, advanced marketing, pricing and CRM strategies, internal cost analysis, and cost and resource optimization within the organization.  EXL Analytics serves the insurance, healthcare, banking, capital markets, utilities, retail and e-commerce, travel, transportation and logistics industries.
+Please visit www.exlservice.com for more information about EXL Analytics.
+Role Overview:
+Hands-on experience with Azure Services: Databricks, Data Factory and DevOps
+Proficient in Python, Apache Spark, and PySpark 
+Write advance and complex SQL queries with solid experience in database management
+Develop and maintain data models, data warehouses, and data marts in Snowflake
+Automation, build re-usable transformations, performance tuning
+Streamline ETL complexity- logics and transformations
+Collaborate with data scientists, analysts, and stakeholders to gather requirements and define data models that effectively support business requirements
+Demonstrate decision-making, analytical and problem-solving abilities 
+Strong verbal and written communication skills to manage client discussions
+Familiar with working on Agile methodologies - daily scrum, sprint planning, backlog refinement
+Key Responsibilities & Skillsets:
+Azure Databricks– ability to create data transformation logics
+Strong programming skills in Python and experience with SQL.
+Should be able to write complex SQL, Transact SQL, Stored Procedures
+ETL tool – Azure data factory, Data Bricks
+Experience with Data Modelling
+DWH - Snowflake
+Excellent communication skills and stakeholder management
+Ability to work independently in IC role
+Good to have 
+Knowledge on Snowflake platform
+Knowledge on PowerBI
+Familiarity with CI/CD practices and version control (e.g., Git)
+Familiarity with Azure DevOps
+
+What we offer:
+EXL Analytics offers an exciting, fast paced and innovative environment, which brings together a group of sharp and entrepreneurial professionals who are eager to influence business decisions. From your very first day, you get an opportunity to work closely with highly experienced, world class analytics consultants.
+You can expect to learn many aspects of businesses that our clients engage in. You will also learn effective teamwork and time-management skills - key aspects for personal and professional growth 
+Analytics requires different skill sets at different levels within the organization. At EXL Analytics, we invest heavily in training you in all aspects of analytics as well as in leading analytical tools and techniques.
+We provide guidance/ coaching to every employee through our mentoring program wherein every junior level employee is assigned a senior level professional as advisors.
+Sky is the limit for our team members. The unique experiences gathered at EXL Analytics sets the stage for further growth and development in our company and beyond.
+ ""EOE/Minorities/Females/Vets/Disabilities""
+",29 Oct 2024,1
+37,EXL,EXL/M/1183756,Services,Gurgaon,Manager,"Basic Section:
+Number Of Positions
+1
+Band
+C1
+Band Name
+Manager
+Cost Code
+D003814
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+1300000.0000 - 1500000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Analytics
+Sub Group
+Insurance
+Organization
+Services
+LOB
+Consulting
+SBU
+Analytics
+Country
+India
+City
+Gurgaon
+Center
+EXL - Gurgaon Center 38
+
+Skills:
+Skill
+SAS
+SQL
+POWER BI
+Minimum Qualification
+BACHELOR'S DEGREE
+Certification
+No data available
+
+Job Description:
+Lead Analytics Manager/SBA
+EXL (NASDAQ:EXLS) is a leading operations management and analytics company that helps businesses enhance growth and profitability in the face of relentless competition and continuous disruption. Using our proprietary, award-winning Business EXLerator Framework™, which integrates analytics, automation, benchmarking, BPO, consulting, industry best practices and technology platforms, we look deeper to help companies improve global operations, enhance data-driven insights, increase customer satisfaction, and manage risk and compliance. EXL serves the insurance, healthcare, banking and financial services, utilities, travel, transportation and logistics industries. Headquartered in New York, New York, EXL has more than 24,000 professionals in locations throughout the United States, Europe, Asia (primarily India and Philippines), Latin America, Australia and South Africa.
+EXL Analytics provides data-driven, action-oriented solutions to business problems through statistical data mining, cutting edge analytics techniques and a consultative approach. Leveraging proprietary methodology and best-of-breed technology, EXL Analytics takes an industry-specific approach to transform our clients’ decision making and embed analytics more deeply into their business processes. Our global footprint of nearly 2,000 data scientists and analysts assist client organizations with complex risk minimization methods, advanced marketing, pricing and CRM strategies, internal cost analysis, and cost and resource optimization within the organization.  EXL Analytics serves the insurance, healthcare, banking, capital markets, utilities, retail and e-commerce, travel, transportation and logistics industries.
+Please visit www.exlservice.com for more information about EXL Analytics.
+Role Overview:
+Emphasis is on providing business insights and managing end to end project delivery
+Structure analytical solution to address business objectives and problem solving
+Translate stated or implied client needs into researchable hypotheses.
+Develop sophisticated analysis plans to test those hypotheses given data and resource availability, time, etc. 
+Should be able to generate insights and storyboard effectively
+Have meaningful conversations with client to support with insight actionability and strategy decisioning
+Facilitate client working sessions and lead recurring project status meetings
+Develop long-lasting, trusted advisor relationships with clients
+Able to work in dual shore engagement across multiple time zones
+Manage business uncertainty
+Secure new opportunities within existing account relationship
+Assess customer needs, pain points, behaviors, activation levers, headroom for growth, value propositions, etc.
+Manage day-to-day project operations, serve as the functional and domain expert on the project team to ensure that they meet client expectations
+Provide quality oversight on deliverables prepared by the project team before submitting to client
+
+Responsibilities:
+Develop visual reports and dashboards using Power BI (preferred) or any other visualization tool 
+Independently create the storyboard and the report for user consumption
+Perform analysis and generate insights to solve business problems
+Proficient in writing SAS/SQL queries for data extraction and processing
+ Candidate Profile:
+Bachelor’s/Master's degree in computer science/engineering, operations research or related analytics areas; candidates with BA/BS degrees in the same fields from the top tier academic institutions are also welcome to apply
+Experience around survey analytics is preferred
+2-8 years’ relevant experience preferably in analytics
+Experience in building reports in PowerPoint is preferred
+Outstanding written and verbal communication skills
+Able to work in fast pace continuously evolving environment and ready to take up uphill challenges
+Is able to understand cross cultural differences and can work with clients across the globe
+ What we offer:
+EXL Analytics offers an exciting, fast paced and innovative environment, which brings together a group of sharp and entrepreneurial professionals who are eager to influence business decisions. From your very first day, you get an opportunity to work closely with highly experienced, world class analytics consultants.
+You can expect to learn many aspects of businesses that our clients engage in. You will also learn effective teamwork and time-management skills - key aspects for personal and professional growth 
+Analytics requires different skill sets at different levels within the organization. At EXL Analytics, we invest heavily in training you in all aspects of analytics as well as in leading analytical tools and techniques.
+We provide guidance/ coaching to every employee through our mentoring program wherein every junior level employee is assigned a senior level professional as advisors.
+Sky is the limit for our team members. The unique experiences gathered at EXL Analytics sets the stage for further growth and development in our company and beyond.
+",29 Oct 2024,1
+38,EXL,EXL/SE/1190208,Insurance Finance & Accounting,Noida,Senior Executive,"Basic Section:
+Number Of Positions
+1
+Band
+A2
+Band Name
+Senior Executive
+Cost Code
+5650851
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+450000.0000 - 600000.0000
+Complexity Level
+Back Office (Complexity Level 4)
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Finance & Accounting
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+ADVANCE EXCEL
+VBA
+MACRO
+SQL
+TABLEAU
+Minimum Qualification
+MCA
+BCA
+B.TECH/B.E
+Certification
+No data available
+
+Job Description:
+1. Advance Excel, advance VBA macros, Basic SQL knowledge and Alteryx
+2. Good communication skills (both Oral and written)
+3. Should be able to communicate with the client over email/phone. Also, should be able to own tasks and manage client independently
+4. Preferably having educational background of BCA/MCA/BE/B.Tech. but not mandatory if the candidate have prior IT experience
+",29 Oct 2024,1
+39,EXL,EXL/SE/1160043,Utilities,Pune,Senior Executive,"Basic Section:
+Number Of Positions
+1
+Band
+A2
+Band Name
+Senior Executive
+Cost Code
+D006444
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+400000.0000 - 650000.0000
+Complexity Level
+Not Applicable
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Operations Management
+Sub Group
+Emerging Business Unit
+Organization
+Utilities
+LOB
+MIS & Reporting
+SBU
+Business Support Services
+Country
+India
+City
+Pune
+Center
+IN Pune C11
+
+Skills:
+Skill
+ANALYTICAL THINKING
+BUSINESS PROCESSES
+POWER BI
+EXCEL ANALYTICS
+REPORTING & ANALYSIS
+Minimum Qualification
+BACHERS DEGREE
+B.COM
+Certification
+No data available
+
+Job Description:
+Job Advert
+ The Day to Day… 
+You will produce actionable reporting and provide insights for Next Brands.  This will involve using various data sources to visualise information using reporting suites and tools such as PowerBi & Databricks to communicate often complex data into clear reporting. In addition, you will look for opportunities to improve the sharing of information through automation and improve existing data exchanges and take an active role in their implementation.
+ The Role…
+Working with the Business Information Systems team to expose data for visualization within PowerBi & advance excel and other sources.
+Interaction with the wider department to create reporting to help answer questions arising or monitor performance.
+Developing and maintaining the department reporting suite in Power BI & advance excel , G-sheet and work across the teams within the department to facilitate efficient use of data.
+Supporting automation opportunities across the department utilizing software such as Zapier, Asana and equivalent tools. 
+ More than just sharing information…
+Identifying and championing additional functionalities with a constant view of improving service and profitability.  Actively anticipates and embraces opportunities   for automation.
+Understand and develop information on requirements, volumes and service levels to recognise and react to trends. Translates ideas into practical solutions that improve performance.
+Understands how different departments and functional groups interact to bring and share what we have in support of Next brands needs.
+ Knowledge Optimisation…
+Develops a wide network of productive relationships around the business collaborating with colleagues and teams to enhance our capabilities and improve our output.
+Manages meeting and external reviews also deputizing for the Reporting & Compliance Manager when required.
+Contribute to a culture across the department that puts the needs of our brands and customers at the forefront of everything we do.
+Share business knowledge quickly to ensure the teams are able to be fully effective and understand priorities to be achieved and encourage an environment of trust and openness.
+About you…
+Excellent communication skills with the ability to present to a range of audiences. 
+Possess the ability to present complex processes logically and with clarity. Backs up conclusions with logical analysis.
+Has excellent negotiating and influencing skills with peers and senior people to win support for positive change being able to challenge conventional views to benefit the business.
+Finds innovative solutions to problems through persistent curiosity and is able to make progress by looking at things in a new light.
+Experience with Advanced excel SQL, powerBi (including Databricks, Azure Data Lake etc)
+Highly proficient with Microsoft excel and Visual basic.
+Highly motivated with a professional attitude. Able to work effectively alone and under pressure to meet deadlines in a face paced environment.
+Experience with Power Automate, to create automated workflows between various apps reports and services.
+Databricks Environment
+  
+",28 Oct 2024,1
+40,EXL,EXL/M/1178968,Services,Gurgaon,Manager,"Basic Section:
+Number Of Positions
+1
+Band
+C1
+Band Name
+Manager
+Cost Code
+8232054
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+100000.0000 - 1800000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Analytics
+Sub Group
+Insurance
+Organization
+Services
+LOB
+Insurance
+SBU
+Analytics
+Country
+India
+City
+Gurgaon
+Center
+EXL - Gurgaon Center 38
+
+Skills:
+Skill
+ABILITY TO SOLVE THE PROBLEM IN FULL - HLD AND LLD
+RFP & PROPOSAL WRITING
+SOLUTION DESIGN
+SOLUTION DEVELOPMENT
+STAKEHOLDER COMMUNICATION
+INSURANCE
+BUSINESS DEVELOPMENT
+Minimum Qualification
+B.TECH/B.E
+MBA/PGPM
+POST GRADUATE PGM. IN MGMT.
+GRADUATE
+Certification
+No data available
+
+Job Description:
+JD – 01 Business Analyst – Insurance (for band C1 – C2)
+We are looking for a Business Analyst - Manager with a robust background in the insurance industry.
+Assist in the preparation and development of RFPs and business proposals, ensuring that analytical solutions are effectively articulated.
+The ideal candidate will have 4-6 years of experience in data processing and insights generation, exceptional communication skills, and strong stakeholder management abilities.
+Collaborate with cross-functional teams and key stakeholders to gather requirements, ensure alignment, and facilitate communication throughout project lifecycles.
+Foster strong relationships with internal and external partners through effective communication and collaboration
+Analyze and interpret complex datasets to derive actionable insights that drive strategic business decisions.
+Proficiency in data analysis tools (e.g., Excel, SQL) and strong analytical skills.
+",28 Oct 2024,1
+41,EXL,EXL/SE/1187489,FAO,Noida,Senior Executive,"Basic Section:
+Number Of Positions
+1
+Band
+A2
+Band Name
+Senior Executive
+Cost Code
+D013164
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+Backfill
+Max CTC
+250000.0000 - 4500000.0000
+Complexity Level
+Back Office (Complexity Level 2)
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Operations Management
+Sub Group
+Emerging Business Unit
+Organization
+FAO
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Noida
+Center
+Noida-SEZ BPO Solutions
+
+Skills:
+Skill
+ACCOUNTS PAYABLE
+INDEXING
+VENDOR MANAGEMENT
+Minimum Qualification
+B.COM
+Certification
+No data available
+
+Job Description:
+Job Description
+  Position Title 
+RTR Operations
+  Function 
+Operations
+Reports to
+RTR Lead –Operations
+Location 
+Noida, India
+  Span of Control 
+N.A.
+Position Type 
+Permanent
+  Essential Functions
+Perform variety of accounting functions related to daily recording of accounting transactions, financial period close activities, Reconciliations and Reporting.
+Preparation of bank reconciliations and communicate to finance departments on variances and resolve.
+Preparation of Balance Sheet reconciliations
+Ensuring completeness and accuracy of intercompany transactions, resolving errors/exceptions.
+Recording and maintenance of Fixed Assets. FA Sub ledger to General ledger reconciliations.
+Follow-up with lines of business and stakeholders for closure of accounting open items.
+Month-end close activities, Posting of journals, Recording Prepayments / Accruals
+Fair understanding of Actual_vs_Budget_vs_Forecast, Variance & Margin Analysis with legitimate commentary
+All type of B/S Reconciliation and Analysis
+Sales, Purchase & Stock Reconciliation
+Stakeholder query handling and management
+Maintain data and records in accordance with accounting standards & principles and provide accounting records for review by internal and external audits.
+ Performance parameters
+Attendance & Schedule Adherence
+Timeliness & Accuracy
+ Process Specific Skills
+Good computer navigation skills
+Strong knowledge of Microsoft Office, other ERPs
+Knowledge of accounting principles and Management accounting concepts
+ Soft skills
+Decent communication skills in English (written & spoken)
+Self-disciplined and result oriented
+Team work/ Managing Self / Adaptability 
+Ability to multi task
+ Education Requirements
+Masters in Accounting / Semi Qualified Accountant
+Graduate in Accounting / Commerce with at least 15 years of education
+ Work Experience Requirements
+Total work experience – 3+ years in the field of Finance & Accounts
+Enclosures
+---------------------------------------------------------------------------------------------------------------------------------------
+Acknowledgement (acknowledge that the information contained in this document is factual and complete)
+---------------------------------------------------------------------------------------------------------------------------------------
+ __________________________                                                                        ________________________
+Candidate                                                                                                           Supervisor/Manager                                     
+ Date:
+ 
+",28 Oct 2024,1
+42,EXL,EXL/SE/1189122,Utilities,Pune,Senior Executive,"Basic Section:
+Number Of Positions
+1
+Band
+A2
+Band Name
+Senior Executive
+Cost Code
+D006444
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+450000.0000 - 700000.0000
+Complexity Level
+Not Applicable
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Operations Management
+Sub Group
+Emerging Business Unit
+Organization
+Utilities
+LOB
+MIS & Reporting
+SBU
+Business Support Services
+Country
+India
+City
+Pune
+Center
+IN Pune C4
+
+Skills:
+Skill
+ANALYTICAL THINKING
+BUSINESS PROCESSES
+EXCEL ANALYTICS
+EXCEL VBA INTEGRATION.
+EXCEL PROFICIENCY
+EXCELLENT COMMUNICATION
+DATA ANALYTICS
+Minimum Qualification
+ANY GRADUATE
+B.COM
+Certification
+No data available
+
+Job Description:
+Job Advert
+ The Day to Day… 
+You will produce actionable reporting and provide insights for Next Brands.  This will involve using various data sources to visualise information using reporting suites and tools such as PowerBi & Databricks to communicate often complex data into clear reporting. In addition, you will look for opportunities to improve the sharing of information through automation and improve existing data exchanges and take an active role in their implementation.
+ The Role…
+Working with the Business Information Systems team to expose data for visualization within PowerBi & advance excel and other sources.
+Interaction with the wider department to create reporting to help answer questions arising or monitor performance.
+Developing and maintaining the department reporting suite in Power BI & advance excel , G-sheet and work across the teams within the department to facilitate efficient use of data.
+Supporting automation opportunities across the department utilizing software such as Zapier, Asana and equivalent tools. 
+ More than just sharing information…
+Identifying and championing additional functionalities with a constant view of improving service and profitability.  Actively anticipates and embraces opportunities   for automation.
+Understand and develop information on requirements, volumes and service levels to recognise and react to trends. Translates ideas into practical solutions that improve performance.
+Understands how different departments and functional groups interact to bring and share what we have in support of Next brands needs.
+ Knowledge Optimisation…
+Develops a wide network of productive relationships around the business collaborating with colleagues and teams to enhance our capabilities and improve our output.
+Manages meeting and external reviews also deputizing for the Reporting & Compliance Manager when required.
+Contribute to a culture across the department that puts the needs of our brands and customers at the forefront of everything we do.
+Share business knowledge quickly to ensure the teams are able to be fully effective and understand priorities to be achieved and encourage an environment of trust and openness.
+About you…
+Excellent communication skills with the ability to present to a range of audiences. 
+Possess the ability to present complex processes logically and with clarity. Backs up conclusions with logical analysis.
+Has excellent negotiating and influencing skills with peers and senior people to win support for positive change being able to challenge conventional views to benefit the business.
+Finds innovative solutions to problems through persistent curiosity and is able to make progress by looking at things in a new light.
+Experience with Advanced excel SQL, powerBi (including Databricks, Azure Data Lake etc)
+Highly proficient with Microsoft excel and Visual basic.
+Highly motivated with a professional attitude. Able to work effectively alone and under pressure to meet deadlines in a face paced environment.
+Experience with Power Automate, to create automated workflows between various apps reports and services.
+Databricks Environment
+ 
+",28 Oct 2024,1
+43,EXL,EXL/SM/1189383,Insurance Consulting,Noida,Senior Manager,"Basic Section:
+Number Of Positions
+1
+Band
+C2
+Band Name
+Senior Manager
+Cost Code
+P040230
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+2000000.0000 - 2500000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Consulting
+LOB
+FRAC Consulting
+SBU
+FRAC Consulting
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+RISK & COMPLIANCE
+RISK MANAGEMENT
+PRESENTATION SKILLS
+COMMUNICATION
+Minimum Qualification
+GRADUATE
+Certification
+No data available
+
+Job Description:
+Responsibilities:
+
+ Due Diligence and contracting
+Overseeing the execution of supplier due diligence and risk reporting.
+Reviewing due diligence reports with SDL/SES and agreeing ongoing mitigation and risk management controls
+Accountable for ensuring the creation of supplier contingency plans (T3/T4) by SDL, providing guidance, support and expertise in conjunction with procurement
+ Ongoing Risk Management
+Accountable for ensuring risks are effectively monitored and reported, acting as a primary point of contract for SES during major/material risk incidents
+Overseeing the execution of risk re-assessment questionnaires and offboarding procedures, acting as point of escalation for the TRPA
+ Oversight and Reporting 
+Presentation of out of tolerance risks at SGC, including risks identified during due diligence, contracting, risk re-assessments, risk monitoring and offboarding
+Working with SES to ensure the tagging and tiering model is refreshed periodically.
+Ensuring appropriate education materials and handbook are in place
+ Risk Co-Ordinator
+Support the procurement operations lead with delivery of audit actions and papers for ERCC, ARCC, COF, POF, etc.
+Champion with risk management programme in procurement, ensuring the risk register and maturity actions are tracked and continuously improving
+ Capabilities
+Proven experience in TRPM (experience with regulated environment preferred)
+Strong communication and presentation skills
+Strong analytical and problem-solving skills
+",28 Oct 2024,1
+44,EXL,EXL/M/1189384,Insurance Consulting,Noida,Manager,"Basic Section:
+Number Of Positions
+1
+Band
+C1
+Band Name
+Manager
+Cost Code
+P040230
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+1500000.0000 - 2000000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Consulting
+LOB
+FRAC Consulting
+SBU
+FRAC Consulting
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+RISK & COMPLIANCE
+PROCUREMENT
+COMMUINCATION
+PRESENTATION SKILLS
+Minimum Qualification
+GRADUATE
+Certification
+No data available
+
+Job Description:
+Responsibilities:
+
+ Due Diligence and contracting
+Overseeing the execution of supplier due diligence and risk reporting.
+Reviewing due diligence reports with SDL/SES and agreeing ongoing mitigation and risk management controls
+Accountable for ensuring the creation of supplier contingency plans (T3/T4) by SDL, providing guidance, support and expertise in conjunction with procurement
+ Ongoing Risk Management
+Accountable for ensuring risks are effectively monitored and reported, acting as a primary point of contract for SES during major/material risk incidents
+Overseeing the execution of risk re-assessment questionnaires and offboarding procedures, acting as point of escalation for the TRPA
+ Oversight and Reporting 
+Presentation of out of tolerance risks at SGC, including risks identified during due diligence, contracting, risk re-assessments, risk monitoring and offboarding
+Working with SES to ensure the tagging and tiering model is refreshed periodically.
+Ensuring appropriate education materials and handbook are in place
+ Risk Co-Ordinator
+Support the procurement operations lead with delivery of audit actions and papers for ERCC, ARCC, COF, POF, etc.
+Champion with risk management programme in procurement, ensuring the risk register and maturity actions are tracked and continuously improving
+ Capabilities
+Proven experience in TRPM (experience with regulated environment preferred)
+Strong communication and presentation skills
+Strong analytical and problem-solving skills
+",28 Oct 2024,1
+45,EXL,EXL/AM/1189387,Insurance Consulting,Noida,Assistant Manager,"Basic Section:
+Number Of Positions
+5
+Band
+B1
+Band Name
+Assistant Manager
+Cost Code
+P040230
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+800000.0000 - 1200000.0000
+Complexity Level
+Not Applicable
+Work Type
+Hybrid – Working Partly From Home And Partly From Office
+
+Organisational:
+Group
+Insurance
+Sub Group
+Insurance
+Organization
+Insurance Consulting
+LOB
+FRAC Consulting
+SBU
+FRAC Consulting
+Country
+India
+City
+Noida
+Center
+Noida - Centre 59
+
+Skills:
+Skill
+PROCUREMENT
+SAP ARIBA
+COMMUNICATION
+EXCEL
+ANALYTICAL
+Minimum Qualification
+GRADUATE
+Certification
+No data available
+
+Job Description:
+Responsibilities:
+ Hold Desk Service:
+Support business requesters and suppliers with process policy and system queries
+Support business requesters with opening, closing, changing and transferring PO’s and completing Goods Receipts.
+Review and validate purchase requisitions in line with procurement policy and procedures.
+Review and validate one-time vendor payment requests.
+Support with Ariba approved delegation queries and changes in PO approval flows.
+Run ad-hoc reporting as requested by business requesters/approvers.
+Monitor and report process compliance on monthly basis.
+ Ariba Enablement
+Create downstream contracts and catalogues in Ariba as requested by Procurement.
+Upload and maintain Ariba landing pages, periodically reviewing links and content with Procurement.
+WBS and Cost Centre file upload.
+ Vendor Steward
+Creating vendor accounts in SAP Ariba
+Supporting with changes in vendor information (i.e. payment terms, address, contact info)
+Qualifying suppliers against specific commodities and statues in Ariba
+Deactivating suppliers as required.
+Supporting suppliers with Ariba account queries.
+ Capabilities
+Strong technical and systems knowledge, with experience using SAP Ariba
+Strong Excel spreadsheets and data analysis skills
+Knowledge of procurement process
+",28 Oct 2024,1
+46,EXL,EXL/E/1189339,Utilities,Noida,Executives,"Basic Section:
+Number Of Positions
+15
+Band
+A1
+Band Name
+Executives
+Cost Code
+D008593
+Campus/Non Campus
+NON CAMPUS
+Employment Type
+Permanent
+Requisition Type
+New
+Max CTC
+220000.0000 - 250000.0000
+Complexity Level
+Back Office (Complexity Level 2)
+Work Type
+Work From Office – Fully Working From EXL/ Client Offices
+
+Organisational:
+Group
+Operations Management
+Sub Group
+Emerging Business Unit
+Organization
+Utilities
+LOB
+Back Office
+SBU
+Operations
+Country
+India
+City
+Noida
+Center
+IN Noida SEZ C60
+
+Skills:
+Skill
+COMMUNICATION
+READING COMPREHENSION
+Minimum Qualification
+ANY GRADUATE
+Certification
+No data available
+
+Job Description:
+•To manage transactions for gas and electricity customers. You will be routed exceptions around creating, amending and terminating payment schemes, such as refunding a customer payment scheme
+•Responsibility for handling bank queries and resolving them with the bank
+•SLA metrics – Productivity, Speed, Accuracy
+•Relevant Table F metrics
+•Attendance
+•Schedule Adherence
+•Ensure that the process transactions are processed as per Desktop procedures 
+•Ensure that the assigned targets are met in accordance with SLA and Internal standards
+•Ensure that the quality of transaction is in compliance with predefined parameters as defined by Process Excellence 
+•Ensure adherence to established attendance schedules 
+•Ensure adherence to Company Policies and Procedures
+",28 Oct 2024,2

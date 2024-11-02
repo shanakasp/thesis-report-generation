@@ -17,11 +17,9 @@ async function scrapeJobDetails(page, jobId) {
     await page.waitForSelector(".article-text", { timeout: 5000 });
 
     const jobDetails = await page.evaluate(() => {
-      // Get the entire content of article-text
       const articleText = document.querySelector(".article-text");
       const description = articleText ? articleText.textContent.trim() : "";
 
-      // Get posted date
       const postedDateElement = Array.from(
         document.querySelectorAll(".job-meta-box-detail")
       ).find(
@@ -45,7 +43,7 @@ async function scrapeJobDetails(page, jobId) {
   }
 }
 
-async function scrapeJobs(baseUrl, startPage, endPage) {
+async function scrapeJobs(baseUrl) {
   const outputDir = path.join(__dirname, "../output");
   await fs.mkdir(outputDir, { recursive: true });
 
@@ -71,11 +69,11 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
 
   const page = await browser.newPage();
   let globalCounter = 0;
-  const jobsPerPage = 30;
-  let currentPage = startPage;
+  let currentPage = 1;
+  let hasMoreJobs = true;
 
   try {
-    while (currentPage <= endPage) {
+    while (hasMoreJobs) {
       const pageUrl = `${baseUrl}&page=${currentPage}`;
       console.log(`Scraping page ${currentPage}: ${pageUrl}`);
 
@@ -110,7 +108,8 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       });
 
       if (jobs.length === 0) {
-        console.log(`No more jobs found within Range. Stopping.`);
+        console.log(`No more jobs found. Stopping at page ${currentPage}.`);
+        hasMoreJobs = false;
         break;
       }
 
@@ -149,13 +148,26 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         }
       }
 
+      // Save jobs for current page
       await csvWriter.writeRecords(jobsWithDetails);
       globalCounter += jobsWithDetails.length;
 
-      if (globalCounter >= jobsPerPage * (endPage - startPage + 1)) {
-        console.log(
-          `Fetched ${globalCounter} jobs. Stopping as limit reached.`
+      console.log(
+        `Saved ${jobsWithDetails.length} jobs from page ${currentPage}`
+      );
+      console.log(`Total jobs scraped so far: ${globalCounter}`);
+
+      // Check if we should continue to next page
+      const hasNextPage = await page.evaluate(() => {
+        const nextButton = document.querySelector(
+          ".pagination-next:not(.disabled)"
         );
+        return !!nextButton;
+      });
+
+      if (!hasNextPage) {
+        console.log("No more pages available");
+        hasMoreJobs = false;
         break;
       }
 
@@ -168,7 +180,9 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
     await browser.close();
   }
 
-  console.log(`Capgemini scraping complete with ${globalCounter} jobs.`);
+  console.log(
+    `Capgemini scraping complete. Total jobs scraped: ${globalCounter}`
+  );
 }
 
 module.exports = { scrapeJobs };
