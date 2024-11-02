@@ -1,156 +1,5 @@
 S.No.,Company,Job ID,Function,Location,Title,Description,Posted On,Page Number
-1,Cognizant,00058000383,Technology & Engineering,Gurgaon,Data Engineer - AWS PySpark,"Technical Lead
-
-TECHNICAL LEAD
-
-Qualification:
-
-QUALIFICATION
-
-Responsibility:
-
-RESPONSIBILITY
-
-Project Planning and Setup:
-
-PROJECT PLANNING AND SETUP
-
-• Understand the project scope, identify activities/ tasks, task level estimates, schedule, dependencies, risks and provide inputs to Module Lead for review.
-• Provide inputs to testing strategy, configuration, deployment, hardware/software requirement etc.
-• Review plan and provide feedback on gaps, timeline and execution feasibility etc as required in the project.
-• Participate in KT sessions conducted by customer/ other business teams and provide feedback on requirements.
-Requirement Understanding and Analysis:
-
-REQUIREMENT UNDERSTANDING AND ANALYSIS
-
-• Analyze functional/non functional requirements and seek clarifications for better understanding of requirements.
-• Based on understanding of system upstream & downstream, provide feedback and inputs on gaps in requirements and technical feasibility of requirements.
-Design:
-
-DESIGN
-
-• Prepare the LLD/ detailed design documents based on HLD and briefing from Module Lead.
-• Seek inputs from the developers on specific modules as applicable.
-• Consolidate all modules and provide to Module Lead/ Architects/ Designers for review.
-• Suggest changes in design on technical grounds.
-• Develop components inventory for the code to be developed tying it to the nonfunctional requirements.
-• Perform sampling of data to understand the character/ quality of the data (project dependent in the absence of data analyst or designer).
-• Identify tools and technologies to be used in the project as well as reusable objects that could be customized for the project.
-Coding:
-
-CODING
-
-• Follow coding standards and best practices to develop code and check code quality.
-• Share developed code with supervisor for review.
-• Rework on the code based on inputs if required.
-• Perform complex integration.
-• Guide the developers in identifying, preparing and conducting unit test cases and fixing defects based on results.
-• Consolidate the test results and share with supervisor.
-• Provide periodic status update to supervisor and highlight / recommend any changes in design based on challenges faced.
-• Anticipate unreported defects and raise the same to supervisor.
-• Conduct technical troubleshooting.
-• Conduct reviews for codes created by team.
-Testing Management:
-
-TESTING MANAGEMENT
-
-• Develop unit test case for each module.
-• Conduct/ guide conducting of unit and integration testing and fix defects.
-• Review/ approve code to be moved to testing environment.
-• Provide support to the QA team and coordinate for various phases of testing.
-• Address queries raised by QA within defined timelines.
-• Investigate critical defects and establish need for fixing.
-• Raise issues to leads/QA.
-• Report defect status as per project standard process within agreed timelines.
-• Share revised code with supervisor for review.
-• Assist team lead and project manager on estimates around defect fixes.
-Configuration Management:
-
-CONFIGURATION MANAGEMENT
-
-• Maintain versions of the code or consolidate version maintained by the Developers.
-• Provide support as required to the Administrators during configuration, code backups, deployment etc.
-Deployment:
-
-DEPLOYMENT
-
-• Assess and create deployment/ roll back plan.
-• Validate if all the components have been migrated and the right version is checked in.
-• Maintain deployment tracker.
-• Perform sanity checks post deployment to ensure smooth production.
-• Share activity status with supervisor and highlight concerns if any.
-Project Execution Monitoring & closure (Support to Project Management activities):
-
-PROJECT EXECUTION MONITORING & CLOSURE (SUPPORT TO PROJECT MANAGEMENT ACTIVITIES)
-
-• Monitor work of the developers and share work achieved with them.
-• Provide guidance through SDLC.
-• Provide status of progress to leads.
-• In case of change requests, provide inputs on the plan.
-Service Support and Maintenance:
-
-SERVICE SUPPORT AND MAINTENANCE
-
-Specific to production and maintenance support:
-
-SPECIFIC TO PRODUCTION AND MAINTENANCE SUPPORT
-
-• Provide support for 1 week and hand over to production team.
-• Identify if the incoming request is a service request/ defect during the warranty or an incident.
-• If it is code defect in the warranty, highlight to Lead and initiate defect fix process.
-• Post warranty, support in transition to maintenance team.
-Knowledge Management:
-
-KNOWLEDGE MANAGEMENT
-
-• Post release participate in project review call and discuss points on what went well and what didn't.
-• Create and update knowledge articles (case studies, lessons learnt) in the knowledge management repository.
-• Guide developers in creating such documents.
-• Publish white papers/ blogs/ articles (if required).
-People Management:
-
-PEOPLE MANAGEMENT
-
-• Conduct training through academy or internally within the team.
-• Conduct technical, face to face interviews for internal transfer or external hiring.
-• Provide feedback on Developers form technical /domain standpoint to the module lead.
-Must Have Skills
-
-MUST HAVE SKILLS
-
-• AWS Big Data
-• AWS Services
-Good To Have Skills
-
-GOOD TO HAVE SKILLS
-
-• AWS Cloud
-• PySpark
-• Python
-The Cognizant community:
-We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
-
-THE COGNIZANT COMMUNITY:
-
-• Cognizant is a global community with more than 350,000 associates around the world.
-• We don’t just dream of a better way – we make it happen.
-• We take care of our people, clients, company, communities and climate by doing what’s right.
-• We foster an innovative environment where you can build the career path that’s right for you.
-About us:
-Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
-
-ABOUT US:
-
-Our commitment to diversity and inclusion:
-Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
-
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
-
-If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
-Disclaimer:
-Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
-Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Nov 01 2024,1
-2,Cognizant,00061079462,Technology & Engineering,Pune,Sr. Associate - Projects,"Job opening for API Automation Testing
+1,Cognizant,00061079462,Technology & Engineering,Pune,Sr. Associate - Projects,"Job opening for API Automation Testing
 Experience-6-9 Years
 Level- SA
 Location-PAN India (Pref Chennai & Pune)
@@ -168,7 +17,7 @@ Detailed JD as below:
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -177,39 +26,39 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 31 2024,1
-3,Cognizant,00061300421,Technology & Engineering,Hyderabad,Senior Associate,"Job Summary
+2,Cognizant,00061300421,Technology & Engineering,Hyderabad,Senior Associate,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 We are seeking a highly skilled Technical Lead with 7 to 10 years of experience to join our dynamic team. The ideal candidate will have strong expertise in data visualization ANSI SQL and Tableau. This role involves leading technical projects designing data solutions and ensuring the delivery of high-quality visual analytics. The position is hybrid with no travel required and operates during day shifts.
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 Qualifications
 
-QUALIFICATIONS
+Qualifications
 
 Certifications Required
 
-CERTIFICATIONS REQUIRED
+Certifications Required
 
 Tableau Desktop Specialist good to have
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -218,34 +67,34 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,1
-4,Cognizant,00060892331,Business Processes,Bangalore,Associate - Projects,"Job Summary
+3,Cognizant,00060892331,Business Processes,Bangalore,Associate - Projects,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 We are seeking a skilled Developer with 4 to 8 years of experience to join our dynamic team. The ideal candidate will have expertise in Einstein Discovery SFDC TCRM SFDC Data and SFDC Configuration. This role involves developing and implementing solutions that drive business success and enhance customer experiences.
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 Qualifications
 
-QUALIFICATIONS
+Qualifications
 
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -254,30 +103,30 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,1
-5,Cognizant,00061054542,Technology & Engineering,KOLKATA,Architect - Technology,"Job Summary
+4,Cognizant,00061054542,Technology & Engineering,KOLKATA,Architect - Technology,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 The Data Engineering Architect will be responsible for designing implementing and optimizing scalable data solutions for the Finance for Future Program for Finance Data Repository -FDR. The position will involve working closely with the IT Delivery Lead and Data Solution Architect on a day-to-day basis. You will also require to engage with business stakeholders to understand business requirements and translate them into robust data architectures.
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -286,34 +135,34 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,1
-6,Cognizant,00061166641,Technology & Engineering,Bangalore,Infra. Technology Specialist,"Job Summary
+5,Cognizant,00061166641,Technology & Engineering,Bangalore,Infra. Technology Specialist,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 We are seeking an experienced Infra. Technology Specialist with 5 to 8 years of experience in UiPath for a hybrid work model. The ideal candidate will be responsible for managing and optimizing our infrastructure to ensure seamless operations. This role requires a deep understanding of UiPath and the ability to work effectively in a day shift. No travel is required.
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 Qualifications
 
-QUALIFICATIONS
+Qualifications
 
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -322,34 +171,34 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,1
-7,Cognizant,000608188715,Technology & Engineering,Bangalore,Sr. Associate - Projects,"Job Summary
+6,Cognizant,000608188715,Technology & Engineering,Bangalore,Sr. Associate - Projects,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 We are seeking a highly skilled Sr. Developer with 6 to 8 years of experience to join our dynamic team. The ideal candidate will have extensive experience in Workday Revenue Management Workday HCM and Workday Integrations. A background in Finance & Accounting is a plus. This role offers the opportunity to contribute to impactful projects that drive our companys success and societal impact.
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 Qualifications
 
-QUALIFICATIONS
+Qualifications
 
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -358,34 +207,34 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,1
-8,Cognizant,000608188714,Technology & Engineering,Bangalore,Sr. Associate - Projects,"Job Summary
+7,Cognizant,000608188714,Technology & Engineering,Bangalore,Sr. Associate - Projects,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 We are seeking a highly skilled Sr. Developer with 6 to 8 years of experience to join our dynamic team. The ideal candidate will have extensive experience in Workday Revenue Management Workday HCM and Workday Integrations. A background in Finance & Accounting is a plus. This role offers the opportunity to contribute to impactful projects that drive our companys success and societal impact.
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 Qualifications
 
-QUALIFICATIONS
+Qualifications
 
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -394,39 +243,39 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,1
-9,Cognizant,00061154861,Technology & Engineering,Hyderabad,Process Specialist - Data,"Job Summary
+8,Cognizant,00061154861,Technology & Engineering,Hyderabad,Process Specialist - Data,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 We are seeking a dedicated Process Specialist for our B&L team with 4 to 6 years of experience. The ideal candidate will have strong technical skills in MS Excel and preferably domain experience in Pre-Underwriting and Underwriting. This role requires working from the office during night shifts. The candidate will play a crucial role in ensuring the efficiency and accuracy of our processes.
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 Qualifications
 
-QUALIFICATIONS
+Qualifications
 
 Certifications Required
 
-CERTIFICATIONS REQUIRED
+Certifications Required
 
 Certified MS Excel Specialist Certification in Underwriting (preferred)
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -435,20 +284,20 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,1
-10,Cognizant,00061214084,Technology & Engineering,Pune,Senior Developer,"Job description:
+9,Cognizant,00061214084,Technology & Engineering,Pune,Senior Developer,"Job description:
 
-JOB DESCRIPTION:
+Job description:
 
 • 8 to 10 years experienced Technical Lead having experience in managing Salesforce Projects (Small to Medium) well versed with Project management methodologies.
 • He or She should be Salesforce certified and should be having experience in implementation of at least 2 to 3 Field Service Lightning Projects.
@@ -461,7 +310,7 @@ Should be having fair knowledge and understanding on Field Service Lightning (FS
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -470,39 +319,39 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,1
-11,Cognizant,00060446647,Technology & Engineering,Mumbai,Process Executive - Data,"Job Summary
+10,Cognizant,00060446647,Technology & Engineering,Mumbai,Process Executive - Data,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 We are seeking a dedicated Process Executive for our B&L team with 0 to 2 years of experience. The ideal candidate will have a strong background in MS Excel and domain expertise in Customer Service (Mortgage) and Collection-Loss Mitigation (Mortgage Loans). This role involves managing and optimizing processes to enhance customer satisfaction and operational efficiency.
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 Qualifications
 
-QUALIFICATIONS
+Qualifications
 
 Certifications Required
 
-CERTIFICATIONS REQUIRED
+Certifications Required
 
 Certified Mortgage Servicer (CMS) Microsoft Office Specialist (MOS) in Excel
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -511,18 +360,18 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
-Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,2
-12,Cognizant,00061388382,Technology & Engineering,CHENNAI,Process Executive - Voice,"`Required skillset:
+Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,1
+11,Cognizant,00061388382,Technology & Engineering,CHENNAI,Process Executive - Voice,"`Required skillset:
 1) candidates interested to work in international voice process can apply.
 2) flexible to work in nights shifts and work from office
 3) location - hyderabad
@@ -530,7 +379,7 @@ Applicants may be required to attend interviews in person or by video conference
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -539,29 +388,29 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,2
-13,Cognizant,00061457249,Technology & Engineering,CHENNAI,Associate - Projects,"Job Summary
+12,Cognizant,00061457249,Technology & Engineering,CHENNAI,Associate - Projects,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 We are seeking a dedicated Test Analyst with 2 to 5 years of experience to join our dynamic team. The ideal candidate will have a strong background in VoIP/UCS Test Automation Wi-Fi and Cable Modems (DOCSIS/RDK). This hybrid role requires expertise in Wi-Fi/WLAN domain skills and offers the opportunity to work in a collaborative environment. The position operates during day shifts with no travel required.
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 Qualifications
 
-QUALIFICATIONS
+Qualifications
 
 2-4 years experience in working with development of broadband devices and its releated components
 Experience in Linux and experience in configuring customizing and building Linux distributions as RDK-B is built on top of Linux
@@ -580,7 +429,7 @@ Understand wireless technologies including Wi-Fi and how to configure wireless i
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -589,29 +438,29 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,2
-14,Cognizant,00061457248,Technology & Engineering,CHENNAI,Associate - Projects,"Job Summary
+13,Cognizant,00061457248,Technology & Engineering,CHENNAI,Associate - Projects,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 We are seeking a dedicated Test Analyst with 2 to 5 years of experience to join our dynamic team. The ideal candidate will have a strong background in VoIP/UCS Test Automation Wi-Fi and Cable Modems (DOCSIS/RDK). This hybrid role requires expertise in Wi-Fi/WLAN domain skills and offers the opportunity to work in a collaborative environment. The position operates during day shifts with no travel required.
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 Qualifications
 
-QUALIFICATIONS
+Qualifications
 
 2-4 years experience in working with development of broadband devices and its releated components
 Experience in Linux and experience in configuring customizing and building Linux distributions as RDK-B is built on top of Linux
@@ -630,7 +479,7 @@ Understand wireless technologies including Wi-Fi and how to configure wireless i
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -639,29 +488,29 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,2
-15,Cognizant,00061459661,Technology & Engineering,CHENNAI,Associate - Projects,"Job Summary
+14,Cognizant,00061459661,Technology & Engineering,CHENNAI,Associate - Projects,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 We are seeking a dedicated Test Analyst with 2 to 5 years of experience to join our team. The ideal candidate will have a strong background in VoIP/UCS Test Automation Wi-Fi and Cable Modems (DOCSIS/RDK). This role involves working in a hybrid model with a day shift schedule. The candidate will play a crucial role in ensuring the quality and reliability of our products contributing to our companys success and impact on society.
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 Qualifications
 
-QUALIFICATIONS
+Qualifications
 
 2-4 years experience in working with development of broadband devices and its releated components
 Experience in Linux and experience in configuring customizing and building Linux distributions as RDK-B is built on top of Linux
@@ -680,7 +529,7 @@ Understand wireless technologies including Wi-Fi and how to configure wireless i
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -689,34 +538,34 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,2
-16,Cognizant,000607621711,Technology & Engineering,Bangalore,Sr. Associate - Projects,"Job Summary
+15,Cognizant,000607621711,Technology & Engineering,Bangalore,Sr. Associate - Projects,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 We are seeking a Sr. Developer with 6 to 8 years of experience to join our team. The ideal candidate will have extensive experience in Workday Finance Workday HCM and Workday Integrations. This role requires a deep understanding of finance and accounting domains and the ability to integrate and optimize Workday solutions to meet business needs.
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 Qualifications
 
-QUALIFICATIONS
+Qualifications
 
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -725,39 +574,39 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,2
-17,Cognizant,00060743601,Technology & Engineering,CHENNAI,Functional Architect,"Job Summary
+16,Cognizant,00060743601,Technology & Engineering,CHENNAI,Functional Architect,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 We are seeking a highly experienced Functional Architect with 13 to 15 years of experience specializing in SAP IBP. The ideal candidate will have a strong background in Research and Development Finance and Accounting. This role involves designing and implementing innovative solutions to optimize business processes and drive efficiency within the organization.
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 Qualifications
 
-QUALIFICATIONS
+Qualifications
 
 Certifications Required
 
-CERTIFICATIONS REQUIRED
+Certifications Required
 
 SAP Certified Application Associate - SAP Integrated Business Planning SAP Certified Technology Associate - SAP HANA
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -766,20 +615,20 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,2
-18,Cognizant,00061380084,Technology & Engineering,CHENNAI,Sr. Associate - Projects,"Job Summary
+17,Cognizant,00061380084,Technology & Engineering,CHENNAI,Sr. Associate - Projects,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 We are seeking a highly skilled Sr. Developer with 6 to 10 years of experience to join our dynamic team.
 Understand the requirements and develop the Power Apps Canvas-apps & Power Automate Cloud Flows
@@ -791,7 +640,7 @@ Work on changes requests or defect fixes
 Coordinate and clarify the requirements and TI
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 Build reusable components as required.
 Technical support as needed when there are application specific scenarios to be evaluated
@@ -800,17 +649,17 @@ Also worked in Power Apps projects minimum 2+ years of experience
 Develop and maintain SharePoint applications to support business processes.
 Qualifications
 
-QUALIFICATIONS
+Qualifications
 
 Certifications Required
 
-CERTIFICATIONS REQUIRED
+Certifications Required
 
 Microsoft Certified: Power Platform Developer Associate Microsoft Certified: Azure Database Administrator Associate
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -819,20 +668,20 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,2
-19,Cognizant,00061380083,Technology & Engineering,CHENNAI,Sr. Associate - Projects,"Job Summary
+18,Cognizant,00061380083,Technology & Engineering,CHENNAI,Sr. Associate - Projects,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 We are seeking a highly skilled Sr. Developer with 6 to 10 years of experience to join our dynamic team.
 Understand the requirements and develop the Power Apps Canvas-apps & Power Automate Cloud Flows
@@ -844,7 +693,7 @@ Work on changes requests or defect fixes
 Coordinate and clarify the requirements and TI
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 Build reusable components as required.
 Technical support as needed when there are application specific scenarios to be evaluated
@@ -853,17 +702,17 @@ Also worked in Power Apps projects minimum 2+ years of experience
 Develop and maintain SharePoint applications to support business processes.
 Qualifications
 
-QUALIFICATIONS
+Qualifications
 
 Certifications Required
 
-CERTIFICATIONS REQUIRED
+Certifications Required
 
 Microsoft Certified: Power Platform Developer Associate Microsoft Certified: Azure Database Administrator Associate
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -872,20 +721,20 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,2
-20,Cognizant,00061380082,Technology & Engineering,CHENNAI,Sr. Associate - Projects,"Job Summary
+19,Cognizant,00061380082,Technology & Engineering,CHENNAI,Sr. Associate - Projects,"Job Summary
 
-JOB SUMMARY
+Job Summary
 
 We are seeking a highly skilled Sr. Developer with 6 to 10 years of experience to join our dynamic team.
 Understand the requirements and develop the Power Apps Canvas-apps & Power Automate Cloud Flows
@@ -897,7 +746,7 @@ Work on changes requests or defect fixes
 Coordinate and clarify the requirements and TI
 Responsibilities
 
-RESPONSIBILITIES
+Responsibilities
 
 Build reusable components as required.
 Technical support as needed when there are application specific scenarios to be evaluated
@@ -906,17 +755,17 @@ Also worked in Power Apps projects minimum 2+ years of experience
 Develop and maintain SharePoint applications to support business processes.
 Qualifications
 
-QUALIFICATIONS
+Qualifications
 
 Certifications Required
 
-CERTIFICATIONS REQUIRED
+Certifications Required
 
 Microsoft Certified: Power Platform Developer Associate Microsoft Certified: Azure Database Administrator Associate
 The Cognizant community:
 We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
 
-THE COGNIZANT COMMUNITY:
+The Cognizant community:
 
 • Cognizant is a global community with more than 350,000 associates around the world.
 • We don’t just dream of a better way – we make it happen.
@@ -925,14 +774,550 @@ THE COGNIZANT COMMUNITY:
 About us:
 Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
 
-ABOUT US:
+About us:
 
 Our commitment to diversity and inclusion:
 Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
 
-OUR COMMITMENT TO DIVERSITY AND INCLUSION:
+Our commitment to diversity and inclusion:
 
 If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
 Disclaimer:
 Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
 Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,2
+20,Cognizant,00061380081,Technology & Engineering,CHENNAI,Sr. Associate - Projects,"Job Summary
+
+Job Summary
+
+We are seeking a highly skilled Sr. Developer with 6 to 10 years of experience to join our dynamic team.
+Understand the requirements and develop the Power Apps Canvas-apps & Power Automate Cloud Flows
+Good understanding on Data Verse and SharePoint
+Perform unit testing and integration testing
+Monitor the process during Transition and Go Live phases
+Deploy the code to multiple environments based on the phase
+Work on changes requests or defect fixes
+Coordinate and clarify the requirements and TI
+Responsibilities
+
+Responsibilities
+
+Build reusable components as required.
+Technical support as needed when there are application specific scenarios to be evaluated
+Must be certified in PL-400. Preference of PL-500 & PL-200
+Also worked in Power Apps projects minimum 2+ years of experience
+Develop and maintain SharePoint applications to support business processes.
+Qualifications
+
+Qualifications
+
+Certifications Required
+
+Certifications Required
+
+Microsoft Certified: Power Platform Developer Associate Microsoft Certified: Azure Database Administrator Associate
+The Cognizant community:
+We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
+
+The Cognizant community:
+
+• Cognizant is a global community with more than 350,000 associates around the world.
+• We don’t just dream of a better way – we make it happen.
+• We take care of our people, clients, company, communities and climate by doing what’s right.
+• We foster an innovative environment where you can build the career path that’s right for you.
+About us:
+Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
+
+About us:
+
+Our commitment to diversity and inclusion:
+Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
+
+Our commitment to diversity and inclusion:
+
+If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
+Disclaimer:
+Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
+Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,2
+21,Cognizant,00061468702,Technology & Engineering,Chennai,Architect - Technology,"Job Summary
+
+Job Summary
+
+We are seeking an experienced Architect with 8 to 12 years of experience to join our dynamic team. The ideal candidate will have a strong background in VoIP/UCS Test Automation IoT Gateways Wi-Fi Cable Modems (DOCSIS/RDK) and Customer Premise Equipment. This role requires expertise in Device Engineering and Wi-Fi/WLAN domains. The work model is hybrid and the shift is day. No travel is required.
+Responsibilities
+
+Responsibilities
+
+Qualifications
+
+Qualifications
+
+8-12 years experience in working with development of broadband devices and its releated components
+Experience in Linux and experience in configuring customizing and building Linux distributions as RDK-B is built on top of Linux
+Programming skills in C and C++ which are the primary languages used in RDK-B development
+Understanding of Linux system programming
+Should have experience in defining the Low Level Design for at least one broadband component
+Proficient with version control systems like Git for managing code repositories and collaboration with other developers
+Scripting skills in shell languages like python/TCL/Bash for automation and scripting tasks in RDK-B
+Familiar with web-based user interfaces and web server technologies. RDK-B often includes web interfaces for configuration
+Proficient in debugging tools and techniques as embedded systems can be challenging to troubleshoot
+Experience in building DevOps Pipeline Automation
+Active participation in the RDK-B community and an understanding of its development processes and culture
+Familiar with networking protocols including TCP/IP UDP DHCP DNS and VLANs and other relevant protocols for networking devices
+Awareness of security best practices as network devices need to be secure. This includes understanding encryption authentication and network security.
+Understand wireless technologies including Wi-Fi and how to configure wireless interfaces in RDK-B
+The Cognizant community:
+We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
+
+The Cognizant community:
+
+• Cognizant is a global community with more than 350,000 associates around the world.
+• We don’t just dream of a better way – we make it happen.
+• We take care of our people, clients, company, communities and climate by doing what’s right.
+• We foster an innovative environment where you can build the career path that’s right for you.
+About us:
+Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
+
+About us:
+
+Our commitment to diversity and inclusion:
+Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
+
+Our commitment to diversity and inclusion:
+
+If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
+Disclaimer:
+Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
+Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,3
+22,Cognizant,00061381361,Technology & Engineering,Hyderabad,Mulesoft Administration - CloudHub,"• Platform Health Monitoring, Performance Reports & Usage Reports
+• Monitoring of applications/AP’s deployed
+• Apply Certificates new/renewal
+• Platform Maintenance and Upgrades
+• Patching/hotfixes implementation
+• Apply Platform Configuration Changes
+• Perform Root cause analysis
+• Resolve MuleSoft Platform specific service requests and Incidents
+• Email/Dashboarding alert monitoring & Act on alerts
+The Cognizant community:
+We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
+
+The Cognizant community:
+
+• Cognizant is a global community with more than 350,000 associates around the world.
+• We don’t just dream of a better way – we make it happen.
+• We take care of our people, clients, company, communities and climate by doing what’s right.
+• We foster an innovative environment where you can build the career path that’s right for you.
+About us:
+Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
+
+About us:
+
+Our commitment to diversity and inclusion:
+Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
+
+Our commitment to diversity and inclusion:
+
+If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
+Disclaimer:
+Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
+Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,3
+23,Cognizant,00061457242,Technology & Engineering,CHENNAI,Associate - Projects,"Job Summary
+
+Job Summary
+
+We are seeking a dedicated Test Analyst with 2 to 5 years of experience to join our dynamic team. The ideal candidate will have a strong background in VoIP/UCS Test Automation Wi-Fi and Cable Modems (DOCSIS/RDK). This hybrid role requires expertise in Wi-Fi/WLAN domain skills and offers the opportunity to work in a collaborative environment. The position operates during day shifts with no travel required.
+Responsibilities
+
+Responsibilities
+
+Qualifications
+
+Qualifications
+
+2-4 years experience in working with development of broadband devices and its releated components
+Experience in Linux and experience in configuring customizing and building Linux distributions as RDK-B is built on top of Linux
+Programming skills in C and C++ which are the primary languages used in RDK-B development
+Understanding of Linux system programming
+Should have experience in defining the Low Level Design for at least one broadband component
+Proficient with version control systems like Git for managing code repositories and collaboration with other developers
+Scripting skills in shell languages like python/TCL/Bash for automation and scripting tasks in RDK-B
+Familiar with web-based user interfaces and web server technologies. RDK-B often includes web interfaces for configuration
+Proficient in debugging tools and techniques as embedded systems can be challenging to troubleshoot
+Experience in building DevOps Pipeline Automation
+Active participation in the RDK-B community and an understanding of its development processes and culture
+Familiar with networking protocols including TCP/IP UDP DHCP DNS and VLANs and other relevant protocols for networking devices
+Awareness of security best practices as network devices need to be secure. This includes understanding encryption authentication and network security.
+Understand wireless technologies including Wi-Fi and how to configure wireless interfaces in RDK-B
+The Cognizant community:
+We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
+
+The Cognizant community:
+
+• Cognizant is a global community with more than 350,000 associates around the world.
+• We don’t just dream of a better way – we make it happen.
+• We take care of our people, clients, company, communities and climate by doing what’s right.
+• We foster an innovative environment where you can build the career path that’s right for you.
+About us:
+Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
+
+About us:
+
+Our commitment to diversity and inclusion:
+Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
+
+Our commitment to diversity and inclusion:
+
+If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
+Disclaimer:
+Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
+Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,3
+24,Cognizant,00060932311,Technology & Engineering,Chennai,Senior Associate- Pricing,"Senior Associate- Pricing
+
+Senior Associate- Pricing
+
+Senior Pricing Analyst works with sales, business unit operations, product management, finance and accounting to determine adequate pricing for healthcare software products and related services. Completes price quotes in support of sales opportunities, manages and creates profitability models and manages approval process on a deal-by-deal basis.
+
+Senior Pricing Analyst
+
+Responsibilities Include:
+
+Responsibilities Include:
+
+• Preparing price quotes and managing the financial profile of complex deals.
+Managing pricing for deals for existing clients with complex histories and requirements
+Modeling new business clients seeking unique pricing structures and new solutions
+• Managing pricing for deals for existing clients with complex histories and requirements
+• Modeling new business clients seeking unique pricing structures and new solutions
+• Preparing, seeking approvals for and presenting price quotes for new offerings that are not perfectly defined.
+• Developing pro forma profitability forecasts for complex sales deals.
+• Developing and designing plans and strategies to support the sales organization.
+• Leading and partnering with others on process improvement projects.
+Qualifications Include:
+
+Qualifications Include:
+
+• Bachelor's degree in Finance or a related discipline. An equivalent combination of education and work experience may be taken into consideration in lieu of a degree.
+• Minimum of four years' related experience; five or more years preferred.
+• Knowledge of finance and accounting principles.
+• Advanced analytical and mathematical skills.
+• Advanced proficiency in Microsoft Excel.
+• Advanced written and verbal communication skills.
+• Advanced organizational and multi-tasking skills.
+• Knowledge of the payer side of the healthcare industry preferred.
+• Knowledge of software principles and IT hardware and services preferred.
+The Cognizant community:
+We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
+
+The Cognizant community:
+
+• Cognizant is a global community with more than 350,000 associates around the world.
+• We don’t just dream of a better way – we make it happen.
+• We take care of our people, clients, company, communities and climate by doing what’s right.
+• We foster an innovative environment where you can build the career path that’s right for you.
+About us:
+Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
+
+About us:
+
+Our commitment to diversity and inclusion:
+Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
+
+Our commitment to diversity and inclusion:
+
+If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
+Disclaimer:
+Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
+Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 30 2024,3
+25,Cognizant,00061464711,Technology & Engineering,Chennai,Sr. Associate - Projects,"Job Summary
+
+Job Summary
+
+We are seeking a Sr Analyst with 5 to 8 years of experience to join our team. The ideal candidate will possess strong technical skills in VoIP UCS Test Automation Wi-Fi and Cable Modems (DOCSIS/ RDK). Additionally domain expertise in Device Engineering and Wi-Fi/WLAN is essential. This hybrid role offers the flexibility of working both remotely and on-site during day shifts. No travel is required.
+Responsibilities
+
+Responsibilities
+
+Qualifications
+
+Qualifications
+
+4-8 years experience in working with development of broadband devices and its releated components
+Experience in Linux and experience in configuring customizing and building Linux distributions as RDK-B is built on top of Linux
+Programming skills in C and C++ which are the primary languages used in RDK-B development
+Understanding of Linux system programming
+Should have experience in defining the Low Level Design for at least one broadband component
+Proficient with version control systems like Git for managing code repositories and collaboration with other developers
+Scripting skills in shell languages like python/TCL/Bash for automation and scripting tasks in RDK-B
+Familiar with web-based user interfaces and web server technologies. RDK-B often includes web interfaces for configuration
+Proficient in debugging tools and techniques as embedded systems can be challenging to troubleshoot
+Experience in building DevOps Pipeline Automation
+Active participation in the RDK-B community and an understanding of its development processes and culture
+Familiar with networking protocols including TCP/IP UDP DHCP DNS and VLANs and other relevant protocols for networking devices
+Awareness of security best practices as network devices need to be secure. This includes understanding encryption authentication and network security.
+Understand wireless technologies including Wi-Fi and how to configure wireless interfaces in RDK-B
+The Cognizant community:
+We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
+
+The Cognizant community:
+
+• Cognizant is a global community with more than 350,000 associates around the world.
+• We don’t just dream of a better way – we make it happen.
+• We take care of our people, clients, company, communities and climate by doing what’s right.
+• We foster an innovative environment where you can build the career path that’s right for you.
+About us:
+Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
+
+About us:
+
+Our commitment to diversity and inclusion:
+Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
+
+Our commitment to diversity and inclusion:
+
+If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
+Disclaimer:
+Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
+Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 29 2024,3
+26,Cognizant,00061458635,Technology & Engineering,Bangalore,Associate - Projects,"Job Summary
+
+Job Summary
+
+We are seeking a dedicated Test Analyst with 2 to 5 years of experience to join our team. The ideal candidate will have a strong technical background in VoIP/UCS Test Automation Wi-Fi and Cable Modems (DOCSIS/RDK). This role requires domain expertise in Wi-Fi/WLAN. The position follows a hybrid work model with day shifts and does not require travel.
+Responsibilities
+
+Responsibilities
+
+Qualifications
+
+Qualifications
+
+2-4 years experience in working with development of broadband devices and its releated components
+Experience in Linux and experience in configuring customizing and building Linux distributions as RDK-B is built on top of Linux
+Programming skills in C and C++ which are the primary languages used in RDK-B development
+Understanding of Linux system programming
+Should have experience in defining the Low Level Design for at least one broadband component
+Proficient with version control systems like Git for managing code repositories and collaboration with other developers
+Scripting skills in shell languages like python/TCL/Bash for automation and scripting tasks in RDK-B
+Familiar with web-based user interfaces and web server technologies. RDK-B often includes web interfaces for configuration
+Proficient in debugging tools and techniques as embedded systems can be challenging to troubleshoot
+Experience in building DevOps Pipeline Automation
+Active participation in the RDK-B community and an understanding of its development processes and culture
+Familiar with networking protocols including TCP/IP UDP DHCP DNS and VLANs and other relevant protocols for networking devices
+Awareness of security best practices as network devices need to be secure. This includes understanding encryption authentication and network security.
+Understand wireless technologies including Wi-Fi and how to configure wireless interfaces in RDK-B
+The Cognizant community:
+We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
+
+The Cognizant community:
+
+• Cognizant is a global community with more than 350,000 associates around the world.
+• We don’t just dream of a better way – we make it happen.
+• We take care of our people, clients, company, communities and climate by doing what’s right.
+• We foster an innovative environment where you can build the career path that’s right for you.
+About us:
+Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
+
+About us:
+
+Our commitment to diversity and inclusion:
+Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
+
+Our commitment to diversity and inclusion:
+
+If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
+Disclaimer:
+Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
+Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 29 2024,3
+27,Cognizant,00060956218,Technology & Engineering,Bangalore,Manager - Projects,"Job Summary
+
+Job Summary
+
+As an SAP BTP Integration Suite Consultant you will play a pivotal role in designing implementing and managing SAP integration solutions using SAP Integration Suite BTP CPI. You will be part of a global SAP team which will ensure that all mission critical SAP systems will be in best possible shape running with best performance & highest availability and are in full compliance with Quality and Information Security regulations.
+Responsibilities
+
+Responsibilities
+
+Analysis of Integration requirements of our IT solutions together with internal customers and IT colleagues
+Support and influence SAP integration API and data flow architectures considering API first approach .
+Identify processing and performance optimization opportunities.
+Proactive evaluation of new SAP features in Integration Suite e.g. Integration advisor Trading Partner management .
+Understanding of SAP functional areas and overall SAP architecture .
+Subject matter expertise in SAP integration
+Strong expertise in designing and implementing complex integration scenarios including experience with various integration patterns and protocols using SAP BTP Integration Suite.
+Deep understanding of prepackaged integration content and effective use of the same .
+Proven expertise in developing Enterprise-Grade robust Inflows for SAP non-SAP systems in A2A and B2B for both asynchronous and synchronous communication.
+Proficiency in implementing Integration patterns like Content based routing Scatter-Gather Splitter .
+Expertise in Integration scenarios using different adapters such as HTTP IDOC JDBC File SOAP Rest Odata Graph etc.
+Expertise in using various kinds of mapping such as message mapping XLST mapping and mapping using groovy scripts .
+Expertise in exception handling mechanisms for Integration flows .
+Deep understanding of Quality of service concepts such as Guaranteed Delivery retry mechanism Idempotent Receiver and so on .
+Troubleshoot and resolve complex integration issues ensuring the stability and performance of integration solutions.
+Proficiency in integration message monitoring and logging .
+Good understanding of Adapter inbound and outbound security configurations .
+Usage of Transport management system in Integration Suite .
+Certifications Required
+
+Certifications Required
+
+SAP BTP Certification is an advantage.
+The Cognizant community:
+We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
+
+The Cognizant community:
+
+• Cognizant is a global community with more than 350,000 associates around the world.
+• We don’t just dream of a better way – we make it happen.
+• We take care of our people, clients, company, communities and climate by doing what’s right.
+• We foster an innovative environment where you can build the career path that’s right for you.
+About us:
+Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
+
+About us:
+
+Our commitment to diversity and inclusion:
+Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
+
+Our commitment to diversity and inclusion:
+
+If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
+Disclaimer:
+Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
+Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 29 2024,3
+28,Cognizant,00060349751,Technology & Engineering,Chennai,Associate - Projects,"Job Summary
+
+Job Summary
+
+We are seeking a dedicated Developer with 0 to 4 years of experience to join our team. The ideal candidate will have expertise in SAP Automatic Payments SFIN SAP FICO Accounts Receivable and Accounts Payable. This role requires a strong understanding of Fixed Assets Accounting and GL Accounting. Experience in Finance & Accounting is a plus. The candidate will contribute to our financial systems ensuring accuracy and efficiency in our processes.
+Responsibilities
+
+Responsibilities
+
+Qualifications
+
+Qualifications
+
+Certifications Required
+
+Certifications Required
+
+SAP Certified Application Associate - Financial Accounting with SAP ERP SAP Certified Application Associate - SAP S/4HANA for Financial Accounting Associates
+The Cognizant community:
+We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
+
+The Cognizant community:
+
+• Cognizant is a global community with more than 350,000 associates around the world.
+• We don’t just dream of a better way – we make it happen.
+• We take care of our people, clients, company, communities and climate by doing what’s right.
+• We foster an innovative environment where you can build the career path that’s right for you.
+About us:
+Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
+
+About us:
+
+Our commitment to diversity and inclusion:
+Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
+
+Our commitment to diversity and inclusion:
+
+If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
+Disclaimer:
+Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
+Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 29 2024,3
+29,Cognizant,00061360781,Technology & Engineering,Chennai,Intellimatch Reconciliation Developer,"Job Summary
+
+Job Summary
+
+We are seeking a dedicated Product Specialist (T) with 4 to 6 years of experience to join our dynamic team. The ideal candidate will have expertise in IntelliMatch MS SQL Server and Intellisuite-Admin along with domain experience in Cards & Payments. This hybrid role offers the opportunity to work both remotely and on-site with a focus on day shifts. The candidate will play a crucial role in enhancing our product offerings and ensuring seamless operations.
+Responsibilities
+
+Responsibilities
+
+• Oversee the implementation and maintenance of IntelliMatch solutions to ensure optimal performance and reliability.
+• Provide technical support and troubleshooting for IntelliMatch MS SQL Server and Intellisuite-Admin to resolve any issues promptly.
+• Collaborate with cross-functional teams to gather and analyze requirements for Cards & Payments solutions.
+• Develop and execute test plans to validate the functionality and performance of IntelliMatch and related systems.
+• Monitor system performance and implement necessary optimizations to enhance efficiency and user experience.
+• Create and maintain comprehensive documentation for system configurations processes and procedures.
+• Conduct regular training sessions for team members and stakeholders to ensure proper usage and understanding of the systems.
+• Lead the integration of new features and updates into existing IntelliMatch and Cards & Payments systems.
+• Ensure compliance with industry standards and regulations in all technical implementations and operations.
+• Provide insights and recommendations for continuous improvement of product offerings and processes.
+• Collaborate with vendors and third-party service providers to ensure seamless integration and support.
+• Participate in project planning and management activities to ensure timely delivery of solutions.
+• Utilize MS SQL Server to manage and analyze large datasets ensuring data integrity and accuracy.
+Qualifications
+
+Qualifications
+
+• Possess a strong understanding of IntelliMatch and its applications in financial services.
+• Demonstrate proficiency in MS SQL Server for database management and analysis.
+• Have experience with Intellisuite-Admin for system administration and configuration.
+• Exhibit domain expertise in Cards & Payments understanding industry standards and best practices.
+• Show excellent problem-solving skills and the ability to troubleshoot complex technical issues.
+• Display strong communication skills to effectively collaborate with cross-functional teams and stakeholders.
+• Be detail-oriented with a focus on accuracy and quality in all deliverables.
+• Have the ability to work independently and manage multiple tasks in a hybrid work environment.
+• Demonstrate a commitment to continuous learning and staying updated with the latest industry trends and technologies.
+• Show experience in creating and maintaining technical documentation.
+• Have a proactive approach to identifying and addressing potential issues before they impact operations.
+• Exhibit strong project management skills to ensure timely and successful delivery of solutions.
+• Be adaptable and flexible to changing priorities and requirements in a dynamic work environment.
+The Cognizant community:
+We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
+
+The Cognizant community:
+
+• Cognizant is a global community with more than 350,000 associates around the world.
+• We don’t just dream of a better way – we make it happen.
+• We take care of our people, clients, company, communities and climate by doing what’s right.
+• We foster an innovative environment where you can build the career path that’s right for you.
+About us:
+Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
+
+About us:
+
+Our commitment to diversity and inclusion:
+Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
+
+Our commitment to diversity and inclusion:
+
+If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
+Disclaimer:
+Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
+Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 29 2024,3
+30,Cognizant,00061288761,Technology & Engineering,Chennai,Manager - Projects,"Job Summary
+
+Job Summary
+
+We are seeking a Technology Architect with 8 to 10 years of experience to join our dynamic team. The ideal candidate will have extensive experience in SAP S/4HANA Administration SAP BTP Administration SAP HANA Administration NetWeaver ABAP / JAVA Admin and SAP Basis Administration. This hybrid role requires a deep understanding of these technologies to drive our projects forward. The work model is hybrid with day shifts and no travel required.
+Responsibilities
+
+Responsibilities
+
+Qualifications
+
+Qualifications
+
+The Cognizant community:
+We are a high caliber team who appreciate and support one another. Our people uphold an energetic, collaborative and inclusive workplace where everyone can thrive.
+
+The Cognizant community:
+
+• Cognizant is a global community with more than 350,000 associates around the world.
+• We don’t just dream of a better way – we make it happen.
+• We take care of our people, clients, company, communities and climate by doing what’s right.
+• We foster an innovative environment where you can build the career path that’s right for you.
+About us:
+Cognizant (Nasdaq-100: CTSH) is one of the world's leading professional services companies, helping organizations modernize technology, reimagine processes and transform experiences so they stay ahead in a fast-changing world.
+
+About us:
+
+Our commitment to diversity and inclusion:
+Cognizant is an equal opportunity employer that embraces diversity, champions equity and values inclusion. We are dedicated to nurturing a community where everyone feels heard, accepted and welcome. Your application and candidacy will not be considered based on race, color, sex, religion, creed, sexual orientation, gender identity, national origin, disability, genetic information, pregnancy, veteran status or any other protected characteristic as outlined by federal, state or local laws.
+
+Our commitment to diversity and inclusion:
+
+If you have a disability that requires reasonable accommodation to search for a job opening or submit an application, please email CareersNA2@cognizant.com with your request and contact information.
+Disclaimer:
+Compensation information is accurate as of the date of this posting. Cognizant reserves the right to modify this information at any time, subject to applicable law.
+Applicants may be required to attend interviews in person or by video conference. In addition, candidates may be required to present their current state or government issued ID during each interview.",Oct 29 2024,3

@@ -116,7 +116,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
           const jobId = jobUrl.split("/jobs/")[1];
           const jobTitle = await titleElement.getText();
 
-          // Location
+          // Location - keeping the existing logic
           let fullLocation = "";
           let cleanedLocation = "";
           try {
@@ -131,15 +131,37 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
             console.warn("Could not extract location:", locationError);
           }
 
-          // Date
+          // Updated date extraction logic
           let dateText = "";
           try {
-            const dateElements = await jobElement.findElements(
-              By.css(".metadatum-module_text__ncKFr")
+            // First try to find the calendar icon
+            const calendarIcons = await jobElement.findElements(
+              By.css('svg[viewBox="0 0 16 16"]')
             );
-            if (dateElements.length > 1) {
-              dateText = await dateElements[1].getText();
+
+            if (calendarIcons.length > 0) {
+              // Find the text element next to the calendar icon
+              const parentDiv = await calendarIcons[0].findElement(
+                By.xpath("./ancestor::div[contains(@class, 'css-8ulbch')]")
+              );
+              const dateElement = await parentDiv.findElement(
+                By.css(".metadatum-module_text__ncKFr")
+              );
+              dateText = await dateElement.getText();
               dateText = dateText.replace("Updated:", "").trim();
+            } else {
+              // Fallback to looking for date in all metadata elements
+              const metadataElements = await jobElement.findElements(
+                By.css(".metadatum-module_text__ncKFr")
+              );
+
+              for (const element of metadataElements) {
+                const text = await element.getText();
+                if (text.includes("Updated:")) {
+                  dateText = text.replace("Updated:", "").trim();
+                  break;
+                }
+              }
             }
           } catch (dateError) {
             console.warn("Could not extract date:", dateError);

@@ -5,13 +5,13 @@ const fs = require("fs").promises;
 
 const cleanLocation = (location) => {
   const unwantedPatterns = [
-    /\bIN\b/g, // Remove standalone "IN"
-    /I-Think/g, // Remove "I-Think"
-    /, IN\b/g, // Remove ", IN" if present
-    /Â·Â Â Â Â Â Â Â/g, // Remove occurrences of "Â·Â"
-    /â€¢ /g, // Remove "â€¢ "
-    /Â /g, // Remove isolated "Â "
-    /oÂ/g, // Remove "oÂ"
+    /\bIN\b/g,
+    /I-Think/g,
+    /, IN\b/g,
+    /Â·Â Â Â Â Â Â Â/g,
+    /â€¢ /g,
+    /Â /g,
+    /oÂ/g,
     /,/g,
     /-/g,
   ];
@@ -26,21 +26,21 @@ const cleanLocation = (location) => {
 
 const cleanDescription = (description) => {
   const unwantedPatterns = [
-    /Â·Â Â Â Â Â Â Â/g,
-    /â€¢ /g,
-    /Â /g,
+    /Â·Â Â Â Â Â Â Â/g,
+    /â€¢ /g,
+    /Â /g,
     /oÂ/g,
-    /Â·Â Â Â Â Â Â Â /g,
-    /Explore Deloitte University, The Leadership Centre\./g, // Remove "Explore Deloitte University, The Leadership Centre."
-    /Learn more about Deloitte's impact on the world/g, // Remove "Learn more about Deloitte's impact on the world."
-    /Your role as a leader[\s\S]*?development;/g, // Remove "Your role as a leader" section
-    /Recruiter tips[\s\S]*?from Deloitte professionals\./g, // Remove "Recruiter tips" section
+    /Â·Â Â Â Â Â Â Â /g,
+    /Explore Deloitte University, The Leadership Centre\./g,
+    /Learn more about Deloitte's impact on the world/g,
+    /Your role as a leader[\s\S]*?development;/g,
+    /Recruiter tips[\s\S]*?from Deloitte professionals\./g,
     /Your role as a leader[\s\S]*?Deloitte's impact on the world\./g,
-    /Your role as a leader[\s\S]*?required/g, // Hide 'Your role as a leader' section
-    /How you’ll grow[\s\S]*?career\./g, // Hide 'How you’ll grow' section
-    /Benefits[\s\S]*?for you\./g, // Hide 'Benefits' section
-    /Our purpose[\s\S]*?positive change\./g, // Hide 'Our purpose' section
-    /What impact will you make\?[\s\S]*?potential\./g, // Hide 'What impact will you make?' section
+    /Your role as a leader[\s\S]*?required/g,
+    /How you'll grow[\s\S]*?career\./g,
+    /Benefits[\s\S]*?for you\./g,
+    /Our purpose[\s\S]*?positive change\./g,
+    /What impact will you make\?[\s\S]*?potential\./g,
   ];
 
   let cleanedDescription = description;
@@ -72,13 +72,10 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
 
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
-  let globalCounter = 0;
+  let serialNumber = 1;
 
   try {
-    let currentPage = startPage;
-    let hasMoreJobs = true;
-
-    while (hasMoreJobs) {
+    for (let currentPage = startPage; currentPage <= endPage; currentPage++) {
       const startRow = (currentPage - 1) * 25;
       const pageUrl = `${baseUrl}&startrow=${startRow}`;
       await page.goto(pageUrl, { waitUntil: "networkidle0" });
@@ -94,11 +91,10 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
 
       if (jobs.length === 0) {
         console.log(`No jobs found on page ${currentPage}. Stopping.`);
-        hasMoreJobs = false;
         break;
       }
 
-      for (const [index, job] of jobs.entries()) {
+      for (const job of jobs) {
         try {
           const jobPage = await browser.newPage();
           await jobPage.goto(job.titleLink, { waitUntil: "domcontentloaded" });
@@ -116,13 +112,12 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
             return { title, jobId, description };
           });
 
-          // Clean location and description before saving
           const cleanedLocation = cleanLocation(job.location);
           const cleanedDescription = cleanDescription(jobDetails.description);
 
           await csvWriter.writeRecords([
             {
-              sno: globalCounter + index + 1,
+              sno: serialNumber,
               company: "Deloitte",
               jobId: jobDetails.jobId,
               function: "",
@@ -134,7 +129,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
             },
           ]);
 
-          globalCounter++;
+          serialNumber++;
           await jobPage.close();
         } catch (error) {
           console.error(`Error scraping job detail: ${error}`);
@@ -142,14 +137,17 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       }
 
       console.log(`Scraped Jobs From Deloitte Page ${currentPage}`);
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-      currentPage++;
+
+      // Add delay between pages to avoid rate limiting
+      if (currentPage < endPage) {
+        await new Promise((resolve) => setTimeout(resolve, 3000));
+      }
     }
   } finally {
     await browser.close();
   }
 
-  console.log(`Scraping complete with ${globalCounter} jobs.`);
+  console.log(`Scraping complete with ${serialNumber - 1} jobs.`);
 }
 
 module.exports = { scrapeJobs };

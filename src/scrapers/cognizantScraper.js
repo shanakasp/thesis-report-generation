@@ -145,11 +145,10 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         } catch (detailsError) {
           console.error("Error extracting job details:", detailsError);
         }
-
         // Enhanced description extraction
         let description = "";
         try {
-          // Get all content elements
+          // Get all content elements in the `cms-content` article
           const contentElements = await driver.findElements(
             By.css(
               "article.cms-content p, article.cms-content ul li, article.cms-content strong"
@@ -161,22 +160,24 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
               const tagName = await el.getTagName();
               const text = await safeGetText(el);
 
+              // Process based on element type
               if (!text) return "";
 
               if (tagName === "li") {
-                return `• ${text}`;
+                return `• ${text}`; // Adds a bullet point for list items
               } else if (tagName === "strong") {
-                return `\n${text}\n`;
+                return `\n${text.toUpperCase()}\n`; // Adds emphasis for strong tags
               } else {
                 return text;
               }
             })
           );
 
+          // Join the text segments and clean up any extra whitespace
           description = contentTexts
-            .filter((text) => text) // Remove empty strings
+            .filter((text) => text) // Remove any empty strings
             .join("\n")
-            .replace(/\n{3,}/g, "\n\n")
+            .replace(/\n{3,}/g, "\n\n") // Normalize newlines to avoid too much spacing
             .trim();
         } catch (descError) {
           console.error("Error extracting description:", descError);

@@ -5,21 +5,18 @@ const fs = require("fs").promises;
 
 async function scrapeJobDescription(page, jobUrl) {
   try {
-    await page.goto(jobUrl, { waitUntil: "networkidle0" });
+    await page.goto(jobUrl, { waitUntil: "domcontentloaded" }); // Faster load
 
-    // Wait for the description element to load
-    await page.waitForSelector(".jd-description", { timeout: 10000 });
+    // Wait for description element
+    await page.waitForSelector(".jd-description", { timeout: 8000 });
 
-    // Extract the full description
     const description = await page.evaluate(() => {
       const descElement = document.querySelector(".jd-description");
       if (!descElement) return "";
 
-      // Get all text content, preserving basic formatting
       const processNode = (node) => {
         let result = "";
 
-        // Handle different node types
         if (node.nodeType === Node.TEXT_NODE) {
           result += node.textContent.trim() + " ";
         } else if (node.nodeName === "BR") {
@@ -29,12 +26,10 @@ async function scrapeJobDescription(page, jobUrl) {
         } else if (node.nodeName === "P") {
           result += "\n" + node.textContent.trim() + "\n";
         } else {
-          // Recursively process child nodes
           for (const child of node.childNodes) {
             result += processNode(child);
           }
         }
-
         return result;
       };
 
@@ -71,10 +66,22 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   });
 
   const browser = await puppeteer.launch({
-    headless: "new",
+    headless: true,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   const page = await browser.newPage();
+
+  // Enable request interception to block images, CSS, and fonts
+  await page.setRequestInterception(true);
+  page.on("request", (req) => {
+    const resourceType = req.resourceType();
+    if (["image", "stylesheet", "font"].includes(resourceType)) {
+      req.abort();
+    } else {
+      req.continue();
+    }
+  });
+
   let globalCounter = 0;
 
   try {
@@ -85,16 +92,13 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       console.log(`Scraping page ${currentPage}...`);
 
       const pageUrl = `${baseUrl}&p=${currentPage}`;
-
-      // Navigate to page and wait for content
-      await page.goto(pageUrl, { waitUntil: "networkidle0" });
+      await page.goto(pageUrl, { waitUntil: "domcontentloaded" }); // Use faster load
 
       // Wait for job cards to load
       await page
-        .waitForSelector(".bx--card__content", { timeout: 10000 })
+        .waitForSelector(".bx--card__content", { timeout: 8000 })
         .catch(() => null);
 
-      // Extract job details - now passing currentPage as a parameter
       const jobs = await page.evaluate((pageNum) => {
         const jobCards = document.querySelectorAll(
           ".bx--card-group__cards__col"
@@ -129,9 +133,9 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
           jobDetails.push({
             company: "IBM",
             jobId: `REQ${jobId}`,
-            function: titleElement ? titleElement.textContent.trim() : "",
+            title: titleElement ? titleElement.textContent.trim() : "",
             location: location,
-            title: functionElement ? functionElement.textContent.trim() : "",
+            function: functionElement ? functionElement.textContent.trim() : "",
             description: "",
             postedOn: new Date().toISOString().split("T")[0],
             page: pageNum,
@@ -140,27 +144,23 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
         }
 
         return jobDetails;
-      }, currentPage); // Pass currentPage as an argument to evaluate
+      }, currentPage);
 
-      // If no jobs are found, stop the loop
       if (jobs.length === 0) {
         console.log(`No jobs found on page ${currentPage}. Stopping.`);
         hasMoreJobs = false;
         break;
       }
 
-      // Fetch detailed description for each job
       for (const job of jobs) {
         console.log(`Fetching description for job ${job.jobId}...`);
         const description = await scrapeJobDescription(page, job.url);
         job.description = description;
-        delete job.url; // Remove URL before saving to CSV
+        delete job.url;
 
-        // Add delay between job description requests
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 800));
       }
 
-      // Write data to CSV and update globalCounter
       await csvWriter.writeRecords(
         jobs.map((job, idx) => ({
           ...job,
@@ -171,9 +171,7 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       globalCounter += jobs.length;
       console.log(`Scraped jobs from IBM page ${currentPage}`);
 
-      // Add delay to avoid rate limiting
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       currentPage++;
     }
   } catch (error) {
