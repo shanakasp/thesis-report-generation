@@ -51,7 +51,7 @@ const cleanDescription = (description) => {
   return cleanedDescription;
 };
 
-async function scrapeJobs(baseUrl, startPage, endPage) {
+async function scrapeJobs(baseUrl, startPage = 1, endPage = null) {
   const outputDir = path.join(__dirname, "../output");
   await fs.mkdir(outputDir, { recursive: true });
 
@@ -73,11 +73,22 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   let serialNumber = 1;
+  let currentPage = startPage;
+  let hasMoreJobs = true;
 
   try {
-    for (let currentPage = startPage; currentPage <= endPage; currentPage++) {
+    while (hasMoreJobs) {
+      // Check if we've reached the end page (if specified)
+      if (endPage && currentPage > endPage) {
+        console.log(`Reached specified end page ${endPage}. Stopping.`);
+        break;
+      }
+
       const startRow = (currentPage - 1) * 25;
       const pageUrl = `${baseUrl}&startrow=${startRow}`;
+
+      console.log(`Attempting to scrape page ${currentPage}...`);
+
       await page.goto(pageUrl, { waitUntil: "networkidle0" });
 
       const jobs = await page.evaluate(() => {
@@ -90,7 +101,8 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
       });
 
       if (jobs.length === 0) {
-        console.log(`No jobs found on page ${currentPage}. Stopping.`);
+        console.log(`No more jobs found on page ${currentPage}. Stopping.`);
+        hasMoreJobs = false;
         break;
       }
 
@@ -132,22 +144,26 @@ async function scrapeJobs(baseUrl, startPage, endPage) {
           serialNumber++;
           await jobPage.close();
         } catch (error) {
-          console.error(`Error scraping job detail: ${error}`);
+          console.error(`Error scraping job detail: ${error.message}`);
+          continue;
         }
       }
 
-      console.log(`Scraped Jobs From Deloitte Page ${currentPage}`);
+      console.log(
+        `Successfully scraped page ${currentPage} (${jobs.length} jobs)`
+      );
+      currentPage++;
 
       // Add delay between pages to avoid rate limiting
-      if (currentPage < endPage) {
-        await new Promise((resolve) => setTimeout(resolve, 3000));
-      }
+      await new Promise((resolve) => setTimeout(resolve, 3000));
     }
+  } catch (error) {
+    console.error(`Fatal error: ${error.message}`);
   } finally {
     await browser.close();
   }
 
-  console.log(`Scraping complete with ${serialNumber - 1} jobs.`);
+  console.log(`Scraping complete! Total jobs scraped: ${serialNumber - 1}`);
 }
 
 module.exports = { scrapeJobs };
